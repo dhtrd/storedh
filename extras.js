@@ -93,6 +93,61 @@
     const h = e.target.closest('.fav-h, .fav-pd'); if (!h) return;
     e.preventDefault(); e.stopPropagation(); toggle(h.dataset.c, h.dataset.p);
   }, true);
+  // ---------- «تواصل معنا» ← اختيار الفرع ورقمه ----------
+  function openBranches(mode = 'wa') {
+    const all = (D?.branches || []).filter(b => b.whatsapp || b.phone);
+    const depts = [...new Set(all.flatMap(b => String(b.departments || '').split(/[,،\n]+/).map(x => x.trim()).filter(Boolean)))];
+    const cities = [...new Set(all.map(b => b.city).filter(Boolean))];
+    let dept = '', city = '', me = savedLoc();
+    const greet = `السلام عليكم، أبي أستفسر من ${D.company?.nameAr || ''}`;
+    const ov = sheet('تواصل مع الفرع', `
+      <p class="bp-lead">اختر الفرع اللي يناسبك — كل فرع برقمه وقسمه وأوقات دوامه</p>
+      <button type="button" class="bp-near" id="bpNear">📍 رتّب حسب الأقرب لي</button>
+      ${cities.length > 1 ? `<div class="bp-chips" data-k="city"><button class="on" data-v="">كل المدن</button>${cities.map(c => `<button data-v="${esc(c)}">${esc(c)}</button>`).join('')}</div>` : ''}
+      ${depts.length > 1 ? `<div class="bp-chips" data-k="dept"><button class="on" data-v="">كل الأقسام</button>${depts.map(d => `<button data-v="${esc(d)}">${esc(d)}</button>`).join('')}</div>` : ''}
+      <div class="bp-list" id="bpList"></div>
+      ${waNumber() ? `<a class="bp-main" href="https://wa.me/${waNumber()}?text=${encodeURIComponent(greet)}" target="_blank" rel="noopener">${svg('whatsapp')} مو متأكد أي فرع؟ تواصل مع الرقم العام</a>` : ''}`);
+    const draw = () => {
+      let list = all.filter(b => (!city || b.city === city) && (!dept || String(b.departments || '').includes(dept)));
+      if (me) list = list.map(b => ({ b, d: coordsOf(b) ? km(me, coordsOf(b)) : 1e9 })).sort((x, y) => x.d - y.d).map(x => Object.assign({}, x.b, { _km: x.d < 1e8 ? x.d : null }));
+      $('bpList').innerHTML = list.map((b, i) => {
+        const num = b.whatsapp || b.phone, st = openStatus(b);
+        return `<div class="bp-item">
+          <div class="bp-info"><b>${esc(b.name)}${me && i === 0 ? ' <i class="bp-tag">الأقرب لك</i>' : ''}</b>
+            <small>${esc([b.area, b.city].filter(Boolean).join(' — '))}${b._km != null ? ` • ${b._km < 1 ? Math.round(b._km * 1000) + ' م' : b._km.toFixed(1) + ' كم'}` : ''}</small>
+            ${b.departments ? `<small class="bp-dep">${esc(b.departments)}</small>` : ''}
+            <span class="bp-row"><a class="bp-num" href="tel:${digits(num)}" dir="ltr">${esc(num)}</a>${st ? `<span class="open-pill ${st.open ? 'on' : 'off'}">${esc(st.text)}</span>` : ''}</span></div>
+          <div class="bp-acts">
+            ${b.whatsapp ? `<a class="bp-b wa ${mode === 'wa' ? 'pri' : ''}" href="https://wa.me/${intl(b.whatsapp)}?text=${encodeURIComponent(greet + ' — ' + b.name)}" target="_blank" rel="noopener">${svg('whatsapp')}<span>واتساب</span></a>` : ''}
+            <a class="bp-b call ${mode === 'call' ? 'pri' : ''}" href="tel:${digits(num)}">${svg('phone')}<span>اتصال</span></a>
+            <a class="bp-b map" href="${esc(mapHref(b))}" target="_blank" rel="noopener">${svg('pin')}<span>الموقع</span></a>
+          </div></div>`;
+      }).join('') || '<p class="xs-empty">ما فيه فرع بهذا الاختيار</p>';
+    };
+    ov.addEventListener('click', (e) => {
+      const c = e.target.closest('.bp-chips button'); if (!c) return;
+      const k = c.parentElement.dataset.k; if (k === 'city') city = c.dataset.v; else dept = c.dataset.v;
+      c.parentElement.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === c)); draw();
+    });
+    $('bpNear').onclick = () => {
+      const btn = $('bpNear');
+      if (!navigator.geolocation) { btn.textContent = 'المتصفح ما يدعم تحديد الموقع'; return; }
+      btn.textContent = '… جاري تحديد موقعك';
+      navigator.geolocation.getCurrentPosition(pos => {
+        me = [pos.coords.latitude, pos.coords.longitude]; try { sessionStorage.setItem('dh_loc', JSON.stringify(me)); } catch {}
+        btn.textContent = '✓ مرتبة حسب الأقرب لك'; draw();
+      }, () => { btn.textContent = 'ما قدرنا نحدد موقعك — اختر من القائمة'; }, { timeout: 10000, maximumAge: 600000 });
+    };
+    if (me) $('bpNear').textContent = '✓ مرتبة حسب الأقرب لك';
+    draw();
+  }
+  window.openBranches = openBranches;
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('#heroWa, #navCta, #waFloat, #mbWa, #mbCall, .cbtn[href^="https://wa.me"], .cbtn[href^="tel:"]');
+    if (!a || !(D?.branches || []).some(b => b.whatsapp || b.phone)) return;
+    e.preventDefault(); e.stopPropagation();
+    openBranches(a.id === 'mbCall' || /^tel:/.test(a.getAttribute('href') || '') ? 'call' : 'wa');
+  }, true);
   $('ntSearch')?.addEventListener('click', openSearch);
   $('ntFav')?.addEventListener('click', openFavs);
   addEventListener('keydown', (e) => { if (e.key === '/' && !/input|textarea/i.test(document.activeElement?.tagName || '')) { e.preventDefault(); openSearch(); } });

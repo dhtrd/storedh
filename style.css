@@ -872,3 +872,26 @@ h2{font-size:clamp(30px,4vw,46px);color:var(--ink);letter-spacing:-.3px}
 .cz-dock-view .cz-svg svg{width:100%;height:100%}
 .cz-dock.min .cz-dock-view{display:none}
 @media (min-width:981px){.cz-dock{display:none!important}}
+
+/* اختيار الفرع للتواصل */
+.bp-lead{margin:0 0 10px;color:#6b604a;font-size:14px}
+.bp-near{width:100%;border:1.5px dashed #d8c69c;background:#fffaf0;border-radius:12px;padding:10px;font:inherit;font-weight:800;color:#8a6d1c;cursor:pointer;margin-bottom:10px}
+.bp-chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:6px}
+.bp-chips button{flex:none;border:1px solid #e2d7bf;background:#fff;border-radius:99px;padding:7px 13px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.bp-chips button.on{background:#141414;color:#e8c766;border-color:#141414}
+.bp-list{display:flex;flex-direction:column;gap:8px}
+.bp-item{background:#fff;border:1px solid #efe7d6;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:10px}
+.bp-info{display:flex;flex-direction:column;gap:2px}
+.bp-info b{font-size:15.5px}
+.bp-info small{color:#7b7262;font-size:12.5px}
+.bp-dep{color:#a8871a!important;font-weight:700}
+.bp-tag{font-style:normal;font-size:11px;background:#e8c766;color:#141414;border-radius:99px;padding:1px 8px;margin-inline-start:4px;vertical-align:2px}
+.bp-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px}
+.bp-num{font-weight:800;font-size:16px;color:#141414;text-decoration:none;letter-spacing:.3px}
+.bp-acts{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.bp-b{display:flex;align-items:center;justify-content:center;gap:6px;border-radius:12px;padding:9px 6px;text-decoration:none;font-weight:800;font-size:13.5px;border:1px solid #e6dcc6;color:#141414;background:#faf7f0}
+.bp-b svg{width:17px;height:17px}
+.bp-b.pri.wa{background:#1fa855;border-color:#1fa855;color:#fff}
+.bp-b.pri.call{background:#141414;border-color:#141414;color:#e8c766}
+.bp-main{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;padding:11px;border-radius:12px;background:#f2ede1;color:#5c5444;font-weight:700;text-decoration:none;font-size:13.5px}
+.bp-main svg{width:17px;height:17px}
