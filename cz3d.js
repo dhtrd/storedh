@@ -12,7 +12,8 @@
   const mix = (hex, k) => { const n = parseInt(hex.slice(1), 16); const f = c => Math.max(0, Math.min(255, Math.round(c * k))); return '#' + [n >> 16, (n >> 8) & 255, n & 255].map(c => f(c).toString(16).padStart(2, '0')).join(''); };
 
   // ---------- ملمس الخامات (رسم بالـ canvas) ----------
-  const texCache = {};
+  const texCache = {}, swCache = {};
+  const swatch = (kind, hex) => { if (!kind) return ''; tex(kind, hex); return swCache[kind + hex]; };
   function tex(kind, hex) {
     const key = kind + hex; if (texCache[key]) return texCache[key];
     const S = 512, c = document.createElement('canvas'); c.width = c.height = S; const g = c.getContext('2d');
@@ -55,6 +56,7 @@
       for (let x = 0; x < S; x += 32) { g.globalAlpha = .5; g.fillStyle = mix(hex, .62); g.fillRect(x, 0, 5, S); g.globalAlpha = .25; g.fillStyle = mix(hex, 1.15); g.fillRect(x + 5, 0, 2, S); }
     }
     g.globalAlpha = 1;
+    swCache[key] = c.toDataURL('image/jpeg', .8);
     const b64 = c.toDataURL('image/jpeg', .86).split(',')[1];
     return (texCache[key] = Uint8Array.from(atob(b64), ch => ch.charCodeAt(0)));
   }
@@ -197,12 +199,14 @@
       b.prism(rectO(w + .02, d * .35, .02), top - .02, top + .015, { c: st.color[1], tex: 'fabric', rough: .95, metal: 0 }, 0, d * .28);
       if (st.piece === 'fullroom') {
         // غرفة كاملة: سرير + 2 كومودينو + دولاب + تسريحة بمرآة — مرتبة على جدار السرير
-        for (const s of [-1, 1]) cabinet(s * (w / 2 + .32), -d / 2 + .25, .5, .4, .55, 0, { topSlab: true });
+        const P = st.parts || {}, cm = (x, def) => (+x || def) / 100;
+        const nw = cm(P.nightstand?.w, 50), nd = cm(P.nightstand?.d, 40), nh = cm(P.nightstand?.h, 55);
+        for (const s of [-1, 1]) cabinet(s * (w / 2 + .07 + nw / 2), -d / 2 + nd / 2 + .05, nw, nd, nh, 0, { topSlab: true });
         const back = -d / 2 - .05;
-        const ww = 2.0, wd = .6, wh = 2.4, wx = -(w / 2 + .62 + .35 + ww / 2);          // الدولاب يسار
+        const ww = cm(P.wardrobe?.w, 200), wd = cm(P.wardrobe?.d, 60), wh = cm(P.wardrobe?.h, 240), wx = -(w / 2 + .07 + nw + .35 + ww / 2);          // الدولاب يسار
         cabinet(wx, back + wd / 2, ww, wd, wh, 0, { noLegs: true });
         b.box(wx, wh + .02, back + wd / 2, ww + .02, .04, wd + .02, M.B);                    // كرنيشة علوية
-        const dw = 1.2, dd = .45, dh = .8, dx = w / 2 + .62 + .35 + dw / 2;               // التسريحة يمين
+        const dw = cm(P.dresser?.w, 120), dd = cm(P.dresser?.d, 45), dh = cm(P.dresser?.h, 80), dx = w / 2 + .07 + nw + .35 + dw / 2;               // التسريحة يمين
         cabinet(dx, back + dd / 2, dw, dd, dh, 0, { topSlab: true });
         const mw = .8, mh = .95; b.prism(rectO(mw, .03, .02), dh + .06, dh + .06 + mh, M.B, dx, back + .03);
         b.box(dx, dh + .06 + mh / 2, back + .05, mw - .06, mh - .06, .005, M.MIRROR);
@@ -292,7 +296,7 @@
     if (!mv || !mv.isConnected) return;
     clearTimeout(timer);
     timer = setTimeout(() => {
-      const key = JSON.stringify([CS.cat, CS.piece, CS.shape, CS.w, CS.d, CS.h, CS.mat, CS.top, CS.edge, CS.legs, CS.door, CS.handle, CS.seats, CS.color[1], CS.topColor[1]]);
+      const key = JSON.stringify([CS.parts, CS.cat, CS.piece, CS.shape, CS.w, CS.d, CS.h, CS.mat, CS.top, CS.edge, CS.legs, CS.door, CS.handle, CS.seats, CS.color[1], CS.topColor[1]]);
       if (key === lastKey) return; lastKey = key;
       let orbit = null; try { orbit = mv.loaded ? mv.getCameraOrbit().toString() : null; } catch {}
       const blob = build(CS), old = url; url = URL.createObjectURL(blob); mv.src = url;
@@ -317,4 +321,47 @@
     } catch { return null; }
   };
   window.cz3dBuild = build;
+
+  // ---------- أيقونات توضيحية لأزرار الخيارات ----------
+  const sv = (body) => `<svg viewBox="0 0 48 48" aria-hidden="true">${body}</svg>`;
+  window.czIcon = function (name, k) {
+    const lum = (h) => { const n = parseInt(h.slice(1), 16); return (.3 * (n >> 16) + .59 * ((n >> 8) & 255) + .11 * (n & 255)) / 255; };
+    const soft = (h) => lum(h) > .82 ? mix(h, .8) : h;   // الألوان الفاتحة جداً نغمّقها شوي عشان يبان الملمس في الأيقونة
+    const body = soft(CS?.color?.[1] || '#c9a57a'), top = soft(CS?.topColor?.[1] || '#eeece7');
+    const img = (u, extra = '') => `<i class="sw" style="background-image:url(${u});${extra}"></i>`;
+    if (name === 'mat') {
+      if (k === 'mdf') return `<i class="sw" style="background:linear-gradient(135deg,${mix(body, 1.12)},${body} 55%,${mix(body, .88)})"></i>`;
+      if (k === 'metal') return `<i class="sw" style="background:linear-gradient(90deg,${mix(body, .7)},${mix(body, 1.35)} 35%,${mix(body, 1.05)} 50%,${mix(body, 1.3)} 75%,${mix(body, .75)})"></i>`;
+      const raw = CS?.color?.[1] || '#c9a57a', woodC = lum(raw) > .7 ? (k === 'solid' ? '#a57c55' : '#c9a57a') : raw;
+      return img(swatch({ veneer: 'veneer', solid: 'wood', fabric: 'fabric' }[k], k === 'fabric' ? (lum(raw) > .7 ? '#b9ad98' : raw) : woodC));
+    }
+    if (name === 'top') {
+      if (k === 'glass') return `<i class="sw" style="background:linear-gradient(135deg,#e9f4f7 0%,#cfe3ea 45%,#fff 50%,#cfe3ea 56%,#b9d3dc 100%);opacity:.85;border:1px solid #a9c6cf"></i>`;
+      if (k === 'same') return window.czIcon('mat', CS.mat);
+      const tc = k === 'travertine' ? '#d9c7a6' : k === 'marble' ? '#e4e1da' : k === 'padded' ? (lum(top) > .7 ? '#b9ad98' : top) : (lum(top) > .7 ? '#bdbab4' : top);
+      return img(swatch({ marble: 'marble', sintered: 'sintered', travertine: 'travertine', padded: 'tufted' }[k], tc));
+    }
+    const G = '#c9a54a', S = '#6b604a', F = mix(body, .95);
+    const I = {
+      shape: { rect: sv(`<rect x="6" y="14" width="36" height="20" rx="2" fill="${F}" stroke="${S}" stroke-width="2"/>`), square: sv(`<rect x="12" y="12" width="24" height="24" rx="2" fill="${F}" stroke="${S}" stroke-width="2"/>`),
+        round: sv(`<circle cx="24" cy="24" r="15" fill="${F}" stroke="${S}" stroke-width="2"/>`), oval: sv(`<ellipse cx="24" cy="24" rx="19" ry="12" fill="${F}" stroke="${S}" stroke-width="2"/>`),
+        capsule: sv(`<rect x="5" y="14" width="38" height="20" rx="10" fill="${F}" stroke="${S}" stroke-width="2"/>`), lshape: sv(`<path d="M6 10H42V24H20V40H6Z" fill="${F}" stroke="${S}" stroke-width="2" stroke-linejoin="round"/>`) },
+      edge: { straight: sv(`<path d="M6 18H42V30H6Z" fill="${F}" stroke="${S}" stroke-width="2"/>`), rounded: sv(`<rect x="6" y="18" width="36" height="12" rx="6" fill="${F}" stroke="${S}" stroke-width="2"/>`),
+        beveled: sv(`<path d="M10 18H38L42 24L38 30H10L6 24Z" fill="${F}" stroke="${S}" stroke-width="2"/>`) },
+      legs: { wood: sv(`<rect x="6" y="10" width="36" height="5" fill="${F}" stroke="${S}"/><path d="M11 15L8 40M37 15L40 40" stroke="${mix(body, .72)}" stroke-width="4" stroke-linecap="round"/>`),
+        gold: sv(`<rect x="6" y="10" width="36" height="5" fill="${F}" stroke="${S}"/><path d="M11 15V40M37 15V40M11 37H37" stroke="${G}" stroke-width="3"/>`),
+        black: sv(`<rect x="6" y="10" width="36" height="5" fill="${F}" stroke="${S}"/><path d="M11 15V40M37 15V40M11 37H37" stroke="#1c1c1c" stroke-width="3"/>`),
+        hidden: sv(`<rect x="6" y="10" width="36" height="22" fill="${F}" stroke="${S}"/><rect x="12" y="32" width="24" height="8" fill="${mix(body, .55)}"/>`),
+        pedestal: sv(`<rect x="6" y="10" width="36" height="5" fill="${F}" stroke="${S}"/><rect x="21" y="15" width="6" height="22" fill="${G}"/><rect x="12" y="37" width="24" height="4" rx="2" fill="${G}"/>`) },
+      door: { flat: sv(`<rect x="8" y="6" width="32" height="36" fill="${F}" stroke="${S}" stroke-width="2"/><path d="M24 6V42" stroke="${S}"/>`),
+        grooved: sv(`<rect x="8" y="6" width="32" height="36" fill="${F}" stroke="${S}" stroke-width="2"/>${[13, 18, 23, 28, 33].map(x => `<path d="M${x} 9V39" stroke="${mix(body, .6)}" stroke-width="2"/>`).join('')}`),
+        pattern: sv(`<rect x="8" y="6" width="32" height="36" fill="${F}" stroke="${S}" stroke-width="2"/><path d="M12 10L36 38M36 10L12 38" stroke="${G}" stroke-width="2"/>`),
+        glass: sv(`<rect x="8" y="6" width="32" height="36" fill="#d6ebf0" stroke="${S}" stroke-width="2"/><path d="M14 12L22 20M26 12L34 20" stroke="#fff" stroke-width="2"/>`),
+        open: sv(`<rect x="8" y="6" width="32" height="36" fill="${mix(body, .45)}" stroke="${S}" stroke-width="2"/><path d="M8 18H40M8 30H40" stroke="${F}" stroke-width="3"/>`) },
+      handle: { hidden: sv(`<rect x="10" y="6" width="28" height="36" fill="${F}" stroke="${S}" stroke-width="2"/><path d="M30 22l4 2-4 2" stroke="${S}" fill="none"/>`),
+        gold: sv(`<rect x="10" y="6" width="28" height="36" fill="${F}" stroke="${S}" stroke-width="2"/><rect x="31" y="16" width="3" height="16" rx="1.5" fill="${G}"/>`),
+        black: sv(`<rect x="10" y="6" width="28" height="36" fill="${F}" stroke="${S}" stroke-width="2"/><rect x="31" y="16" width="3" height="16" rx="1.5" fill="#1c1c1c"/>`) },
+    };
+    return I[name]?.[k] || '';
+  };
 })();

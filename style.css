@@ -846,3 +846,15 @@ h2{font-size:clamp(30px,4vw,46px);color:var(--ink);letter-spacing:-.3px}
 .cz-step{width:100%;justify-content:center;margin-top:8px;gap:8px}
 .cz-step span{width:24px;height:24px;border-radius:50%;background:#141414;color:#e8c766;display:inline-grid;place-items:center;font-size:13px;font-weight:800;flex:none}
 .cz-tip{display:block;margin-top:8px;color:#7b7262;line-height:1.7}
+
+/* أزرار الخيارات مع رسوم توضيحية */
+.cz-chips.ic{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px}
+.cz-chips.ic .cz-chip{display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 6px;border-radius:14px;text-align:center;line-height:1.35}
+.cz-chips.ic .cz-chip em{font-style:normal;font-size:12.5px}
+.cz-ic{width:54px;height:42px;display:grid;place-items:center}
+.cz-ic svg{width:48px;height:40px}
+.cz-ic .sw{display:block;width:52px;height:38px;border-radius:9px;background-size:cover;background-position:center;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.cz-chips:not(.ic) .cz-chip em{font-style:normal}
+.cz-desc{margin:8px 2px 4px;padding:9px 12px;border-radius:12px;background:#f6f1e4;color:#5c5444;font-size:13.5px;line-height:1.7;border-inline-start:3px solid var(--gold)}
+.cz-part{border:1px solid #ece4d2;border-radius:14px;padding:10px 12px 4px;margin-top:10px;background:#fffdf8}
+.cz-part h4{margin:0 0 6px}
