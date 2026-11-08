@@ -305,8 +305,10 @@ function specRows() {
 function drawPreview() {
   $('czSvg').innerHTML = diagram(CS);
   window.cz3dUpdate?.();
+  if ($('czDockT')) { $('czDockT').textContent = pieceOf().t; $('czDockD').textContent = $('czDims')?.textContent || ''; if (!$('czDock3d').hidden) {} else $('czDockSvg').innerHTML = diagram(CS); }
   $('czTitle').textContent = pieceOf().t;
   $('czDims').textContent = `${CS.w} × ${['round', 'square'].includes(CS.shape) ? CS.w : CS.d} × ${CS.h} سم`;
+  if ($('czDockD')) $('czDockD').textContent = $('czDims').textContent;
   $('czSum').innerHTML = specRows().slice(2).map(([l, v, hex]) => `<span>${hex ? `<i style="background:${hex}"></i>` : ''}<b>${esc(l)}:</b> ${esc(v)}</span>`).join('');
 }
 function drawForm() { $('czForm').innerHTML = formHTML(); drawPreview(); }
@@ -321,6 +323,24 @@ function wireCustom() {
     $('cz3d').hidden = !is3d; $('cz3dHint').hidden = !is3d; $('czSvg').hidden = is3d;
   };
   $('czAR').onclick = () => window.cz3dAR?.($('czARNote'));
+  // ---------- معاينة عائمة في الجوال: تبقى ظاهرة وأنت تختار الخامات والألوان تحت ----------
+  const dock = document.createElement('div'); dock.className = 'cz-dock'; dock.hidden = true;
+  dock.innerHTML = `<div class="cz-dock-top"><b id="czDockT"></b><span id="czDockD"></span><button type="button" id="czDockX" aria-label="تصغير المعاينة">▲</button></div>
+    <div class="cz-dock-view"><div id="czDock3d"></div><div id="czDockSvg" class="cz-svg" hidden></div></div>`;
+  $('page').append(dock);
+  let collapsed = false, built = false;
+  $('czDockX').onclick = () => { collapsed = !collapsed; dock.classList.toggle('min', collapsed); $('czDockX').textContent = collapsed ? '▼ عرض' : '▲'; };
+  const syncView = () => { const is3d = !$('cz3d').hidden; $('czDock3d').hidden = !is3d; $('czDockSvg').hidden = is3d; if (!is3d) $('czDockSvg').innerHTML = diagram(CS); };
+  $('czViews').addEventListener('click', () => setTimeout(syncView, 0));
+  const check = () => {
+    if (!dock.isConnected) return removeEventListener('scroll', onS);
+    const mobile = innerWidth <= 980, card = document.querySelector('.cz-card').getBoundingClientRect(), form = $('czForm').getBoundingClientRect();
+    const show = mobile && card.bottom < 90 && form.bottom > innerHeight * .5;
+    if (show && !built) { built = true; window.cz3dMini?.($('czDock3d')); }
+    if (show !== !dock.hidden) { dock.hidden = !show; if (show) { $('czDockT').textContent = pieceOf().t; $('czDockD').textContent = $('czDims').textContent; syncView(); } }
+  };
+  let tm = 0; const onS = () => { if (!tm) tm = setTimeout(() => { tm = 0; check(); }, 60); };
+  addEventListener('scroll', onS, { passive: true }); addEventListener('resize', onS);
   const form = $('czForm');
   form.addEventListener('click', async (e) => {
     const cat = e.target.closest('[data-cat]');

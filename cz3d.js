@@ -280,7 +280,7 @@
   }
 
   // ---------- العارض ----------
-  let mv = null, url = '', timer = 0, lastKey = '';
+  let mv = null, mini = null, url = '', timer = 0, lastKey = '';
   window.cz3dMount = async function (host) {
     host.innerHTML = '<div class="cz3d-load">جاري تجهيز المجسم ثلاثي الأبعاد…</div>';
     try { await loadMV(); } catch { host.innerHTML = '<div class="cz3d-load">تعذّر تحميل العارض — تأكد من الإنترنت</div>'; return; }
@@ -299,9 +299,16 @@
       const key = JSON.stringify([CS.parts, CS.cat, CS.piece, CS.shape, CS.w, CS.d, CS.h, CS.mat, CS.top, CS.edge, CS.legs, CS.door, CS.handle, CS.seats, CS.color[1], CS.topColor[1]]);
       if (key === lastKey) return; lastKey = key;
       let orbit = null; try { orbit = mv.loaded ? mv.getCameraOrbit().toString() : null; } catch {}
-      const blob = build(CS), old = url; url = URL.createObjectURL(blob); mv.src = url;
-      mv.addEventListener('load', () => { if (orbit) mv.cameraOrbit = orbit; if (old) URL.revokeObjectURL(old); }, { once: true });
+      const blob = build(CS), old = url; url = URL.createObjectURL(blob); mv.src = url; if (mini?.isConnected) mini.src = url;
+      mv.addEventListener('load', () => { if (orbit) mv.cameraOrbit = orbit; if (old) setTimeout(() => URL.revokeObjectURL(old), 4000); }, { once: true });
     }, now ? 0 : 220);
+  };
+  window.cz3dMini = async function (host) {
+    try { await loadMV(); } catch { return; }
+    mini = document.createElement('model-viewer');
+    for (const [k, v] of Object.entries({ 'camera-controls': '', 'touch-action': 'pan-y', 'shadow-intensity': '1', exposure: '1.05', 'environment-image': 'neutral',
+      'camera-orbit': '30deg 70deg auto', 'max-camera-orbit': 'auto 95deg auto', 'interaction-prompt': 'none', loading: 'eager', alt: 'معاينة' })) mini.setAttribute(k, v);
+    host.append(mini); if (url) mini.src = url;
   };
   window.cz3dAR = async function (note) {
     if (!mv) return;
