@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
-Sitemap: https://annnna620-lang.github.io/dhubaibi/sitemap.xml
+Sitemap: https://dhtrd.github.io/storedh/sitemap.xml
