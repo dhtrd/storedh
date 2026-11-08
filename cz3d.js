@@ -195,7 +195,23 @@
       const hbH = Math.max(h, .9); b.prism(rectO(w + .06, .1, st.edge === 'rounded' ? .04 : 0), 0, hbH, st.mat === 'fabric' ? M.TUFT : M.B, 0, -d / 2 - .05);
       const top = (leg || .06) + bh + mh; for (const s of [-1, 1]) b.prism(rectO(w * .4, .32, .06), top, top + .14, M.WHITE, s * w * .23, -d / 2 + .25);
       b.prism(rectO(w + .02, d * .35, .02), top - .02, top + .015, { c: st.color[1], tex: 'fabric', rough: .95, metal: 0 }, 0, d * .28);
-      if (st.piece === 'fullroom') { for (const s of [-1, 1]) cabinet(s * (w / 2 + .32), -d / 2 + .25, .5, .4, .55, 0, { topSlab: true }); }
+      if (st.piece === 'fullroom') {
+        // غرفة كاملة: سرير + 2 كومودينو + دولاب + تسريحة بمرآة — مرتبة على جدار السرير
+        for (const s of [-1, 1]) cabinet(s * (w / 2 + .32), -d / 2 + .25, .5, .4, .55, 0, { topSlab: true });
+        const back = -d / 2 - .05;
+        const ww = 2.0, wd = .6, wh = 2.4, wx = -(w / 2 + .62 + .35 + ww / 2);          // الدولاب يسار
+        cabinet(wx, back + wd / 2, ww, wd, wh, 0, { noLegs: true });
+        b.box(wx, wh + .02, back + wd / 2, ww + .02, .04, wd + .02, M.B);                    // كرنيشة علوية
+        const dw = 1.2, dd = .45, dh = .8, dx = w / 2 + .62 + .35 + dw / 2;               // التسريحة يمين
+        cabinet(dx, back + dd / 2, dw, dd, dh, 0, { topSlab: true });
+        const mw = .8, mh = .95; b.prism(rectO(mw, .03, .02), dh + .06, dh + .06 + mh, M.B, dx, back + .03);
+        b.box(dx, dh + .06 + mh / 2, back + .05, mw - .06, mh - .06, .005, M.MIRROR);
+        b.prism(rectO(.42, .42, .21), .3, .45, { c: st.color[1], tex: 'fabric', rough: .95, metal: 0 }, dx, back + dd + .35);   // كرسي التسريحة
+        b.cyl(dx, 0, .3, back + dd + .35, .03, M.LEG, 12);
+        // أرضية الغرفة الخفيفة عشان تبان كمجموعة
+        const roomW = (dx + dw / 2) - (wx - ww / 2) + .4;
+        b.box((dx + dw / 2 + wx - ww / 2) / 2, -.004, back + (d + 1.4) / 2, roomW, .008, d + 1.4, { c: '#e9e2d3', rough: .95, metal: 0 });
+      }
     } else if (kind === 'cabinet') {
       if (st.shape === 'lshape') { cabinet(0, 0, w, d, h, 0, { topSlab: hasTopP }); cabinet(-w / 2 + d / 2, d / 2 + w * .25, d, w * .5, h, 0, { topSlab: hasTopP }); }
       else if (['round', 'capsule'].includes(st.shape)) {

@@ -129,6 +129,28 @@ function diagram(st, opts = {}) {
     }
     front = extra + doors + (hasTop() ? `<rect x="${gx - 3}" y="${cy - slab}" width="${fw + 6}" height="${slab}" fill="${fillTop}" stroke="#222"/>` : '') + (plinth ? legs(base - plinth, base, gx, gx + fw) : '');
   }
+  // منظر علوي للقطعة الواحدة
+  const pieceTop = () => `  <g fill="${fillTop}" stroke="#222" stroke-width="1.5">${topShape}</g>
+  ${st.edge === 'beveled' && !['round', 'oval'].includes(st.shape) ? `<g fill="none" stroke="rgba(0,0,0,.28)" stroke-width="1" transform="translate(${ox + tw / 2} ${oy + td / 2}) scale(.94) translate(${-(ox + tw / 2)} ${-(oy + td / 2)})">${topShape}</g>` : ''}
+  ${st.edge === 'beveled' && ['round', 'oval'].includes(st.shape) ? `<g fill="none" stroke="rgba(0,0,0,.28)" transform="translate(${ox + tw / 2} ${oy + td / 2}) scale(.93) translate(${-(ox + tw / 2)} ${-(oy + td / 2)})">${topShape}</g>` : ''}
+  ${dimH(ox, ox + tw, oy - 18 - (p.seats ? cm * s1 * 1.5 : 0), `${w} سم`)}
+  ${round ? '' : dimV(ox + tw + (p.seats ? cm * s1 * 1.6 : 0) + 26, oy, oy + td, `${d} سم`)}`;
+  // منظر علوي للغرفة الكاملة: دولاب • كومودينو • سرير • كومودينو • تسريحة
+  const roomTop = () => {
+    const items = [['دولاب', 200, 60], ['كومودينو', 50, 40], ['سرير', w, d], ['كومودينو', 50, 40], ['تسريحة', 120, 45]], gap = 12;
+    const total = items.reduce((a, [, iw]) => a + iw, 0) + gap * (items.length - 1), deep = Math.max(...items.map(x => x[2]));
+    const k = Math.min((boxW - 20) / total, (boxH - 60) / deep), x0 = tx + (boxW - total * k) / 2, y0 = ty + 34;
+    let x = x0, out = `<path d="M${x0 - 6} ${y0 - 4}H${x0 + total * k + 6}" stroke="#bbb" stroke-width="3"/>`;
+    for (const [t, iw, id] of items) {
+      const isBed = t === 'سرير', W2 = iw * k, H2 = id * k;
+      out += `<rect x="${x}" y="${y0}" width="${W2}" height="${H2}" rx="${isBed ? 6 : 2}" fill="${isBed ? fillTop : bodyFill}" stroke="#222" stroke-width="1.3"/>`;
+      if (isBed) out += `<rect x="${x + 3}" y="${y0 + H2 * .08}" width="${W2 - 6}" height="${H2 * .2}" rx="4" fill="#f4f1ea" stroke="#999"/>`;
+      out += `<text x="${x + W2 / 2}" y="${y0 + H2 + 16}" font-size="12" font-weight="700" fill="#555" text-anchor="middle">${t}</text>`;
+      out += `<text x="${x + W2 / 2}" y="${y0 + H2 + 31}" font-size="11" fill="#a8871a" text-anchor="middle" direction="ltr">${isBed ? w + '×' + d : iw + '×' + id}</text>`;
+      x += W2 + gap * k;
+    }
+    return out;
+  };
   const uidS = Math.random().toString(36).slice(2, 7);
   return (`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${opts.w || W}" height="${opts.h || H}" font-family="${font}" direction="rtl">
   <defs>
@@ -152,11 +174,7 @@ function diagram(st, opts = {}) {
   <path d="M${pad * 1.5 + boxW} ${pad + 10}V${H - pad}" stroke="#eee" stroke-width="2"/>
   ${chairs}
   ${st.top === 'glass' && ['table', 'nesting', 'tiered'].includes(kind) ? (st.legs === 'pedestal' || kind === 'tiered' ? `<circle cx="${ox + tw / 2}" cy="${oy + td / 2}" r="${Math.max(6, tw * .08)}" fill="${legHex}"/>` : [[.1, .15], [.9, .15], [.1, .85], [.9, .85]].map(([a, b]) => `<circle cx="${ox + tw * a}" cy="${oy + td * b}" r="${Math.max(3, leg * .7)}" fill="${legHex}"/>`).join('')) : ''}
-  <g fill="${fillTop}" stroke="#222" stroke-width="1.5">${topShape}</g>
-  ${st.edge === 'beveled' && !['round', 'oval'].includes(st.shape) ? `<g fill="none" stroke="rgba(0,0,0,.28)" stroke-width="1" transform="translate(${ox + tw / 2} ${oy + td / 2}) scale(.94) translate(${-(ox + tw / 2)} ${-(oy + td / 2)})">${topShape}</g>` : ''}
-  ${st.edge === 'beveled' && ['round', 'oval'].includes(st.shape) ? `<g fill="none" stroke="rgba(0,0,0,.28)" transform="translate(${ox + tw / 2} ${oy + td / 2}) scale(.93) translate(${-(ox + tw / 2)} ${-(oy + td / 2)})">${topShape}</g>` : ''}
-  ${dimH(ox, ox + tw, oy - 18 - (p.seats ? cm * s1 * 1.5 : 0), `${w} سم`)}
-  ${round ? '' : dimV(ox + tw + (p.seats ? cm * s1 * 1.6 : 0) + 26, oy, oy + td, `${d} سم`)}
+  ${st.piece === 'fullroom' ? roomTop() : pieceTop()}
   ${front}
   ${dimH(gx, gx + fw, base + 22, `${w} سم`)}
   ${dimV(gx + fw + 30, top, base, `${h} سم`)}
