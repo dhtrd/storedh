@@ -267,7 +267,7 @@
     mv = document.createElement('model-viewer');
     for (const [k, v] of Object.entries({ 'camera-controls': '', 'touch-action': 'pan-y', 'auto-rotate': '', 'auto-rotate-delay': '1500', 'rotation-per-second': '20deg',
       'shadow-intensity': '1', 'shadow-softness': '.8', exposure: '1.05', 'environment-image': 'neutral', 'camera-orbit': '30deg 70deg auto',
-      'max-camera-orbit': 'auto 95deg auto', ar: '', 'ar-modes': 'webxr quick-look', 'ar-scale': 'fixed', 'ar-placement': 'floor', 'interaction-prompt': 'none', alt: 'مجسم القطعة' })) mv.setAttribute(k, v);
+      'max-camera-orbit': 'auto 95deg auto', ar: '', 'ar-modes': 'webxr quick-look', 'ar-scale': 'fixed', 'ar-placement': 'floor', 'interaction-prompt': 'none', alt: 'مجسم القطعة', loading: 'eager', reveal: 'auto' })) mv.setAttribute(k, v);
     mv.innerHTML = '<button slot="ar-button" hidden></button>';
     host.innerHTML = ''; host.append(mv);
     window.cz3dUpdate(true);
@@ -291,6 +291,14 @@
       ? 'جوالك ما يدعم الكاميرا ثلاثية الأبعاد في هذا المتصفح — جرّب Chrome على أندرويد أو Safari على الآيفون.'
       : 'الكاميرا تشتغل من الجوال: افتح نفس الصفحة من جوالك وصمّم قطعتك، واضغط هذا الزر عشان تشوفها في مكانك.';
   };
-  window.cz3dSnapshot = async function () { try { if (!mv?.loaded) return null; return await mv.toBlob({ mimeType: 'image/png', idealAspect: true }); } catch { return null; } };
+  window.cz3dSnapshot = async function () {
+    try {
+      if (!mv) return null;
+      if (!mv.loaded) await new Promise(ok => { mv.addEventListener('load', ok, { once: true }); setTimeout(ok, 8000); });
+      if (!mv.loaded) return null;
+      await new Promise(r => setTimeout(r, 150));
+      return await Promise.race([mv.toBlob({ mimeType: 'image/png', idealAspect: true }), new Promise(r => setTimeout(() => r(null), 4000))]);
+    } catch { return null; }
+  };
   window.cz3dBuild = build;
 })();

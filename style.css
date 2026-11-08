@@ -841,3 +841,8 @@ h2{font-size:clamp(30px,4vw,46px);color:var(--ink);letter-spacing:-.3px}
   .nt-btn{width:36px;height:36px}
   .burger{flex:none}
 }
+
+.cz-sheet{display:block;width:100%;max-width:340px;margin:10px auto;border-radius:12px;border:1px solid #e9e1cf;box-shadow:0 10px 24px -14px rgba(0,0,0,.35)}
+.cz-step{width:100%;justify-content:center;margin-top:8px;gap:8px}
+.cz-step span{width:24px;height:24px;border-radius:50%;background:#141414;color:#e8c766;display:inline-grid;place-items:center;font-size:13px;font-weight:800;flex:none}
+.cz-tip{display:block;margin-top:8px;color:#7b7262;line-height:1.7}

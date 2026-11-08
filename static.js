@@ -13,10 +13,7 @@ window.STATIC_SITE = true;
     if (ep === 'custom/upload') return json({ url: URL.createObjectURL(init.body) });
     if (ep === 'custom/analyze') return json({ error: 'off', message: 'تحديد نوع القطعة والمقاسات من الصورة يتفعّل في النسخة الكاملة — حدد المقاسات من الخطوة 3.' }, 400);
     if (ep === 'custom/request') { lastNo = 'DH-' + new Date().toISOString().slice(2, 10).replace(/-/g, '') + '-' + Math.random().toString(16).slice(2, 6).toUpperCase(); return json({ id: 'local', no: lastNo }); }
-    if (ep.startsWith('custom/sheet/')) {
-      const a = document.createElement('a'); a.href = URL.createObjectURL(init.body); a.download = 'مخطط-' + lastNo + '.png'; document.body.append(a); a.click(); a.remove();
-      return json({ ok: true });
-    }
+    if (ep.startsWith('custom/sheet/')) return json({ ok: true }); // الصورة تنرسل من صفحة الطلب نفسها
     return json({ error: 'غير متاح في نسخة العرض' }, 404);
   };
 })();

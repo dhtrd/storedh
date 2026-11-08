@@ -527,13 +527,30 @@ async function sendRequest() {
     const j = await r.json(); if (!r.ok) throw new Error(j.error);
     const blob = await buildSheet(j.no);
     await fetch('api/custom/sheet/' + j.id, { method: 'POST', body: blob }).catch(() => {});
-    const link = location.href.split('#')[0] + '#r/' + j.id;
-    const msg = [`*طلب تفصيل حسب الطلب* — ${j.no}`, '━━━━━━━━━━', ...rows.map(([l, v]) => `▪ ${l}: ${v}`),
-      CS.notes && `▪ ملاحظات: ${CS.notes}`, '━━━━━━━━━━', `👤 ${CS.name} — ${CS.phone}`, window.STATIC_SITE ? '📎 ملف المخطط نزل على جهازك — أرفقه في هذه المحادثة' : `📐 المخطط والتفاصيل${CS.ref ? ' والصورة المرجعية' : ''}:`, window.STATIC_SITE ? '' : link].filter(Boolean).join('\n');
-    const wa = `https://wa.me/${intl(b.whatsapp || b.phone || D.contact?.whatsapp)}?text=${encodeURIComponent(msg)}`;
-    done.innerHTML = `<div class="cz-ok"><b>✓ تم تجهيز طلبك رقم ${esc(j.no)}</b><p>اضغط الزر لفتح واتساب ${esc(b.name || 'الفرع')} — الرسالة جاهزة، اضغط إرسال فقط.</p>
-      <a class="btn wa" href="${wa}" target="_blank" rel="noopener">${svg('whatsapp')} فتح واتساب وإرسال الطلب</a>${window.STATIC_SITE ? '<p style="margin-top:8px">📎 تم تنزيل صورة المخطط على جهازك — أرفقها في محادثة الواتساب.</p>' : ` <a class="btn line" href="#r/${j.id}">عرض الطلب</a>`}</div>`;
-    window.open(wa, '_blank', 'noopener');
+    // الفرع يستلم «صورة التصميم» نفسها — واتساب ما يقبل مرفقات من الرابط، فنرسل الصورة من قائمة المشاركة في الجوال
+    const file = new File([blob], `طلب-تفصيل-${j.no}.png`, { type: 'image/png' });
+    const canShare = !!(navigator.canShare && navigator.canShare({ files: [file] }));
+    const num = intl(b.whatsapp || b.phone || D.contact?.whatsapp);
+    const intro = `السلام عليكم، طلب تفصيل رقم ${j.no} — ${p.t} (${CS.w}×${['round', 'square'].includes(CS.shape) ? CS.w : CS.d}×${CS.h} سم)\nالتصميم والمواصفات في الصورة 👇\n${CS.name}`;
+    const wa = `https://wa.me/${num}?text=${encodeURIComponent(intro)}`;
+    const url = URL.createObjectURL(blob);
+    if (canShare) {
+      done.innerHTML = `<div class="cz-ok"><b>✓ تصميم طلبك رقم ${esc(j.no)} جاهز</b>
+        <img class="cz-sheet" src="${url}" alt="صورة التصميم">
+        <p>خطوتين وتوصل صورة التصميم لـ ${esc(b.name || 'الفرع')}:</p>
+        <a class="btn line cz-step" href="${wa}" target="_blank" rel="noopener" id="czStep1"><span>1</span> افتح محادثة الفرع في واتساب</a>
+        <button type="button" class="btn wa cz-step" id="czStep2"><span>2</span> ${svg('whatsapp')} أرسل صورة التصميم للفرع</button>
+        <small class="cz-tip">بعد الخطوة 2 اختر واتساب ← محادثة ${esc(b.name || 'الفرع')} (تطلع أول القائمة) ← إرسال.</small></div>`;
+      $('czStep2').onclick = async () => { try { await navigator.share({ files: [file], title: 'طلب تفصيل ' + j.no, text: intro }); } catch {} };
+    } else {
+      const a = document.createElement('a'); a.href = url; a.download = file.name; document.body.append(a); a.click(); a.remove();
+      done.innerHTML = `<div class="cz-ok"><b>✓ تصميم طلبك رقم ${esc(j.no)} جاهز</b>
+        <img class="cz-sheet" src="${url}" alt="صورة التصميم">
+        <p>نزّلنا صورة التصميم على جهازك — افتح واتساب ${esc(b.name || 'الفرع')} وأرفق الصورة في المحادثة.</p>
+        <a class="btn wa" href="${wa}" target="_blank" rel="noopener">${svg('whatsapp')} فتح واتساب الفرع</a>
+        <a class="btn line" href="${url}" download="${esc(file.name)}">⬇ تنزيل الصورة مرة ثانية</a></div>`;
+      window.open(wa, '_blank', 'noopener');
+    }
   } catch (e) { done.innerHTML = `<p class="cz-err">${esc(e.message || 'تعذّر الإرسال')}</p>`; }
   finally { btn.disabled = false; btn.innerHTML = `${svg('whatsapp')} إرسال الطلب للفرع`; }
 }
