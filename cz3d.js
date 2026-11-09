@@ -66,18 +66,20 @@
     const mats = [], groups = [];
     const matIndex = (m) => { const key = JSON.stringify(m); let i = mats.findIndex(x => x.key === key); if (i < 0) { mats.push({ key, ...m }); groups.push({ P: [], N: [], U: [], I: [] }); i = mats.length - 1; } return i; };
     const T = 0.8; // متر لكل تكرار للملمس
-    const face = (gi, pts, n, uvOf) => {
+    const face = (gi, pts, n, uvOf, tris) => {
       const G = groups[gi], o = G.P.length / 3;
       for (const p of pts) { G.P.push(...p); G.N.push(...n); G.U.push(...uvOf(p)); }
-      for (let k = 1; k < pts.length - 1; k++) G.I.push(o, o + k, o + k + 1);
+      if (tris) for (const [a, b2, c] of tris) G.I.push(o + a, o + b2, o + c);
+      else for (let k = 1; k < pts.length - 1; k++) G.I.push(o, o + k, o + k + 1);
     };
     // منشور من شكل مغلق (محدّب) بين ارتفاعين
     function prism(outline, y0, y1, m, cx = 0, cz = 0) {
       const gi = matIndex(m);
       const pts = outline.map(([x, z]) => [x + cx, z + cz]);
       const top = pts.map(([x, z]) => [x, y1, z]), bot = pts.map(([x, z]) => [x, y0, z]).reverse();
-      face(gi, top, [0, 1, 0], ([x, , z]) => [x / T, z / T]);
-      face(gi, bot, [0, -1, 0], ([x, , z]) => [x / T, z / T]);
+      const tris = convex(pts) ? null : earcut(pts), N = pts.length;
+      face(gi, top, [0, 1, 0], ([x, , z]) => [x / T, z / T], tris);
+      face(gi, bot, [0, -1, 0], ([x, , z]) => [x / T, z / T], tris && tris.map(([a, b2, c]) => [N - 1 - a, N - 1 - b2, N - 1 - c]));
       let run = 0;
       for (let k = 0; k < pts.length; k++) {
         const a = pts[k], b = pts[(k + 1) % pts.length], dx = b[0] - a[0], dz = b[1] - a[1], L = Math.hypot(dx, dz) || 1e-6;
@@ -89,8 +91,10 @@
       }
     }
     const box = (cx, cy, cz, sx, sy, sz, m) => prism(rectO(sx, sz), cy - sy / 2, cy + sy / 2, m, cx, cz);
+    // عمود مائل بين نقطتين (أرجل X والأرجل السلكية) — نبنيه من قطع صغيرة متتالية
+    const beam = (x0, y0, z0, x1, y1, z1, t, m) => { const n = Math.max(2, Math.ceil(Math.abs(y1 - y0) / .02)); for (let k = 0; k < n; k++) { const f0 = k / n, f1 = (k + 1) / n, fx = (f0 + f1) / 2; prism(rectO(t, t), y0 + (y1 - y0) * f0, y0 + (y1 - y0) * f1 + .002, m, x0 + (x1 - x0) * fx, z0 + (z1 - z0) * fx); } };
     const cyl = (cx, y0, y1, cz, r, m, seg = 20) => prism(ellO(r * 2, r * 2, seg), y0, y1, m, cx, cz);
-    return { prism, box, cyl, mats, groups };
+    return { prism, box, cyl, beam, mats, groups };
   }
   // أشكال ثنائية الأبعاد (عكس عقارب الساعة من فوق)
   function rectO(w, d, r = 0) {
@@ -101,7 +105,45 @@
     return out;
   }
   function ellO(w, d, seg = 48) { const out = []; for (let k = 0; k < seg; k++) { const a = -k / seg * Math.PI * 2; out.push([Math.cos(a) * w / 2, Math.sin(a) * d / 2]); } return out; }
-  const shapeO = (shape, w, d, edge) => shape === 'round' ? ellO(w, w) : shape === 'oval' ? ellO(w, d) : shape === 'capsule' ? rectO(w, d, Math.min(w, d) / 2) : rectO(w, shape === 'square' ? w : d, edge === 'rounded' ? 0.025 : edge === 'beveled' ? 0.008 : 0);
+  function convex(pts) { let sg = 0; for (let i = 0; i < pts.length; i++) { const a = pts[i], b = pts[(i + 1) % pts.length], c = pts[(i + 2) % pts.length]; const cr = (b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0]); if (Math.abs(cr) < 1e-12) continue; const s1 = Math.sign(cr); if (sg && s1 !== sg) return false; sg = s1; } return true; }
+  function earcut(pts) {
+    const n = pts.length, area = pts.reduce((a, p, i) => { const q = pts[(i + 1) % n]; return a + p[0] * q[1] - q[0] * p[1]; }, 0), flip = area < 0;
+    const idx = [...Array(n).keys()]; if (flip) idx.reverse();
+    const cr = (a, b, c) => (pts[b][0] - pts[a][0]) * (pts[c][1] - pts[a][1]) - (pts[b][1] - pts[a][1]) * (pts[c][0] - pts[a][0]);
+    const inside = (q, a, b, c) => cr(a, b, q) >= 0 && cr(b, c, q) >= 0 && cr(c, a, q) >= 0;
+    const out = []; let guard = 0;
+    while (idx.length > 3 && guard++ < 20000) {
+      let cut = false;
+      for (let i = 0; i < idx.length; i++) {
+        const a = idx[(i + idx.length - 1) % idx.length], b = idx[i], c = idx[(i + 1) % idx.length];
+        if (cr(a, b, c) <= 1e-12) continue;
+        if (idx.some(q => q !== a && q !== b && q !== c && inside(q, a, b, c))) continue;
+        out.push(flip ? [a, c, b] : [a, b, c]); idx.splice(i, 1); cut = true; break;
+      }
+      if (!cut) break;
+    }
+    if (idx.length === 3) out.push(flip ? [idx[0], idx[2], idx[1]] : idx);
+    return out;
+  }
+  // أشكال حديثة: عضوي (حجر نهر)، غيمة، سداسي، ثماني، مربع ناعم — نفس النقاط تُستخدم للمخطط
+  function freeO(shape, w, d, seg = 96) {
+    const out = [];
+    if (shape === 'hex' || shape === 'oct') { const n = shape === 'hex' ? 6 : 8; for (let k = 0; k < n; k++) { const a = -(k / n) * Math.PI * 2 - Math.PI / n; out.push([Math.cos(a) * w / 2 / Math.cos(Math.PI / n), Math.sin(a) * d / 2 / Math.cos(Math.PI / n)].map((v, i) => Math.max(-[w, d][i] / 2, Math.min([w, d][i] / 2, v)))); } return out; }
+    for (let k = 0; k < seg; k++) {
+      const a = -k / seg * Math.PI * 2, c = Math.cos(a), sn = Math.sin(a);
+      const e = shape === 'squircle' ? .5 : shape === 'organic' ? .8 : .85;
+      let f = 1;
+      if (shape === 'organic') f = 1 + .075 * Math.sin(a + .7) + .045 * Math.sin(2 * a + 1.9) - .03 * Math.cos(3 * a + .4);
+      if (shape === 'cloud') f = .9 + .1 * Math.abs(Math.cos(2.5 * (a + Math.PI)));
+      out.push([Math.sign(c) * Math.abs(c) ** e * w / 2 * f, Math.sign(sn) * Math.abs(sn) ** e * d / 2 * f]);
+    }
+    // نخلي الشكل داخل المقاس المطلوب بالضبط
+    const xs = out.map(p => p[0]), zs = out.map(p => p[1]), kx = w / (Math.max(...xs) - Math.min(...xs)), kz = d / (Math.max(...zs) - Math.min(...zs)), mx = (Math.max(...xs) + Math.min(...xs)) / 2, mz = (Math.max(...zs) + Math.min(...zs)) / 2;
+    return out.map(([x, z]) => [(x - mx) * kx, (z - mz) * kz]);
+  }
+  window.czOutline = freeO;
+  const FREE = ['organic', 'cloud', 'hex', 'oct', 'squircle'];
+  const shapeO = (shape, w, d, edge) => FREE.includes(shape) ? freeO(shape, w, shape === 'hex' || shape === 'oct' ? d : d) : shape === 'round' ? ellO(w, w) : shape === 'oval' ? ellO(w, d) : shape === 'capsule' ? rectO(w, d, Math.min(w, d) / 2) : rectO(w, shape === 'square' ? w : d, edge === 'rounded' ? 0.025 : edge === 'beveled' ? 0.008 : 0);
 
   // ---------- المواد حسب اختيار العميل ----------
   function materials(st) {
@@ -111,7 +153,9 @@
     const topC = st.top === 'same' ? body : st.top === 'glass' ? '#cfe3ea' : st.topColor[1];
     const topTex = { marble: 'marble', sintered: 'sintered', travertine: 'travertine', padded: 'tufted', same: matTex }[st.top] || null;
     const TOP = st.top === 'glass' ? { c: '#d6ebf0', alpha: .38, rough: .05, metal: 0 } : { c: topC, tex: topTex, rough: st.top === 'marble' || st.top === 'sintered' ? .2 : st.top === 'padded' ? .9 : B.rough, metal: st.top === 'same' ? B.metal : 0 };
-    const LEG = st.legs === 'gold' ? { c: METAL.gold, rough: .25, metal: 1 } : st.legs === 'black' ? { c: METAL.black, rough: .35, metal: .8 } : { c: mix(body, .72), tex: 'wood', rough: .6, metal: 0 };
+    const lk = ['gold', 'black', 'wood'].includes(st.legs) ? st.legs : (st.legc || 'wood');
+    const LEG = lk === 'gold' ? { c: METAL.gold, rough: .25, metal: 1 } : lk === 'black' ? { c: METAL.black, rough: .35, metal: .8 } : lk === 'chrome' ? { c: '#c9ccd1', rough: .12, metal: 1 }
+      : lk === 'body' ? { ...B } : lk === 'top' ? { c: topC, tex: topTex, rough: .3, metal: 0 } : { c: mix(body, .72), tex: 'wood', rough: .6, metal: 0 };
     const HANDLE = st.handle === 'black' ? { c: METAL.black, rough: .3, metal: .8 } : { c: METAL.gold, rough: .25, metal: 1 };
     return { B, TOP, LEG, HANDLE, DARK: { c: mix(body, .45), rough: .7, metal: 0 }, GROOVE: { c: body, tex: 'grooved', rough: B.rough, metal: B.metal },
       GLASS: { c: '#d6ebf0', alpha: .4, rough: .05, metal: 0 }, MIRROR: { c: '#e9eef0', rough: .02, metal: 1 }, WHITE: { c: '#f6f3ec', tex: 'fabric', rough: .95, metal: 0 },
@@ -130,6 +174,49 @@
     // أرجل تحت سطح بشكل معيّن
     function legsUnder(y0, y1, ow, od, shape, cx = 0, cz = 0) {
       if (st.legs === 'hidden') { b.prism(shapeO(shape === 'lshape' ? 'rect' : shape, ow * .78, od * .78, 'straight'), y0, y1, M.B, cx, cz); return; }
+      const base = shape === 'lshape' || shape === 'rect' || shape === 'square' ? 'rect' : shape, mn = Math.min(ow, od), H = y1 - y0;
+      if (st.legs === 'drum' || st.legs === 'fluted') {
+        const k = st.legs === 'fluted' ? .5 : .55, o = shapeO(base === 'rect' ? 'capsule' : base, ow * k, od * k);
+        b.prism(st.legs === 'fluted' ? shapeO(base === 'rect' ? 'capsule' : base, ow * k * .9, od * k * .9) : o, y0, y1, M.LEG, cx, cz);
+        if (st.legs === 'fluted') { let run = 0; const L = o.map((p, i) => { const q = o[(i + 1) % o.length]; return Math.hypot(q[0] - p[0], q[1] - p[1]); }), per = L.reduce((a, x) => a + x, 0), step = Math.max(.032, per / 80); let next = 0;
+          for (let i = 0; i < o.length; i++) { const p = o[i], q = o[(i + 1) % o.length]; while (next <= run + L[i]) { const f = (next - run) / L[i]; b.cyl(cx + p[0] + (q[0] - p[0]) * f, y0, y1, cz + p[1] + (q[1] - p[1]) * f, step * .48, M.LEG, 10); next += step; } run += L[i]; } }
+        return;
+      }
+      if (st.legs === 'sculpt') { // قاعدة نحتية: ساعة رملية منحنية
+        const n = 18, rx = ow * .2, rz = od * .2;
+        for (let i = 0; i < n; i++) { const t = (i + .5) / n, f = .32 + .68 * Math.abs(2 * t - 1) ** 1.7; b.prism(ellO(rx * 2 * f, rz * 2 * f, 32), y0 + H * i / n, y0 + H * (i + 1) / n + .001, M.LEG, cx, cz); }
+        return;
+      }
+      if (st.legs === 'fins') { // أرجل ألواح منحنية حول المركز
+        const n = ['rect', 'capsule'].includes(base) && ow / od > 1.4 ? 4 : 3, R = mn * .26, len = mn * .2, t = Math.max(.03, mn * .05);
+        for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2 + Math.PI / 2, c = Math.cos(a), sn = Math.sin(a), sx = n === 4 ? ow / od : 1;
+          const cxx = c * R * sx, czz = sn * R, o = [[-len / 2, -t / 2], [len / 2, -t / 2], [len / 2, t / 2], [-len / 2, t / 2]].map(([u, v]) => [u * c - v * sn, u * sn + v * c]);
+          b.prism(o, y0, y1, M.LEG, cx + cxx, cz + czz);
+          b.prism(o.map(([u, v]) => [u * 1.25, v * 1.25]), y0, y0 + .02, M.LEG, cx + cxx * 1.15, cz + czz * 1.15); }
+        return;
+      }
+      if (st.legs === 'panel') { // جوانب شلال
+        const t = Math.max(.03, slab * 1.1);
+        if (['round', 'oval', 'organic', 'cloud', 'hex', 'oct', 'squircle'].includes(base)) { b.box(cx, y0 + H / 2, cz, ow * .55, H, t, M.LEG); b.box(cx, y0 + H / 2, cz, t, H, od * .55, M.LEG); }
+        else { b.box(cx - ow / 2 + t / 2 + .005, y0 + H / 2, cz, t, H, od * .98, M.LEG); b.box(cx + ow / 2 - t / 2 - .005, y0 + H / 2, cz, t, H, od * .98, M.LEG); }
+        return;
+      }
+      if (st.legs === 'sled') {
+        const ix = Math.min(ow * .42, ow / 2 - .05), iz = od / 2 - .05, t = .02;
+        for (const sx of [-1, 1]) { const x = cx + sx * ix; b.box(x, y0 + t / 2, cz, t, t, od - .08, M.LEG); b.box(x, y0 + H / 2, cz - iz, t, H, t, M.LEG); b.box(x, y0 + H / 2, cz + iz, t, H, t, M.LEG); b.box(x, y1 - t / 2, cz, t, t, od - .08, M.LEG); }
+        return;
+      }
+      if (st.legs === 'xbase') {
+        const t = .03;
+        if (['rect', 'capsule'].includes(base)) { const ix = ow / 2 - .1, iz = od / 2 - .06; for (const sx of [-1, 1]) { const x = cx + sx * ix; b.beam(x, y0, cz - iz, x, y1, cz + iz, t, M.LEG); b.beam(x, y0, cz + iz, x, y1, cz - iz, t, M.LEG); } b.box(cx, y0 + H * .5, cz, ow - .2, t * .8, t * .8, M.LEG); }
+        else { const r = mn * .32; b.beam(cx - r, y0, cz, cx + r, y1, cz, t, M.LEG); b.beam(cx + r, y0, cz, cx - r, y1, cz, t, M.LEG); b.beam(cx, y0, cz - r, cx, y1, cz + r, t, M.LEG); b.beam(cx, y0, cz + r, cx, y1, cz - r, t, M.LEG); }
+        return;
+      }
+      if (st.legs === 'hairpin') {
+        const pts = ['rect', 'capsule', 'square'].includes(base) ? [[-1, -1], [1, -1], [1, 1], [-1, 1]].map(([a, c]) => [a * (ow / 2 - .07), c * (od / 2 - .07)]) : [45, 165, 285].map(a => [Math.cos(a * Math.PI / 180) * ow * .33, Math.sin(a * Math.PI / 180) * od * .33]);
+        for (const [x, z] of pts) { const dx = x > 0 ? .035 : -.035; b.beam(cx + x, y0, cz + z, cx + x - dx, y1, cz + z, .011, M.LEG); b.beam(cx + x, y0, cz + z, cx + x + dx, y1, cz + z, .011, M.LEG); }
+        return;
+      }
       if (st.legs === 'pedestal') { b.cyl(cx, y0 + .02, y1, cz, Math.max(.04, Math.min(ow, od) * .09), M.LEG); b.prism(shapeO(shape === 'round' ? 'round' : 'oval', Math.min(ow * .5, .6), Math.min(od * .5, .6)), y0, y0 + .025, M.LEG, cx, cz); return; }
       const r = st.legs === 'wood' ? .022 : .014;
       let pts;
@@ -175,12 +262,13 @@
       else { tableTop(h - slab, w, d, st.shape); legsUnder(0, h - slab, w, d, st.shape); }
       if (p.seats) {
         const n = +st.seats || 6;
-        if (st.shape === 'round') { const R = w / 2 + .18; for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2; chair(Math.cos(a) * R, Math.sin(a) * R, a + Math.PI / 2); } }
+        if (['round', 'hex', 'oct', 'cloud'].includes(st.shape)) { const R = w / 2 + .18; for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2; chair(Math.cos(a) * R, Math.sin(a) * R, a + Math.PI / 2); } }
         else { const ends = n >= 8 ? 2 : 0, side = (n - ends) / 2; for (let i = 0; i < side; i++) { const x = -w / 2 + w * (i + .5) / side; chair(x, -d / 2 - .2, 0); chair(x, d / 2 + .2, Math.PI); }
           if (ends) { chair(-w / 2 - .2, 0, -Math.PI / 2); chair(w / 2 + .2, 0, Math.PI / 2); } }
       }
     } else if (kind === 'tiered') {
-      b.cyl(0, 0, h, 0, .02, M.LEG); b.prism(shapeO(st.shape, w * .6, d * .6), 0, .02, M.LEG);
+      if (['sculpt', 'drum', 'fluted', 'fins', 'xbase', 'hairpin', 'sled', 'panel', 'thin', 'wood'].includes(st.legs)) { legsUnder(0, h * .48, w * 1.12, d * 1.12, st.shape); legsUnder(h * .48 + slab, h - slab, w * .7, d * .7, st.legs === 'sculpt' || st.legs === 'drum' || st.legs === 'fluted' ? st.shape : 'round'); }
+      else { b.cyl(0, 0, h, 0, .02, M.LEG); b.prism(shapeO(st.shape, w * .6, d * .6), 0, .02, M.LEG); }
       tableTop(h - slab, w, d, st.shape); tableTop(h * .48, w * 1.12, d * 1.12, st.shape);
     } else if (kind === 'nesting') {
       tableTop(h - slab, w * .85, d * .85, st.shape, -w * .08, -d * .06); legsUnder(0, h - slab, w * .85, d * .85, st.shape, -w * .08, -d * .06);
@@ -296,7 +384,7 @@
     if (!mv || !mv.isConnected) return;
     clearTimeout(timer);
     timer = setTimeout(() => {
-      const key = JSON.stringify([CS.parts, CS.cat, CS.piece, CS.shape, CS.w, CS.d, CS.h, CS.mat, CS.top, CS.edge, CS.legs, CS.door, CS.handle, CS.seats, CS.color[1], CS.topColor[1]]);
+      const key = JSON.stringify([CS.parts, CS.cat, CS.piece, CS.shape, CS.w, CS.d, CS.h, CS.mat, CS.top, CS.edge, CS.legs, CS.legc, CS.door, CS.handle, CS.seats, CS.color[1], CS.topColor[1]]);
       if (key === lastKey) return; lastKey = key;
       let orbit = null; try { orbit = mv.loaded ? mv.getCameraOrbit().toString() : null; } catch {}
       const blob = build(CS), old = url; url = URL.createObjectURL(blob); mv.src = url; if (mini?.isConnected) mini.src = url;
@@ -376,13 +464,22 @@
     const I = {
       shape: { rect: sv(`<rect x="6" y="14" width="36" height="20" rx="2" fill="${F}" stroke="${S}" stroke-width="2"/>`), square: sv(`<rect x="12" y="12" width="24" height="24" rx="2" fill="${F}" stroke="${S}" stroke-width="2"/>`),
         round: sv(`<circle cx="24" cy="24" r="15" fill="${F}" stroke="${S}" stroke-width="2"/>`), oval: sv(`<ellipse cx="24" cy="24" rx="19" ry="12" fill="${F}" stroke="${S}" stroke-width="2"/>`),
-        capsule: sv(`<rect x="5" y="14" width="38" height="20" rx="10" fill="${F}" stroke="${S}" stroke-width="2"/>`), lshape: sv(`<path d="M6 10H42V24H20V40H6Z" fill="${F}" stroke="${S}" stroke-width="2" stroke-linejoin="round"/>`) },
+        capsule: sv(`<rect x="5" y="14" width="38" height="20" rx="10" fill="${F}" stroke="${S}" stroke-width="2"/>`),
+        ...Object.fromEntries(FREE.map(k => [k, sv(`<path d="M${freeO(k, 38, k === 'hex' || k === 'oct' || k === 'squircle' ? 30 : 26, 64).map(([x, z]) => `${(24 + x).toFixed(1)} ${(24 + z).toFixed(1)}`).join('L')}Z" fill="${F}" stroke="${S}" stroke-width="2" stroke-linejoin="round"/>`)])), lshape: sv(`<path d="M6 10H42V24H20V40H6Z" fill="${F}" stroke="${S}" stroke-width="2" stroke-linejoin="round"/>`) },
       edge: { straight: sv(`<path d="M6 18H42V30H6Z" fill="${F}" stroke="${S}" stroke-width="2"/>`), rounded: sv(`<rect x="6" y="18" width="36" height="12" rx="6" fill="${F}" stroke="${S}" stroke-width="2"/>`),
         beveled: sv(`<path d="M10 18H38L42 24L38 30H10L6 24Z" fill="${F}" stroke="${S}" stroke-width="2"/>`) },
       legs: { wood: sv(`<rect x="6" y="10" width="36" height="5" fill="${F}" stroke="${S}"/><path d="M11 15L8 40M37 15L40 40" stroke="${mix(body, .72)}" stroke-width="4" stroke-linecap="round"/>`),
         gold: sv(`<rect x="6" y="10" width="36" height="5" fill="${F}" stroke="${S}"/><path d="M11 15V40M37 15V40M11 37H37" stroke="${G}" stroke-width="3"/>`),
         black: sv(`<rect x="6" y="10" width="36" height="5" fill="${F}" stroke="${S}"/><path d="M11 15V40M37 15V40M11 37H37" stroke="#1c1c1c" stroke-width="3"/>`),
         hidden: sv(`<rect x="6" y="10" width="36" height="22" fill="${F}" stroke="${S}"/><rect x="12" y="32" width="24" height="8" fill="${mix(body, .55)}"/>`),
+        drum: sv(`<rect x="6" y="10" width="36" height="5" fill="${F}" stroke="${S}"/><rect x="14" y="15" width="20" height="26" rx="2" fill="${mix(body, .8)}" stroke="${S}"/>`),
+        fluted: sv(`<rect x="6" y="10" width="36" height="5" fill="${F}" stroke="${S}"/><rect x="14" y="15" width="20" height="26" rx="2" fill="${mix(body, .85)}" stroke="${S}"/>${[17, 20, 23, 26, 29, 32].map(x => `<path d="M${x} 16V40" stroke="${mix(body, .6)}" stroke-width="1.6"/>`).join('')}`),
+        sculpt: sv(`<rect x="6" y="10" width="36" height="5" fill="${F}" stroke="${S}"/><path d="M14 15C14 22 20 24 20 28S14 34 14 41H34C34 34 28 32 28 28S34 22 34 15Z" fill="${mix(body, .8)}" stroke="${S}"/>`),
+        fins: sv(`<rect x="6" y="10" width="36" height="5" fill="${F}" stroke="${S}"/><path d="M11 15C11 26 17 32 15 41M37 15C37 26 31 32 33 41" stroke="${mix(body, .7)}" stroke-width="5" fill="none" stroke-linecap="round"/><rect x="21" y="15" width="6" height="26" rx="2" fill="${mix(body, .62)}"/>`),
+        panel: sv(`<rect x="6" y="10" width="36" height="5" fill="${F}" stroke="${S}"/><rect x="6" y="15" width="5" height="26" fill="${F}" stroke="${S}"/><rect x="37" y="15" width="5" height="26" fill="${F}" stroke="${S}"/>`),
+        sled: sv(`<rect x="6" y="10" width="36" height="5" fill="${F}" stroke="${S}"/><path d="M11 15V40H37V15" stroke="${G}" stroke-width="3" fill="none"/>`),
+        xbase: sv(`<rect x="6" y="10" width="36" height="5" fill="${F}" stroke="${S}"/><path d="M10 15L38 41M38 15L10 41" stroke="${G}" stroke-width="3"/>`),
+        hairpin: sv(`<rect x="6" y="10" width="36" height="5" fill="${F}" stroke="${S}"/><path d="M8 15L12 41L16 15M32 15L36 41L40 15" stroke="#1c1c1c" stroke-width="1.6" fill="none"/>`),
         pedestal: sv(`<rect x="6" y="10" width="36" height="5" fill="${F}" stroke="${S}"/><rect x="21" y="15" width="6" height="22" fill="${G}"/><rect x="12" y="37" width="24" height="4" rx="2" fill="${G}"/>`) },
       door: { flat: sv(`<rect x="8" y="6" width="32" height="36" fill="${F}" stroke="${S}" stroke-width="2"/><path d="M24 6V42" stroke="${S}"/>`),
         grooved: sv(`<rect x="8" y="6" width="32" height="36" fill="${F}" stroke="${S}" stroke-width="2"/>${[13, 18, 23, 28, 33].map(x => `<path d="M${x} 9V39" stroke="${mix(body, .6)}" stroke-width="2"/>`).join('')}`),

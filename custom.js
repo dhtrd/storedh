@@ -10,14 +10,14 @@ const CC = {
     { k: 'fullroom', t: 'غرفة نوم كاملة', kind: 'bed', dims: [180, 200, 120], shapes: ['rect'], note: 'سرير + 2 كومودينو + دولاب + تسريحة' },
   ] },
   service: { t: 'طاولات الخدمة', d: 'طاولات وسط وجانبية وطاولات تقديم بأي شكل ومقاس', find: ['ترافرتين', 'طاولات وسط'], pieces: [
-    { k: 'coffee', t: 'طاولة وسط', kind: 'table', dims: [120, 60, 45], shapes: ['rect', 'square', 'round', 'oval', 'capsule'] },
-    { k: 'side', t: 'طاولة جانبية', kind: 'table', dims: [50, 50, 55], shapes: ['round', 'square', 'rect', 'oval'] },
-    { k: 'tiered', t: 'طاولة خدمة بطبقات', kind: 'tiered', dims: [45, 45, 70], shapes: ['round', 'square'] },
-    { k: 'nesting', t: 'طقم طاولات متداخلة', kind: 'nesting', dims: [90, 90, 45], shapes: ['round', 'oval', 'capsule', 'square'] },
+    { k: 'coffee', t: 'طاولة وسط', kind: 'table', dims: [120, 60, 45], shapes: ['rect', 'square', 'round', 'oval', 'capsule', 'organic', 'cloud', 'hex', 'oct', 'squircle'] },
+    { k: 'side', t: 'طاولة جانبية', kind: 'table', dims: [50, 50, 55], shapes: ['round', 'square', 'rect', 'oval', 'organic', 'cloud', 'hex', 'oct', 'squircle'] },
+    { k: 'tiered', t: 'طاولة خدمة بطبقات', kind: 'tiered', dims: [45, 45, 70], shapes: ['round', 'square', 'organic', 'hex', 'oct'] },
+    { k: 'nesting', t: 'طقم طاولات متداخلة', kind: 'nesting', dims: [90, 90, 45], shapes: ['round', 'oval', 'capsule', 'square', 'organic', 'cloud', 'hex', 'oct', 'squircle'] },
   ] },
   dining: { t: 'طاولات الطعام', d: 'طاولات طعام بالشكل والمقاس وعدد الكراسي اللي تناسب عائلتك', find: ['طاولة طعام'], pieces: [
-    { k: 'dining', t: 'طاولة طعام', kind: 'table', dims: [180, 90, 76], shapes: ['rect', 'oval', 'capsule', 'round', 'square'] },
-    { k: 'diningset', t: 'طاولة طعام مع كراسي', kind: 'table', dims: [200, 100, 76], shapes: ['rect', 'oval', 'capsule', 'round'], seats: true },
+    { k: 'dining', t: 'طاولة طعام', kind: 'table', dims: [180, 90, 76], shapes: ['rect', 'oval', 'capsule', 'round', 'square', 'organic', 'cloud', 'hex', 'oct', 'squircle'] },
+    { k: 'diningset', t: 'طاولة طعام مع كراسي', kind: 'table', dims: [200, 100, 76], shapes: ['rect', 'oval', 'capsule', 'round', 'organic', 'cloud', 'hex', 'oct', 'squircle'], seats: true },
     { k: 'buffet', t: 'بوفيه / سيرفنج', kind: 'cabinet', dims: [180, 45, 85], shapes: ['rect', 'capsule'] },
   ] },
   coffee: { t: 'ركن القهوة', d: 'ركن قهوة وضيافة متكامل يناسب مساحتك', find: ['طاولات خدمة', 'خدمة'], pieces: [
@@ -27,7 +27,7 @@ const CC = {
   ] },
   entry: { t: 'المداخل', d: 'جزامات وكونسولات ووحدات مدخل بلمسة فخامة', find: ['جزامة'], pieces: [
     { k: 'shoe', t: 'جزامة', kind: 'cabinet', dims: [120, 35, 90], shapes: ['rect'] },
-    { k: 'console', t: 'كونسول مدخل', kind: 'table', dims: [120, 35, 80], shapes: ['rect', 'capsule', 'oval'] },
+    { k: 'console', t: 'كونسول مدخل', kind: 'table', dims: [120, 35, 80], shapes: ['rect', 'capsule', 'oval', 'organic', 'squircle'] },
     { k: 'unit', t: 'وحدة مدخل (جزامة + مرآة + علاقات)', kind: 'unit', dims: [150, 40, 200], shapes: ['rect'] },
   ] },
   living: { t: 'التلفزيون والمعيشة', d: 'طاولات تلفزيون ووحدات تخزين بمقاس جدارك وشاشتك', find: ['بلازما', 'تلفزيون'], pieces: [
@@ -35,7 +35,7 @@ const CC = {
     { k: 'sideboard', t: 'وحدة تخزين للصالة', kind: 'cabinet', dims: [160, 45, 85], shapes: ['rect', 'capsule'] },
   ] },
   office: { t: 'المكاتب', d: 'مكاتب منزلية وإدارية ووحدات أدراج بمقاسك', find: ['مكتب'], pieces: [
-    { k: 'desk', t: 'مكتب', kind: 'table', dims: [140, 70, 75], shapes: ['rect', 'capsule'] },
+    { k: 'desk', t: 'مكتب', kind: 'table', dims: [140, 70, 75], shapes: ['rect', 'capsule', 'organic', 'squircle'] },
     { k: 'filecab', t: 'وحدة أدراج / ملفات', kind: 'cabinet', dims: [60, 50, 70], shapes: ['rect'] },
   ] },
 };
@@ -142,8 +142,8 @@ async function shareDesign(note) {
 function designerTips() {
   const p = pieceOf(), t = [], d = ['round', 'square'].includes(CS.shape) ? CS.w : CS.d;
   if (p.seats) {
-    const per = CS.shape === 'round' ? Math.PI * CS.w / 60 : (CS.seats >= 8 ? (CS.seats - 2) / 2 * 60 : CS.seats / 2 * 60);
-    if (CS.shape === 'round' ? per < CS.seats - .3 : CS.w < per) t.push(['warn', `لـ ${CS.seats} كراسي تحتاج ${CS.shape === 'round' ? 'قطر' : 'طول'} ${CS.shape === 'round' ? Math.ceil(CS.seats * 60 / Math.PI) : Math.ceil(per)} سم تقريباً (60 سم لكل شخص) — المقاس الحالي ضيق.`]);
+    const per = roundish(CS.shape) ? Math.PI * CS.w / 60 : (CS.seats >= 8 ? (CS.seats - 2) / 2 * 60 : CS.seats / 2 * 60);
+    if (roundish(CS.shape) ? per < CS.seats - .3 : CS.w < per) t.push(['warn', `لـ ${CS.seats} كراسي تحتاج ${roundish(CS.shape) ? 'قطر' : 'طول'} ${roundish(CS.shape) ? Math.ceil(CS.seats * 60 / Math.PI) : Math.ceil(per)} سم تقريباً (60 سم لكل شخص) — المقاس الحالي ضيق.`]);
   }
   if (['dining', 'diningset'].includes(CS.piece)) { if (CS.h < 72 || CS.h > 78) t.push(['warn', 'ارتفاع طاولة الطعام المريح بين 74 و 77 سم.']); t.push(['tip', 'اترك 90 سم على الأقل بين الطاولة والجدار عشان تنسحب الكراسي براحة.']); }
   if (CS.piece === 'coffee') { if (CS.h > 48) t.push(['warn', 'طاولة الوسط عادة 38–45 سم — بمستوى مقعد الكنب أو أقل شوي.']); t.push(['tip', 'أفضل طول لطاولة الوسط ثلثين طول الكنب، واترك 40–45 سم بينها وبين الكنب.']); }
@@ -160,12 +160,15 @@ function designerTips() {
   return t;
 }
 const tipsHTML = (list) => list.length ? `<div class="cz-tips">${[...list].sort((a, b) => (b[0] === 'warn') - (a[0] === 'warn')).map(([k, x]) => `<p class="${k}">${k === 'warn' ? '⚠️' : k === 'ok' ? '✅' : '💡'} ${esc(x)}</p>`).join('')}</div>` : '';
-const SHAPES = { rect: 'مستطيل', square: 'مربع', round: 'دائري', oval: 'بيضاوي', capsule: 'كبسولة (أطراف مدورة)', lshape: 'حرف L' };
+const SHAPES = { rect: 'مستطيل', square: 'مربع', round: 'دائري', oval: 'بيضاوي', capsule: 'كبسولة (أطراف مدورة)', organic: 'عضوي (حجر ناعم)', cloud: 'غيمة (أطراف متموجة)', squircle: 'مربع بزوايا ناعمة', hex: 'سداسي', oct: 'ثماني', lshape: 'حرف L' };
+const FREE = ['organic', 'cloud', 'hex', 'oct', 'squircle'];
+const roundish = (sh) => ['round', 'hex', 'oct', 'cloud'].includes(sh);
 const OPT = {
   mat: { t: 'الخامة الأساسية', o: { mdf: 'خشب MDF مطلي', veneer: 'قشرة خشب طبيعي', solid: 'خشب طبيعي صلب', metal: 'معدن', fabric: 'تنجيد قماش / مخمل' } },
   top: { t: 'خامة السطح', o: { same: 'نفس خامة الجسم', marble: 'رخام طبيعي', sintered: 'سنتر ستون', travertine: 'ترافرتين', glass: 'زجاج مقسّى', padded: 'مبطّن / جلد' } },
   edge: { t: 'شكل الحواف', o: { straight: 'مستقيمة', rounded: 'مدوّرة', beveled: 'مشطوفة' } },
-  legs: { t: 'الأرجل / القاعدة', o: { wood: 'أرجل خشبية', gold: 'معدن ذهبي', black: 'معدن أسود', hidden: 'قاعدة مخفية', pedestal: 'قاعدة وسطية' } },
+  legs: { t: 'الأرجل / القاعدة', o: { wood: 'أرجل خشبية', gold: 'معدن ذهبي', black: 'معدن أسود', thin: 'أرجل رفيعة', hidden: 'قاعدة مخفية', pedestal: 'قاعدة وسطية', drum: 'قاعدة أسطوانية', fluted: 'قاعدة مضلّعة (فلوت)', sculpt: 'قاعدة نحتية منحنية', fins: 'أرجل ألواح منحنية', panel: 'جوانب شلال', sled: 'قاعدة زلاجة', xbase: 'قاعدة X', hairpin: 'أرجل سلكية' } },
+  legc: { t: 'لون القاعدة', o: { body: 'نفس لون القطعة', top: 'نفس خامة السطح', gold: 'ذهبي', black: 'أسود', chrome: 'فضي كروم', wood: 'خشب' } },
   door: { t: 'شكل الأبواب', o: { flat: 'سادة', grooved: 'بشرائح طولية', pattern: 'بنقشة هندسية', glass: 'زجاج', open: 'أرفف مفتوحة' } },
   handle: { t: 'المقابض', o: { hidden: 'بدون (فتح بالضغط)', gold: 'ذهبية', black: 'سوداء' } },
 };
@@ -182,20 +185,23 @@ const pieceOf = () => CC[CS.cat].pieces.find(p => p.k === CS.piece);
 function newState(cat = 'service') {
   const p = CC[cat].pieces[0];
   return { cat, piece: p.k, shape: p.shapes[0], w: p.dims[0], d: p.dims[1], h: p.dims[2], mat: 'mdf', top: 'same', edge: 'rounded', legs: 'gold',
-    door: 'grooved', handle: 'hidden', seats: 6, color: PALETTE[0], topColor: TOP_PALETTE[0], qty: 1, notes: '', ref: '', ai: '', name: '', phone: '', city: '', branch: 0, step: 1, style: '', room: { w: 0, d: 0 }, visit: false, ctime: '',
+    door: 'grooved', handle: 'hidden', legc: '', seats: 6, color: PALETTE[0], topColor: TOP_PALETTE[0], qty: 1, notes: '', ref: '', ai: '', name: '', phone: '', city: '', branch: 0, step: 1, style: '', room: { w: 0, d: 0 }, visit: false, ctime: '',
     parts: { wardrobe: { w: 200, d: 60, h: 240 }, dresser: { w: 120, d: 45, h: 80 }, nightstand: { w: 50, d: 40, h: 55 } } };
 }
 const hasTopFor = (p) => ['table', 'tiered', 'nesting', 'cart'].includes(p.kind) || ['counter', 'dresser', 'nightstand', 'corner', 'buffet', 'tv', 'sideboard', 'filecab'].includes(p.k);
 const hasTop = () => CS.piece === 'fullroom' || ['table', 'tiered', 'nesting', 'cart'].includes(pieceOf().kind) || ['counter', 'dresser', 'nightstand', 'corner', 'buffet', 'tv', 'sideboard', 'filecab'].includes(CS.piece);
 const hasDoors = () => CS.piece === 'fullroom' || ['cabinet', 'corner', 'unit'].includes(pieceOf().kind);
 const hasLegs = () => pieceOf().kind !== 'unit' && CS.piece !== 'wardrobe';
+const legsAllow = () => ['table', 'tiered', 'nesting'].includes(pieceOf().kind) ? Object.keys(OPT.legs.o) : ['wood', 'gold', 'black', 'thin', 'hidden'];
+const needLegc = () => !['gold', 'black', 'wood', 'hidden'].includes(CS.legs);
 
 // ---------- المخطط (منظر علوي + أمامي) ----------
 function shade(hex, k) { const n = parseInt(hex.slice(1), 16); const f = (c) => Math.max(0, Math.min(255, Math.round(c * k))); return '#' + [n >> 16, (n >> 8) & 255, n & 255].map(c => f(c).toString(16).padStart(2, '0')).join(''); }
 function diagram(st, opts = {}) {
   const p = CC[st.cat].pieces.find(x => x.k === st.piece), kind = p.kind;
   const body = st.color[1], topHex = st.top === 'same' ? body : (st.top === 'glass' ? '#cfe3ea' : st.topColor[1]);
-  const legHex = METAL[st.legs] || shade(body, .7);
+  const lk = ['gold', 'black', 'wood'].includes(st.legs) ? st.legs : (st.legc || 'wood');
+  const legHex = lk === 'gold' || lk === 'black' ? METAL[lk] : lk === 'chrome' ? '#b9bcc2' : lk === 'body' ? body : lk === 'top' ? topHex : shade(body, .7);
   const W = 900, H = 440, pad = 46, font = "Tajawal, Tahoma, 'Segoe UI', Arial";
   const round = ['round'].includes(st.shape), sq = st.shape === 'square';
   const w = +st.w || 1, d = round || sq ? (+st.w || 1) : (+st.d || 1), h = +st.h || 1;
@@ -211,7 +217,8 @@ function diagram(st, opts = {}) {
   const pat = { marble: 'pMarble', sintered: 'pSint', travertine: 'pTrav', padded: 'pTuft', glass: 'pGlass' }[st.top] || '';
   const edgeR = st.edge === 'rounded' ? 10 : st.edge === 'beveled' ? 2 : 0;
   let topShape;
-  if (st.shape === 'round') topShape = `<circle cx="${ox + tw / 2}" cy="${oy + td / 2}" r="${tw / 2}"/>`;
+  if (FREE.includes(st.shape) && window.czOutline) topShape = `<path d="M${czOutline(st.shape, tw, td, 72).map(([x, z]) => `${(ox + tw / 2 + x).toFixed(1)} ${(oy + td / 2 + z).toFixed(1)}`).join('L')}Z" stroke-linejoin="round"/>`;
+  else if (st.shape === 'round') topShape = `<circle cx="${ox + tw / 2}" cy="${oy + td / 2}" r="${tw / 2}"/>`;
   else if (st.shape === 'oval') topShape = `<ellipse cx="${ox + tw / 2}" cy="${oy + td / 2}" rx="${tw / 2}" ry="${td / 2}"/>`;
   else if (st.shape === 'capsule') topShape = `<rect x="${ox}" y="${oy}" width="${tw}" height="${td}" rx="${Math.min(td, tw) / 2}"/>`;
   else if (st.shape === 'lshape') { const r = ret * s1; topShape = `<path d="M${ox} ${oy}H${ox + tw}V${oy + td}H${ox + td}V${oy + r}H${ox}Z" stroke-linejoin="round"/>`; }
@@ -221,7 +228,7 @@ function diagram(st, opts = {}) {
   if (p.seats) {
     const n = +st.seats || 6, cw = Math.max(10, 45 * s1), cd = Math.max(8, 40 * s1), cs = shade(body, .8);
     const seat = (x, y, rot) => `<rect x="${-cw / 2}" y="${-cd / 2}" width="${cw}" height="${cd}" rx="${cd * .3}" fill="${cs}" stroke="#444" transform="translate(${x} ${y}) rotate(${rot})"/>`;
-    if (st.shape === 'round') { const R = tw / 2 + cd * .7; for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2; chairs += seat(ox + tw / 2 + Math.cos(a) * R, oy + td / 2 + Math.sin(a) * R, a * 180 / Math.PI + 90); } }
+    if (roundish(st.shape)) { const R = tw / 2 + cd * .7; for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2; chairs += seat(ox + tw / 2 + Math.cos(a) * R, oy + td / 2 + Math.sin(a) * R, a * 180 / Math.PI + 90); } }
     else { const ends = n >= 8 ? 2 : 0, side = (n - ends) / 2;
       for (let i = 0; i < side; i++) { const x = ox + tw * (i + .5) / side; chairs += seat(x, oy - cd * .7, 0) + seat(x, oy + td + cd * .7, 180); }
       if (ends) chairs += seat(ox - cd * .7, oy + td / 2, 90) + seat(ox + tw + cd * .7, oy + td / 2, -90); }
@@ -234,6 +241,14 @@ function diagram(st, opts = {}) {
   const slab = Math.max(5, 4 * s2), leg = Math.max(4, 4.5 * s2);
   const legs = (y0, y1, x0, x1) => {
     if (st.legs === 'hidden') return `<rect x="${x0 + (x1 - x0) * .08}" y="${y1 - Math.max(6, (y1 - y0) * .12)}" width="${(x1 - x0) * .84}" height="${Math.max(6, (y1 - y0) * .12)}" fill="${shade(body, .55)}"/>`;
+    const cx0 = (x0 + x1) / 2, Wd = x1 - x0, Ht = y1 - y0;
+    if (st.legs === 'drum' || st.legs === 'fluted') return `<rect x="${cx0 - Wd * .26}" y="${y0}" width="${Wd * .52}" height="${Ht}" rx="2" fill="${legHex}" stroke="#222"/>` + (st.legs === 'fluted' ? [1, 2, 3, 4, 5, 6, 7].map(i => `<path d="M${cx0 - Wd * .26 + Wd * .52 * i / 8} ${y0 + 2}V${y1 - 2}" stroke="rgba(0,0,0,.28)" stroke-width="2"/>`).join('') : '');
+    if (st.legs === 'sculpt') { const a = Wd * .2, n = Wd * .07; return `<path d="M${cx0 - a} ${y0}C${cx0 - a} ${y0 + Ht * .35} ${cx0 - n} ${y0 + Ht * .35} ${cx0 - n} ${y0 + Ht / 2}S${cx0 - a} ${y1 - Ht * .35} ${cx0 - a} ${y1}H${cx0 + a}C${cx0 + a} ${y1 - Ht * .35} ${cx0 + n} ${y1 - Ht * .35} ${cx0 + n} ${y0 + Ht / 2}S${cx0 + a} ${y0 + Ht * .35} ${cx0 + a} ${y0}Z" fill="${legHex}" stroke="#222"/>`; }
+    if (st.legs === 'fins') return [-.26, 0, .26].map(f => `<rect x="${cx0 + Wd * f - leg * 1.3}" y="${y0}" width="${leg * 2.6}" height="${Ht}" rx="3" fill="${legHex}" stroke="#222"/>`).join('');
+    if (st.legs === 'panel') return `<rect x="${x0}" y="${y0}" width="${leg * 2}" height="${Ht}" fill="${legHex}" stroke="#222"/><rect x="${x1 - leg * 2}" y="${y0}" width="${leg * 2}" height="${Ht}" fill="${legHex}" stroke="#222"/>`;
+    if (st.legs === 'sled') return `<path d="M${x0 + Wd * .08} ${y0}V${y1}H${x1 - Wd * .08}V${y0}" fill="none" stroke="${legHex}" stroke-width="${leg}"/>`;
+    if (st.legs === 'xbase') return `<path d="M${x0 + Wd * .1} ${y0}L${x1 - Wd * .1} ${y1}M${x1 - Wd * .1} ${y0}L${x0 + Wd * .1} ${y1}" stroke="${legHex}" stroke-width="${leg}" stroke-linecap="round"/>`;
+    if (st.legs === 'hairpin') return [x0 + Wd * .08, x1 - Wd * .08].map(x => `<path d="M${x - 6} ${y0}L${x} ${y1}L${x + 6} ${y0}" fill="none" stroke="${legHex}" stroke-width="2"/>`).join('');
     if (st.legs === 'pedestal') { const cx = (x0 + x1) / 2; return `<rect x="${cx - leg * 1.5}" y="${y0}" width="${leg * 3}" height="${y1 - y0}" fill="${legHex}"/><rect x="${cx - (x1 - x0) * .22}" y="${y1 - leg}" width="${(x1 - x0) * .44}" height="${leg}" rx="${leg / 2}" fill="${legHex}"/>`; }
     const inset = (x1 - x0) * .06, sl = st.legs === 'wood' ? (x1 - x0) * .025 : 0;
     return `<path d="M${x0 + inset} ${y0}L${x0 + inset - sl} ${y1}" stroke="${legHex}" stroke-width="${leg}" stroke-linecap="round"/><path d="M${x1 - inset} ${y0}L${x1 - inset + sl} ${y1}" stroke="${legHex}" stroke-width="${leg}" stroke-linecap="round"/>`;
@@ -323,6 +338,7 @@ function dimsHTML(pre, useShape) {
 }
 function chips(name, map, cur, allow) {
   const ic = window.czIcon && ['shape', 'mat', 'top', 'edge', 'legs', 'door', 'handle'].includes(name);
+  if (name === 'legc') cur = cur || 'wood';
   const desc = OPT_DESC[name]?.[cur];
   return `<div class="cz-chips ${ic ? 'ic' : ''}" data-name="${name}">${Object.entries(map).filter(([k]) => !allow || allow.includes(k))
     .map(([k, t]) => `<button type="button" class="cz-chip ${k === cur ? 'on' : ''}" data-v="${k}">${ic ? `<span class="cz-ic">${czIcon(name, k)}</span>` : ''}<em>${esc(t)}</em></button>`).join('')}</div>${desc ? `<p class="cz-desc">${esc(desc)}</p>` : ''}`;
@@ -332,7 +348,8 @@ const OPT_DESC = {
   mat: { mdf: 'ألواح MDF مدهونة بلون موحّد ناعم — اقتصادية وتقبل أي لون.', veneer: 'قشرة خشب طبيعي فوق لوح متين — شكل الخشب الحقيقي بوزن أخف وسعر أقل.', solid: 'خشب طبيعي صلب بالكامل — أقوى وأفخم ويعيش سنين طويلة.', metal: 'هيكل معدني مطلي — مظهر عصري وقوي، يناسب الطاولات والأرجل.', fabric: 'تنجيد قماش أو مخمل ناعم — يناسب الأسرّة والكراسي والألواح الرأسية.' },
   top: { same: 'السطح بنفس خامة ولون الجسم.', marble: 'رخام طبيعي بعروق — فخم ومقاوم، كل قطعة لها نقشتها.', sintered: 'سنتر ستون (حجر ملبّد) — يشبه الرخام لكنه أقوى ضد الخدوش والحرارة والبقع.', travertine: 'ترافرتين — حجر طبيعي بخطوط ومسامات مميزة، لمسة دافئة.', glass: 'زجاج مقسّى شفاف — خفيف بصرياً ويبين اللي تحته.', padded: 'سطح مبطّن أو جلد — ناعم ويستخدم للمقاعد ومنضدة الطرف.' },
   edge: { straight: 'حافة قائمة 90° — شكل حديث وحاد.', rounded: 'حافة مدوّرة — آمنة للأطفال ومريحة باللمس.', beveled: 'حافة مشطوفة بزاوية — تعطي لمعة وفخامة للرخام والزجاج.' },
-  legs: { wood: 'أرجل خشبية مائلة — طابع كلاسيكي دافئ.', gold: 'أرجل معدن ذهبي — لمسة فخامة.', black: 'أرجل معدن أسود مطفي — عصري وبسيط.', hidden: 'قاعدة مخفية للداخل — القطعة تبان كأنها طايرة.', pedestal: 'قاعدة وسطية واحدة — مساحة أكبر للأرجل حول الطاولة.' },
+  legc: { body: 'القاعدة بنفس خامة ولون جسم القطعة.', top: 'القاعدة من نفس حجر/خامة السطح — قطعة وحدة متكاملة.', gold: 'معدن مطلي ذهبي.', black: 'معدن أسود مطفي.', chrome: 'ستانلس / كروم لامع.', wood: 'خشب طبيعي.' },
+  legs: { thin: 'أرجل رفيعة مستقيمة — خفيفة وعصرية.', drum: 'قاعدة أسطوانية صلبة — حضور قوي وثبات.', fluted: 'قاعدة مضلّعة بخطوط طولية (فلوت) — ترند فاخر.', sculpt: 'قاعدة نحتية منحنية مثل الساعة الرملية — قطعة فنية.', fins: 'أرجل ألواح منحنية حول المركز — تصميم مودرن نحتي.', panel: 'جوانب عريضة نازلة من السطح (شلال).', sled: 'إطار معدني على شكل U من الجنبين.', xbase: 'أرجل متقاطعة على شكل X.', hairpin: 'أرجل سلكية رفيعة على شكل V.', wood: 'أرجل خشبية مائلة — طابع كلاسيكي دافئ.', gold: 'أرجل معدن ذهبي — لمسة فخامة.', black: 'أرجل معدن أسود مطفي — عصري وبسيط.', hidden: 'قاعدة مخفية للداخل — القطعة تبان كأنها طايرة.', pedestal: 'قاعدة وسطية واحدة — مساحة أكبر للأرجل حول الطاولة.' },
   door: { flat: 'أبواب سادة ناعمة.', grooved: 'أبواب بشرائح طولية بارزة — ترند حالي.', pattern: 'أبواب بنقشة هندسية ذهبية.', glass: 'أبواب زجاج — تعرض اللي داخلها.', open: 'أرفف مفتوحة بدون أبواب.' },
   handle: { hidden: 'بدون مقابض — الباب ينفتح بالضغط (Push-to-open).', gold: 'مقابض ذهبية طولية.', black: 'مقابض سوداء طولية.' },
 };
@@ -420,7 +437,7 @@ function formHTML() {
       <h4>${OPT.mat.t}</h4>${chips('mat', OPT.mat.o, CS.mat, matAllow())}
       ${hasTop() ? `<h4>${OPT.top.t}</h4>${chips('top', OPT.top.o, CS.top)}<h4>${OPT.edge.t}</h4>${chips('edge', OPT.edge.o, CS.edge)}` : ''}
       ${hasDoors() ? `<h4>${OPT.door.t}</h4>${chips('door', OPT.door.o, CS.door)}<h4>${OPT.handle.t}</h4>${chips('handle', OPT.handle.o, CS.handle)}` : ''}
-      ${hasLegs() ? `<h4>${OPT.legs.t}</h4>${chips('legs', OPT.legs.o, CS.legs)}` : ''}</details>`),
+      ${hasLegs() ? `<h4>${OPT.legs.t}</h4>${chips('legs', OPT.legs.o, CS.legs, legsAllow())}${needLegc() ? `<h4>${OPT.legc.t}</h4>${chips('legc', OPT.legc.o, CS.legc || 'wood', hasTop() && CS.top !== 'same' && CS.top !== 'glass' ? null : Object.keys(OPT.legc.o).filter(k => k !== 'top'))}` : ''}` : ''}</details>`),
     sec(5, 'الألوان', `<h4>اللون الأساسي: <b>${esc(CS.color[0])}</b></h4>${swatches('color', PALETTE, CS.color)}
       ${hasTop() && !['same', 'glass'].includes(CS.top) ? `<h4>لون السطح: <b>${esc(CS.topColor[0])}</b></h4>${swatches('topColor', TOP_PALETTE, CS.topColor)}` : ''}`),
     sec(6, 'راجع طلبك وأرسله', `<ul class="cz-review">${review}</ul>
@@ -451,7 +468,7 @@ function specRows() {
   ];
   if (hasTop()) rows.push(['السطح', OPT.top.o[CS.top]], ['الحواف', OPT.edge.o[CS.edge]]);
   if (hasDoors()) rows.push(['الأبواب', OPT.door.o[CS.door]], ['المقابض', OPT.handle.o[CS.handle]]);
-  if (hasLegs()) rows.push(['الأرجل', OPT.legs.o[CS.legs]]);
+  if (hasLegs()) rows.push(['الأرجل', OPT.legs.o[CS.legs] + (needLegc() && CS.legc ? ' — ' + OPT.legc.o[CS.legc] : '')]);
   rows.push(['اللون الأساسي', CS.color[0], CS.color[1]]);
   if (hasTop() && !['same', 'glass'].includes(CS.top)) rows.push(['لون السطح', CS.topColor[0], CS.topColor[1]]);
   if (p.seats) rows.push(['عدد الكراسي', `${CS.seats} كراسي`]);
@@ -539,7 +556,9 @@ function wireCustom() {
     if (chip) {
       const name = chip.parentElement.dataset.name, v = chip.dataset.v;
       if (name === 'piece') { const p = CC[CS.cat].pieces.find(x => x.k === v); Object.assign(CS, { piece: v, shape: p.shapes[0], w: p.dims[0], d: p.dims[1], h: p.dims[2] }); }
-      else { CS[name] = name === 'seats' ? +v : v; if (['mat', 'top', 'edge', 'legs', 'door', 'handle'].includes(name)) CS.style = ''; }
+      else { CS[name] = name === 'seats' ? +v : v; if (['mat', 'top', 'edge', 'legs', 'legc', 'door', 'handle'].includes(name)) CS.style = '';
+      if (name === 'legs' && needLegc() && !CS.legc) CS.legc = ['drum', 'fluted', 'sculpt', 'fins', 'panel'].includes(v) ? 'body' : 'black';
+      if (name === 'shape' && !pieceOf().shapes.includes(v)) CS.shape = pieceOf().shapes[0]; }
       if (name === 'seats' && pieceOf().seats) { const need = Math.max(80, Math.ceil(+v / 2) * 60); if (CS.shape !== 'round' && CS.w < need) CS.w = need; if (CS.shape === 'round') CS.w = Math.max(CS.w, Math.round(+v * 60 / Math.PI)); }
       if (name === 'shape' && v === 'lshape' && CS.w < 150) CS.w = 180;
       return drawForm();
@@ -670,12 +689,74 @@ async function localColors(box, msg) {
   } catch { box.innerHTML = `<small>${esc(msg || 'تعذّر قراءة الصورة')}</small>`; }
 }
 
+// ---------- التعرف على تصميم القطعة من الصورة ----------
+// نموذج رؤية مفتوح (MobileCLIP) يشتغل داخل متصفح العميل — مجاني، بدون خادم ولا مفتاح، والصورة ما تطلع من جهازه
+let CLIP = null;
+function clipModel(onProg) {
+  if (CLIP) return CLIP;
+  CLIP = (async () => {
+    const T = await import('https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.5');
+    T.env.allowLocalModels = false;
+    const M = 'Xenova/mobileclip_s0', seen = {};
+    const progress_callback = (e) => { if (e.status === 'progress' && e.total) { seen[e.file] = [e.loaded, e.total]; const v = Object.values(seen), L = v.reduce((a, x) => a + x[0], 0), Tt = v.reduce((a, x) => a + x[1], 0); onProg?.(Math.round(L / Tt * 100)); } };
+    const load = (dtype) => T.CLIPVisionModelWithProjection.from_pretrained(M, { dtype, progress_callback });
+    const [proc, vm, voc] = await Promise.all([T.AutoProcessor.from_pretrained(M), load('fp16').catch(() => load('fp32')), fetch('assets/cz-vocab.json').then(r => r.json())]);
+    const dec = ([sc, b64]) => { const b = atob(b64), a = new Float32Array(b.length); for (let i = 0; i < b.length; i++) { const x = b.charCodeAt(i); a[i] = (x > 127 ? x - 256 : x) * sc; } return a; };
+    const G = Object.fromEntries(Object.entries(voc.groups).map(([g, c]) => [g, Object.entries(c).map(([k, v]) => [k, dec(v)])]));
+    return { T, proc, vm, G };
+  })();
+  CLIP.catch(() => { CLIP = null; });
+  return CLIP;
+}
+async function recognize(url, onProg) {
+  const { T, proc, vm, G } = await clipModel(onProg);
+  const im = await T.RawImage.fromURL(url);
+  const { image_embeds } = await vm(await proc(im));
+  const v = Array.from(image_embeds.data), n = Math.hypot(...v), e = v.map(x => x / n);
+  const R = {};
+  for (const [g, list] of Object.entries(G)) {
+    const sc = list.map(([k, t]) => [k, t.reduce((a, x, i) => a + x * e[i], 0) * 100]), m = Math.max(...sc.map(x => x[1]));
+    const ex = sc.map(([k, x]) => [k, Math.exp(x - m)]), Z = ex.reduce((a, x) => a + x[1], 0);
+    R[g] = ex.map(([k, x]) => [k, x / Z]).sort((a, b) => b[1] - a[1]);
+  }
+  return R;
+}
+// نحوّل نتيجة التعرف لاختيارات التصميم
+function applyRecognition(R) {
+  const pick = (g, allow, min) => { const l = R[g].filter(([k]) => !allow || allow.includes(k)); if (!l.length) return null; const Z = l.reduce((a, x) => a + x[1], 0); return l[0][1] / Z >= min ? l[0][0] : null; };
+  const said = [];
+  // نوع القطعة
+  const pc = pick('piece', null, .4);
+  if (pc) { const [cat, piece] = pc.split('/'); if (CC[cat]?.pieces.some(x => x.k === piece) && (cat !== CS.cat || piece !== CS.piece)) { const pp = CC[cat].pieces.find(x => x.k === piece); Object.assign(CS, { cat, piece, shape: pp.shapes[0], w: pp.dims[0], d: pp.dims[1], h: pp.dims[2] }); history.replaceState(null, '', '#custom/' + cat); } }
+  const p = pieceOf(); said.push(['القطعة', p.t]);
+  // الشكل
+  const sh = pick('shape', p.shapes, .22);
+  if (sh) { CS.shape = sh; if (['round', 'square', 'hex', 'oct'].includes(sh) && CS.d !== CS.w && ['round', 'square'].includes(sh)) CS.d = CS.w; if (['hex', 'oct'].includes(sh)) CS.d = CS.w; said.push(['الشكل', SHAPES[sh]]); }
+  // الخامة الأساسية
+  const mt = pick('mat', matAllow(), .35); if (mt) { CS.mat = mt; said.push(['الخامة', OPT.mat.o[mt]]); }
+  // السطح
+  if (hasTop()) { const tp = pick('top', null, .35); if (tp) { CS.top = tp; said.push(['السطح', OPT.top.o[tp]]);
+    if (tp === 'travertine') CS.topColor = ['ترافرتين', '#d9c7a6']; else if (tp === 'marble' && !CS.topColor?.[0]?.includes('الصورة')) CS.topColor = ['أبيض كرارا', '#eeece7']; } }
+  // القاعدة ولونها
+  if (hasLegs()) {
+    const isTable = ['table', 'tiered', 'nesting'].includes(p.kind);
+    const lc = pick('legc', CS.top === 'same' || CS.top === 'glass' ? ['gold', 'black', 'chrome', 'wood', 'body'] : null, .3);
+    let bs = pick('base', isTable ? null : ['legs', 'wood', 'hidden'], .25);
+    if (bs === 'legs') bs = lc === 'gold' || lc === 'black' ? lc : lc === 'wood' ? 'wood' : 'thin';
+    if (bs && legsAllow().includes(bs)) { CS.legs = bs; if (needLegc()) CS.legc = lc || (['drum', 'fluted', 'sculpt', 'fins', 'panel'].includes(bs) ? 'body' : 'black'); said.push(['القاعدة', OPT.legs.o[bs] + (needLegc() ? ' — ' + OPT.legc.o[CS.legc] : '')]); }
+  }
+  // الأبواب
+  if (hasDoors()) { const dr = pick('door', null, .4); if (dr) { CS.door = dr; said.push(['الأبواب', OPT.door.o[dr]]); } }
+  CS.style = '';
+  return said;
+}
+
 async function analyze(auto) {
   const box = $('czAi'); box.hidden = false; box.innerHTML = '<div class="cz-loading"><i></i> جاري تحليل الصورة واقتراح المقاسات…</div>';
   try {
     const r = await fetch('api/custom/analyze', { method: 'POST', body: JSON.stringify({ image: CS.ref }) });
     const j = await r.json();
-    if (!r.ok) return localColors(box, j.error === 'off' ? 'التحليل الذكي الكامل (نوع القطعة وتفاصيلها الدقيقة) يتفعّل لاحقاً.' : (j.message || j.error));
+    if (!r.ok) return deviceAnalyze(box);
     const cat = CC[j.category] ? j.category : CS.cat, piece = CC[cat].pieces.find(p => p.k === j.piece) || CC[cat].pieces[0];
     const nearest = (hex, list) => { const rgb = (h) => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)); try { const a = rgb(hex); return list.reduce((b, c) => { const d = Math.hypot(...rgb(c[1]).map((v, i) => v - a[i])); return d < b[0] ? [d, c] : b; }, [1e9, list[0]])[1]; } catch { return list[0]; } };
     Object.assign(CS, {
@@ -688,7 +769,31 @@ async function analyze(auto) {
     });
     if (!/^#[0-9a-f]{6}$/i.test(j.color_hex)) CS.color = nearest(CS.color[1], PALETTE);
     drawForm();
-  } catch { localColors(box, 'أكمل المقاسات والخامات يدوياً.'); }
+  } catch { deviceAnalyze(box); }
+}
+async function deviceAnalyze(box) {
+  const say = (t) => { box.hidden = false; box.innerHTML = `<div class="cz-loading"><i></i> ${t}</div>`; };
+  say('نتعرف على تصميم القطعة من صورتك…');
+  let R = null;
+  try { R = await recognize(CS.ref, (pc) => say(`نجهّز أداة التعرف على التصميم (مرة وحدة فقط) ${pc}%`)); } catch (e) { console.warn('recognize', e); }
+  if (!R) return localColors(box, 'ما قدرنا نشغّل التعرف الكامل على جهازك — أكمل الشكل والخامات من الخطوات التالية.');
+  const said = applyRecognition(R);
+  // الألوان والارتفاع من الصورة نفسها
+  let cols = [], shp = null;
+  try { cols = await extractColors(CS.ref); } catch {}
+  try { shp = await localShape(CS.ref); } catch {}
+  if (shp?.body) CS.color = [nearestName(shp.body) + ' (من الصورة)', shp.body]; else if (cols[0]) CS.color = [nearestName(cols[0]) + ' (من الصورة)', cols[0]];
+  if (hasTop() && shp?.top && ['marble', 'sintered'].includes(CS.top)) CS.topColor = [nearestName(shp.top) + ' (من الصورة)', shp.top];
+  // الخشب: لو اللون المقروء من الصورة مو لون خشب (خلفية مزدحمة مثلاً) نستخدم لون خشب طبيعي
+  const woodish = (h) => { const [r, g, b] = [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255), mx = Math.max(r, g, b), mn = Math.min(r, g, b); if (mx - mn < .08) return false; const hue = mx === r ? ((g - b) / (mx - mn) + 6) % 6 * 60 : mx === g ? ((b - r) / (mx - mn) + 2) * 60 : ((r - g) / (mx - mn) + 4) * 60; return hue > 12 && hue < 50; };
+  if (['veneer', 'solid'].includes(CS.mat) && !woodish(CS.color[1])) CS.color = CS.mat === 'solid' ? ['جوزي', '#6b4a33'] : ['سنديان', '#c9a57a'];
+  if (CS.color) said.push(['اللون', CS.color[0].replace(' (من الصورة)', '')]);
+  CS.ai = 'تعرّفنا من الصورة على: ' + said.map(([a, b]) => `${a} ${b}`).join('، ');
+  drawForm();
+  const b2 = $('czAi'); b2.hidden = false;
+  b2.innerHTML = `<b>✨ تعرّفنا على تصميم القطعة من صورتك:</b><ul class="cz-recog">${said.map(([a, b]) => `<li><span>${esc(a)}</span><b>${esc(b)}</b></li>`).join('')}</ul>
+    ${cols.length ? `<div class="cz-sw" data-name="color" style="margin-top:8px">${cols.map(h => `<button type="button" data-n="${esc(nearestName(h))} (من الصورة)" data-hex="${h}"><i style="background:${h}"></i><span>${esc(nearestName(h))}</span></button>`).join('')}</div>` : ''}
+    <small>المجسم صار بنفس الشكل والقاعدة والخامات — راجعها في الخطوات الجاية وعدّل اللي تبي. صورتك تنرسل للفرع مع الطلب عشان ينفذ نفس التصميم بالضبط.</small>`;
 }
 
 // ---------- ورقة المواصفات (صورة) ----------

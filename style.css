@@ -1012,3 +1012,6 @@ h2{font-size:clamp(30px,4vw,46px);color:var(--ink);letter-spacing:-.3px}
 .cz-next{margin:16px 0 0;padding:14px 16px 14px 14px;list-style:none;counter-reset:n;background:#faf7ef;border:1px solid #ece4d2;border-radius:14px;display:grid;gap:10px;text-align:right}
 .cz-next li{counter-increment:n;display:flex;gap:10px;align-items:baseline;font-size:14px;line-height:1.7}
 .cz-next li::before{content:counter(n);flex:none;width:24px;height:24px;border-radius:50%;background:#111;color:#e7c766;font-weight:800;font-size:12.5px;display:grid;place-items:center}
+.cz-recog{list-style:none;padding:0;margin:8px 0 4px;display:grid;gap:4px}
+.cz-recog li{display:flex;justify-content:space-between;gap:10px;background:#fff;border:1px solid #ece4d2;border-radius:10px;padding:7px 10px;font-size:13.5px}
+.cz-recog li span{color:#8a7a55}
