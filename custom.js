@@ -270,8 +270,10 @@ function furnitureBranches() {
 }
 function catImage(key) {
   const words = CC[key].find, all = (D.categories || []).flatMap(c => c.products || []);
-  const p = all.find(x => words.some(w => (x.name || '').includes(w)) && x.images?.[0]?.src);
-  return p?.images[0].src || '';
+  // نتجنب كروت المنتجات المصممة (فيها شعار وصندوق معلومات) لأن نص البطاقة ينكتب فوقها
+  const hit = all.filter(x => words.some(w => (x.name || '').includes(w)) && x.images?.[0]?.src);
+  const src = hit.map(x => x.images.find(i => !/uploads\/np-/.test(i.src))?.src).find(Boolean);
+  return src || hit[0]?.images[0].src || '';
 }
 
 function renderCustomHome() { // قسم مختصر في الصفحة الرئيسية

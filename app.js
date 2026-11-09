@@ -265,11 +265,18 @@ function render(d) {
         <a class="bb map-btn" href="${esc(mapHref(b))}" target="_blank" rel="noopener" aria-label="الموقع على خرائط جوجل" title="الموقع على خرائط جوجل">${svg('pin')}</a>
       </div>
     </div></article>`).join('');
+  // على الجوال: نعرض أول 4 فروع وزر «عرض كل الفروع»
+  const grid = $('branchGrid'); grid.querySelectorAll('.branch').forEach((el, i) => el.classList.toggle('more', i >= 4));
+  grid.classList.toggle('clip', branches.length > 5);
+  grid.nextElementSibling?.classList.contains('br-more') && grid.nextElementSibling.remove();
+  if (branches.length > 5) grid.insertAdjacentHTML('afterend', `<button type="button" class="btn line br-more" id="brMore">عرض كل الفروع (${branches.length})</button>`);
+  $('brMore')?.addEventListener('click', e => { grid.classList.remove('clip'); e.currentTarget.remove(); });
   const cities = [...new Set(branches.map(b => b.city).filter(Boolean))];
   $('cityChips').innerHTML = cities.length > 1 ? [['', 'الكل', branches.length], ...cities.map(x => [x, x, branches.filter(b => b.city === x).length])]
     .map(([v, t, n], i) => `<button class="chip ${i === 0 ? 'on' : ''}" data-v="${esc(v)}">${esc(t)}<small>${n}</small></button>`).join('') : '';
   $('cityChips').onclick = (e) => {
     const b = e.target.closest('.chip'); if (!b) return;
+    $('branchGrid').classList.remove('clip'); $('brMore')?.remove();
     $('cityChips').querySelectorAll('.chip').forEach(x => x.classList.toggle('on', x === b));
     $('branchGrid').querySelectorAll('.branch').forEach(card => {
       const show = !b.dataset.v || card.dataset.city === b.dataset.v;
@@ -462,15 +469,35 @@ function crumbs(items) {
     `<span class="sep">‹</span>${h ? `<a href="${esc(h)}">${esc(t)}</a>` : `<span>${esc(t)}</span>`}`).join('')}</nav>`;
 }
 
+// تصنيف فرعي تلقائي من اسم المنتج — يسهّل التصفح في الأقسام الكبيرة
+const PGROUPS = [['كراسي بار', /كرسي بار/], ['كنب', /كنب/], ['طاولات طعام', /طعام/], ['طاولات بلازما', /بلازما|تلفزيون/], ['طاولات وسط وخدمة', /طاول/],
+  ['كراسي', /كرسي/], ['عربات تقديم', /عربة/], ['جزامات', /جزامة|أحذية/], ['معلقات', /معلقة/], ['ثريات', /ثريا/], ['أباجورات', /أباجورة/],
+  ['مفارش أطفال', /أطفال/], ['مفارش', /مفرش/], ['مراتب', /مرتب|مراتب/], ['لوحات', /لوحة|لوحات/], ['قطع ديكور', /فوانيس|نباتات|مزهري/], ['دواسات وممرات', /دواسات|ممرات/]];
+function prodGroup(p) { const n = p.name || ''; return (PGROUPS.find(([, r]) => r.test(n)) || ['أخرى'])[0]; }
+function catFilter(ps) {
+  if (ps.length < 6) return '';
+  const cnt = {}; ps.forEach(p => { const g = prodGroup(p); cnt[g] = (cnt[g] || 0) + 1; });
+  const gs = PGROUPS.map(x => x[0]).concat('أخرى').filter(g => cnt[g]);
+  if (gs.length < 2) return '';
+  return `<div class="cat-filter" id="catFilter" role="toolbar" aria-label="تصفية المنتجات"><button type="button" class="on" data-g="">الكل <small>${ps.length}</small></button>${gs.map(g => `<button type="button" data-g="${esc(g)}">${esc(g)} <small>${cnt[g]}</small></button>`).join('')}</div>`;
+}
+function wireCatFilter() {
+  $('catFilter')?.addEventListener('click', e => {
+    const b = e.target.closest('button[data-g]'); if (!b) return;
+    $('catFilter').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+    const g = b.dataset.g; $('catGrid').querySelectorAll('.pcell').forEach(el => { el.hidden = !!g && el.dataset.g !== g; });
+  });
+}
+
 function renderCategory(c) {
   const ps = c.products || [];
   return `<div class="wrap">
     ${crumbs([['منتجاتنا', '#categories'], [c.title]])}
     <div class="cat-tabs">${(D.categories || []).map(x => `<a href="#c/${esc(x.id)}" class="${x.id === c.id ? 'on' : ''}">${esc(x.title)}</a>`).join('')}</div>
-    <div class="cat-hero" style="--bgimg:url('${esc(c.cover || ps[0]?.images?.[0]?.src || 'assets/marble.jpg')}')">
+    <div class="cat-hero" style="--bgimg:url('${esc(c.cover || ps.flatMap(x => x.images || []).find(m => !/uploads\/np-/.test(m.src))?.src || ps[0]?.images?.[0]?.src || 'assets/marble.jpg')}')">
       <span class="eyebrow">قسم</span><h2>${esc(c.title)}</h2>${c.description ? `<p>${esc(c.description)}</p>` : ''}
       ${ps.length ? `<span class="count">${ps.length} منتج</span>` : ''}</div>
-    ${ps.length ? `<div class="pgrid">${ps.map(p => productCard(c, p)).join('')}</div>`
+    ${ps.length ? catFilter(ps) + `<div class="pgrid" id="catGrid">${ps.map(p => `<div class="pcell" data-g="${esc(prodGroup(p))}">${productCard(c, p)}</div>`).join('')}</div>`
       : `<p class="empty-note">سيتم إضافة منتجات هذا القسم قريباً — تواصل معنا للاستفسار</p>`}
     ${c.images?.length ? `<div class="related"><h2>معرض ${esc(c.title)}</h2><div class="pgrid" id="catGal">${c.images.map((m, i) =>
       `<div class="pcard" style="cursor:zoom-in" data-i="${i}"><div class="pimg">${imgTag(m.src)}</div></div>`).join('')}</div></div>` : ''}
@@ -702,7 +729,7 @@ function route() {
     page.querySelectorAll('.pgrid .pcard').forEach((el, i) => el.style.setProperty('--i', i % 12));
     page.classList.remove('enter'); void page.offsetWidth; page.classList.add('enter');
     document.title = (p ? p.name + ' — ' : c.title + ' — ') + (D.company.nameAr || '');
-    if (p) wireProduct(c, p);
+    if (p) wireProduct(c, p); else wireCatFilter();
     $('catGal')?.addEventListener('click', e => { const el = e.target.closest('[data-i]'); if (el) openGallery(c.images.map(x => ({ src: x.src, cap: x.caption || c.title })), +el.dataset.i); });
     markImgs(page);
     scrollTo({ top: 0, behavior: 'instant' });
@@ -720,7 +747,7 @@ addEventListener('hashchange', route);
 
 fetch('api/content', { cache: 'no-store' }).then(r => r.json()).then(d => {
   D = d; render(d); if (window.renderCustomHome) { $('czTiles').innerHTML = renderCustomHome(); motion($('custom-intro')); } route(); scrollSpy(); onScroll();
-  requestAnimationFrame(() => $('splash').classList.add('done'));
+  requestAnimationFrame(() => $('splash').classList.add('done')); setTimeout(() => $('splash').classList.add('done'), 400);
 }).catch(() => {
   $('splash').classList.add('done');
   document.body.insertAdjacentHTML('afterbegin', '<p style="padding:120px 20px;text-align:center">تعذّر تحميل المحتوى — تأكد من تشغيل الخادم (ملف تشغيل الموقع.bat)</p>');

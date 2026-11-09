@@ -955,3 +955,35 @@ h2{font-size:clamp(30px,4vw,46px);color:var(--ink);letter-spacing:-.3px}
 .cz-ar2{width:100%;justify-content:center;margin:4px 0 12px}
 @media (min-width:981px){.cz-ar2{display:none}}
 @media (min-width:981px){.cz-prog{display:none}}
+
+/* تصفية المنتجات داخل القسم */
+.pcell{display:contents}.pcell[hidden]{display:none}
+.cat-filter{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 14px;margin:-6px 0 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.cat-filter::-webkit-scrollbar{display:none}
+.cat-filter button{flex:none;border:1px solid var(--line);background:var(--card);color:inherit;font:inherit;font-size:.92rem;padding:9px 16px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:.25s}
+.cat-filter button small{opacity:.55;margin-inline-start:4px}
+.cat-filter button.on{background:#111;color:#e7c766;border-color:#111}
+/* أزرار صفحة المنتج على الجوال: زر الطلب كامل العرض والباقي صف واحد */
+@media (max-width:640px){
+  .pd-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .pd-actions .btn{flex:none;min-height:48px;padding:10px 8px;font-size:.88rem;border-radius:14px;white-space:nowrap;justify-content:center}
+  .pd-actions .btn.wa{grid-column:1/-1;font-size:1rem}
+}
+/* الفروع على الجوال: بطاقة أفقية مختصرة + «عرض كل الفروع» بدل صفحة طويلة جداً */
+@media (max-width:640px){
+  .branches{gap:12px}
+  .branch{flex-direction:row;align-items:stretch}
+  .branch-img{aspect-ratio:auto;width:31%;flex:none;min-height:150px}
+  .branch-img .city{top:8px;right:8px;font-size:11px;padding:2px 8px}
+  .branch-body{padding:12px 14px 12px;gap:4px;min-width:0}
+  .branch h3{font-size:16.5px}
+  .branch .row{font-size:13.5px}
+  .branch .hours{font-size:12.5px}
+  .branch-btns{grid-template-columns:1fr 1fr 40px;gap:6px;padding-top:8px}
+  .bb{padding:8px 4px;font-size:13px;border-radius:10px}
+  .branches.clip .branch.more{display:none}
+}
+.br-more{display:none}
+@media (max-width:640px){.br-more{display:flex;margin:16px auto 0;width:100%;justify-content:center}}
+.fav-pd .fs{display:none}
+@media (max-width:640px){.fav-pd .fl{display:none}.fav-pd .fs{display:inline}}

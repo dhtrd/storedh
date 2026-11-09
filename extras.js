@@ -86,7 +86,7 @@
       if (!b) { b = document.createElement('button'); b.type = 'button'; b.className = 'btn line fav-pd'; acts.append(b); }
       const c = decodeURIComponent(m[1]), p = decodeURIComponent(m[2]), on = isFav(c, p);
       b.dataset.c = c; b.dataset.p = p; b.classList.toggle('on', on);
-      const html = `${HEART} ${on ? 'في المفضلة' : 'أضف للمفضلة'}`; if (b.dataset.h !== html) { b.dataset.h = html; b.innerHTML = html; } // بدون إعادة رسم مستمرة
+      const html = `${HEART} <span class="fl">${on ? 'في المفضلة' : 'أضف للمفضلة'}</span><span class="fs">المفضلة</span>`; if (b.dataset.h !== html) { b.dataset.h = html; b.innerHTML = html; } // بدون إعادة رسم مستمرة
     }
   }
   document.addEventListener('click', (e) => {

@@ -150,12 +150,13 @@ window.GH_BLOBS = {};
       if (ep === 'tiktok') {
         const u = String(body().url || '').trim();
         const id = (/tiktok\.com\/.*\/video\/(\d{8,})/.exec(u) || [])[1];
-        if (!id) return fail('انسخ رابط الفيديو الكامل من تيك توك (يكون فيه /video/ وبعده رقم). الروابط المختصرة vm.tiktok ما تنقرأ هنا — افتحها في المتصفح وانسخ الرابط الكامل');
+        if (!id && /^https?:\/\/(vm|vt)\.tiktok\.com\//.test(u)) return json({ id: '', url: u, title: '', author: '', poster: '' });   // GitHub يفك الرابط المختصر تلقائياً بعد الحفظ
+        if (!id) return fail('انسخ رابط الفيديو من تيك توك: مشاركة ← نسخ الرابط');
         return json({ id, url: u.split('?')[0], title: '', author: '', poster: '' });   // الغلاف يجيبه GitHub تلقائياً بعد الحفظ
       }
       if (ep === 'resolve-map') {
         const c = coordsOf(String(body().url || ''));
-        return c ? json(c) : fail('الرابط المختصر ما ينقرأ في اللوحة الأونلاين — افتح الموقع في قوقل ماب، اضغط مطولاً على الدبوس وانسخ الإحداثيات والصقها هنا');
+        return c ? json(c) : fail('✓ تم حفظ الرابط — يتحدد الموقع تلقائياً خلال دقيقتين بعد الحفظ (لو ظل «تقريبي»: في قوقل ماب اضغط مطولاً على الدبوس وانسخ الإحداثيات والصقها هنا)');
       }
       if (ep === 'ai/status') return json({ configured: false });
       if (ep === 'ai/describe') return fail('الوصف التلقائي يشتغل في النسخة الكاملة (Hostinger) — اكتب الوصف يدوياً هنا');

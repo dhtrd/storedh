@@ -1,3 +1,5 @@
+// لو انلصق نص زيادة مع الرابط نخلي الرابط بس
+const firstUrl = (v) => { v = String(v || '').trim(); const m = /https?:\/\/[^\s<>"'،]+/.exec(v); return m ? m[0] : v; };
 // لوحة تحكم بروفايل الضبيبي — تُبنى النماذج تلقائياً من التعريفات أدناه
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -670,7 +672,7 @@ function fieldEl(f, obj, key, onChange) {
     const show = () => st.innerHTML = obj.tiktokId ? `✓ فيديو تيك توك جاهز — يشتغل داخل الموقع (<span dir="ltr">${esc(obj.tiktokId)}</span>)` : 'الصق الرابط وسيتم جلب الغلاف والعنوان تلقائياً';
     let timer;
     i.oninput = () => {
-      obj[key] = i.value.trim(); markDirty();
+      obj[key] = firstUrl(i.value); if (i.value.trim() !== obj[key]) i.value = obj[key]; markDirty();
       clearTimeout(timer); if (!obj[key]) { obj.tiktokId = ''; return show(); }
       timer = setTimeout(async () => {
         st.textContent = '… جاري قراءة الفيديو من تيك توك';
@@ -693,7 +695,7 @@ function fieldEl(f, obj, key, onChange) {
       : 'لم يُحدد الموقع بعد';
     let timer;
     i.oninput = () => {
-      obj[key] = i.value.trim(); markDirty(); onChange?.();
+      obj[key] = firstUrl(i.value); if (i.value.trim() !== obj[key]) i.value = obj[key]; markDirty(); onChange?.();
       clearTimeout(timer); if (!obj[key]) return show();
       timer = setTimeout(async () => {
         st.textContent = '… جاري تحديد الموقع';
