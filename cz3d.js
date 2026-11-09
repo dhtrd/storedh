@@ -123,7 +123,7 @@
     // st.def: تعريف قطعة جاهز (لمنتجات المتجر) بدل أقسام التفصيل
     const p = st.def || CC[st.cat].pieces.find(x => x.k === st.piece), kind = p.kind, M = materials(st), b = Builder();
     const w = (+st.w || 60) / 100, d = (['round', 'square'].includes(st.shape) ? +st.w : +st.d || 40) / 100, h = (+st.h || 50) / 100;
-    const hasTopP = ['table', 'tiered', 'nesting', 'cart'].includes(kind) || ['counter', 'dresser', 'nightstand', 'corner', 'buffet'].includes(p.k);
+    const hasTopP = ['table', 'tiered', 'nesting', 'cart'].includes(kind) || ['counter', 'dresser', 'nightstand', 'corner', 'buffet', 'tv', 'sideboard', 'filecab'].includes(p.k);
     const legsOK = kind !== 'unit' && st.piece !== 'wardrobe';
     const slab = st.top === 'glass' ? 0.012 : st.top === 'marble' || st.top === 'sintered' || st.top === 'travertine' ? 0.025 : 0.035;
 

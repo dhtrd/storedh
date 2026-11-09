@@ -715,6 +715,8 @@ function route() {
   const page = $('page'), home = $('home');
   const c = m && findCat(m[2]);
   const p = m && m[1] === 'p' && c && (c.products || []).find(x => x.id === m[3]);
+  const shared = /^custom\/s\/([\w-]+)$/.exec(h);   // رابط تصميم مُشارك
+  if (shared && window.czLoadShared?.(shared[1])) { history.replaceState(null, '', '#custom/' + CS.cat); return route(); }
   const cm = /^custom(?:\/(\w+))?$/.exec(h), rq = /^r\/([a-f0-9]{12})$/.exec(h);
   if (cm || rq) {
     page.hidden = false; home.hidden = true;

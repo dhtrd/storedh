@@ -987,3 +987,28 @@ h2{font-size:clamp(30px,4vw,46px);color:var(--ink);letter-spacing:-.3px}
 @media (max-width:640px){.br-more{display:flex;margin:16px auto 0;width:100%;justify-content:center}}
 .fav-pd .fs{display:none}
 @media (max-width:640px){.fav-pd .fl{display:none}.fav-pd .fs{display:inline}}
+/* ---------- التفصيل: تصاميم جاهزة، تركب في مكانك، مشاركة ---------- */
+.cz-presets{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 12px;margin-bottom:6px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.cz-presets button{flex:none;width:168px;scroll-snap-align:start;border:1.5px solid #e2d7bf;background:linear-gradient(160deg,#fff,#fbf6ea);border-radius:16px;padding:12px;font:inherit;cursor:pointer;text-align:right;display:flex;flex-direction:column;gap:5px;transition:.25s}
+.cz-presets button:hover{border-color:var(--gold);transform:translateY(-2px)}
+.cz-presets .dots{display:flex;gap:4px}.cz-presets .dots i{width:20px;height:20px;border-radius:50%;border:1px solid #0002}
+.cz-presets b{font-size:13.5px;line-height:1.5}.cz-presets small{color:#8a8070;font-size:11.5px;text-align:right}
+.cz-tips .ok{background:#eef7ee;color:#2f6a35;border:1px solid #cfe6d0}
+.cz-fitbox{margin-top:14px}.cz-fitbox summary small{font-weight:600;color:#9a8f7a}
+.cz-fit-svg{display:block;width:100%;max-width:360px;margin:10px auto 0;overflow:visible}
+.cz-fit-svg .room{fill:#faf7ef;stroke:#bfb39a;stroke-width:1.5}
+.cz-fit-svg .wall{stroke:#5c5444;stroke-width:5;stroke-linecap:round}
+.cz-fit-svg .pc>*{fill:#e9d9a8;stroke:#b8902f;stroke-width:1.5}
+.cz-fit-svg .pc.bad>*{fill:#f6d2c4;stroke:#c0502a}
+.cz-fit-svg text{font-size:12px;font-weight:800;fill:#6b604a;text-anchor:middle;font-family:inherit}
+.cz-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0 2px}
+.cz-tools button{border:1px solid #e2d7bf;background:#fff;border-radius:99px;padding:7px 14px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;color:#4d4535}
+.cz-tools button:hover{border-color:var(--gold)}
+.cz-tools span{font-size:12.5px;color:#2f6a35;flex-basis:100%}.cz-tools span input{width:100%;font-size:12px;padding:6px;border:1px solid #ddd;border-radius:8px}
+.cz-flag{background:#fff8e6;border:1px solid #f0dfae;border-radius:12px;padding:9px 12px;margin:0 0 12px}
+.cz-check{display:flex!important;flex-direction:row!important;align-items:center;gap:10px;grid-column:1/-1;background:#faf7ef;border:1px solid #ece4d2;border-radius:12px;padding:12px;cursor:pointer}
+.cz-check input{width:20px;height:20px;accent-color:#b8902f;flex:none}
+.cz-check span{font-weight:700}
+.cz-next{margin:16px 0 0;padding:14px 16px 14px 14px;list-style:none;counter-reset:n;background:#faf7ef;border:1px solid #ece4d2;border-radius:14px;display:grid;gap:10px;text-align:right}
+.cz-next li{counter-increment:n;display:flex;gap:10px;align-items:baseline;font-size:14px;line-height:1.7}
+.cz-next li::before{content:counter(n);flex:none;width:24px;height:24px;border-radius:50%;background:#111;color:#e7c766;font-weight:800;font-size:12.5px;display:grid;place-items:center}

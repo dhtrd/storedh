@@ -30,6 +30,14 @@ const CC = {
     { k: 'console', t: 'كونسول مدخل', kind: 'table', dims: [120, 35, 80], shapes: ['rect', 'capsule', 'oval'] },
     { k: 'unit', t: 'وحدة مدخل (جزامة + مرآة + علاقات)', kind: 'unit', dims: [150, 40, 200], shapes: ['rect'] },
   ] },
+  living: { t: 'التلفزيون والمعيشة', d: 'طاولات تلفزيون ووحدات تخزين بمقاس جدارك وشاشتك', find: ['بلازما', 'تلفزيون'], pieces: [
+    { k: 'tv', t: 'طاولة تلفزيون (بلازما)', kind: 'cabinet', dims: [180, 40, 50], shapes: ['rect', 'capsule'] },
+    { k: 'sideboard', t: 'وحدة تخزين للصالة', kind: 'cabinet', dims: [160, 45, 85], shapes: ['rect', 'capsule'] },
+  ] },
+  office: { t: 'المكاتب', d: 'مكاتب منزلية وإدارية ووحدات أدراج بمقاسك', find: ['مكتب'], pieces: [
+    { k: 'desk', t: 'مكتب', kind: 'table', dims: [140, 70, 75], shapes: ['rect', 'capsule'] },
+    { k: 'filecab', t: 'وحدة أدراج / ملفات', kind: 'cabinet', dims: [60, 50, 70], shapes: ['rect'] },
+  ] },
 };
 const SIZES = {
   bed: [['مفرد', 100, 200, 120], ['نص', 120, 200, 120], ['كوين', 160, 200, 125], ['كينج', 180, 200, 130], ['سوبر كينج', 200, 200, 135]],
@@ -50,7 +58,22 @@ const SIZES = {
   shoe: [['90', 90, 35, 90], ['120', 120, 35, 90], ['150', 150, 35, 100]],
   console: [['100', 100, 35, 80], ['120', 120, 35, 80], ['150', 150, 40, 80]],
   unit: [['120', 120, 40, 200], ['150', 150, 40, 200]],
+  tv: [['شاشة 55', 160, 40, 50], ['شاشة 65', 180, 40, 50], ['شاشة 75+', 220, 45, 50]],
+  sideboard: [['140', 140, 45, 85], ['160', 160, 45, 85], ['200', 200, 45, 85]],
+  desk: [['صغير', 120, 60, 75], ['عادي', 140, 70, 75], ['إداري', 180, 80, 76]],
+  filecab: [['3 أدراج', 45, 50, 65], ['4 أدراج', 60, 50, 100]],
 };
+// تصاميم جاهزة من مصممنا — ضغطة وحدة تعبّي القطعة كاملة (المقاس والخامات والألوان)
+const PRESETS = [
+  { t: 'طاولة وسط كبسولة ترافرتين', cat: 'service', piece: 'coffee', shape: 'capsule', dims: [130, 65, 40], style: 'natural' },
+  { t: 'طقم متداخل دائري رخام وذهبي', cat: 'service', piece: 'nesting', shape: 'round', dims: [90, 90, 45], style: 'lux' },
+  { t: 'طاولة طعام بيضاوية 8 أشخاص', cat: 'dining', piece: 'diningset', shape: 'oval', dims: [220, 100, 76], seats: 8, style: 'lux' },
+  { t: 'طاولة تلفزيون مودرن معلّقة', cat: 'living', piece: 'tv', shape: 'rect', dims: [200, 40, 45], style: 'grey', v: { legs: 'hidden' } },
+  { t: 'جزامة شرائح خشبية', cat: 'entry', piece: 'shoe', shape: 'rect', dims: [120, 35, 90], style: 'natural' },
+  { t: 'كاونتر قهوة حرف L', cat: 'coffee', piece: 'counter', shape: 'lshape', dims: [180, 55, 95], style: 'minimal' },
+  { t: 'كومودينو كبسولة بيج', cat: 'bedroom', piece: 'nightstand', shape: 'capsule', dims: [55, 40, 55], style: 'soft' },
+  { t: 'مكتب منزلي خشب وأسود', cat: 'office', piece: 'desk', shape: 'rect', dims: [140, 70, 75], style: 'classic', v: { legs: 'black' } },
+];
 // ستايلات جاهزة من المصمم (ضغطة وحدة تنسق الخامة والألوان والأرجل)
 const STYLES = [
   { k: 'lux', t: 'مودرن فاخر', d: 'أسود مطفي + رخام أبيض + ذهبي', dots: ['#1f1f1f', '#eeece7', '#c9a54a'], v: { mat: 'mdf', color: ['أسود مطفي', '#1f1f1f'], top: 'marble', topColor: ['أبيض كرارا', '#eeece7'], legs: 'gold', edge: 'beveled', door: 'grooved', handle: 'gold' } },
@@ -63,6 +86,58 @@ const STYLES = [
 const STEPS = ['القطعة', 'صورة', 'المقاس', 'الستايل والخامة', 'الألوان', 'المراجعة والإرسال'];
 // الخامات المناسبة لكل نوع قطعة
 const matAllow = () => { const k = pieceOf().kind; if (CS.piece === 'fullroom' || k === 'bed') return ['mdf', 'veneer', 'solid', 'fabric']; if (['cabinet', 'corner', 'unit'].includes(k)) return ['mdf', 'veneer', 'solid']; return ['mdf', 'veneer', 'solid', 'metal']; };
+// ---------- هل تركب في المكان؟ (مقاس الغرفة أو الجدار) ----------
+const CENTER = ['coffee', 'side', 'tiered', 'nesting', 'dining', 'diningset', 'cart'];
+function fitCalc() {
+  const R = CS.room || {}; if (!(+R.w > 0)) return null;
+  const pw = +CS.w, pd = ['round', 'square'].includes(CS.shape) ? +CS.w : +CS.d, rd = +R.d || 0;
+  const center = CENTER.includes(CS.piece), bed = ['bed', 'fullroom'].includes(CS.piece);
+  const need = ['dining', 'diningset'].includes(CS.piece) ? 90 : 60;
+  const sx = center || bed ? (R.w - pw) / 2 : R.w - pw, sy = rd ? (center ? (rd - pd) / 2 : rd - pd) : null;
+  return { R, pw, pd, rd, center, bed, need, sx, sy };
+}
+function fitTips() {
+  const f = fitCalc(); if (!f) return [];
+  if (f.sx < 0 || (f.sy != null && f.sy < 0)) return [['warn', `القطعة أكبر من المكان (${f.R.w}${f.rd ? '×' + f.rd : ''} سم) — صغّر المقاس أو غيّر المكان.`]];
+  const t = [], front = f.center ? f.need : f.bed ? 70 : 80;
+  if (f.center && f.sx < f.need) t.push(['warn', `المسافة على الجنبين ${Math.round(f.sx)} سم بس — المريح ${f.need} سم على الأقل للمشي${f.need === 90 ? ' وسحب الكراسي' : ''}.`]);
+  if (f.bed && f.sx < 60) t.push(['warn', `المسافة على جنب السرير ${Math.round(f.sx)} سم — المريح 60 سم على الأقل.`]);
+  if (f.sy != null && f.sy < front) t.push(['warn', `الممر ${f.center ? 'حول' : 'قدام'} القطعة ${Math.round(f.sy)} سم — المريح ${front} سم على الأقل${f.center || f.bed ? '' : ' (عشان تنفتح الأبواب والأدراج براحة)'}.`]);
+  if (!t.length) t.push(['ok', 'القطعة تركب في المكان بممرات مريحة']);
+  return t;
+}
+function fitSVG() {
+  const f = fitCalc(); if (!f) return '';
+  const rd = f.rd || Math.max(f.pd + 120, f.R.w * .6), W = 300, k = W / Math.max(f.R.w, f.pw + 20), H = Math.round(rd * k), pw = f.pw * k, pd = f.pd * k;
+  const x = (W - pw) / 2, y = f.center ? (H - pd) / 2 : 2, bad = f.sx < 0 || (f.sy != null && f.sy < 0);
+  const shape = CS.shape === 'round' || CS.shape === 'oval' ? `<ellipse cx="${x + pw / 2}" cy="${y + pd / 2}" rx="${pw / 2}" ry="${pd / 2}"/>` : `<rect x="${x}" y="${y}" width="${pw}" height="${pd}" rx="${CS.shape === 'capsule' ? pd / 2 : 3}"/>`;
+  const lab = (x1, y1, t) => `<text x="${x1}" y="${y1}">${t}</text>`;
+  const side = f.center || f.bed ? f.sx : f.sx / 2;
+  return `<svg class="cz-fit-svg" viewBox="-14 -14 ${W + 28} ${H + 34}" role="img" aria-label="مخطط المكان من فوق">
+    <rect x="0" y="0" width="${W}" height="${H}" class="room" ${f.rd ? '' : 'stroke-dasharray="6 5"'}/>
+    ${f.center ? '' : `<line x1="0" y1="0" x2="${W}" y2="0" class="wall"/>`}
+    <g class="pc ${bad ? 'bad' : ''}">${shape}</g>
+    ${side > 0 && x > 22 ? lab(x / 2, y + pd / 2 + 4, Math.round(side)) : ''}
+    ${f.sy != null && f.sy > 0 ? lab(W / 2, Math.min(H - 6, y + pd + (H - y - pd) / 2 + 4), Math.round(f.sy)) : ''}
+    ${lab(W / 2, H + 16, `المكان: ${f.R.w}${f.rd ? ' × ' + f.rd : ''} سم`)}
+  </svg>`;
+}
+// ---------- حفظ التصميم ومشاركته ----------
+const SHARE_KEYS = ['cat', 'piece', 'shape', 'w', 'd', 'h', 'mat', 'top', 'edge', 'legs', 'door', 'handle', 'seats', 'color', 'topColor', 'qty', 'style', 'parts', 'room'];
+const b64u = (str) => btoa(String.fromCharCode(...new TextEncoder().encode(str))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+const unb64u = (s) => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/')), c => c.charCodeAt(0)));
+function shareUrl() { const o = {}; SHARE_KEYS.forEach(k => o[k] = CS[k]); return location.href.split('#')[0].split('?')[0] + '#custom/s/' + b64u(JSON.stringify(o)); }
+function validState(o) { return !!(o && CC[o.cat] && CC[o.cat].pieces.some(p => p.k === o.piece)); }
+window.czLoadShared = (code) => { try { const o = JSON.parse(unb64u(code)); if (validState(o)) { const keep = CS ? { name: CS.name, phone: CS.phone } : {}; CS = Object.assign(newState(o.cat), keep, o, { step: 6, shared: true }); return true; } } catch {} return false; };
+const saveCS = () => { try { const o = { ...CS }; delete o.shared; delete o.restored; localStorage.setItem('dh_cz', JSON.stringify(o)); } catch {} };
+const loadCS = () => { try { const o = JSON.parse(localStorage.getItem('dh_cz') || 'null'); return validState(o) ? Object.assign(newState(o.cat), o) : null; } catch { return null; } };
+async function shareDesign(note) {
+  const url = shareUrl(), p = pieceOf(), title = `تصميمي: ${p.t} ${CS.w}×${['round', 'square'].includes(CS.shape) ? CS.w : CS.d}×${CS.h} سم`;
+  try { if (navigator.share) { await navigator.share({ title, text: title + ' — شوفه 3D:', url }); return; } } catch (e) { if (e.name === 'AbortError') return; }
+  try { await navigator.clipboard.writeText(url); note.textContent = '✓ نسخنا رابط التصميم — الصقه في واتساب لأي أحد'; }
+  catch { note.innerHTML = `انسخ الرابط: <input dir="ltr" readonly value="${esc(url)}" onclick="this.select()">`; }
+}
+
 // نصائح المصمم وتنبيهات المقاسات
 function designerTips() {
   const p = pieceOf(), t = [], d = ['round', 'square'].includes(CS.shape) ? CS.w : CS.d;
@@ -77,11 +152,14 @@ function designerTips() {
   if (CS.piece === 'shoe' && d < 30) t.push(['warn', 'عمق الجزامة أقل من 30 سم — الأحذية الكبيرة ما تدخل.']);
   if (['bed', 'fullroom'].includes(CS.piece)) { if (![100, 120, 160, 180, 200].includes(+CS.w)) t.push(['tip', 'مقاسات المراتب الجاهزة: 100، 120، 160، 180، 200 سم عرض — المقاس الخاص يحتاج مرتبة تفصيل.']); t.push(['tip', 'خلّ 60–70 سم على الأقل حول السرير للمشي.']); }
   if (CS.piece === 'console' && d > 45) t.push(['tip', 'الكونسول للمداخل عادة عمقه 30–40 سم عشان ما يضيّق الممر.']);
+  if (CS.piece === 'tv') { if (CS.h > 60) t.push(['warn', 'طاولة التلفزيون المريحة ارتفاعها 40–55 سم — عشان يكون نص الشاشة بمستوى عينك وأنت جالس.']); t.push(['tip', 'خلّ طاولة التلفزيون أعرض من الشاشة بـ 20–40 سم على الأقل عشان يكون الشكل متوازن.']); }
+  if (CS.piece === 'desk') { if (CS.h < 72 || CS.h > 78) t.push(['warn', 'ارتفاع المكتب المريح 73–76 سم.']); if (d < 60) t.push(['tip', 'عمق المكتب أقل من 60 سم — يضيق لو بتحط شاشة كمبيوتر. المناسب 65–80 سم.']); }
+  t.push(...fitTips());
   if (CS.top === 'glass' && CS.legs === 'hidden') t.push(['tip', 'مع السطح الزجاج تبان القاعدة من فوق — الأرجل الذهبية أو القاعدة الوسطية أجمل.']);
   if (CS.mat === 'fabric' && CS.color[1] && ['#f4f2ec', '#ebe3d3'].includes(CS.color[1])) t.push(['tip', 'القماش الفاتح جميل لكن يحتاج عناية — المخمل البيج أو الرمادي أعملي للاستخدام اليومي.']);
   return t;
 }
-const tipsHTML = (list) => list.length ? `<div class="cz-tips">${list.map(([k, x]) => `<p class="${k}">${k === 'warn' ? '⚠️' : '💡'} ${esc(x)}</p>`).join('')}</div>` : '';
+const tipsHTML = (list) => list.length ? `<div class="cz-tips">${[...list].sort((a, b) => (b[0] === 'warn') - (a[0] === 'warn')).map(([k, x]) => `<p class="${k}">${k === 'warn' ? '⚠️' : k === 'ok' ? '✅' : '💡'} ${esc(x)}</p>`).join('')}</div>` : '';
 const SHAPES = { rect: 'مستطيل', square: 'مربع', round: 'دائري', oval: 'بيضاوي', capsule: 'كبسولة (أطراف مدورة)', lshape: 'حرف L' };
 const OPT = {
   mat: { t: 'الخامة الأساسية', o: { mdf: 'خشب MDF مطلي', veneer: 'قشرة خشب طبيعي', solid: 'خشب طبيعي صلب', metal: 'معدن', fabric: 'تنجيد قماش / مخمل' } },
@@ -104,11 +182,11 @@ const pieceOf = () => CC[CS.cat].pieces.find(p => p.k === CS.piece);
 function newState(cat = 'service') {
   const p = CC[cat].pieces[0];
   return { cat, piece: p.k, shape: p.shapes[0], w: p.dims[0], d: p.dims[1], h: p.dims[2], mat: 'mdf', top: 'same', edge: 'rounded', legs: 'gold',
-    door: 'grooved', handle: 'hidden', seats: 6, color: PALETTE[0], topColor: TOP_PALETTE[0], qty: 1, notes: '', ref: '', ai: '', name: '', phone: '', city: '', branch: 0, step: 1, style: '',
+    door: 'grooved', handle: 'hidden', seats: 6, color: PALETTE[0], topColor: TOP_PALETTE[0], qty: 1, notes: '', ref: '', ai: '', name: '', phone: '', city: '', branch: 0, step: 1, style: '', room: { w: 0, d: 0 }, visit: false, ctime: '',
     parts: { wardrobe: { w: 200, d: 60, h: 240 }, dresser: { w: 120, d: 45, h: 80 }, nightstand: { w: 50, d: 40, h: 55 } } };
 }
-const hasTopFor = (p) => ['table', 'tiered', 'nesting', 'cart'].includes(p.kind) || ['counter', 'dresser', 'nightstand', 'corner', 'buffet'].includes(p.k);
-const hasTop = () => CS.piece === 'fullroom' || ['table', 'tiered', 'nesting', 'cart'].includes(pieceOf().kind) || ['counter', 'dresser', 'nightstand', 'corner', 'buffet'].includes(CS.piece);
+const hasTopFor = (p) => ['table', 'tiered', 'nesting', 'cart'].includes(p.kind) || ['counter', 'dresser', 'nightstand', 'corner', 'buffet', 'tv', 'sideboard', 'filecab'].includes(p.k);
+const hasTop = () => CS.piece === 'fullroom' || ['table', 'tiered', 'nesting', 'cart'].includes(pieceOf().kind) || ['counter', 'dresser', 'nightstand', 'corner', 'buffet', 'tv', 'sideboard', 'filecab'].includes(CS.piece);
 const hasDoors = () => CS.piece === 'fullroom' || ['cabinet', 'corner', 'unit'].includes(pieceOf().kind);
 const hasLegs = () => pieceOf().kind !== 'unit' && CS.piece !== 'wardrobe';
 
@@ -283,6 +361,7 @@ function renderCustomHome() { // قسم مختصر في الصفحة الرئي�
 }
 
 function renderCustomPage(cat) {
+  if (!CS) { const saved = loadCS(); if (saved && (!CC[cat] || saved.cat === cat)) CS = Object.assign(saved, { restored: true }); }
   if (!CS || (cat && CC[cat] && CS.cat !== cat)) CS = newState(CC[cat] ? cat : 'service');
   return `<div class="wrap cz">
     <nav class="crumbs"><a href="#top">الرئيسية</a><span class="sep">‹</span><span>تفصيل حسب الطلب</span></nav>
@@ -292,6 +371,7 @@ function renderCustomPage(cat) {
     <div class="cz-grid">
       <aside class="cz-preview"><div class="cz-card">
         <div class="cz-prev-head"><b id="czTitle"></b><span id="czDims"></span></div>
+        <div class="cz-tools"><button type="button" id="czShare">🔗 شارك التصميم</button><button type="button" id="czNew">↺ تصميم جديد</button><span id="czShareNote" role="status"></span></div>
         <div class="cz-views" id="czViews"><button type="button" class="on" data-view="3d">مجسم 3D <small>↻ 360°</small></button><button type="button" data-view="2d">المخطط بالمقاسات</button></div>
         <div class="cz-3d" id="cz3d"></div>
         <div class="cz-svg" id="czSvg" hidden></div>
@@ -313,8 +393,11 @@ function formHTML() {
   const sizes = SIZES[CS.piece] || [];
   const prog = `<div class="cz-prog">${STEPS.map((t, i) => `<button type="button" class="${i + 1 === st ? 'on' : i + 1 < st ? 'done' : ''}" data-go="${i + 1}"><i>${i + 1 < st ? '✓' : i + 1}</i><span>${t}</span></button>`).join('')}</div>`;
   const review = specRows().slice(1).map(([l, v, hex]) => `<li><b>${esc(l)}</b><span>${hex ? `<i style="background:${hex}"></i>` : ''}${esc(v)}</span></li>`).join('');
-  return prog + [
-    sec(1, 'وش تبي نفصّل لك؟', `<div class="cz-cats">${Object.entries(CC).map(([k, c]) => `<button type="button" class="cz-cat ${k === CS.cat ? 'on' : ''}" data-cat="${k}">${esc(c.t)}</button>`).join('')}</div>
+  const notice = CS.shared ? '<p class="cz-note cz-flag">📩 هذا تصميم وصلك برابط — عدّل عليه براحتك أو أرسله للفرع.</p>' : CS.restored && st === 1 ? '<p class="cz-note cz-flag">↺ رجّعنا لك آخر تصميم اشتغلت عليه — كمّل منه أو اضغط «تصميم جديد».</p>' : '';
+  return notice + prog + [
+    sec(1, 'وش تبي نفصّل لك؟', `      <h4>تصاميم جاهزة من مصممنا <small>— اضغط وحدة وعدّل عليها براحتك</small></h4>
+      <div class="cz-presets">${PRESETS.map((x, i) => { const s = STYLES.find(y => y.k === x.style); return `<button type="button" data-preset="${i}"><span class="dots">${(s?.dots || []).map(c => `<i style="background:${c}"></i>`).join('')}</span><b>${esc(x.t)}</b><small dir="ltr">${x.dims[0]}×${x.dims[1]}×${x.dims[2]} سم</small></button>`; }).join('')}</div>
+      <h4>أو اختر القسم والقطعة</h4><div class="cz-cats">${Object.entries(CC).map(([k, c]) => `<button type="button" class="cz-cat ${k === CS.cat ? 'on' : ''}" data-cat="${k}">${esc(c.t)}</button>`).join('')}</div>
       ${chips('piece', Object.fromEntries(CC[CS.cat].pieces.map(x => [x.k, x.t])), CS.piece)}${p.note ? `<p class="cz-note">يشمل: ${esc(p.note)}</p>` : ''}`),
     sec(2, 'عندك صورة لقطعة تعجبك؟', `<div class="cz-ref" id="czRef">${CS.ref ? `<img src="${esc(CS.ref)}" alt=""><div class="cz-ref-actions"><button type="button" class="btn line sm" id="czAnalyze">✨ حلّل الصورة</button><button type="button" class="btn line sm" id="czRefDel">إزالة</button></div>`
       : `<label class="cz-drop"><input type="file" accept="image/*" id="czFile" hidden><b>＋ ارفع صورة</b><span>صورة لقطعة تعجبك — نطلع منها الشكل والألوان. ما عندك؟ اضغط «التالي».</span></label>`}</div>
@@ -326,6 +409,10 @@ function formHTML() {
         ? ['bed', 'wardrobe', 'dresser', 'nightstand'].map(part => `<div class="cz-part"><h4>${PART_T[part]}</h4>${part !== 'bed' && SIZES[part] ? `<div class="cz-sizes sm">${SIZES[part].map(([t, w, d, h]) => `<button type="button" class="${+CS.parts[part].w === w && +CS.parts[part].h === h ? 'on' : ''}" data-psize="${part},${w},${d},${h}"><b>${esc(t)}</b><small dir="ltr">${w}×${d}×${h}</small></button>`).join('')}</div>` : ''}${dimsHTML(part === 'bed' ? '' : 'parts.' + part + '.', part === 'bed')}</div>`).join('')
         : dimsHTML('', true)}
       ${p.seats ? `<h4>عدد الكراسي</h4>${chips('seats', { 4: '4 كراسي', 6: '6 كراسي', 8: '8 كراسي', 10: '10 كراسي', 12: '12 كرسي' }, String(CS.seats))}` : ''}
+      <details class="cz-more cz-fitbox" ${+CS.room?.w ? 'open' : ''}><summary>📐 تركب في مكانك؟ اكتب مقاس المكان <small>— اختياري</small></summary>
+        <p class="cz-desc">${CENTER.includes(CS.piece) ? 'مقاس الغرفة أو المساحة اللي بتنحط فيها القطعة — نحسب لك الممرات حولها.' : 'عرض الجدار اللي بتنحط عليه القطعة، وعمق الغرفة قدامها — نحسب لك الممر.'}</p>
+        <div class="cz-dims">${[['room.w', CENTER.includes(CS.piece) ? 'عرض المكان' : 'عرض الجدار'], ['room.d', 'عمق الغرفة']].map(([k, t]) => `<label><span>${t}</span><div class="cz-num"><button type="button" data-step="-10" data-k="${k}">−</button><input type="number" inputmode="numeric" min="0" max="2000" value="${+getK(k) || ''}" placeholder="—" data-k="${k}" data-room="1"><button type="button" data-step="10" data-k="${k}">+</button></div><small>سم</small></label>`).join('')}</div>
+        <div id="czFit">${fitSVG()}</div></details>
       <div id="czTips3">${tipsHTML(designerTips())}</div>`),
     sec(4, 'الستايل والخامة', `<h4>ستايلات جاهزة من مصممنا <small>— ضغطة وحدة وتتنسق القطعة كاملة</small></h4>
       <div class="cz-styles">${STYLES.map(x => `<button type="button" class="${CS.style === x.k ? 'on' : ''}" data-style="${x.k}"><span class="dots">${x.dots.map(c => `<i style="background:${c}"></i>`).join('')}</span><b>${esc(x.t)}</b><small>${esc(x.d)}</small></button>`).join('')}</div>
@@ -345,6 +432,8 @@ function formHTML() {
         <label><span>الاسم</span><input type="text" value="${esc(CS.name)}" data-f="name" autocomplete="name"></label>
         <label><span>رقم الجوال</span><input type="tel" dir="ltr" value="${esc(CS.phone)}" data-f="phone" placeholder="05xxxxxxxx" autocomplete="tel" inputmode="tel"></label>
         <label><span>الفرع <small>— مرتبة حسب الأقرب لك</small></span><select data-f="branch">${furnitureBranches().map((b, i) => `<option value="${i}" ${i === +CS.branch ? 'selected' : ''}>${esc(b.name)} — ${esc(b.area || '')}${b.city ? ' (' + esc(b.city) + ')' : ''}</option>`).join('')}</select></label>
+        <label><span>أفضل وقت للتواصل</span><select data-f="ctime">${['أي وقت', 'الصباح', 'العصر', 'المساء'].map(x => `<option ${CS.ctime === x ? 'selected' : ''}>${x}</option>`).join('')}</select></label>
+        <label class="cz-check"><input type="checkbox" data-f="visit" ${CS.visit ? 'checked' : ''}><span>أبي زيارة قياس للموقع قبل التنفيذ</span></label>
         <label class="wide"><span>ملاحظات للفرع <small>— اختياري</small></span><textarea rows="3" data-f="notes" placeholder="مثال: أبي درجين بدل الأبواب، أو المساحة بجانب نافذة…">${esc(CS.notes)}</textarea></label>
       </div>
       <button type="button" class="btn gold cz-send" id="czSend">${svg('whatsapp')} إرسال الطلب للفرع</button>
@@ -368,6 +457,9 @@ function specRows() {
   if (p.seats) rows.push(['عدد الكراسي', `${CS.seats} كراسي`]);
   if (CS.piece === 'fullroom') for (const part of ['wardrobe', 'dresser', 'nightstand']) { const x = CS.parts[part]; rows.push(['مقاس ' + PART_T[part].replace(' (كل واحد)', ''), `${x.w} × ${x.d} × ${x.h} سم`]); }
   rows.push(['الكمية', String(CS.qty)]);
+  if (+CS.room?.w) rows.push(['مقاس المكان', `${CS.room.w}${+CS.room.d ? ' × ' + CS.room.d : ''} سم`]);
+  if (CS.visit) rows.push(['زيارة قياس', 'العميل يطلب زيارة قياس للموقع']);
+  if (CS.ctime && CS.ctime !== 'أي وقت') rows.push(['أفضل وقت للتواصل', CS.ctime]);
   return rows;
 }
 function drawPreview() {
@@ -377,9 +469,11 @@ function drawPreview() {
   $('czTitle').textContent = pieceOf().t;
   $('czDims').textContent = `${CS.w} × ${['round', 'square'].includes(CS.shape) ? CS.w : CS.d} × ${CS.h} سم`;
   if ($('czDockD')) $('czDockD').textContent = $('czDims').textContent;
+  saveCS();
   $('czSum').innerHTML = specRows().slice(2).map(([l, v, hex]) => `<span>${hex ? `<i style="background:${hex}"></i>` : ''}<b>${esc(l)}:</b> ${esc(v)}</span>`).join('');
 }
 function drawForm() { $('czForm').innerHTML = formHTML(); drawPreview(); }
+const drawFit = () => { if ($('czFit')) $('czFit').innerHTML = fitSVG(); if ($('czTips3')) $('czTips3').innerHTML = tipsHTML(designerTips()); };
 
 function wireCustom() {
   drawForm();
@@ -391,6 +485,8 @@ function wireCustom() {
     $('cz3d').hidden = !is3d; $('cz3dHint').hidden = !is3d; $('czSvg').hidden = is3d;
   };
   $('czAR').onclick = () => window.cz3dAR?.($('czARNote'));
+  $('czShare').onclick = () => shareDesign($('czShareNote'));
+  $('czNew').onclick = () => { const keep = { name: CS.name, phone: CS.phone }; CS = Object.assign(newState(CS.cat), keep); history.replaceState(null, '', '#custom/' + CS.cat); drawForm(); $('czShareNote').textContent = ''; };
   // ---------- معاينة عائمة في الجوال: تبقى ظاهرة وأنت تختار الخامات والألوان تحت ----------
   const dock = document.createElement('div'); dock.className = 'cz-dock'; dock.hidden = true;
   dock.innerHTML = `<div class="cz-dock-top"><b id="czDockT"></b><span id="czDockD"></span><button type="button" id="czDockX" aria-label="تصغير المعاينة">▲</button></div>
@@ -425,6 +521,16 @@ function wireCustom() {
     if (sz) { const [w, d, h, n] = sz.dataset.size.split(','); Object.assign(CS, { w: +w, d: +d, h: +h }); if (n) CS.seats = +n; return drawForm(); }
     const ps = e.target.closest('[data-psize]');
     if (ps) { const [part, w, d, h] = ps.dataset.psize.split(','); CS.parts[part] = { w: +w, d: +d, h: +h }; return drawForm(); }
+    const pre = e.target.closest('[data-preset]');
+    if (pre) {
+      const x = PRESETS[+pre.dataset.preset], s = STYLES.find(y => y.k === x.style), keep = { name: CS.name, phone: CS.phone };
+      CS = Object.assign(newState(x.cat), keep, { piece: x.piece, shape: x.shape, w: x.dims[0], d: x.dims[1], h: x.dims[2] }, s ? JSON.parse(JSON.stringify(s.v)) : {}, x.v || {}, { style: x.style, step: 3 });
+      if (x.seats) CS.seats = x.seats;
+      if (!matAllow().includes(CS.mat)) CS.mat = matAllow()[0];
+      history.replaceState(null, '', '#custom/' + x.cat); drawForm();
+      if (innerWidth <= 980) scrollTo({ top: document.querySelector('.cz-preview').getBoundingClientRect().top + scrollY - 70, behavior: 'smooth' });
+      return;
+    }
     const sty = e.target.closest('[data-style]');
     if (sty) { const x = STYLES.find(y => y.k === sty.dataset.style); Object.assign(CS, JSON.parse(JSON.stringify(x.v)), { style: x.k }); if (!matAllow().includes(CS.mat)) CS.mat = matAllow()[0]; return drawForm(); }
     const cat = e.target.closest('[data-cat]');
@@ -440,7 +546,8 @@ function wireCustom() {
     }
     const sw = e.target.closest('.cz-sw button');
     if (sw) { CS[sw.parentElement.dataset.name] = [sw.dataset.n, sw.dataset.hex]; CS.style = ''; return drawForm(); }
-    const step = e.target.closest('[data-step]');
+    const step = e.target.closest('button[data-step]');
+    if (step && step.dataset.k?.startsWith('room.')) { const k = step.dataset.k, cur = +getK(k) || 0, v = Math.max(0, Math.min(2000, cur ? cur + +step.dataset.step : (k === 'room.w' ? Math.max(+CS.w + 120, 200) : 300))); setK(k, v); const i = step.parentElement.querySelector('input'); if (i) i.value = v; drawFit(); saveCS(); return; }
     if (step) { const k = step.dataset.k; setK(k, Math.max(10, Math.min(600, (+getK(k) || 0) + +step.dataset.step))); if (CS.shape === 'square' && k === 'w') CS.d = CS.w; return drawForm(); }
     if (e.target.id === 'czRefDel') { CS.ref = ''; CS.ai = ''; return drawForm(); }
     if (e.target.id === 'czAnalyze') return analyze();
@@ -448,8 +555,9 @@ function wireCustom() {
   });
   form.addEventListener('input', (e) => {
     const k = e.target.dataset.k, f = e.target.dataset.f;
-    if (k) { setK(k, Math.max(0, Math.min(600, +e.target.value || 0))); drawPreview(); if ($('czTips3')) $('czTips3').innerHTML = tipsHTML(designerTips()); }
-    if (f) { CS[f] = f === 'qty' || f === 'branch' ? +e.target.value : e.target.value; if (f === 'qty') drawPreview(); }
+    if (k && e.target.dataset.room) { setK(k, Math.max(0, Math.min(2000, +e.target.value || 0))); drawFit(); saveCS(); return; }
+    if (k) { setK(k, Math.max(0, Math.min(600, +e.target.value || 0))); drawPreview(); drawFit(); }
+    if (f) { CS[f] = e.target.type === 'checkbox' ? e.target.checked : f === 'qty' || f === 'branch' ? +e.target.value : e.target.value; if (f === 'qty') drawPreview(); else saveCS(); }
     if (e.target.type === 'color') { CS[e.target.closest('.cz-sw').dataset.name] = ['لون مخصص ' + e.target.value, e.target.value]; drawPreview(); }
   });
   form.addEventListener('change', async (e) => {
@@ -679,6 +787,8 @@ async function buildSheet(no) {
     try { const im = await loadImg(CS.ref); y = head('الصورة اللي أرسلها العميل', y + 30) + 14; const bh = Math.min(520, CW * im.height / im.width), bw = bh * im.width / im.height; g.drawImage(im, L0 + (CW - bw) / 2, y, bw, bh); g.strokeStyle = '#e9e1cf'; g.strokeRect(L0 + (CW - bw) / 2, y, bw, bh); y += bh + 20; } catch {}
   }
   // الملاحظات
+  const extra = [CS.visit && '•  العميل يطلب زيارة قياس للموقع قبل التنفيذ', CS.ctime && CS.ctime !== 'أي وقت' && '•  أفضل وقت للتواصل: ' + CS.ctime, +CS.room?.w && `•  مقاس المكان: ${CS.room.w}${+CS.room.d ? ' × ' + CS.room.d : ''} سم`].filter(Boolean);
+  if (extra.length) { y = head('معلومات إضافية من العميل', y + 30) + 24; g.font = F(26, 700); g.fillStyle = '#16140f'; for (const t of extra) { g.fillText(t, R0, y + 10); y += 46; } }
   if (CS.notes) { y = head('ملاحظات العميل', y + 30) + 20; g.font = F(25, 500); g.fillStyle = '#3d3a33'; y = wrap(CS.notes, R0, y + 10, CW, 38) + 10; }
   if (CS.ai) { g.font = F(22, 500); g.fillStyle = '#6b604a'; y = wrap('من تحليل الصورة: ' + CS.ai, R0, y + 20, CW, 34) + 10; }
   // المخطط الفني (للنجار/المصنع)
@@ -716,7 +826,8 @@ async function sendRequest() {
     const file = new File([blob], `طلب-تفصيل-${j.no}.png`, { type: 'image/png' });
     const canShare = !!(navigator.canShare && navigator.canShare({ files: [file] }));
     const num = intl(b.whatsapp || b.phone || D.contact?.whatsapp);
-    const intro = `السلام عليكم، طلب تفصيل رقم ${j.no} — ${p.t} (${CS.w}×${['round', 'square'].includes(CS.shape) ? CS.w : CS.d}×${CS.h} سم)\nالتصميم والمواصفات في الصورة 👇\n${CS.name}`;
+    const intro = `السلام عليكم، طلب تفصيل رقم ${j.no} — ${p.t} (${CS.w}×${['round', 'square'].includes(CS.shape) ? CS.w : CS.d}×${CS.h} سم)\nالتصميم والمواصفات في الصورة 👇${CS.visit ? '\n📏 أبي زيارة قياس للموقع' : ''}${CS.ctime && CS.ctime !== 'أي وقت' ? '\n🕒 أفضل وقت للتواصل: ' + CS.ctime : ''}\nالتصميم 3D (تقدر تدوّره): ${shareUrl()}\n${CS.name}`;
+    const next = `<ol class="cz-next"><li><b>الفرع يستلم تصميمك</b> ويراجع المقاسات والخامات</li><li><b>يتواصل معك</b> لتأكيد التفاصيل والسعر${CS.visit ? ' وموعد زيارة القياس' : ''}</li><li><b>التصنيع</b> ثم التوصيل والتركيب</li></ol>`;
     const wa = `https://wa.me/${num}?text=${encodeURIComponent(intro)}`;
     const url = URL.createObjectURL(blob);
     if (canShare) {
@@ -725,7 +836,7 @@ async function sendRequest() {
         <p>خطوتين وتوصل صورة التصميم لـ ${esc(b.name || 'الفرع')}:</p>
         <a class="btn line cz-step" href="${wa}" target="_blank" rel="noopener" id="czStep1"><span>1</span> افتح محادثة الفرع في واتساب</a>
         <button type="button" class="btn wa cz-step" id="czStep2"><span>2</span> ${svg('whatsapp')} أرسل صورة التصميم للفرع</button>
-        <small class="cz-tip">بعد الخطوة 2 اختر واتساب ← محادثة ${esc(b.name || 'الفرع')} (تطلع أول القائمة) ← إرسال.</small></div>`;
+        <small class="cz-tip">بعد الخطوة 2 اختر واتساب ← محادثة ${esc(b.name || 'الفرع')} (تطلع أول القائمة) ← إرسال.</small>${next}</div>`;
       $('czStep2').onclick = async () => { try { await navigator.share({ files: [file], title: 'طلب تفصيل ' + j.no, text: intro }); } catch {} };
     } else {
       const a = document.createElement('a'); a.href = url; a.download = file.name; document.body.append(a); a.click(); a.remove();
@@ -733,7 +844,7 @@ async function sendRequest() {
         <img class="cz-sheet" src="${url}" alt="صورة التصميم">
         <p>نزّلنا صورة التصميم على جهازك — افتح واتساب ${esc(b.name || 'الفرع')} وأرفق الصورة في المحادثة.</p>
         <a class="btn wa" href="${wa}" target="_blank" rel="noopener">${svg('whatsapp')} فتح واتساب الفرع</a>
-        <a class="btn line" href="${url}" download="${esc(file.name)}">⬇ تنزيل الصورة مرة ثانية</a></div>`;
+        <a class="btn line" href="${url}" download="${esc(file.name)}">⬇ تنزيل الصورة مرة ثانية</a>${next}</div>`;
       window.open(wa, '_blank', 'noopener');
     }
   } catch (e) { done.innerHTML = `<p class="cz-err">${esc(e.message || 'تعذّر الإرسال')}</p>`; }
