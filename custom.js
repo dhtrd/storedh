@@ -501,73 +501,114 @@ async function analyze(auto) {
 
 // ---------- ورقة المواصفات (صورة) ----------
 function loadImg(src) { return new Promise((ok, no) => { const i = new Image(); i.crossOrigin = 'anonymous'; i.onload = () => ok(i); i.onerror = no; i.src = src; }); }
+// وصف بالكلام العادي للقطعة (عشان الفرع يفهمها بدون مخطط)
+function plainDesc() {
+  const p = pieceOf(), d = ['round', 'square'].includes(CS.shape) ? CS.w : CS.d;
+  const parts = [`${p.t} بشكل ${SHAPES[CS.shape]}`, CS.shape === 'round' ? `قطرها ${CS.w} سم وارتفاعها ${CS.h} سم` : `عرضها ${CS.w} سم وعمقها ${d} سم وارتفاعها ${CS.h} سم`,
+    `الجسم ${OPT.mat.o[CS.mat]} باللون ${CS.color[0]}`];
+  if (hasTop()) parts.push(CS.top === 'same' ? 'السطح بنفس خامة الجسم' : `السطح ${OPT.top.o[CS.top]}${!['glass'].includes(CS.top) ? ' بلون ' + CS.topColor[0] : ''}`, `الحواف ${OPT.edge.o[CS.edge]}`);
+  if (hasDoors()) parts.push(`الأبواب ${OPT.door.o[CS.door]}`, `المقابض ${OPT.handle.o[CS.handle]}`);
+  if (hasLegs()) parts.push(OPT.legs.o[CS.legs]);
+  if (p.seats) parts.push(`مع ${CS.seats} كراسي`);
+  if (CS.piece === 'fullroom') parts.push(`الدولاب ${CS.parts.wardrobe.w}×${CS.parts.wardrobe.d}×${CS.parts.wardrobe.h} سم، التسريحة ${CS.parts.dresser.w}×${CS.parts.dresser.d}×${CS.parts.dresser.h} سم، والكومودينو ${CS.parts.nightstand.w}×${CS.parts.nightstand.d}×${CS.parts.nightstand.h} سم`);
+  return parts.join('، ') + (CS.qty > 1 ? ` — الكمية ${CS.qty}` : '') + '.';
+}
 async function buildSheet(no) {
-  const W = 1240, c = document.createElement('canvas'); let H = 3000; c.width = W; c.height = H;
+  const W = 1240, c = document.createElement('canvas'); let H = 5200; c.width = W; c.height = H;
   const g = c.getContext('2d'); g.direction = 'rtl'; g.textAlign = 'right';
   await document.fonts?.ready;
   const F = (s, w = 700) => `${w} ${s}px Tajawal, Tahoma, sans-serif`;
+  const R0 = W - 60, L0 = 60, CW = W - 120;
+  const wrap = (text, x, yy, maxW, lh) => { const words = String(text).split(/\s+/); let line = ''; for (const w of words) { const t = line ? line + ' ' + w : w; if (g.measureText(t).width > maxW && line) { g.fillText(line, x, yy); yy += lh; line = w; } else line = t; } if (line) g.fillText(line, x, yy); return yy + lh; };
+  const head = (txt, y) => { g.fillStyle = '#DBB83C'; g.fillRect(R0 - 8, y - 30, 8, 36); g.fillStyle = '#16140f'; g.font = F(32); g.fillText(txt, R0 - 22, y); return y + 26; };
+  const rr = (x, y, w, h, r, fill, stroke) => { g.beginPath(); g.roundRect ? g.roundRect(x, y, w, h, r) : g.rect(x, y, w, h); if (fill) { g.fillStyle = fill; g.fill(); } if (stroke) { g.strokeStyle = stroke; g.lineWidth = 2; g.stroke(); } };
+  const svgImg = async (svgStr) => { const u = URL.createObjectURL(new Blob([svgStr], { type: 'image/svg+xml' })); try { return await loadImg(u); } catch { return null; } finally { setTimeout(() => URL.revokeObjectURL(u), 3000); } };
   g.fillStyle = '#fff'; g.fillRect(0, 0, W, H);
   // الترويسة
-  g.fillStyle = '#0b0c0f'; g.fillRect(0, 0, W, 190);
-  g.fillStyle = '#DBB83C'; g.fillRect(0, 186, W, 4);
+  g.fillStyle = '#0b0c0f'; g.fillRect(0, 0, W, 190); g.fillStyle = '#DBB83C'; g.fillRect(0, 186, W, 4);
   try { const logo = await loadImg('assets/logo-mark.png'); g.drawImage(logo, W - 60 - 150, 30, 150, 150 * logo.height / logo.width); } catch {}
   g.fillStyle = '#fff'; g.font = F(46); g.fillText('طلب تفصيل حسب الطلب', W - 240, 88);
   g.fillStyle = '#f1d77a'; g.font = F(26, 500); g.fillText((D.company?.nameAr || '') + '  •  ' + new Date().toLocaleDateString('ar-SA-u-nu-latn'), W - 240, 138);
   g.textAlign = 'left'; g.fillStyle = '#f1d77a'; g.font = F(30); g.fillText(no, 60, 88);
   g.fillStyle = '#9d978a'; g.font = F(20, 500); g.fillText('رقم الطلب', 60, 124); g.textAlign = 'right';
-  // العنوان
-  const p = pieceOf();
-  g.fillStyle = '#16140f'; g.font = F(40); g.fillText(p.t, W - 60, 262);
-  g.fillStyle = '#a8871a'; g.font = F(26, 500); g.fillText(CC[CS.cat].t + '  •  ' + `${CS.w} × ${['round', 'square'].includes(CS.shape) ? CS.w : CS.d} × ${CS.h} سم`, W - 60, 304);
-  // المخطط
-  const svgStr = diagram(CS, { w: 1120, h: 547 });
-  const url = URL.createObjectURL(new Blob([svgStr], { type: 'image/svg+xml' }));
-  try { const im = await loadImg(url); g.strokeStyle = '#e9e1cf'; g.lineWidth = 2; g.strokeRect(59, 329, 1122, 549); g.drawImage(im, 60, 330, 1120, 547); } catch {}
-  URL.revokeObjectURL(url);
-  // المجسم ثلاثي الأبعاد
-  let y = 940;
-  const snap = await window.cz3dSnapshot?.();
-  if (snap) {
-    try {
-      const u3 = URL.createObjectURL(snap), im = await loadImg(u3), bw = 720, bh = Math.min(520, bw * im.height / im.width);
-      g.font = F(30); g.fillStyle = '#16140f'; g.fillText('المجسم ثلاثي الأبعاد', W - 60, y - 20);
-      g.fillStyle = '#f6f3ec'; g.fillRect((W - bw) / 2, y, bw, bh); g.drawImage(im, (W - bw) / 2, y, bw, bh); g.strokeStyle = '#e9e1cf'; g.strokeRect((W - bw) / 2, y, bw, bh);
-      URL.revokeObjectURL(u3); y += bh + 90;
-    } catch {}
+  // العنوان + وصف بالكلام
+  const p = pieceOf(), dd = ['round', 'square'].includes(CS.shape) ? CS.w : CS.d;
+  g.fillStyle = '#16140f'; g.font = F(48); g.fillText(p.t + (CS.qty > 1 ? `  × ${CS.qty}` : ''), R0, 268);
+  g.fillStyle = '#a8871a'; g.font = F(26, 600); g.fillText(CC[CS.cat].t, R0, 308);
+  rr(L0, 330, CW, 10, 0, null); g.fillStyle = '#3d3a33'; g.font = F(25, 500);
+  let y = wrap(plainDesc(), R0, 360, CW, 40) + 10;
+  // صور المجسم 3D (الأوضح للفرع)
+  const shots = (await window.cz3dShots?.()) || [];
+  if (shots.length) {
+    y = head('شكل القطعة', y + 20) + 10;
+    const imgs = await Promise.all(shots.map(async s => { const u = URL.createObjectURL(s.blob); try { return { label: s.label, im: await loadImg(u) }; } catch { return null; } }));
+    const ok = imgs.filter(Boolean);
+    if (ok[0]) { const bh = 560; rr(L0, y, CW, bh, 22, '#f6f3ec', '#e9e1cf'); const im = ok[0].im, k = Math.min((CW - 40) / im.width, (bh - 40) / im.height); g.drawImage(im, L0 + (CW - im.width * k) / 2, y + (bh - im.height * k) / 2, im.width * k, im.height * k); y += bh + 16; }
+    if (ok.length > 1) {
+      const n = ok.length - 1, gw = (CW - 16 * (n - 1)) / n, bh = 330;
+      ok.slice(1).forEach((o, i) => { const x = R0 - (i + 1) * gw - i * 16; rr(x, y, gw, bh, 18, '#f6f3ec', '#e9e1cf'); const k = Math.min((gw - 30) / o.im.width, (bh - 60) / o.im.height); g.drawImage(o.im, x + (gw - o.im.width * k) / 2, y + 12, o.im.width * k, o.im.height * k); g.fillStyle = '#6b604a'; g.font = F(22, 700); g.textAlign = 'center'; g.fillText(o.label, x + gw / 2, y + bh - 16); g.textAlign = 'right'; });
+      y += bh + 16;
+    }
   }
-  // جدول المواصفات
-  const rows = specRows(), refW = CS.ref ? 380 : 0, tableR = W - 60, tableL = 60 + (refW ? refW + 40 : 0);
-  g.font = F(30); g.fillStyle = '#16140f'; g.fillText('المواصفات', tableR, y - 20);
-  rows.forEach(([l, v, hex], i) => {
-    const ry = y + i * 50;
-    g.fillStyle = i % 2 ? '#fff' : '#faf7ef'; g.fillRect(tableL, ry, tableR - tableL, 50);
-    g.fillStyle = '#7a7468'; g.font = F(22, 500); g.fillText(l, tableR - 18, ry + 33);
-    g.fillStyle = '#16140f'; g.font = F(23); let vx = tableR - 230;
-    if (hex) { g.fillStyle = hex; g.beginPath(); g.arc(vx - 12, ry + 25, 13, 0, 7); g.fill(); g.strokeStyle = '#ccc'; g.stroke(); vx -= 36; g.fillStyle = '#16140f'; }
-    g.fillText(v, vx, ry + 33, tableR - 230 - tableL - 20);
+  // المقاسات بأرقام كبيرة
+  y = head('المقاسات', y + 40) + 14;
+  const dims = CS.shape === 'round' ? [['القطر', CS.w, '⌀'], ['الارتفاع', CS.h, '↕']] : [['العرض', CS.w, '↔'], ['العمق', dd, '⤢'], ['الارتفاع', CS.h, '↕']];
+  const bw3 = (CW - 20 * (dims.length - 1)) / dims.length;
+  dims.forEach(([lab, val, ic], i) => {
+    const x = R0 - (i + 1) * bw3 - i * 20; rr(x, y, bw3, 150, 20, '#0b0c0f');
+    g.textAlign = 'center'; g.fillStyle = '#9d978a'; g.font = F(24, 600); g.fillText(`${ic}  ${lab}`, x + bw3 / 2, y + 44);
+    g.fillStyle = '#f1d77a'; g.font = F(62, 800); g.fillText(`${val}`, x + bw3 / 2 + 20, y + 118); g.fillStyle = '#fff'; g.font = F(26, 600); g.fillText('سم', x + bw3 / 2 - g.measureText(String(val)).width * 1.3 - 10, y + 116);
+    g.textAlign = 'right';
   });
-  g.strokeStyle = '#e9e1cf'; g.strokeRect(tableL, y, tableR - tableL, rows.length * 50);
+  y += 170;
+  if (CS.piece === 'fullroom') {
+    g.font = F(24, 600); g.fillStyle = '#3d3a33';
+    for (const [k, lab] of [['wardrobe', 'الدولاب'], ['dresser', 'التسريحة'], ['nightstand', 'الكومودينو (كل واحد)']]) { const x = CS.parts[k]; rr(L0, y, CW, 54, 12, '#faf7ef'); g.fillStyle = '#16140f'; g.fillText(`${lab}:  عرض ${x.w}  •  عمق ${x.d}  •  ارتفاع ${x.h} سم`, R0 - 20, y + 36); y += 62; }
+    y += 10;
+  }
+  // الخامات والألوان بصور
+  y = head('الخامات والألوان', y + 30) + 14;
+  const cards = [['الخامة', OPT.mat.o[CS.mat], window.czIcon?.('mat', CS.mat)], ['اللون الأساسي', CS.color[0], null, CS.color[1]]];
+  if (hasTop()) { cards.push(['السطح', OPT.top.o[CS.top], window.czIcon?.('top', CS.top)]); if (!['same', 'glass'].includes(CS.top)) cards.push(['لون السطح', CS.topColor[0], null, CS.topColor[1]]); cards.push(['الحواف', OPT.edge.o[CS.edge], window.czIcon?.('edge', CS.edge)]); }
+  if (hasDoors()) cards.push(['الأبواب', OPT.door.o[CS.door], window.czIcon?.('door', CS.door)], ['المقابض', OPT.handle.o[CS.handle], window.czIcon?.('handle', CS.handle)]);
+  if (hasLegs()) cards.push(['الأرجل', OPT.legs.o[CS.legs], window.czIcon?.('legs', CS.legs)]);
+  const cols = 3, cw = (CW - 16 * (cols - 1)) / cols, ch = 150;
+  for (let i = 0; i < cards.length; i++) {
+    const [lab, val, icon, hex] = cards[i], x = R0 - ((i % cols) + 1) * cw - (i % cols) * 16, yy = y + Math.floor(i / cols) * (ch + 16);
+    rr(x, yy, cw, ch, 18, '#fff', '#e9e1cf');
+    const bx = x + cw - 110, by = yy + 24;
+    if (hex) { g.fillStyle = hex; g.beginPath(); g.arc(bx + 45, by + 45, 42, 0, 7); g.fill(); g.strokeStyle = '#0002'; g.lineWidth = 2; g.stroke(); }
+    else if (icon) {
+      const m = /url\((data:[^)]+)\)/.exec(icon), grad = /background:(linear-gradient[^;"]+)/.exec(icon);
+      let im = null;
+      if (m) { try { im = await loadImg(m[1]); } catch {} }
+      else if (/<svg/.test(icon)) im = await svgImg(icon.replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" width="96" height="80" '));
+      if (im) { g.save(); rr(bx - 4, by, 98, 90, 12, '#faf7ef'); g.clip(); g.drawImage(im, bx - 4, by, 98, 90); g.restore(); }
+      else if (grad) { rr(bx - 4, by, 98, 90, 12, CS.color[1]); }
+    }
+    g.fillStyle = '#8a7a55'; g.font = F(21, 600); g.fillText(lab, bx - 22, yy + 52);
+    g.fillStyle = '#16140f'; g.font = F(25, 800); wrap(val, bx - 22, yy + 92, cw - 150, 32);
+  }
+  y += Math.ceil(cards.length / cols) * (ch + 16) + 20;
   // الصورة المرجعية
   if (CS.ref) {
-    try {
-      const im = await loadImg(CS.ref); const bw = refW, bh = Math.min(520, bw * im.height / im.width);
-      g.font = F(26); g.fillStyle = '#16140f'; g.fillText('الصورة المرجعية', 60 + refW, y - 20);
-      g.drawImage(im, 60, y, bw, bh); g.strokeStyle = '#e9e1cf'; g.strokeRect(60, y, bw, bh);
-    } catch {}
+    try { const im = await loadImg(CS.ref); y = head('الصورة اللي أرسلها العميل', y + 30) + 14; const bh = Math.min(520, CW * im.height / im.width), bw = bh * im.width / im.height; g.drawImage(im, L0 + (CW - bw) / 2, y, bw, bh); g.strokeStyle = '#e9e1cf'; g.strokeRect(L0 + (CW - bw) / 2, y, bw, bh); y += bh + 20; } catch {}
   }
-  y = Math.max(y + rows.length * 50, CS.ref ? y + 540 : 0) + 60;
-  // الملاحظات وتحليل الصورة
-  const wrap = (text, x, yy, maxW, lh) => { const words = String(text).split(/\s+/); let line = ''; for (const w of words) { const t = line ? line + ' ' + w : w; if (g.measureText(t).width > maxW && line) { g.fillText(line, x, yy); yy += lh; line = w; } else line = t; } if (line) g.fillText(line, x, yy); return yy + lh; };
-  if (CS.notes) { g.font = F(26); g.fillStyle = '#16140f'; g.fillText('ملاحظات العميل', W - 60, y); g.font = F(23, 500); g.fillStyle = '#4a463d'; y = wrap(CS.notes, W - 60, y + 40, W - 120, 36) + 10; }
-  if (CS.ai) { g.font = F(26); g.fillStyle = '#16140f'; g.fillText('وصف التصميم من الصورة', W - 60, y); g.font = F(23, 500); g.fillStyle = '#4a463d'; y = wrap(CS.ai, W - 60, y + 40, W - 120, 36) + 10; }
-  // العميل والفرع (الطول النهائي حسب المحتوى)
-  H = Math.max(1754, y + 200);
+  // الملاحظات
+  if (CS.notes) { y = head('ملاحظات العميل', y + 30) + 20; g.font = F(25, 500); g.fillStyle = '#3d3a33'; y = wrap(CS.notes, R0, y + 10, CW, 38) + 10; }
+  if (CS.ai) { g.font = F(22, 500); g.fillStyle = '#6b604a'; y = wrap('من تحليل الصورة: ' + CS.ai, R0, y + 20, CW, 34) + 10; }
+  // المخطط الفني (للنجار/المصنع)
+  y = head('مخطط فني بالمقاسات', y + 40) + 14;
+  try { const im = await svgImg(diagram(CS, { w: 1120, h: 547 })); if (im) { g.strokeStyle = '#e9e1cf'; g.lineWidth = 2; g.strokeRect(L0 - 1, y - 1, 1122, 549); g.drawImage(im, L0, y, 1120, 547); } } catch {}
+  y += 570;
+  // العميل والفرع
+  H = y + 200;
   const b = furnitureBranches()[+CS.branch] || {};
   g.fillStyle = '#0b0c0f'; g.fillRect(0, H - 170, W, 170); g.fillStyle = '#DBB83C'; g.fillRect(0, H - 170, W, 3);
   g.fillStyle = '#fff'; g.font = F(28); g.fillText('العميل: ' + CS.name, W - 60, H - 112);
   g.fillStyle = '#f1d77a'; g.font = F(26, 500); g.fillText('الجوال: ' + CS.phone, W - 60, H - 66);
   g.textAlign = 'left'; g.fillStyle = '#fff'; g.font = F(26); g.fillText('الفرع: ' + (b.name || '') + ' — ' + (b.area || ''), 60, H - 112);
-  g.fillStyle = '#9d978a'; g.font = F(22, 500); g.fillText('المخطط توضيحي — تُؤكد التفاصيل مع العميل قبل التنفيذ', 60, H - 66);
+  g.fillStyle = '#9d978a'; g.font = F(22, 500); g.fillText('الصور توضيحية — تُؤكد التفاصيل مع العميل قبل التنفيذ', 60, H - 66);
   const out = document.createElement('canvas'); out.width = W; out.height = H; out.getContext('2d').drawImage(c, 0, 0);
   return new Promise(ok => out.toBlob(ok, 'image/png'));
 }

@@ -331,6 +331,30 @@
 
   // ---------- أيقونات توضيحية لأزرار الخيارات ----------
   const sv = (body) => `<svg viewBox="0 0 48 48" aria-hidden="true">${body}</svg>`;
+  // صور المجسم من عدة زوايا (لصورة الطلب اللي توصل الفرع)
+  window.cz3dShots = async function () {
+    if (!mv) return [];
+    if (!mv.loaded) await new Promise(ok => { mv.addEventListener('load', ok, { once: true }); setTimeout(ok, 8000); });
+    if (!mv.loaded) return [];
+    const wait = (ms) => new Promise(r => setTimeout(r, ms));
+    const rot = mv.hasAttribute('auto-rotate'); mv.removeAttribute('auto-rotate');
+    // model-viewer ما يرسم إذا كان برا الشاشة — نثبّته مؤقتاً داخل الشاشة (خلف المحتوى) أثناء التصوير
+    const css = mv.style.cssText; mv.style.cssText = 'position:fixed;left:0;top:0;width:900px;height:640px;z-index:-1;pointer-events:none';
+    await wait(500);
+    let orbit = null; try { orbit = mv.getCameraOrbit().toString(); } catch {}
+    const out = [];
+    for (const [label, o] of [['منظر من الزاوية', '35deg 66deg auto'], ['منظر أمامي', '0deg 82deg auto'], ['منظر جانبي', '90deg 82deg auto']]) {
+      try {
+        mv.cameraOrbit = o; mv.jumpCameraToGoal(); await wait(300);
+        const blob = await Promise.race([mv.toBlob({ mimeType: 'image/png', idealAspect: false }), wait(4000).then(() => null)]);
+        if (blob && blob.size > 3000) out.push({ label, blob });
+      } catch {}
+    }
+    mv.style.cssText = css;
+    if (orbit) { mv.cameraOrbit = orbit; mv.jumpCameraToGoal(); }
+    if (rot) mv.setAttribute('auto-rotate', '');
+    return out;
+  };
   window.czIcon = function (name, k) {
     const lum = (h) => { const n = parseInt(h.slice(1), 16); return (.3 * (n >> 16) + .59 * ((n >> 8) & 255) + .11 * (n & 255)) / 255; };
     const soft = (h) => lum(h) > .82 ? mix(h, .8) : h;   // الألوان الفاتحة جداً نغمّقها شوي عشان يبان الملمس في الأيقونة
