@@ -1003,6 +1003,1228 @@
       "images": [],
       "products": [
         {
+          "id": "e6383636",
+          "name": "طقم كنب ريكلاينر قطيفة مضلّعة",
+          "images": [
+            {
+              "src": "uploads/np-sofa-set-327.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-sofa-set-330.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-sofa-set-335.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-sofa-set-341.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-sofa-set-344.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-sofa-set-354.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-sofa-detail-332.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-sofa-detail-333.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-sofa-detail-338.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-sofa-detail-348.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-sofa-detail-352.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-sofa-detail-355.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-sofa-detail-356.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-sofa-detail-358.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طقم كنب ريكلاينر كامل بقماش قطيفة مضلّعة ناعم (كوردروي)، كنبتين 3 مقاعد وكرسيين فردي، بمقاعد تنفتح للاسترخاء وطاولة وسطية بحوامل أكواب. راحة وفخامة لغرف المعيشة.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "c0525951",
+              "name": "أزرق",
+              "hex": "#2f4f8f",
+              "image": "uploads/np-sofa-set-327.webp"
+            },
+            {
+              "id": "498051c4",
+              "name": "أخضر زيتي",
+              "hex": "#6b7556",
+              "image": "uploads/np-sofa-set-330.webp"
+            },
+            {
+              "id": "93862b95",
+              "name": "بني",
+              "hex": "#7a4a2c",
+              "image": "uploads/np-sofa-set-335.webp"
+            },
+            {
+              "id": "ba1ef572",
+              "name": "خردلي",
+              "hex": "#d2a54a",
+              "image": "uploads/np-sofa-set-341.webp"
+            },
+            {
+              "id": "093a7ce5",
+              "name": "رمادي",
+              "hex": "#8d8d8d",
+              "image": "uploads/np-sofa-set-344.webp"
+            },
+            {
+              "id": "6cd6e4c6",
+              "name": "رمادي فاتح",
+              "hex": "#c8c8c8",
+              "image": "uploads/np-sofa-set-354.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "c5c6a67f",
+              "label": "القطع",
+              "value": "3 + 3 + 1 + 1"
+            },
+            {
+              "id": "04ba58c4",
+              "label": "القماش",
+              "value": "قطيفة مضلّعة"
+            },
+            {
+              "id": "b4c81fa8",
+              "label": "الحركة",
+              "value": "ريكلاينر"
+            }
+          ],
+          "available": true,
+          "featured": true
+        },
+        {
+          "id": "8e73aa5c",
+          "name": "كرسي يتحول لسرير",
+          "images": [
+            {
+              "src": "uploads/np-chairbed-313.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-chairbed-314.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-chairbed-315.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-chairbed-316.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-chairbed-317.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-chairbed-320.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "كرسي عملي ينفتح ليتحول إلى سرير مفرد بخطوة وحدة، مع مخدة. حل ذكي للضيوف والمساحات الصغيرة.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "c24a1069",
+              "name": "أخضر",
+              "hex": "#7a9a3a",
+              "image": "uploads/np-chairbed-313.webp"
+            },
+            {
+              "id": "f7bb86ab",
+              "name": "أزرق",
+              "hex": "#2f4f8f",
+              "image": "uploads/np-chairbed-314.webp"
+            },
+            {
+              "id": "c2238a23",
+              "name": "أزرق فاتح",
+              "hex": "#7fa6d6",
+              "image": "uploads/np-chairbed-315.webp"
+            },
+            {
+              "id": "63580bb0",
+              "name": "بني",
+              "hex": "#7a4a2c",
+              "image": "uploads/np-chairbed-316.webp"
+            },
+            {
+              "id": "ed9d372d",
+              "name": "رمادي",
+              "hex": "#8d8d8d",
+              "image": "uploads/np-chairbed-317.webp"
+            },
+            {
+              "id": "6ba5ed96",
+              "name": "برتقالي",
+              "hex": "#e2643a",
+              "image": "uploads/np-chairbed-320.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "3e0de8e8",
+              "label": "الاستخدام",
+              "value": "كرسي + سرير"
+            },
+            {
+              "id": "a97c5110",
+              "label": "الإطار",
+              "value": "معدن"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "3cc41095",
+          "name": "كرسي استرخاء بأرجل خشبية",
+          "images": [
+            {
+              "src": "uploads/np-armchair-120.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-armchair-121.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-armchair-122.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "كرسي فردي بتصميم مستدير ناعم وتنجيد بوكليه دافئ وأرجل خشبية دائرية. قطعة مميزة لركن القراءة أو جانب الكنب.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "5bb41d29",
+              "name": "موكا",
+              "hex": "#8a7563",
+              "image": "uploads/np-armchair-120.webp"
+            },
+            {
+              "id": "692e0da8",
+              "name": "كريمي",
+              "hex": "#eadfc8",
+              "image": "uploads/np-armchair-121.webp"
+            },
+            {
+              "id": "1efdcb07",
+              "name": "خاكي",
+              "hex": "#a39a7e",
+              "image": "uploads/np-armchair-122.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "18ad6f50",
+              "label": "التنجيد",
+              "value": "بوكليه"
+            },
+            {
+              "id": "e8f7c6c0",
+              "label": "الأرجل",
+              "value": "خشب"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "a9ed9548",
+          "name": "كرسي استرخاء ريكلاينر",
+          "images": [
+            {
+              "src": "uploads/np-recliner1-117.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-recliner1-118.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-recliner1-119.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "كرسي ريكلاينر مريح بتنجيد ناعم وظهر ومسند قدم ينفتحان للاسترخاء، مع حوامل أكواب. مثالي لغرف المعيشة والسينما المنزلية.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "15322fe0",
+              "name": "رمادي داكن",
+              "hex": "#4f4f52",
+              "image": "uploads/np-recliner1-117.webp"
+            },
+            {
+              "id": "981e2db3",
+              "name": "رمادي فاتح",
+              "hex": "#c8c8c8",
+              "image": "uploads/np-recliner1-118.webp"
+            },
+            {
+              "id": "5df9a8ef",
+              "name": "بيج",
+              "hex": "#d8c5a1",
+              "image": "uploads/np-recliner1-119.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "ae09c018",
+              "label": "الحركة",
+              "value": "ريكلاينر"
+            },
+            {
+              "id": "9ace5295",
+              "label": "التنجيد",
+              "value": "قماش ناعم"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "4cfd1e43",
+          "name": "طقم طاولة طعام معدن 6 كراسي",
+          "images": [
+            {
+              "src": "uploads/np-dining-metal-321.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-dining-metal-322.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-dining-metal-323.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-dining-metal-324.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-dining-metal-325.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-dining-metal-326.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طقم طعام عملي بطاولة سطح خشبي أو رخامي وقاعدة معدنية مع 6 كراسي معدنية بمقاعد مبطّنة. متين وسهل التنظيف ومناسب للاستخدام اليومي.\n\nالمقاس: 150 × 90 × 75 سم\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "28882bbf",
+              "name": "رمادي خشبي",
+              "hex": "#8d8d8d",
+              "image": "uploads/np-dining-metal-321.webp"
+            },
+            {
+              "id": "07d76e2b",
+              "name": "بني كاميل",
+              "hex": "#7a4a2c",
+              "image": "uploads/np-dining-metal-322.webp"
+            },
+            {
+              "id": "178abb30",
+              "name": "أبيض رخامي",
+              "hex": "#f2f0ea",
+              "image": "uploads/np-dining-metal-323.webp"
+            },
+            {
+              "id": "e96c26b7",
+              "name": "أسود وأحمر",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-dining-metal-324.webp"
+            },
+            {
+              "id": "522bb3a5",
+              "name": "بيج داكن",
+              "hex": "#d8c5a1",
+              "image": "uploads/np-dining-metal-325.webp"
+            },
+            {
+              "id": "6ea78ade",
+              "name": "أسود وفضي",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-dining-metal-326.webp"
+            }
+          ],
+          "sizes": "150 × 90 × 75 سم",
+          "specs": [
+            {
+              "id": "9f2e8620",
+              "label": "الكراسي",
+              "value": "6"
+            },
+            {
+              "id": "f74cc3db",
+              "label": "الهيكل",
+              "value": "معدن"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "a862fbfd",
+          "name": "طاولة طعام مع 8 كراسي مخمل",
+          "images": [
+            {
+              "src": "uploads/np-dining8-106.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-dining8-107.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-dining8-108.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طاولة طعام كبيرة مع 8 كراسي مخمل بظهر عالٍ مريح، بألوان هادئة تناسب الديكورات العصرية والعزايم.\n\nالمقاس: 180 × 90 × 75 سم\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "a8d1ebaa",
+              "name": "رمادي فاتح",
+              "hex": "#c8c8c8",
+              "image": "uploads/np-dining8-106.webp"
+            },
+            {
+              "id": "b7f3b843",
+              "name": "بيج",
+              "hex": "#d8c5a1",
+              "image": "uploads/np-dining8-107.webp"
+            },
+            {
+              "id": "e011f122",
+              "name": "قهوة",
+              "hex": "#6f4e37",
+              "image": "uploads/np-dining8-108.webp"
+            }
+          ],
+          "sizes": "180 × 90 × 75 سم",
+          "specs": [
+            {
+              "id": "91252a80",
+              "label": "الكراسي",
+              "value": "8 كراسي مخمل"
+            },
+            {
+              "id": "1e0fba27",
+              "label": "السطح",
+              "value": "لامع"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "d06bccb2",
+          "name": "طاولة طعام مع 6 كراسي مخمل",
+          "images": [
+            {
+              "src": "uploads/np-dining6-105.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طاولة طعام بسطح أبيض لامع وأرجل أنيقة مع 6 كراسي مبطّنة مخمل. تناسب غرف الطعام المتوسطة.\n\nالمقاس: 150 × 90 × 75 سم\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [],
+          "sizes": "150 × 90 × 75 سم",
+          "specs": [
+            {
+              "id": "7d06bf35",
+              "label": "الكراسي",
+              "value": "6 كراسي مخمل"
+            },
+            {
+              "id": "bb09647b",
+              "label": "السطح",
+              "value": "لامع"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "daed84ea",
+          "name": "عربة تقديم بإطار متقاطع",
+          "images": [
+            {
+              "src": "uploads/np-cart-x-102.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cart-x-103.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cart-x-104.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "عربة تقديم بتصميم إطار متقاطع لافت وصواني خشبية، تجمع العملية مع الشكل الديكوري.\n\nالمقاس: 80 × 40 × 75 سم\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "50164a90",
+              "name": "بني",
+              "hex": "#7a4a2c",
+              "image": "uploads/np-cart-x-102.webp"
+            },
+            {
+              "id": "07ab2679",
+              "name": "خشبي فاتح",
+              "hex": "#d2b48c",
+              "image": "uploads/np-cart-x-103.webp"
+            },
+            {
+              "id": "3053b40b",
+              "name": "بني فاتح",
+              "hex": "#a07850",
+              "image": "uploads/np-cart-x-104.webp"
+            }
+          ],
+          "sizes": "80 × 40 × 75 سم",
+          "specs": [
+            {
+              "id": "5f650853",
+              "label": "الطوابق",
+              "value": "2"
+            },
+            {
+              "id": "4d999bf9",
+              "label": "العجلات",
+              "value": "نعم"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "9f7ce418",
+          "name": "عربة تقديم عريضة",
+          "images": [
+            {
+              "src": "uploads/np-cart-wide-99.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cart-wide-100.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cart-wide-101.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "عربة تقديم عريضة بطابقين وإطار معدني بتصميم مفتوح، تصلح كطاولة جانبية أو كرف ضيافة متنقل.\n\nالمقاس: 90 × 40 × 75 سم\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "f191e93d",
+              "name": "خشبي",
+              "hex": "#b88a5a",
+              "image": "uploads/np-cart-wide-99.webp"
+            },
+            {
+              "id": "891f798b",
+              "name": "خشبي فاتح",
+              "hex": "#d2b48c",
+              "image": "uploads/np-cart-wide-100.webp"
+            },
+            {
+              "id": "6a2c1d93",
+              "name": "بني",
+              "hex": "#7a4a2c",
+              "image": "uploads/np-cart-wide-101.webp"
+            }
+          ],
+          "sizes": "90 × 40 × 75 سم",
+          "specs": [
+            {
+              "id": "0dc5b110",
+              "label": "الطوابق",
+              "value": "2"
+            },
+            {
+              "id": "53382cfe",
+              "label": "العجلات",
+              "value": "نعم"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "088c86f5",
+          "name": "عربة تقديم دائرية",
+          "images": [
+            {
+              "src": "uploads/np-cart-round-97.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cart-round-98.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "عربة ضيافة دائرية بطابقين وعجلات ومقبض علوي أنيق. مثالية لركن القهوة وتقديم الضيافة في المجالس.\n\nالمقاس: 61 × 57 × 80 سم\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "718c3d33",
+              "name": "بني",
+              "hex": "#7a4a2c",
+              "image": "uploads/np-cart-round-97.webp"
+            },
+            {
+              "id": "691652f6",
+              "name": "خشبي فاتح",
+              "hex": "#d2b48c",
+              "image": "uploads/np-cart-round-98.webp"
+            }
+          ],
+          "sizes": "61 × 57 × 80 سم",
+          "specs": [
+            {
+              "id": "64248765",
+              "label": "الطوابق",
+              "value": "2"
+            },
+            {
+              "id": "8238e316",
+              "label": "العجلات",
+              "value": "نعم"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "640937df",
+          "name": "عربة تقديم بطابقين",
+          "images": [
+            {
+              "src": "uploads/np-cart-rect-95.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cart-rect-96.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "عربة تقديم بطابقين وعجلات ومقبض، بصواني خشبية وإطار معدني أسود. للضيافة والقهوة أو كرف متنقل.\n\nالمقاس: 70 × 40 × 75 سم\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "445a5e62",
+              "name": "خشبي فاتح",
+              "hex": "#d2b48c",
+              "image": "uploads/np-cart-rect-95.webp"
+            },
+            {
+              "id": "e143bb31",
+              "name": "بني",
+              "hex": "#7a4a2c",
+              "image": "uploads/np-cart-rect-96.webp"
+            }
+          ],
+          "sizes": "70 × 40 × 75 سم",
+          "specs": [
+            {
+              "id": "4fb0504f",
+              "label": "الطوابق",
+              "value": "2"
+            },
+            {
+              "id": "0fd65a16",
+              "label": "العجلات",
+              "value": "نعم"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "3e448354",
+          "name": "طقم طاولات خدمة بيضاوية",
+          "images": [
+            {
+              "src": "uploads/np-nest-oval-86.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-nest-oval-88.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طقم طاولتين بيضاويتين متداخلتين بسطح رخامي وقاعدة معدنية سوداء، شكل انسيابي يناسب الكنب الطويل وغرف الجلوس.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "5e89cb23",
+              "name": "رخام أبيض",
+              "hex": "#eceae4",
+              "image": "uploads/np-nest-oval-86.webp"
+            },
+            {
+              "id": "74f8f595",
+              "name": "رخام رمادي",
+              "hex": "#a9a7a2",
+              "image": "uploads/np-nest-oval-88.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "1f5d2beb",
+              "label": "القطع",
+              "value": "طاولتين متداخلتين"
+            },
+            {
+              "id": "81f48742",
+              "label": "السطح",
+              "value": "رخامي"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "ed2db733",
+          "name": "طقم طاولات خدمة دائرية",
+          "images": [
+            {
+              "src": "uploads/np-nest-round-80.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-nest-round-81.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-nest-round-82.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-nest-round-83.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-nest-round-84.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-nest-round-85.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-nest-life-92.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-nest-life-93.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طقم طاولتين خدمة متداخلتين بأسطح دائرية (رخامي أو خشبي) وقواعد معدنية سوداء دائرية. تتداخل لتوفير المساحة وتنفصل عند الحاجة.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "a302114a",
+              "name": "رخام رمادي",
+              "hex": "#a9a7a2",
+              "image": "uploads/np-nest-round-80.webp"
+            },
+            {
+              "id": "91eb7bde",
+              "name": "رخام أبيض",
+              "hex": "#eceae4",
+              "image": "uploads/np-nest-round-81.webp"
+            },
+            {
+              "id": "b6ca2083",
+              "name": "رمادي حجري",
+              "hex": "#8e8a85",
+              "image": "uploads/np-nest-round-82.webp"
+            },
+            {
+              "id": "779d7c47",
+              "name": "خشبي فاتح",
+              "hex": "#d2b48c",
+              "image": "uploads/np-nest-round-83.webp"
+            },
+            {
+              "id": "4092867f",
+              "name": "رمادي داكن",
+              "hex": "#4f4f52",
+              "image": "uploads/np-nest-round-84.webp"
+            },
+            {
+              "id": "e606959f",
+              "name": "خشبي",
+              "hex": "#b88a5a",
+              "image": "uploads/np-nest-round-85.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "975a535b",
+              "label": "القطع",
+              "value": "طاولتين متداخلتين"
+            },
+            {
+              "id": "145ae1a3",
+              "label": "القاعدة",
+              "value": "معدن أسود"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "94921ce1",
+          "name": "علاقة ملابس واقفة بقاعدة",
+          "images": [
+            {
+              "src": "uploads/np-coat-26.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-coat-28.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "علاقة ملابس وشنط واقفة بخطافات متعددة وقاعدة سلكية لتخزين الأحذية أو المظلات. عملية للمداخل وغرف النوم.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "3cd44adf",
+              "name": "أبيض",
+              "hex": "#f2f0ea",
+              "image": "uploads/np-coat-26.webp"
+            },
+            {
+              "id": "8d3e1f32",
+              "name": "أسود",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-coat-28.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "8241ea76",
+              "label": "الخامة",
+              "value": "معدن"
+            },
+            {
+              "id": "e2b5e2d3",
+              "label": "القاعدة",
+              "value": "سلة للأحذية"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "20d083bd",
+          "name": "جزامة بأبواب مقوّسة",
+          "images": [
+            {
+              "src": "uploads/np-shoe-arch-179.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-shoe-arch-180.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-shoe-arch-181.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-shoe-arch-183.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-shoe-arch-184.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-shoe-arch-185.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "جزامة ببابين وتصاميم أقواس بالخشب والرخامي، تجمع الطابع العصري والدافئ. عمقها مناسب للأحذية وارتفاعها يناسب وضع ديكور فوقها.\n\nالمقاس: 80 × 35 × 110 سم\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "79eade0d",
+              "name": "أبيض وخشبي",
+              "hex": "#f2f0ea",
+              "image": "uploads/np-shoe-arch-179.webp"
+            },
+            {
+              "id": "8ef8fb46",
+              "name": "خشبي ورمادي",
+              "hex": "#b88a5a",
+              "image": "uploads/np-shoe-arch-180.webp"
+            },
+            {
+              "id": "4ecd7b77",
+              "name": "رمادي وخشبي",
+              "hex": "#8d8d8d",
+              "image": "uploads/np-shoe-arch-181.webp"
+            },
+            {
+              "id": "6b911106",
+              "name": "رمادي وخشبي فاتح",
+              "hex": "#8d8d8d",
+              "image": "uploads/np-shoe-arch-183.webp"
+            },
+            {
+              "id": "2a8be6e2",
+              "name": "خشبي ورمادي — نصف دائرة",
+              "hex": "#b88a5a",
+              "image": "uploads/np-shoe-arch-184.webp"
+            },
+            {
+              "id": "6f4fc3f2",
+              "name": "رمادي وبني",
+              "hex": "#8d8d8d",
+              "image": "uploads/np-shoe-arch-185.webp"
+            }
+          ],
+          "sizes": "80 × 35 × 110 سم",
+          "specs": [
+            {
+              "id": "5c41f025",
+              "label": "الأبواب",
+              "value": "بابين"
+            },
+            {
+              "id": "b2d71f61",
+              "label": "العمق",
+              "value": "35 سم"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "1b300178",
+          "name": "خزانة أحذية طويلة بنقوش هندسية",
+          "images": [
+            {
+              "src": "uploads/np-shoe-geo-tall-21.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-shoe-geo-tall-23.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "خزانة أحذية طويلة ببابين ونقوش هندسية، بأرفف متعددة تستوعب عدداً كبيراً من الأحذية في مساحة صغيرة.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "7594cd4c",
+              "name": "بيج خشبي",
+              "hex": "#d8c5a1",
+              "image": "uploads/np-shoe-geo-tall-21.webp"
+            },
+            {
+              "id": "636c859b",
+              "name": "رمادي فحمي",
+              "hex": "#3d3d40",
+              "image": "uploads/np-shoe-geo-tall-23.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "f9287c71",
+              "label": "الأرفف",
+              "value": "متعددة من الداخل"
+            },
+            {
+              "id": "fdf166ac",
+              "label": "الاستخدام",
+              "value": "مداخل / غرف الملابس"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "24f934dd",
+          "name": "جزامة بنقوش هندسية",
+          "images": [
+            {
+              "src": "uploads/np-shoe-geo-20.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-shoe-geo-22.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-shoe-geo-24.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-shoe-geo-25.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "جزامة أنيقة بأبواب مزيّنة بخطوط هندسية محفورة وأرجل خشبية مائلة. تصميم عصري يرتّب الأحذية ويجمّل المدخل.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "5866b3ad",
+              "name": "أبيض",
+              "hex": "#f2f0ea",
+              "image": "uploads/np-shoe-geo-20.webp"
+            },
+            {
+              "id": "94bacf1b",
+              "name": "بيج خشبي",
+              "hex": "#d8c5a1",
+              "image": "uploads/np-shoe-geo-22.webp"
+            },
+            {
+              "id": "5f835523",
+              "name": "بني جوزي",
+              "hex": "#5e3d28",
+              "image": "uploads/np-shoe-geo-24.webp"
+            },
+            {
+              "id": "c2a5738a",
+              "name": "رمادي فاتح",
+              "hex": "#c8c8c8",
+              "image": "uploads/np-shoe-geo-25.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "265990a1",
+              "label": "الأرجل",
+              "value": "مائلة"
+            },
+            {
+              "id": "89a53e8e",
+              "label": "الاستخدام",
+              "value": "مداخل / ممرات"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "f664b834",
+          "name": "خزانة بشرائح خشبية كبيرة",
+          "images": [
+            {
+              "src": "uploads/np-cab-slat100-33.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cab-slat100-34.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cab-slat100-38.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cab-slat100-39.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "النسخة الأعرض من خزانة الشرائح الخشبية، بمساحة تخزين أكبر للأحذية أو الأغراض، بواجهة بشرائح طولية وأرجل سوداء مائلة.\n\nالمقاس: 100 × 32 × 100 سم\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "ea6f15e3",
+              "name": "خشبي فاتح",
+              "hex": "#d2b48c",
+              "image": "uploads/np-cab-slat100-33.webp"
+            },
+            {
+              "id": "644da8ee",
+              "name": "رمادي بيج",
+              "hex": "#b5aa98",
+              "image": "uploads/np-cab-slat100-34.webp"
+            },
+            {
+              "id": "6722542b",
+              "name": "سنديان",
+              "hex": "#c9a57a",
+              "image": "uploads/np-cab-slat100-38.webp"
+            },
+            {
+              "id": "ea0cb668",
+              "name": "رمادي فاتح",
+              "hex": "#c8c8c8",
+              "image": "uploads/np-cab-slat100-39.webp"
+            }
+          ],
+          "sizes": "100 × 32 × 100 سم",
+          "specs": [
+            {
+              "id": "452d5248",
+              "label": "الأبواب",
+              "value": "بابين"
+            },
+            {
+              "id": "535038cf",
+              "label": "الأرجل",
+              "value": "معدن أسود"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "a92c1b92",
+          "name": "خزانة بشرائح خشبية",
+          "images": [
+            {
+              "src": "uploads/np-cab-slat80-30.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cab-slat80-31.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cab-slat80-32.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cab-slat80-35.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cab-slat80-37.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "خزانة ببابين وشرائح خشبية طولية بارزة على الواجهة وأرجل سوداء مائلة. عملية للمداخل والصالات كجزامة أو خزانة تخزين، وتضيف ملمساً دافئاً للمكان.\n\nالمقاس: 80 × 32 × 100 سم\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "21611388",
+              "name": "خشبي",
+              "hex": "#b88a5a",
+              "image": "uploads/np-cab-slat80-30.webp"
+            },
+            {
+              "id": "d6012fae",
+              "name": "رمادي فحمي",
+              "hex": "#3d3d40",
+              "image": "uploads/np-cab-slat80-31.webp"
+            },
+            {
+              "id": "6c51fc56",
+              "name": "بني داكن",
+              "hex": "#4a3226",
+              "image": "uploads/np-cab-slat80-32.webp"
+            },
+            {
+              "id": "131fbfce",
+              "name": "خشبي فاتح",
+              "hex": "#d2b48c",
+              "image": "uploads/np-cab-slat80-35.webp"
+            },
+            {
+              "id": "4e079609",
+              "name": "بني جوزي",
+              "hex": "#5e3d28",
+              "image": "uploads/np-cab-slat80-37.webp"
+            }
+          ],
+          "sizes": "80 × 32 × 100 سم",
+          "specs": [
+            {
+              "id": "4a607a3c",
+              "label": "الأبواب",
+              "value": "بابين"
+            },
+            {
+              "id": "8e3e53bc",
+              "label": "الأرجل",
+              "value": "معدن أسود"
+            }
+          ],
+          "available": true,
+          "featured": true
+        },
+        {
           "id": "d0628b70",
           "name": "طقم طاولات وسط ترافرتين",
           "images": [
@@ -3640,6 +4862,710 @@
       "images": [],
       "products": [
         {
+          "id": "76a3c8bb",
+          "name": "معلقة أقفاص هندسية سوداء",
+          "images": [
+            {
+              "src": "uploads/np-pend-cube-89.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-pend-cube-90.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-pend-cube-91.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "إضاءة معلقة بأقفاص معدنية سوداء بتصميم هندسي (مكعبات ومثلثات) بستايل صناعي عصري. مثالية فوق طاولة الطعام والمطبخ وركن القهوة.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "053d2d01",
+              "name": "مفردة — مكعب",
+              "hex": "#bbbbbb",
+              "image": "uploads/np-pend-cube-89.webp"
+            },
+            {
+              "id": "bbf72fff",
+              "name": "ثلاثية — مثلثات",
+              "hex": "#bbbbbb",
+              "image": "uploads/np-pend-cube-90.webp"
+            },
+            {
+              "id": "1187e41f",
+              "name": "ثلاثية — مكعبات",
+              "hex": "#bbbbbb",
+              "image": "uploads/np-pend-cube-91.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "b57cacf1",
+              "label": "الخامة",
+              "value": "معدن أسود مطفي"
+            },
+            {
+              "id": "cf282660",
+              "label": "القاعدة",
+              "value": "E27"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "8923363a",
+          "name": "معلقة نحاسية مزخرفة",
+          "images": [
+            {
+              "src": "uploads/np-pend-5771-304.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-pend-5771-306.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-pend-5771-301.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "معلقة أسطوانية بنقوش مخرّمة تُسقط ظلالاً زخرفية على الجدران عند الإضاءة. لمسة شرقية عصرية للمجالس والمداخل.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "11623b32",
+              "name": "نحاسي — مفردة",
+              "hex": "#b87333",
+              "image": "uploads/np-pend-5771-304.webp"
+            },
+            {
+              "id": "821ccd30",
+              "name": "أسود — مفردة",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-pend-5771-306.webp"
+            },
+            {
+              "id": "567ebc6d",
+              "name": "أسود — ثلاثية",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-pend-5771-301.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "f6ea1b6c",
+              "label": "الخامة",
+              "value": "معدن مزخرف"
+            },
+            {
+              "id": "b6906d94",
+              "label": "الأنواع",
+              "value": "مفردة / ثلاثية"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "341a1084",
+          "name": "معلقة زجاج كهرماني بإطار معدن",
+          "images": [
+            {
+              "src": "uploads/np-pend-5517-302.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-pend-5517-294.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-pend-5517-299.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "معلقة بزجاج كهرماني دافئ محاط بإطار معدني، تعطي إضاءة مريحة وجو هادئ للمجالس وركن القهوة.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "4394481c",
+              "name": "أسود — مفردة",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-pend-5517-302.webp"
+            },
+            {
+              "id": "0cf7aebc",
+              "name": "أسود — ثلاثية",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-pend-5517-294.webp"
+            },
+            {
+              "id": "076d1776",
+              "name": "ذهبي — ثلاثية",
+              "hex": "#c9a54a",
+              "image": "uploads/np-pend-5517-299.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "443de3b3",
+              "label": "الخامة",
+              "value": "معدن + زجاج كهرماني"
+            },
+            {
+              "id": "bb7c038a",
+              "label": "الأنواع",
+              "value": "مفردة / ثلاثية"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "62bf073b",
+          "name": "معلقة فانوس زجاجي مضلّع",
+          "images": [
+            {
+              "src": "uploads/np-pend-5539-298.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-pend-5539-293.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-pend-5539-297.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "معلقة بزجاج مضلّع داخل إطار معدني رفيع، تصميم أنيق يجمع الطابع الكلاسيكي مع الحداثة. تناسب المداخل والممرات وفوق طاولات الطعام.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "fe5c309a",
+              "name": "أسود — مفردة",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-pend-5539-298.webp"
+            },
+            {
+              "id": "992448ba",
+              "name": "ذهبي — ثلاثية",
+              "hex": "#c9a54a",
+              "image": "uploads/np-pend-5539-293.webp"
+            },
+            {
+              "id": "6ae37f8c",
+              "name": "أسود — ثلاثية",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-pend-5539-297.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "fe8f3150",
+              "label": "الخامة",
+              "value": "معدن + زجاج مضلّع"
+            },
+            {
+              "id": "6853076d",
+              "label": "الأنواع",
+              "value": "مفردة / ثلاثية"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "e64914ff",
+          "name": "معلقة فانوس بإطار شبك",
+          "images": [
+            {
+              "src": "uploads/np-pend-5532-292.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-pend-5532-296.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-pend-5532-295.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "معلقة على شكل فانوس بإطار معدني شبكي وزجاج كهرماني يعطي توهجاً دافئاً. متوفرة مفردة أو ثلاثية بقاعدة دائرية، باللون الذهبي أو الأسود.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "dfdf4c82",
+              "name": "ذهبي — مفردة",
+              "hex": "#c9a54a",
+              "image": "uploads/np-pend-5532-292.webp"
+            },
+            {
+              "id": "5b2c98d4",
+              "name": "أسود — مفردة",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-pend-5532-296.webp"
+            },
+            {
+              "id": "33df4446",
+              "name": "ذهبي — ثلاثية",
+              "hex": "#c9a54a",
+              "image": "uploads/np-pend-5532-295.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "6b4fc489",
+              "label": "الخامة",
+              "value": "معدن + زجاج"
+            },
+            {
+              "id": "b1ffa9ac",
+              "label": "الأنواع",
+              "value": "مفردة / ثلاثية"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "df48ba32",
+          "name": "معلقة كريستال بقفص معدني",
+          "images": [
+            {
+              "src": "uploads/np-pend-crystal-310.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-pend-crystal-305.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-pend-crystal-312.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-pend-crystal-300.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-pend-crystal-303.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-pend-crystal-308.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-pend-crystal-309.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "معلقة فاخرة بقفص معدني منحني وزجاج كريستالي شفاف يعكس الضوء بلمعة جميلة. خيارات مفردة وثلاثية بالذهبي أو الأسود.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "3b88c1f1",
+              "name": "أسود — مفردة",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-pend-crystal-310.webp"
+            },
+            {
+              "id": "3458b64b",
+              "name": "أسود — مفردة مضلّعة",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-pend-crystal-305.webp"
+            },
+            {
+              "id": "ae41e557",
+              "name": "أسود — مفردة شفافة",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-pend-crystal-312.webp"
+            },
+            {
+              "id": "a4de4264",
+              "name": "أسود — ثلاثية",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-pend-crystal-300.webp"
+            },
+            {
+              "id": "58a5ce1d",
+              "name": "ذهبي — ثلاثية",
+              "hex": "#c9a54a",
+              "image": "uploads/np-pend-crystal-303.webp"
+            },
+            {
+              "id": "15c22dcd",
+              "name": "ذهبي — ثلاثية مدوّرة",
+              "hex": "#c9a54a",
+              "image": "uploads/np-pend-crystal-308.webp"
+            },
+            {
+              "id": "3f81bc96",
+              "name": "أسود — ثلاثية شفافة",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-pend-crystal-309.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "355169de",
+              "label": "الخامة",
+              "value": "معدن + زجاج كريستالي"
+            },
+            {
+              "id": "b17503fc",
+              "label": "الأنواع",
+              "value": "مفردة / ثلاثية"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "15621864",
+          "name": "أباجورة فخار ريفي",
+          "images": [
+            {
+              "src": "uploads/np-lamp-rustic-9.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-rustic-10.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-rustic-11.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-rustic-12.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-rustic-13.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-rustic-14.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-rustic-15.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-rustic-16.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-rustic-17.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-rustic-18.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-rustic-19.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "أباجورة بقاعدة فخارية مشغولة بطابع ريفي معتّق وألوان طبيعية مستوحاة من الطين والحجر، مع غطاء قماش كتاني. قطعة ديكور دافئة تناسب الديكورات الطبيعية والبوهيمية والمجالس.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "cbb4e538",
+              "name": "رملي",
+              "hex": "#c8ad85",
+              "image": "uploads/np-lamp-rustic-9.webp"
+            },
+            {
+              "id": "03b6cd53",
+              "name": "مرقّط",
+              "hex": "#c4a582",
+              "image": "uploads/np-lamp-rustic-10.webp"
+            },
+            {
+              "id": "4449f21b",
+              "name": "رمادي معتّق",
+              "hex": "#8a8580",
+              "image": "uploads/np-lamp-rustic-11.webp"
+            },
+            {
+              "id": "e69662c8",
+              "name": "طيني",
+              "hex": "#b46e50",
+              "image": "uploads/np-lamp-rustic-12.webp"
+            },
+            {
+              "id": "faff6aa7",
+              "name": "أبيض بلمسات سوداء",
+              "hex": "#f2f0ea",
+              "image": "uploads/np-lamp-rustic-13.webp"
+            },
+            {
+              "id": "132d1cb2",
+              "name": "حجري",
+              "hex": "#b8b0a2",
+              "image": "uploads/np-lamp-rustic-14.webp"
+            },
+            {
+              "id": "c988bf15",
+              "name": "أسود وأبيض",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-lamp-rustic-15.webp"
+            },
+            {
+              "id": "6bdc2602",
+              "name": "فحمي معتّق",
+              "hex": "#3a3633",
+              "image": "uploads/np-lamp-rustic-16.webp"
+            },
+            {
+              "id": "9250dd1c",
+              "name": "طيني فاتح",
+              "hex": "#cf9a80",
+              "image": "uploads/np-lamp-rustic-17.webp"
+            },
+            {
+              "id": "fd4c07cc",
+              "name": "عاجي",
+              "hex": "#efe6d2",
+              "image": "uploads/np-lamp-rustic-18.webp"
+            },
+            {
+              "id": "07e0aef3",
+              "name": "أسود متدرّج",
+              "hex": "#1d1d1d",
+              "image": "uploads/np-lamp-rustic-19.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "a7006758",
+              "label": "الخامة",
+              "value": "فخار مشغول + غطاء قماش"
+            },
+            {
+              "id": "ebfae271",
+              "label": "الستايل",
+              "value": "ريفي / طبيعي"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "cd5e6758",
+          "name": "أباجورة سيراميك مودرن",
+          "images": [
+            {
+              "src": "uploads/np-lamp-modern-0.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-modern-1.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-modern-2.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-modern-3.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-modern-4.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-modern-5.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-modern-6.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-lamp-modern-7.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "أباجورة طاولة بقاعدة سيراميك فنية ونقوش بارزة، تعلوها قاعدة ذهبية لامعة وغطاء قماش كتاني بلون فاتح ينشر إضاءة دافئة وناعمة. تضيف لمسة أناقة لغرف النوم والصالات وطاولات الكونسول.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "105116c2",
+              "name": "أبيض شبكي",
+              "hex": "#f2f0ea",
+              "image": "uploads/np-lamp-modern-0.webp"
+            },
+            {
+              "id": "8e747bf0",
+              "name": "بيج بظل بني",
+              "hex": "#d8c5a1",
+              "image": "uploads/np-lamp-modern-1.webp"
+            },
+            {
+              "id": "78fcf9bd",
+              "name": "أبيض مخرّم",
+              "hex": "#f2f0ea",
+              "image": "uploads/np-lamp-modern-2.webp"
+            },
+            {
+              "id": "5e4f7756",
+              "name": "أبيض متموّج",
+              "hex": "#f2f0ea",
+              "image": "uploads/np-lamp-modern-3.webp"
+            },
+            {
+              "id": "7262740a",
+              "name": "أبيض مضلّع",
+              "hex": "#f2f0ea",
+              "image": "uploads/np-lamp-modern-4.webp"
+            },
+            {
+              "id": "2aec252a",
+              "name": "أبيض بنقش بارز",
+              "hex": "#f2f0ea",
+              "image": "uploads/np-lamp-modern-5.webp"
+            },
+            {
+              "id": "e6aecbca",
+              "name": "كريمي حلزوني",
+              "hex": "#eadfc8",
+              "image": "uploads/np-lamp-modern-6.webp"
+            },
+            {
+              "id": "86fe5f3f",
+              "name": "عاجي مضلّع",
+              "hex": "#efe6d2",
+              "image": "uploads/np-lamp-modern-7.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "6f709794",
+              "label": "الخامة",
+              "value": "قاعدة سيراميك + غطاء قماش"
+            },
+            {
+              "id": "64f20048",
+              "label": "الإضاءة",
+              "value": "دافئة — مناسبة للقراءة والديكور"
+            }
+          ],
+          "available": true,
+          "featured": true
+        },
+        {
+          "id": "9daa5f05",
+          "name": "ثريا حلقات كريستال",
+          "images": [
+            {
+              "src": "uploads/np-chandelier-109.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-chandelier-110.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-chandelier-111.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-chandelier-112.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-chandelier-113.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-chandelier-114.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "ثريا مودرن بحلقات متداخلة مرصعة بالكريستال وإطار معدني ذهبي أو أسود، تتلألأ بالإضاءة وتصير محور الديكور في الصالات والمجالس الواسعة.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "51945f9f",
+              "name": "قهوة",
+              "hex": "#917357",
+              "image": "uploads/np-chandelier-109.webp"
+            },
+            {
+              "id": "fe635142",
+              "name": "قهوة 2",
+              "hex": "#907156",
+              "image": "uploads/np-chandelier-110.webp"
+            },
+            {
+              "id": "62e18392",
+              "name": "رملي",
+              "hex": "#b2977d",
+              "image": "uploads/np-chandelier-111.webp"
+            },
+            {
+              "id": "25b6a6a3",
+              "name": "رملي 2",
+              "hex": "#b3997d",
+              "image": "uploads/np-chandelier-112.webp"
+            },
+            {
+              "id": "291e4260",
+              "name": "قهوة 3",
+              "hex": "#8c6e55",
+              "image": "uploads/np-chandelier-113.webp"
+            },
+            {
+              "id": "7a214d02",
+              "name": "قهوة 4",
+              "hex": "#8b6e56",
+              "image": "uploads/np-chandelier-114.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "473cbbdc",
+              "label": "الخامة",
+              "value": "معدن + كريستال"
+            },
+            {
+              "id": "e4cb17c0",
+              "label": "الستايل",
+              "value": "مودرن فاخر"
+            }
+          ],
+          "available": true,
+          "featured": true
+        },
+        {
           "id": "060d8cfd",
           "name": "ثريا حلقات LED عصرية",
           "images": [
@@ -3900,6 +5826,1814 @@
       "images": [],
       "products": [
         {
+          "id": "8c81e596",
+          "name": "طقم مفرش سرير أطفال (مهد)",
+          "images": [
+            {
+              "src": "uploads/np-baby-125.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-baby-126.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-baby-127.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-baby-128.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-baby-129.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-baby-130.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-baby-131.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-baby-132.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-baby-133.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-baby-134.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-baby-135.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طقم مفرش لسرير الأطفال مع واقيات جوانب مبطّنة ولحاف ناعم بطبعات مرحة (قمر، ديناصورات، زهور، شخصيات). خامة ناعمة على بشرة الطفل.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "087a1e73",
+              "name": "كريمي",
+              "hex": "#ddd6d5",
+              "image": "uploads/np-baby-125.webp"
+            },
+            {
+              "id": "6404453b",
+              "name": "وردي فاتح",
+              "hex": "#ebc6d0",
+              "image": "uploads/np-baby-126.webp"
+            },
+            {
+              "id": "30730b0f",
+              "name": "وردي فاتح 2",
+              "hex": "#d6d3e3",
+              "image": "uploads/np-baby-127.webp"
+            },
+            {
+              "id": "8d2c8547",
+              "name": "رمادي فاتح",
+              "hex": "#cdcfda",
+              "image": "uploads/np-baby-128.webp"
+            },
+            {
+              "id": "4d257b0e",
+              "name": "رمادي فاتح 2",
+              "hex": "#bfbeb0",
+              "image": "uploads/np-baby-129.webp"
+            },
+            {
+              "id": "ae52de7d",
+              "name": "وردي فاتح 3",
+              "hex": "#e7cdd3",
+              "image": "uploads/np-baby-130.webp"
+            },
+            {
+              "id": "d0a2213b",
+              "name": "رمادي فاتح 3",
+              "hex": "#d2caca",
+              "image": "uploads/np-baby-131.webp"
+            },
+            {
+              "id": "082ada2b",
+              "name": "وردي فاتح 4",
+              "hex": "#e8bed0",
+              "image": "uploads/np-baby-132.webp"
+            },
+            {
+              "id": "3d3e8f19",
+              "name": "خوخي",
+              "hex": "#e8b099",
+              "image": "uploads/np-baby-133.webp"
+            },
+            {
+              "id": "209b9a60",
+              "name": "كريمي 2",
+              "hex": "#e1d8d5",
+              "image": "uploads/np-baby-134.webp"
+            },
+            {
+              "id": "c96afdf6",
+              "name": "رمادي فاتح 4",
+              "hex": "#dcbfc1",
+              "image": "uploads/np-baby-135.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "55d1dcd0",
+              "label": "الطقم",
+              "value": "لحاف + واقيات جوانب"
+            },
+            {
+              "id": "44a05876",
+              "label": "الخامة",
+              "value": "قطن ناعم"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "0fc00ac0",
+          "name": "مفرش أطفال مفرد — تصاميم أولاد",
+          "images": [
+            {
+              "src": "uploads/np-kids-poster1-140.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster1-141.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster1-143.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster1-144.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster1-145.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster2-146.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster2-147.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster2-148.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster2-149.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster2-150.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster2-151.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster2-152.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-162.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-164.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-167.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-169.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-172.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-173.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-174.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-176.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-177.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "مفرش أطفال مفرد بطبعات سيارات وكرة وأبطال بألوان زرقاء ورمادية حيوية، طقم متكامل لغرفة الولد.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "d560f1dc",
+              "name": "رمادي فاتح",
+              "hex": "#cfb7b8",
+              "image": "uploads/np-kids-poster1-140.webp"
+            },
+            {
+              "id": "d9ae66b2",
+              "name": "وردي فاتح",
+              "hex": "#e5d0ca",
+              "image": "uploads/np-kids-poster1-141.webp"
+            },
+            {
+              "id": "7b513569",
+              "name": "رمادي فاتح 2",
+              "hex": "#cdc9bc",
+              "image": "uploads/np-kids-poster1-143.webp"
+            },
+            {
+              "id": "efc78950",
+              "name": "رمادي",
+              "hex": "#8d8e8d",
+              "image": "uploads/np-kids-poster1-144.webp"
+            },
+            {
+              "id": "37c1c9a8",
+              "name": "أخضر فاتح",
+              "hex": "#b4abad",
+              "image": "uploads/np-kids-poster1-145.webp"
+            },
+            {
+              "id": "b46f3969",
+              "name": "رمادي داكن",
+              "hex": "#556b7b",
+              "image": "uploads/np-kids-poster2-146.webp"
+            },
+            {
+              "id": "3ea031d7",
+              "name": "بنفسجي",
+              "hex": "#80789a",
+              "image": "uploads/np-kids-poster2-147.webp"
+            },
+            {
+              "id": "d932d6ab",
+              "name": "قهوة",
+              "hex": "#7f6f67",
+              "image": "uploads/np-kids-poster2-148.webp"
+            },
+            {
+              "id": "bfaf3a87",
+              "name": "بنفسجي 2",
+              "hex": "#6f7289",
+              "image": "uploads/np-kids-poster2-149.webp"
+            },
+            {
+              "id": "d1d48d7e",
+              "name": "موف",
+              "hex": "#a5907d",
+              "image": "uploads/np-kids-poster2-150.webp"
+            },
+            {
+              "id": "282ed50e",
+              "name": "بنفسجي 3",
+              "hex": "#817292",
+              "image": "uploads/np-kids-poster2-151.webp"
+            },
+            {
+              "id": "671db890",
+              "name": "أزرق",
+              "hex": "#49869a",
+              "image": "uploads/np-kids-poster2-152.webp"
+            },
+            {
+              "id": "3be66b58",
+              "name": "سماوي",
+              "hex": "#61a1b0",
+              "image": "uploads/np-kids-room-162.webp"
+            },
+            {
+              "id": "b79c9789",
+              "name": "رمادي 2",
+              "hex": "#89858d",
+              "image": "uploads/np-kids-room-164.webp"
+            },
+            {
+              "id": "a8370a20",
+              "name": "بنفسجي 4",
+              "hex": "#617284",
+              "image": "uploads/np-kids-room-167.webp"
+            },
+            {
+              "id": "4dd84a25",
+              "name": "رمادي 3",
+              "hex": "#7b8694",
+              "image": "uploads/np-kids-room-169.webp"
+            },
+            {
+              "id": "355be1b5",
+              "name": "رمادي 4",
+              "hex": "#8a8381",
+              "image": "uploads/np-kids-room-172.webp"
+            },
+            {
+              "id": "0be9e9aa",
+              "name": "رمادي 5",
+              "hex": "#9c907f",
+              "image": "uploads/np-kids-room-173.webp"
+            },
+            {
+              "id": "11da04b7",
+              "name": "رمادي 6",
+              "hex": "#a18f74",
+              "image": "uploads/np-kids-room-174.webp"
+            },
+            {
+              "id": "de412b9c",
+              "name": "بنفسجي 5",
+              "hex": "#6f7c94",
+              "image": "uploads/np-kids-room-176.webp"
+            },
+            {
+              "id": "b5d21b2c",
+              "name": "بنفسجي 6",
+              "hex": "#606b86",
+              "image": "uploads/np-kids-room-177.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "ea3cb863",
+              "label": "المقاس",
+              "value": "مفرد"
+            },
+            {
+              "id": "5f0563a3",
+              "label": "الطقم",
+              "value": "لحاف + شرشف + غطاء مخدة"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "a169ecbe",
+          "name": "مفرش أطفال مفرد — تصاميم بنات",
+          "images": [
+            {
+              "src": "uploads/np-kids-poster1-136.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster1-137.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster1-138.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster1-139.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster1-142.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster2-153.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster2-154.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster2-155.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster2-156.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster2-157.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster2-158.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster2-159.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster2-160.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-poster2-161.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-163.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-165.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-166.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-168.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-170.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-171.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-175.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-kids-room-178.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "مفرش أطفال مفرد بطبعات مبهجة وألوان وردية وبنفسجية، طقم متكامل يحوّل غرفة البنت لمكان تحبه.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "f9953535",
+              "name": "وردي",
+              "hex": "#d5aeb3",
+              "image": "uploads/np-kids-poster1-136.webp"
+            },
+            {
+              "id": "b5b68557",
+              "name": "وردي 2",
+              "hex": "#e3b8be",
+              "image": "uploads/np-kids-poster1-137.webp"
+            },
+            {
+              "id": "487206e3",
+              "name": "وردي 3",
+              "hex": "#deb7bf",
+              "image": "uploads/np-kids-poster1-138.webp"
+            },
+            {
+              "id": "c68f3ad5",
+              "name": "وردي 4",
+              "hex": "#dc9eaf",
+              "image": "uploads/np-kids-poster1-139.webp"
+            },
+            {
+              "id": "370ea233",
+              "name": "بني",
+              "hex": "#775a57",
+              "image": "uploads/np-kids-poster1-142.webp"
+            },
+            {
+              "id": "2502cf1f",
+              "name": "رمادي",
+              "hex": "#7d6d77",
+              "image": "uploads/np-kids-poster2-153.webp"
+            },
+            {
+              "id": "b99c8c33",
+              "name": "رمادي 2",
+              "hex": "#917a93",
+              "image": "uploads/np-kids-poster2-154.webp"
+            },
+            {
+              "id": "82729d0a",
+              "name": "موف",
+              "hex": "#c4919d",
+              "image": "uploads/np-kids-poster2-155.webp"
+            },
+            {
+              "id": "a9b3d5ca",
+              "name": "ليلكي",
+              "hex": "#c5a2c1",
+              "image": "uploads/np-kids-poster2-156.webp"
+            },
+            {
+              "id": "d94fd596",
+              "name": "وردي فاتح",
+              "hex": "#dfbfd0",
+              "image": "uploads/np-kids-poster2-157.webp"
+            },
+            {
+              "id": "7e0b39bd",
+              "name": "وردي 5",
+              "hex": "#d59cb1",
+              "image": "uploads/np-kids-poster2-158.webp"
+            },
+            {
+              "id": "e8433c2b",
+              "name": "وردي فاتح 2",
+              "hex": "#e6bfc6",
+              "image": "uploads/np-kids-poster2-159.webp"
+            },
+            {
+              "id": "f241c5ef",
+              "name": "وردي فاتح 3",
+              "hex": "#efc9da",
+              "image": "uploads/np-kids-poster2-160.webp"
+            },
+            {
+              "id": "d4d2c913",
+              "name": "موف 2",
+              "hex": "#b49592",
+              "image": "uploads/np-kids-poster2-161.webp"
+            },
+            {
+              "id": "b522e14c",
+              "name": "ليلكي 2",
+              "hex": "#bba2b3",
+              "image": "uploads/np-kids-room-163.webp"
+            },
+            {
+              "id": "c66d912d",
+              "name": "رمادي فاتح",
+              "hex": "#dab5ca",
+              "image": "uploads/np-kids-room-165.webp"
+            },
+            {
+              "id": "ef840458",
+              "name": "وردي فاتح 4",
+              "hex": "#eec6db",
+              "image": "uploads/np-kids-room-166.webp"
+            },
+            {
+              "id": "0ff17e9f",
+              "name": "بيج",
+              "hex": "#bea8a1",
+              "image": "uploads/np-kids-room-168.webp"
+            },
+            {
+              "id": "d3dc3b18",
+              "name": "وردي 6",
+              "hex": "#ddacbf",
+              "image": "uploads/np-kids-room-170.webp"
+            },
+            {
+              "id": "c885fd67",
+              "name": "ليلكي 3",
+              "hex": "#c5a5be",
+              "image": "uploads/np-kids-room-171.webp"
+            },
+            {
+              "id": "d97c71d1",
+              "name": "وردي فاتح 5",
+              "hex": "#e6c0c7",
+              "image": "uploads/np-kids-room-175.webp"
+            },
+            {
+              "id": "2b192e64",
+              "name": "وردي 7",
+              "hex": "#c6a0aa",
+              "image": "uploads/np-kids-room-178.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "63fb058c",
+              "label": "المقاس",
+              "value": "مفرد"
+            },
+            {
+              "id": "b5a84ec9",
+              "label": "الطقم",
+              "value": "لحاف + شرشف + غطاء مخدة"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "ce9be479",
+          "name": "مفرش سرير سادة مبطّن",
+          "images": [
+            {
+              "src": "uploads/np-plain-193.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-plain-194.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-plain-195.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-plain-196.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-plain-197.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-plain-198.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-plain-199.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-plain-200.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-plain-201.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-plain-202.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-plain-203.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-plain-204.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "مفرش سادة مبطّن بخياطة طولية أنيقة وألوان هادئة متعددة، طقم متكامل بشراشف وأغطية مخدات. بسيط وراقي ويتنسق مع أي ديكور.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "6aa5585f",
+              "name": "بيج",
+              "hex": "#c7b0a5",
+              "image": "uploads/np-plain-193.webp"
+            },
+            {
+              "id": "960c0593",
+              "name": "بيج 2",
+              "hex": "#cebaab",
+              "image": "uploads/np-plain-194.webp"
+            },
+            {
+              "id": "93a07fd6",
+              "name": "رمادي",
+              "hex": "#9d928d",
+              "image": "uploads/np-plain-195.webp"
+            },
+            {
+              "id": "ff075cf8",
+              "name": "زيتي",
+              "hex": "#6f6663",
+              "image": "uploads/np-plain-196.webp"
+            },
+            {
+              "id": "1a90bd8e",
+              "name": "رمادي فاتح",
+              "hex": "#c0b7b2",
+              "image": "uploads/np-plain-197.webp"
+            },
+            {
+              "id": "c1319684",
+              "name": "بيج 3",
+              "hex": "#c5ae9c",
+              "image": "uploads/np-plain-198.webp"
+            },
+            {
+              "id": "393d3ce2",
+              "name": "رمادي فاتح 2",
+              "hex": "#d6cec8",
+              "image": "uploads/np-plain-199.webp"
+            },
+            {
+              "id": "75c40728",
+              "name": "موف",
+              "hex": "#a9836f",
+              "image": "uploads/np-plain-200.webp"
+            },
+            {
+              "id": "b8c27b88",
+              "name": "بيج 4",
+              "hex": "#c8b4a4",
+              "image": "uploads/np-plain-201.webp"
+            },
+            {
+              "id": "06800d5a",
+              "name": "أخضر فاتح",
+              "hex": "#b7aba4",
+              "image": "uploads/np-plain-202.webp"
+            },
+            {
+              "id": "5f197567",
+              "name": "موف 2",
+              "hex": "#a59c96",
+              "image": "uploads/np-plain-203.webp"
+            },
+            {
+              "id": "72376b01",
+              "name": "رملي",
+              "hex": "#b0a299",
+              "image": "uploads/np-plain-204.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "9bfea32f",
+              "label": "المقاس",
+              "value": "مزدوج / مفرد"
+            },
+            {
+              "id": "9fdd4ad0",
+              "label": "الستايل",
+              "value": "سادة"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "716a5e2c",
+          "name": "مفرش سرير مزدوج بطبعة زهور",
+          "images": [
+            {
+              "src": "uploads/np-floral-186.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-187.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-188.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-189.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-190.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-191.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-192.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-243.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-244.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-245.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-246.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-247.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-248.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-249.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-250.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-251.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-252.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-253.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-254.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-255.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-256.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-257.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-258.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-259.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-260.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-261.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-262.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-263.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-264.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-floral-265.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "مفرش سرير مزدوج مبطّن بطبعات زهور وأوراق ناعمة وألوان هادئة، مع شراشف وأغطية مخدات منسّقة. يعطي غرفة النوم إحساساً بالانتعاش.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "18999765",
+              "name": "رمادي فاتح",
+              "hex": "#c9c9d0",
+              "image": "uploads/np-floral-186.webp"
+            },
+            {
+              "id": "0ea4a719",
+              "name": "رمادي فاتح 2",
+              "hex": "#cdc9cb",
+              "image": "uploads/np-floral-187.webp"
+            },
+            {
+              "id": "4006dbca",
+              "name": "رمادي داكن",
+              "hex": "#6d6b73",
+              "image": "uploads/np-floral-188.webp"
+            },
+            {
+              "id": "40120ad5",
+              "name": "موف",
+              "hex": "#a5877a",
+              "image": "uploads/np-floral-189.webp"
+            },
+            {
+              "id": "8b2f7a5a",
+              "name": "رمادي فاتح 3",
+              "hex": "#c8c2c0",
+              "image": "uploads/np-floral-190.webp"
+            },
+            {
+              "id": "36c928a0",
+              "name": "رمادي فاتح 4",
+              "hex": "#b8b2b2",
+              "image": "uploads/np-floral-191.webp"
+            },
+            {
+              "id": "38254125",
+              "name": "رمادي فاتح 5",
+              "hex": "#b9b2ae",
+              "image": "uploads/np-floral-192.webp"
+            },
+            {
+              "id": "c710d701",
+              "name": "رمادي فاتح 6",
+              "hex": "#c6c2c8",
+              "image": "uploads/np-floral-243.webp"
+            },
+            {
+              "id": "e62146ed",
+              "name": "قهوة",
+              "hex": "#7b716f",
+              "image": "uploads/np-floral-244.webp"
+            },
+            {
+              "id": "5443b422",
+              "name": "أخضر فاتح",
+              "hex": "#a2a6b2",
+              "image": "uploads/np-floral-245.webp"
+            },
+            {
+              "id": "6f7386d1",
+              "name": "كريمي",
+              "hex": "#d7d3d2",
+              "image": "uploads/np-floral-246.webp"
+            },
+            {
+              "id": "d63fac24",
+              "name": "موف 2",
+              "hex": "#b191a3",
+              "image": "uploads/np-floral-247.webp"
+            },
+            {
+              "id": "5dfa8843",
+              "name": "رمادي فاتح 7",
+              "hex": "#c9c6cc",
+              "image": "uploads/np-floral-248.webp"
+            },
+            {
+              "id": "db8939ab",
+              "name": "كريمي 2",
+              "hex": "#ddd9d8",
+              "image": "uploads/np-floral-249.webp"
+            },
+            {
+              "id": "4806d83b",
+              "name": "رمادي فاتح 8",
+              "hex": "#c4c0c0",
+              "image": "uploads/np-floral-250.webp"
+            },
+            {
+              "id": "71f30a53",
+              "name": "رمادي",
+              "hex": "#908f97",
+              "image": "uploads/np-floral-251.webp"
+            },
+            {
+              "id": "5a0b8edc",
+              "name": "رمادي فاتح 9",
+              "hex": "#c8cad1",
+              "image": "uploads/np-floral-252.webp"
+            },
+            {
+              "id": "e4baf98b",
+              "name": "موف 3",
+              "hex": "#a68c7f",
+              "image": "uploads/np-floral-253.webp"
+            },
+            {
+              "id": "9984bfc9",
+              "name": "رمادي 2",
+              "hex": "#888493",
+              "image": "uploads/np-floral-254.webp"
+            },
+            {
+              "id": "82569b32",
+              "name": "بني",
+              "hex": "#763c4c",
+              "image": "uploads/np-floral-255.webp"
+            },
+            {
+              "id": "6a313e3b",
+              "name": "أخضر فاتح 2",
+              "hex": "#b0a4a7",
+              "image": "uploads/np-floral-256.webp"
+            },
+            {
+              "id": "37a0510d",
+              "name": "رمادي فاتح 10",
+              "hex": "#c5c7ce",
+              "image": "uploads/np-floral-257.webp"
+            },
+            {
+              "id": "80f7abe9",
+              "name": "أخضر",
+              "hex": "#686e78",
+              "image": "uploads/np-floral-258.webp"
+            },
+            {
+              "id": "c1bf8e5f",
+              "name": "رمادي فاتح 11",
+              "hex": "#d0d2d4",
+              "image": "uploads/np-floral-259.webp"
+            },
+            {
+              "id": "f687b34d",
+              "name": "ليلكي",
+              "hex": "#a1a5b6",
+              "image": "uploads/np-floral-260.webp"
+            },
+            {
+              "id": "f64194b3",
+              "name": "كريمي 3",
+              "hex": "#d5d1d3",
+              "image": "uploads/np-floral-261.webp"
+            },
+            {
+              "id": "896e25d2",
+              "name": "رمادي داكن 2",
+              "hex": "#4c4a56",
+              "image": "uploads/np-floral-262.webp"
+            },
+            {
+              "id": "7ee846ba",
+              "name": "رمادي فاتح 12",
+              "hex": "#c9c8c4",
+              "image": "uploads/np-floral-263.webp"
+            },
+            {
+              "id": "4c4144db",
+              "name": "كريمي 4",
+              "hex": "#d8d5d7",
+              "image": "uploads/np-floral-264.webp"
+            },
+            {
+              "id": "58148d5a",
+              "name": "رمادي فاتح 13",
+              "hex": "#cfc8cc",
+              "image": "uploads/np-floral-265.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "20adc1c3",
+              "label": "المقاس",
+              "value": "مزدوج"
+            },
+            {
+              "id": "8f5a8193",
+              "label": "الطبعة",
+              "value": "زهور"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "3ce0596b",
+          "name": "مفرش قطن 100% مزدوج",
+          "images": [
+            {
+              "src": "uploads/np-cotton-205.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cotton-206.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cotton-207.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cotton-208.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cotton-209.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cotton-210.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cotton-211.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cotton-212.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cotton-213.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cotton-214.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cotton-215.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cotton-216.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cotton-217.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cotton-218.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cotton-219.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cotton-220.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-cotton-221.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "مفرش سرير مزدوج من القطن 100% بطبعات مخططة ونباتية، ناعم ومريح ويسمح بتهوية الجسم. طقم متكامل منسّق الألوان.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "3cfd47a1",
+              "name": "رمادي فاتح",
+              "hex": "#bbbec9",
+              "image": "uploads/np-cotton-205.webp"
+            },
+            {
+              "id": "e3fe2ff8",
+              "name": "بيج",
+              "hex": "#c1b0a7",
+              "image": "uploads/np-cotton-206.webp"
+            },
+            {
+              "id": "2323b1dc",
+              "name": "رمادي فاتح 2",
+              "hex": "#b6b5b6",
+              "image": "uploads/np-cotton-207.webp"
+            },
+            {
+              "id": "a034a67c",
+              "name": "رمادي فاتح 3",
+              "hex": "#bbbabd",
+              "image": "uploads/np-cotton-208.webp"
+            },
+            {
+              "id": "ec021318",
+              "name": "رمادي فاتح 4",
+              "hex": "#cfc5b6",
+              "image": "uploads/np-cotton-209.webp"
+            },
+            {
+              "id": "5e755bf4",
+              "name": "رمادي فاتح 5",
+              "hex": "#d5cfcd",
+              "image": "uploads/np-cotton-210.webp"
+            },
+            {
+              "id": "7c20302a",
+              "name": "بيج 2",
+              "hex": "#c8bbae",
+              "image": "uploads/np-cotton-211.webp"
+            },
+            {
+              "id": "58765a11",
+              "name": "رمادي فاتح 6",
+              "hex": "#c8c5b2",
+              "image": "uploads/np-cotton-212.webp"
+            },
+            {
+              "id": "4cafe02d",
+              "name": "بيج 3",
+              "hex": "#bbafa2",
+              "image": "uploads/np-cotton-213.webp"
+            },
+            {
+              "id": "354125d5",
+              "name": "رمادي فاتح 7",
+              "hex": "#cfcec3",
+              "image": "uploads/np-cotton-214.webp"
+            },
+            {
+              "id": "2f0417c8",
+              "name": "ليلكي",
+              "hex": "#b0adbb",
+              "image": "uploads/np-cotton-215.webp"
+            },
+            {
+              "id": "2eb2eddc",
+              "name": "رمادي فاتح 8",
+              "hex": "#cfcac8",
+              "image": "uploads/np-cotton-216.webp"
+            },
+            {
+              "id": "517497d3",
+              "name": "رمادي فاتح 9",
+              "hex": "#bbbabe",
+              "image": "uploads/np-cotton-217.webp"
+            },
+            {
+              "id": "e15c7f9f",
+              "name": "رمادي فاتح 10",
+              "hex": "#d0cbc5",
+              "image": "uploads/np-cotton-218.webp"
+            },
+            {
+              "id": "1c843778",
+              "name": "رمادي فاتح 11",
+              "hex": "#c8c8cc",
+              "image": "uploads/np-cotton-219.webp"
+            },
+            {
+              "id": "375e4fac",
+              "name": "كريمي",
+              "hex": "#dfd3c9",
+              "image": "uploads/np-cotton-220.webp"
+            },
+            {
+              "id": "08730b9b",
+              "name": "رمادي فاتح 12",
+              "hex": "#c8bdb5",
+              "image": "uploads/np-cotton-221.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "cdb464d2",
+              "label": "الخامة",
+              "value": "قطن 100%"
+            },
+            {
+              "id": "5817e337",
+              "label": "المقاس",
+              "value": "مزدوج"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "e0fba38e",
+          "name": "مفرش مزدوج بوجهين",
+          "images": [
+            {
+              "src": "uploads/np-reversible-222.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-223.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-224.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-225.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-226.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-227.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-228.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-229.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-266.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-267.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-268.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-269.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-270.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-271.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-272.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-273.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-274.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-275.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-276.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-277.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-278.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-279.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-280.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-281.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-282.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-283.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-284.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-285.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-286.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-287.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-288.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-289.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-290.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-reversible-291.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "مفرش مزدوج بوجهين: وجه مطبوع بنقشات زهور ووجه سادة بلون متناسق، تقدر تغيّر شكل الغرفة بقلب المفرش. مع شراشف ومخدات منسّقة.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "182374e4",
+              "name": "بيج",
+              "hex": "#c9b9af",
+              "image": "uploads/np-reversible-222.webp"
+            },
+            {
+              "id": "ac413776",
+              "name": "رمادي",
+              "hex": "#9b8c8b",
+              "image": "uploads/np-reversible-223.webp"
+            },
+            {
+              "id": "0938fcac",
+              "name": "رمادي فاتح",
+              "hex": "#c3b1b4",
+              "image": "uploads/np-reversible-224.webp"
+            },
+            {
+              "id": "a66701cd",
+              "name": "موف",
+              "hex": "#a29597",
+              "image": "uploads/np-reversible-225.webp"
+            },
+            {
+              "id": "06730b50",
+              "name": "رمادي فاتح 2",
+              "hex": "#bdbbc0",
+              "image": "uploads/np-reversible-226.webp"
+            },
+            {
+              "id": "2feb7056",
+              "name": "أخضر فاتح",
+              "hex": "#b2afae",
+              "image": "uploads/np-reversible-227.webp"
+            },
+            {
+              "id": "d9f8451c",
+              "name": "أخضر فاتح 2",
+              "hex": "#afa6ab",
+              "image": "uploads/np-reversible-228.webp"
+            },
+            {
+              "id": "eae49a34",
+              "name": "بيج 2",
+              "hex": "#c8baad",
+              "image": "uploads/np-reversible-229.webp"
+            },
+            {
+              "id": "2b213dce",
+              "name": "رمادي فاتح 3",
+              "hex": "#d2d2d4",
+              "image": "uploads/np-reversible-266.webp"
+            },
+            {
+              "id": "2abb63d3",
+              "name": "كريمي",
+              "hex": "#dbdade",
+              "image": "uploads/np-reversible-267.webp"
+            },
+            {
+              "id": "cf932b50",
+              "name": "رمادي داكن",
+              "hex": "#656364",
+              "image": "uploads/np-reversible-268.webp"
+            },
+            {
+              "id": "3f360f81",
+              "name": "كريمي 2",
+              "hex": "#d9d5d4",
+              "image": "uploads/np-reversible-269.webp"
+            },
+            {
+              "id": "b1b9c4f9",
+              "name": "ليلكي",
+              "hex": "#afb1bd",
+              "image": "uploads/np-reversible-270.webp"
+            },
+            {
+              "id": "5a2ecfb4",
+              "name": "كريمي 3",
+              "hex": "#d9d5d8",
+              "image": "uploads/np-reversible-271.webp"
+            },
+            {
+              "id": "d7cf1f69",
+              "name": "كريمي 4",
+              "hex": "#dbd9dc",
+              "image": "uploads/np-reversible-272.webp"
+            },
+            {
+              "id": "fbac3994",
+              "name": "موف 2",
+              "hex": "#a1a0a5",
+              "image": "uploads/np-reversible-273.webp"
+            },
+            {
+              "id": "f99bf81d",
+              "name": "رمادي 2",
+              "hex": "#8d8286",
+              "image": "uploads/np-reversible-274.webp"
+            },
+            {
+              "id": "2abc5c8a",
+              "name": "رمادي فاتح 4",
+              "hex": "#cec7c1",
+              "image": "uploads/np-reversible-275.webp"
+            },
+            {
+              "id": "73a8cb81",
+              "name": "بيج 3",
+              "hex": "#c9b9af",
+              "image": "uploads/np-reversible-276.webp"
+            },
+            {
+              "id": "2256631d",
+              "name": "رمادي 3",
+              "hex": "#9b8c8b",
+              "image": "uploads/np-reversible-277.webp"
+            },
+            {
+              "id": "4d800040",
+              "name": "رمادي فاتح 5",
+              "hex": "#c3b1b4",
+              "image": "uploads/np-reversible-278.webp"
+            },
+            {
+              "id": "650855e9",
+              "name": "موف 3",
+              "hex": "#a29597",
+              "image": "uploads/np-reversible-279.webp"
+            },
+            {
+              "id": "35f6c84c",
+              "name": "رمادي فاتح 6",
+              "hex": "#bdbbc0",
+              "image": "uploads/np-reversible-280.webp"
+            },
+            {
+              "id": "c31ca923",
+              "name": "أخضر فاتح 3",
+              "hex": "#b2afae",
+              "image": "uploads/np-reversible-281.webp"
+            },
+            {
+              "id": "5002ceef",
+              "name": "أخضر فاتح 4",
+              "hex": "#afa6ab",
+              "image": "uploads/np-reversible-282.webp"
+            },
+            {
+              "id": "1e3e3ae9",
+              "name": "بيج 4",
+              "hex": "#c8baad",
+              "image": "uploads/np-reversible-283.webp"
+            },
+            {
+              "id": "49a99a20",
+              "name": "رملي",
+              "hex": "#b6a99c",
+              "image": "uploads/np-reversible-284.webp"
+            },
+            {
+              "id": "3cb86425",
+              "name": "رملي 2",
+              "hex": "#b5a7a1",
+              "image": "uploads/np-reversible-285.webp"
+            },
+            {
+              "id": "054fb0cf",
+              "name": "أخضر فاتح 5",
+              "hex": "#aba6a3",
+              "image": "uploads/np-reversible-286.webp"
+            },
+            {
+              "id": "3e7e9d93",
+              "name": "موف 4",
+              "hex": "#b09f9b",
+              "image": "uploads/np-reversible-287.webp"
+            },
+            {
+              "id": "67a75765",
+              "name": "موف 5",
+              "hex": "#a98b7e",
+              "image": "uploads/np-reversible-288.webp"
+            },
+            {
+              "id": "f6e6aac8",
+              "name": "موف 6",
+              "hex": "#b29e97",
+              "image": "uploads/np-reversible-289.webp"
+            },
+            {
+              "id": "83d7f338",
+              "name": "بيج 5",
+              "hex": "#d0b5ab",
+              "image": "uploads/np-reversible-290.webp"
+            },
+            {
+              "id": "5d9f60d6",
+              "name": "رملي 3",
+              "hex": "#b3a49f",
+              "image": "uploads/np-reversible-291.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "ef53d0df",
+              "label": "الوجهين",
+              "value": "مطبوع + سادة"
+            },
+            {
+              "id": "aac4e80a",
+              "label": "المقاس",
+              "value": "مزدوج"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "a0049831",
+          "name": "مفرش سرير مطرّز مع خداديات",
+          "images": [
+            {
+              "src": "uploads/np-embroidered-230.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-embroidered-231.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-embroidered-232.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-embroidered-233.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-embroidered-234.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-embroidered-235.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-embroidered-236.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-embroidered-237.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-embroidered-238.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-embroidered-239.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-embroidered-240.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-embroidered-241.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-embroidered-242.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "مفرش فاخر بلون سادة مع أغطية مخدات وخداديات مطرّزة بزهور بنفسجية وحواف كشكش، لإطلالة راقية وناعمة لغرفة النوم.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "9898faa0",
+              "name": "كحلي",
+              "hex": "#423e4b",
+              "image": "uploads/np-embroidered-230.webp"
+            },
+            {
+              "id": "74a1f26e",
+              "name": "بيج",
+              "hex": "#caae9c",
+              "image": "uploads/np-embroidered-231.webp"
+            },
+            {
+              "id": "b2fae8b1",
+              "name": "كريمي",
+              "hex": "#ded5c8",
+              "image": "uploads/np-embroidered-232.webp"
+            },
+            {
+              "id": "fe673775",
+              "name": "أسود",
+              "hex": "#332e2a",
+              "image": "uploads/np-embroidered-233.webp"
+            },
+            {
+              "id": "1cb69505",
+              "name": "بيج 2",
+              "hex": "#bdafa3",
+              "image": "uploads/np-embroidered-234.webp"
+            },
+            {
+              "id": "bfcc0887",
+              "name": "بيج 3",
+              "hex": "#cfbfae",
+              "image": "uploads/np-embroidered-235.webp"
+            },
+            {
+              "id": "b8e05524",
+              "name": "رمادي",
+              "hex": "#958b7f",
+              "image": "uploads/np-embroidered-236.webp"
+            },
+            {
+              "id": "edd78de8",
+              "name": "موف",
+              "hex": "#bb918b",
+              "image": "uploads/np-embroidered-237.webp"
+            },
+            {
+              "id": "936532da",
+              "name": "رمادي فاتح",
+              "hex": "#d2d0cc",
+              "image": "uploads/np-embroidered-238.webp"
+            },
+            {
+              "id": "e4f4e8ec",
+              "name": "رمادي 2",
+              "hex": "#9a928f",
+              "image": "uploads/np-embroidered-239.webp"
+            },
+            {
+              "id": "d3135453",
+              "name": "موف 2",
+              "hex": "#ae968a",
+              "image": "uploads/np-embroidered-240.webp"
+            },
+            {
+              "id": "5fb25193",
+              "name": "كريمي 2",
+              "hex": "#e2dcd9",
+              "image": "uploads/np-embroidered-241.webp"
+            },
+            {
+              "id": "8ed9ec13",
+              "name": "زيتي",
+              "hex": "#766d68",
+              "image": "uploads/np-embroidered-242.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "37075c00",
+              "label": "التفاصيل",
+              "value": "تطريز + كشكش"
+            },
+            {
+              "id": "532c0904",
+              "label": "المقاس",
+              "value": "مزدوج"
+            }
+          ],
+          "available": true,
+          "featured": true
+        },
+        {
           "id": "98e4b9e8",
           "name": "مراتب الضبيبي",
           "images": [
@@ -4159,6 +7893,546 @@
         }
       ],
       "branchDept": "المفروشات"
+    },
+    {
+      "id": "c6",
+      "title": "الديكور واللوحات",
+      "description": "لوحات جدارية بالخط العربي، لوحات الحرم، فوانيس وقطع ديكور تكمّل جمال المكان.",
+      "cover": "",
+      "images": [],
+      "products": [
+        {
+          "id": "36f775da",
+          "name": "فوانيس ديكور معدنية مخرّمة",
+          "images": [
+            {
+              "src": "uploads/np-vases-40.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-vases-41.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-vases-42.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-vases-43.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-vases-44.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طقم فوانيس/مزهريات ديكور معدنية بزخارف مخرّمة وهلال على القمة، بأحجام متدرجة. تضيف لمسة رمضانية وشرقية للمداخل والمجالس.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "71a04228",
+              "name": "رمادي",
+              "hex": "#8a7f7b",
+              "image": "uploads/np-vases-40.webp"
+            },
+            {
+              "id": "79e1faf1",
+              "name": "رمادي 2",
+              "hex": "#a29484",
+              "image": "uploads/np-vases-41.webp"
+            },
+            {
+              "id": "4e64bc02",
+              "name": "قهوة",
+              "hex": "#8d734c",
+              "image": "uploads/np-vases-42.webp"
+            },
+            {
+              "id": "288a7a4d",
+              "name": "قهوة 2",
+              "hex": "#91784d",
+              "image": "uploads/np-vases-43.webp"
+            },
+            {
+              "id": "4c799b6c",
+              "name": "قهوة 3",
+              "hex": "#877048",
+              "image": "uploads/np-vases-44.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "2d94a480",
+              "label": "الخامة",
+              "value": "معدن مخرّم"
+            },
+            {
+              "id": "b3825f24",
+              "label": "الطقم",
+              "value": "أحجام متدرجة"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "5c381b61",
+          "name": "لوحات نقش بارز وأشجار",
+          "images": [
+            {
+              "src": "uploads/np-art-74.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-75.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-76.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-77.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-78.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-79.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "لوحات بنقش بارز ثلاثي الأبعاد لأشجار وزهور وآيات، بألوان هادئة كريمية تناسب الديكورات العصرية.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "17ea66f1",
+              "name": "أخضر فاتح",
+              "hex": "#aaa69e",
+              "image": "uploads/np-art-74.webp"
+            },
+            {
+              "id": "4df7746b",
+              "name": "رمادي",
+              "hex": "#98847a",
+              "image": "uploads/np-art-75.webp"
+            },
+            {
+              "id": "08d4c0ed",
+              "name": "رملي",
+              "hex": "#bca782",
+              "image": "uploads/np-art-76.webp"
+            },
+            {
+              "id": "b89d44ba",
+              "name": "رمادي 2",
+              "hex": "#867d76",
+              "image": "uploads/np-art-77.webp"
+            },
+            {
+              "id": "5901ca9e",
+              "name": "رملي 2",
+              "hex": "#c2a781",
+              "image": "uploads/np-art-78.webp"
+            },
+            {
+              "id": "076704ea",
+              "name": "رملي 3",
+              "hex": "#c9ac8d",
+              "image": "uploads/np-art-79.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "f718f3f7",
+              "label": "الستايل",
+              "value": "نقش بارز"
+            },
+            {
+              "id": "19debdf2",
+              "label": "الإطار",
+              "value": "حسب الطلب"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "2a2444ae",
+          "name": "لوحات خط عربي بزخارف إسلامية",
+          "images": [
+            {
+              "src": "uploads/np-art-62.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-63.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-64.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-65.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-66.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art67-67.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-68.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-69.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-70.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-71.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-72.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-73.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "لوحات خط عربي مع زخارف إسلامية ونقوش سجاد شرقية بألوان غنية، تناسب المجالس والديكورات التراثية.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "51009a4c",
+              "name": "رمادي",
+              "hex": "#8b7e78",
+              "image": "uploads/np-art-62.webp"
+            },
+            {
+              "id": "cb22315f",
+              "name": "رملي",
+              "hex": "#ada799",
+              "image": "uploads/np-art-63.webp"
+            },
+            {
+              "id": "c23252f2",
+              "name": "قهوة",
+              "hex": "#94786e",
+              "image": "uploads/np-art-64.webp"
+            },
+            {
+              "id": "06d7d26a",
+              "name": "رمادي 2",
+              "hex": "#919090",
+              "image": "uploads/np-art-65.webp"
+            },
+            {
+              "id": "406701fd",
+              "name": "قهوة 2",
+              "hex": "#96775a",
+              "image": "uploads/np-art-66.webp"
+            },
+            {
+              "id": "dfecf293",
+              "name": "بني",
+              "hex": "#73443d",
+              "image": "uploads/np-art67-67.webp"
+            },
+            {
+              "id": "5200dadf",
+              "name": "رمادي فاتح",
+              "hex": "#d6c7b7",
+              "image": "uploads/np-art-68.webp"
+            },
+            {
+              "id": "cea18831",
+              "name": "رمادي 3",
+              "hex": "#998e86",
+              "image": "uploads/np-art-69.webp"
+            },
+            {
+              "id": "c736ac66",
+              "name": "ليلكي",
+              "hex": "#adb4c2",
+              "image": "uploads/np-art-70.webp"
+            },
+            {
+              "id": "c8ea0b73",
+              "name": "رمادي 4",
+              "hex": "#8d8c85",
+              "image": "uploads/np-art-71.webp"
+            },
+            {
+              "id": "8475124e",
+              "name": "رمادي 5",
+              "hex": "#a19c92",
+              "image": "uploads/np-art-72.webp"
+            },
+            {
+              "id": "045fec9d",
+              "name": "بني 2",
+              "hex": "#514328",
+              "image": "uploads/np-art-73.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "db48ffc3",
+              "label": "الستايل",
+              "value": "خط عربي + زخارف"
+            },
+            {
+              "id": "a56ff13d",
+              "label": "الإطار",
+              "value": "حسب الطلب"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "b5ae9945",
+          "name": "لوحات الحرم المكي",
+          "images": [
+            {
+              "src": "uploads/np-art-45.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-46.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "لوحات فنية للمسجد الحرام والكعبة المشرفة بطباعة عالية الدقة، تضفي روحانية على المجالس والمداخل.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "5b1c38f9",
+              "name": "رمادي",
+              "hex": "#89817c",
+              "image": "uploads/np-art-45.webp"
+            },
+            {
+              "id": "0d615459",
+              "name": "رمادي 2",
+              "hex": "#a19a8b",
+              "image": "uploads/np-art-46.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "b34b217e",
+              "label": "الطباعة",
+              "value": "عالية الدقة"
+            },
+            {
+              "id": "81b68f9a",
+              "label": "الإطار",
+              "value": "حسب الطلب"
+            }
+          ],
+          "available": true,
+          "featured": false
+        },
+        {
+          "id": "7e5b34dd",
+          "name": "لوحات خط عربي بلمسات ذهبية",
+          "images": [
+            {
+              "src": "uploads/np-art-47.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-48.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-49.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-50.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-51.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-52.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-53.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-54.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-55.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-56.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-57.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-58.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-59.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-60.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/np-art-61.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "لوحات بالخط العربي لآيات وأذكار مع خلفيات رخامية ولمسات ذهبية بارزة، تجمع الفخامة والمعنى.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "10d97533",
+              "name": "رمادي",
+              "hex": "#948974",
+              "image": "uploads/np-art-47.webp"
+            },
+            {
+              "id": "509e5060",
+              "name": "موف",
+              "hex": "#a89c8e",
+              "image": "uploads/np-art-48.webp"
+            },
+            {
+              "id": "94d8ff11",
+              "name": "أخضر",
+              "hex": "#75796c",
+              "image": "uploads/np-art-49.webp"
+            },
+            {
+              "id": "7af4caca",
+              "name": "رملي",
+              "hex": "#ad9272",
+              "image": "uploads/np-art-50.webp"
+            },
+            {
+              "id": "dc17ca06",
+              "name": "رملي 2",
+              "hex": "#ada291",
+              "image": "uploads/np-art-51.webp"
+            },
+            {
+              "id": "6f292c82",
+              "name": "بيج",
+              "hex": "#c1b3a3",
+              "image": "uploads/np-art-52.webp"
+            },
+            {
+              "id": "5fd2147a",
+              "name": "رملي 3",
+              "hex": "#ae9a82",
+              "image": "uploads/np-art-53.webp"
+            },
+            {
+              "id": "1b8ac2ff",
+              "name": "رمادي 2",
+              "hex": "#999885",
+              "image": "uploads/np-art-54.webp"
+            },
+            {
+              "id": "c48822ad",
+              "name": "رملي 4",
+              "hex": "#a5a083",
+              "image": "uploads/np-art-55.webp"
+            },
+            {
+              "id": "735d3888",
+              "name": "أخضر فاتح",
+              "hex": "#b9b69f",
+              "image": "uploads/np-art-56.webp"
+            },
+            {
+              "id": "8f4cf89b",
+              "name": "موف 2",
+              "hex": "#a59f99",
+              "image": "uploads/np-art-57.webp"
+            },
+            {
+              "id": "68148db4",
+              "name": "كريمي",
+              "hex": "#d9d0c5",
+              "image": "uploads/np-art-58.webp"
+            },
+            {
+              "id": "cf060f13",
+              "name": "رملي 5",
+              "hex": "#b0a48b",
+              "image": "uploads/np-art-59.webp"
+            },
+            {
+              "id": "3769b050",
+              "name": "بيج 2",
+              "hex": "#c4b19b",
+              "image": "uploads/np-art-60.webp"
+            },
+            {
+              "id": "b482d860",
+              "name": "بيج 3",
+              "hex": "#c8baa1",
+              "image": "uploads/np-art-61.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "4b797998",
+              "label": "الستايل",
+              "value": "خط عربي + رخامي"
+            },
+            {
+              "id": "79c4830f",
+              "label": "الإطار",
+              "value": "حسب الطلب"
+            }
+          ],
+          "available": true,
+          "featured": true
+        }
+      ],
+      "branchDept": "الأثاث"
     }
   ],
   "projects": [
