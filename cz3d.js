@@ -16,31 +16,40 @@
   const swatch = (kind, hex) => { if (!kind) return ''; tex(kind, hex); return swCache[kind + hex]; };
   function tex(kind, hex) {
     const key = kind + hex; if (texCache[key]) return texCache[key];
-    const S = 512, c = document.createElement('canvas'); c.width = c.height = S; const g = c.getContext('2d');
+    const S = ['marble', 'wood', 'veneer', 'travertine'].includes(kind) ? 1024 : 512, c = document.createElement('canvas'); c.width = c.height = S; const g = c.getContext('2d');
     let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
     g.fillStyle = hex; g.fillRect(0, 0, S, S);
     if (kind === 'wood' || kind === 'veneer') {
-      const n = kind === 'wood' ? 26 : 60;
+      // خشب: أحزمة لون عريضة + ألياف دقيقة متموجة + مسام — الألياف بطول القطعة
+      const solid = kind === 'wood';
+      for (let i = 0; i < 14; i++) { g.globalAlpha = .1 + rnd() * .14; g.fillStyle = mix(hex, rnd() > .5 ? .84 + rnd() * .1 : 1.05 + rnd() * .1); const y = rnd() * S, hh = 18 + rnd() * 70; g.fillRect(0, y, S, hh); if (y + hh > S) g.fillRect(0, y - S, S, hh); }
+      const n = solid ? 150 : 210;
       for (let i = 0; i < n; i++) {
-        const y0 = rnd() * S, a = 2 + rnd() * (kind === 'wood' ? 9 : 3), f = .004 + rnd() * .01;
-        g.strokeStyle = rnd() > .5 ? mix(hex, .78 + rnd() * .12) : mix(hex, 1.06 + rnd() * .08); g.lineWidth = kind === 'wood' ? 1 + rnd() * 3 : .6 + rnd();
-        g.globalAlpha = .55; g.beginPath();
-        for (let x = 0; x <= S; x += 8) { const y = y0 + Math.sin(x * f + i) * a; x ? g.lineTo(x, y) : g.moveTo(x, y); }
-        g.stroke();
+        const y0 = rnd() * S, amp = (solid ? 5 : 2) * (.4 + rnd()), f = (1 + Math.floor(rnd() * 2)) * Math.PI * 2 / S, ph = rnd() * 7;
+        g.strokeStyle = rnd() > .45 ? mix(hex, .66 + rnd() * .2) : mix(hex, 1.08 + rnd() * .12); g.lineWidth = .5 + rnd() * (solid ? 1.6 : .9); g.globalAlpha = .16 + rnd() * .3;
+        g.beginPath(); for (let x = 0; x <= S; x += 6) { const y = y0 + Math.sin(x * f + ph) * amp; x ? g.lineTo(x, y) : g.moveTo(x, y); } g.stroke();
       }
-      if (kind === 'wood') for (let k = 0; k < 3; k++) { g.globalAlpha = .35; g.strokeStyle = mix(hex, .7); g.lineWidth = 1.5; g.beginPath(); g.ellipse(rnd() * S, rnd() * S, 18 + rnd() * 20, 5 + rnd() * 5, 0, 0, Math.PI * 2); g.stroke(); }
+      if (solid) for (let k = 0; k < 4; k++) { const cx = rnd() * S, cy = rnd() * S; for (let r = 3; r < 26; r += 4) { g.globalAlpha = .22; g.strokeStyle = mix(hex, .62); g.lineWidth = 1; g.beginPath(); g.ellipse(cx, cy, r * 2.6, r * .55, 0, 0, Math.PI * 2); g.stroke(); } }
+      for (let i = 0; i < 900; i++) { g.globalAlpha = .18; g.fillStyle = mix(hex, .6); g.fillRect(rnd() * S, rnd() * S, 2 + rnd() * 5, .7); }
     } else if (kind === 'marble') {
-      g.filter = 'blur(1.2px)';
-      for (let i = 0; i < 9; i++) {
-        g.globalAlpha = .25 + rnd() * .4; g.strokeStyle = mix(hex, .55 + rnd() * .25); g.lineWidth = .8 + rnd() * 2.5;
-        g.beginPath(); let x = rnd() * S, y = -20; g.moveTo(x, y);
-        while (y < S + 20) { const nx = x + (rnd() - .5) * 90, ny = y + 30 + rnd() * 60; g.quadraticCurveTo(x + (rnd() - .5) * 120, (y + ny) / 2, nx, ny); x = nx; y = ny; }
-        g.stroke();
-      }
+      // رخام: غيوم لونية ناعمة + عروق رئيسية متفرعة + عروق شعرية
+      const dark = rgb(hex).reduce((x, y) => x + y, 0) / 3 < .35, vein = (k) => dark ? mix('#ffffff', k) : mix(hex, k);
+      for (let i = 0; i < 22; i++) { const x = rnd() * S, y = rnd() * S, r = 60 + rnd() * 150, gr = g.createRadialGradient(x, y, 0, x, y, r); const c = dark ? mix(hex, 1.5 + rnd()) : mix(hex, .86 + rnd() * .1); gr.addColorStop(0, c); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.globalAlpha = .1 + rnd() * .12; g.fillStyle = gr; for (const [ox, oy] of [[0, 0], [S, 0], [-S, 0], [0, S], [0, -S]]) { g.save(); g.translate(ox, oy); g.fillRect(x - r, y - r, r * 2, r * 2); g.restore(); } }
+      const drawVein = (x, y, ang, w, len, depth) => {
+        g.beginPath(); g.moveTo(x, y); let steps = Math.floor(len / 22);
+        for (let i = 0; i < steps; i++) { ang += (rnd() - .5) * .7; const nx = x + Math.cos(ang) * 22, ny = y + Math.sin(ang) * 22; g.quadraticCurveTo(x + (rnd() - .5) * 14, y + (rnd() - .5) * 14, nx, ny); x = nx; y = ny;
+          if (depth < 2 && rnd() < .13) { g.stroke(); drawVein(x, y, ang + (rnd() > .5 ? .6 : -.6), w * .5, len * .4, depth + 1); g.beginPath(); g.moveTo(x, y); } }
+        g.strokeStyle = vein(dark ? .9 : .5 + rnd() * .15); g.lineWidth = w; g.globalAlpha = dark ? .5 : .32 + rnd() * .25; g.stroke();
+      };
+      g.filter = 'blur(.7px)';
+      for (let i = 0; i < 7; i++) drawVein(rnd() * S, -10, Math.PI / 2 + (rnd() - .5) * 1.1, 1.2 + rnd() * 2.6, S * 1.5, 0);
       g.filter = 'none';
+      for (let i = 0; i < 26; i++) drawVein(rnd() * S, rnd() * S, rnd() * Math.PI * 2, .5, 90 + rnd() * 160, 2);
     } else if (kind === 'travertine') {
-      for (let i = 0; i < 70; i++) { g.globalAlpha = .25 + rnd() * .35; g.fillStyle = mix(hex, .78 + rnd() * .2); const y = rnd() * S; g.fillRect(0, y, S, 1 + rnd() * 3); }
-      for (let i = 0; i < 120; i++) { g.globalAlpha = .45; g.fillStyle = mix(hex, .7); g.beginPath(); g.ellipse(rnd() * S, rnd() * S, 1 + rnd() * 5, .6 + rnd() * 1.4, 0, 0, Math.PI * 2); g.fill(); }
+      // ترافرتين: طبقات أفقية متدرجة + خطوط رفيعة + مسامات طولية
+      for (let i = 0; i < 26; i++) { g.globalAlpha = .12 + rnd() * .16; g.fillStyle = mix(hex, rnd() > .5 ? .86 + rnd() * .08 : 1.04 + rnd() * .07); const y = rnd() * S; g.fillRect(0, y, S, 10 + rnd() * 46); }
+      for (let i = 0; i < 180; i++) { g.globalAlpha = .14 + rnd() * .22; g.strokeStyle = mix(hex, .74 + rnd() * .2); g.lineWidth = .6 + rnd() * 1.4; const y0 = rnd() * S, ph = rnd() * 7; g.beginPath(); for (let x = 0; x <= S; x += 16) { const y = y0 + Math.sin(x * Math.PI * 2 / S + ph) * 2.5; x ? g.lineTo(x, y) : g.moveTo(x, y); } g.stroke(); }
+      for (let i = 0; i < 520; i++) { g.globalAlpha = .3 + rnd() * .3; g.fillStyle = mix(hex, .6 + rnd() * .12); g.beginPath(); g.ellipse(rnd() * S, rnd() * S, 1.5 + rnd() * 7, .5 + rnd() * 1.3, 0, 0, Math.PI * 2); g.fill(); }
     } else if (kind === 'sintered') {
       for (let i = 0; i < 1600; i++) { g.globalAlpha = .5; g.fillStyle = mix(hex, .65 + rnd() * .5); g.fillRect(rnd() * S, rnd() * S, 1.4, 1.4); }
       g.globalAlpha = .25; g.strokeStyle = mix(hex, .8); g.lineWidth = 1; g.beginPath(); g.moveTo(0, S * .3); g.bezierCurveTo(S * .3, S * .2, S * .6, S * .5, S, S * .4); g.stroke();
@@ -56,7 +65,7 @@
       for (let x = 0; x < S; x += 32) { g.globalAlpha = .5; g.fillStyle = mix(hex, .62); g.fillRect(x, 0, 5, S); g.globalAlpha = .25; g.fillStyle = mix(hex, 1.15); g.fillRect(x + 5, 0, 2, S); }
     }
     g.globalAlpha = 1;
-    swCache[key] = c.toDataURL('image/jpeg', .8);
+    { const sc = document.createElement('canvas'); sc.width = sc.height = 160; sc.getContext('2d').drawImage(c, 0, 0, S * .45, S * .45, 0, 0, 160, 160); swCache[key] = sc.toDataURL('image/jpeg', .8); }
     const b64 = c.toDataURL('image/jpeg', .86).split(',')[1];
     return (texCache[key] = Uint8Array.from(atob(b64), ch => ch.charCodeAt(0)));
   }
@@ -72,29 +81,56 @@
       if (tris) for (const [a, b2, c] of tris) G.I.push(o + a, o + b2, o + c);
       else for (let k = 1; k < pts.length - 1; k++) G.I.push(o, o + k, o + k + 1);
     };
-    // منشور من شكل مغلق (محدّب) بين ارتفاعين
-    function prism(outline, y0, y1, m, cx = 0, cz = 0) {
-      const gi = matIndex(m);
-      const pts = outline.map(([x, z]) => [x + cx, z + cz]);
-      const top = pts.map(([x, z]) => [x, y1, z]), bot = pts.map(([x, z]) => [x, y0, z]).reverse();
-      const tris = convex(pts) ? null : earcut(pts), N = pts.length;
-      face(gi, top, [0, 1, 0], ([x, , z]) => [x / T, z / T], tris);
-      face(gi, bot, [0, -1, 0], ([x, , z]) => [x / T, z / T], tris && tris.map(([a, b2, c]) => [N - 1 - a, N - 1 - b2, N - 1 - c]));
-      let run = 0;
-      for (let k = 0; k < pts.length; k++) {
-        const a = pts[k], b = pts[(k + 1) % pts.length], dx = b[0] - a[0], dz = b[1] - a[1], L = Math.hypot(dx, dz) || 1e-6;
-        const n = [-dz / L, 0, dx / L];
-        const u0 = run / T, u1 = (run + L) / T; run += L;
-        const G = groups[gi], o = G.P.length / 3;
-        for (const [p, uv] of [[[a[0], y0, a[1]], [u0, y0 / T]], [[b[0], y0, b[1]], [u1, y0 / T]], [[b[0], y1, b[1]], [u1, y1 / T]], [[a[0], y1, a[1]], [u0, y1 / T]]]) { G.P.push(...p); G.N.push(...n); G.U.push(...uv); }
+    // سطح ممتد بين حلقات (نفس عدد النقاط) مع تنعيم الإضاءة: الأسطح المنحنية تطلع ناعمة مو مضلّعة
+    function loft(rings, m, cx = 0, cz = 0, caps = true) {
+      const gi = matIndex(m), G = groups[gi], n = rings[0].pts.length, R = rings.map(r => ({ y: r.y, pts: r.pts.map(([x, z]) => [x + cx, z + cz]) }));
+      const sub = (a, b2) => [a[0] - b2[0], a[1] - b2[1], a[2] - b2[2]], cross = (a, b2) => [a[1] * b2[2] - a[2] * b2[1], a[2] * b2[0] - a[0] * b2[2], a[0] * b2[1] - a[1] * b2[0]];
+      const nrm = (v) => { const l = Math.hypot(v[0], v[1], v[2]) || 1; return [v[0] / l, v[1] / l, v[2] / l]; };
+      const P3 = (i, k) => [R[i].pts[k % n][0], R[i].y, R[i].pts[k % n][1]];
+      // عمودي كل وجه
+      const F = []; for (let i = 0; i < R.length - 1; i++) { F.push([]); for (let k = 0; k < n; k++) { const a = P3(i, k), b2 = P3(i, k + 1), c = P3(i + 1, k + 1), d = P3(i + 1, k); let f = cross(sub(b2, a), sub(d, a)); if (Math.hypot(...f) < 1e-12) f = cross(sub(c, b2), sub(d, b2)); F[i].push(nrm(f)); } }
+      const dot = (a, b2) => a[0] * b2[0] + a[1] * b2[1] + a[2] * b2[2];
+      // عمودي الرأس: متوسط الأوجه المجاورة اللي زاويتها قريبة (الزوايا الحادة تبقى حادة)
+      const vnorm = (i, k, side) => { // side 0 = بداية الضلع k، 1 = نهايته
+        const base = F[Math.min(i, F.length - 1)][k], acc = [0, 0, 0];
+        for (const fi of [i - 1, i]) { if (fi < 0 || fi >= F.length) continue; for (const fk of [k, side ? (k + 1) % n : (k + n - 1) % n]) { const f = F[fi][fk]; if (dot(f, base) > .55) { acc[0] += f[0]; acc[1] += f[1]; acc[2] += f[2]; } } }
+        return nrm(acc);
+      };
+      let run = 0; const U0 = [0]; for (let k = 0; k < n; k++) { const a = R[0].pts[k], b2 = R[0].pts[(k + 1) % n]; run += Math.hypot(b2[0] - a[0], b2[1] - a[1]); U0.push(run); }
+      for (let i = 0; i < R.length - 1; i++) for (let k = 0; k < n; k++) {
+        const o = G.P.length / 3, v0 = R[i].y / T, v1 = R[i + 1].y / T, u0 = U0[k] / T, u1 = U0[k + 1] / T;
+        const q = [[P3(i, k), vnorm(i, k, 0), [u0, v0]], [P3(i, k + 1), vnorm(i, k, 1), [u1, v0]], [P3(i + 1, k + 1), vnorm(i + 1, k, 1), [u1, v1]], [P3(i + 1, k), vnorm(i + 1, k, 0), [u0, v1]]];
+        for (const [pp, nn, uv] of q) { G.P.push(...pp); G.N.push(...nn); G.U.push(...uv); }
         G.I.push(o, o + 1, o + 2, o, o + 2, o + 3);
       }
+      if (caps) {
+        const top = R[R.length - 1], bot = R[0], tris = (pts) => convex(pts) ? null : earcut(pts);
+        const tt = tris(top.pts), tb = tris(bot.pts);
+        face(gi, top.pts.map(([x, z]) => [x, top.y, z]), [0, 1, 0], ([x, , z]) => [x / T, z / T], tt);
+        face(gi, bot.pts.map(([x, z]) => [x, bot.y, z]).reverse(), [0, -1, 0], ([x, , z]) => [x / T, z / T], tb && tb.map(([a, b2, c]) => [n - 1 - a, n - 1 - b2, n - 1 - c]));
+      }
     }
+    // منشور من شكل مغلق بين ارتفاعين
+    const prism = (outline, y0, y1, m, cx = 0, cz = 0) => loft([{ y: y0, pts: outline }, { y: y1, pts: outline }], m, cx, cz);
+    // بلاطة بحواف ناعمة مدوّرة (أسطح الطاولات، المقاعد، المراتب): gen(e) يرجّع الشكل منكمش بمقدار e
+    function soft(gen, y0, y1, r, m, cx = 0, cz = 0, bottom = true) {
+      r = Math.max(0, Math.min(r, (y1 - y0) / 2 - .0005)); const full = gen(0);
+      if (r < .0008) return prism(full, y0, y1, m, cx, cz);
+      const rings = [], K = 4;
+      if (bottom) for (let j = 0; j < K; j++) { const a = j / K * Math.PI / 2; rings.push({ y: y0 + r * (1 - Math.cos(a)), pts: gen(r * (1 - Math.sin(a))) }); }
+      else rings.push({ y: y0, pts: full });
+      rings.push({ y: y0 + (bottom ? r : 0), pts: full }, { y: y1 - r, pts: full });
+      for (let j = 1; j <= K; j++) { const a = j / K * Math.PI / 2; rings.push({ y: y1 - r + r * Math.sin(a), pts: gen(r * (1 - Math.cos(a))) }); }
+      if (rings.some(g => g.pts.length !== full.length)) return prism(full, y0, y1, m, cx, cz);
+      loft(rings, m, cx, cz);
+    }
+    // جسم دوراني (قواعد نحتية وأرجل مخروطة): profile = [[y, rx, rz], ...]
+    const lathe = (profile, m, cx = 0, cz = 0, seg = 40) => loft(profile.map(([y, rx, rz]) => ({ y, pts: ellO(rx * 2, (rz ?? rx) * 2, seg) })), m, cx, cz);
     const box = (cx, cy, cz, sx, sy, sz, m) => prism(rectO(sx, sz), cy - sy / 2, cy + sy / 2, m, cx, cz);
-    // عمود مائل بين نقطتين (أرجل X والأرجل السلكية) — نبنيه من قطع صغيرة متتالية
-    const beam = (x0, y0, z0, x1, y1, z1, t, m) => { const n = Math.max(2, Math.ceil(Math.abs(y1 - y0) / .02)); for (let k = 0; k < n; k++) { const f0 = k / n, f1 = (k + 1) / n, fx = (f0 + f1) / 2; prism(rectO(t, t), y0 + (y1 - y0) * f0, y0 + (y1 - y0) * f1 + .002, m, x0 + (x1 - x0) * fx, z0 + (z1 - z0) * fx); } };
-    const cyl = (cx, y0, y1, cz, r, m, seg = 20) => prism(ellO(r * 2, r * 2, seg), y0, y1, m, cx, cz);
-    return { prism, box, cyl, beam, mats, groups };
+    const cyl = (cx, y0, y1, cz, r, m, seg = 20) => prism(ellO(r * 2, r * 2, Math.max(seg, 18)), y0, y1, m, cx, cz);
+    // عمود مائل بين نقطتين (أرجل X والأرجل السلكية): مقطع ينزاح مع الارتفاع — ناعم بدون درج
+    const beam = (x0, y0, z0, x1, y1, z1, t, m) => { const o = t > .02 ? rectO(t, t, t * .25) : ellO(t, t, 10); loft([{ y: y0, pts: o.map(([x, z]) => [x + x0, z + z0]) }, { y: y1, pts: o.map(([x, z]) => [x + x1, z + z1]) }], m); };
+    return { prism, loft, soft, lathe, box, cyl, beam, mats, groups };
   }
   // أشكال ثنائية الأبعاد (عكس عقارب الساعة من فوق)
   function rectO(w, d, r = 0) {
@@ -152,13 +188,18 @@
     const B = { c: body, tex: matTex, rough: st.mat === 'metal' ? .3 : st.mat === 'fabric' ? .95 : st.mat === 'mdf' ? .45 : .6, metal: st.mat === 'metal' ? .85 : 0 };
     const topC = st.top === 'same' ? body : st.top === 'glass' ? '#cfe3ea' : st.topColor[1];
     const topTex = { marble: 'marble', sintered: 'sintered', travertine: 'travertine', padded: 'tufted', same: matTex }[st.top] || null;
-    const TOP = st.top === 'glass' ? { c: '#d6ebf0', alpha: .38, rough: .05, metal: 0 } : { c: topC, tex: topTex, rough: st.top === 'marble' || st.top === 'sintered' ? .2 : st.top === 'padded' ? .9 : B.rough, metal: st.top === 'same' ? B.metal : 0 };
+    const TOP = st.top === 'glass' ? { c: '#e4f1f3', alpha: .3, rough: .03, metal: 0 } : { c: topC, tex: topTex, rough: st.top === 'marble' || st.top === 'sintered' ? .2 : st.top === 'padded' ? .9 : B.rough, metal: st.top === 'same' ? B.metal : 0 };
     const lk = ['gold', 'black', 'wood'].includes(st.legs) ? st.legs : (st.legc || 'wood');
     const LEG = lk === 'gold' ? { c: METAL.gold, rough: .25, metal: 1 } : lk === 'black' ? { c: METAL.black, rough: .35, metal: .8 } : lk === 'chrome' ? { c: '#c9ccd1', rough: .12, metal: 1 }
       : lk === 'body' ? { ...B } : lk === 'top' ? { c: topC, tex: topTex, rough: .3, metal: 0 } : { c: mix(body, .72), tex: 'wood', rough: .6, metal: 0 };
     const HANDLE = st.handle === 'black' ? { c: METAL.black, rough: .3, metal: .8 } : { c: METAL.gold, rough: .25, metal: 1 };
+    // لمعة سطحية (clearcoat): الرخام والسنتر ستون مصقولين، اللاكيه نص لمعة، الخشب ساتان — والقماش له وبر ناعم
+    if (['marble', 'sintered'].includes(st.top)) { TOP.coat = 1; TOP.rough = .32; } else if (st.top === 'travertine') { TOP.coat = .25; TOP.rough = .6; } else if (st.top === 'padded') TOP.sheen = 1;
+    if (st.mat === 'mdf') { B.coat = .6; B.rough = .4; } else if (st.mat === 'veneer' || st.mat === 'solid') { B.coat = .3; B.rough = .5; } else if (st.mat === 'fabric') B.sheen = 1;
+    if (st.top === 'same') Object.assign(TOP, { coat: B.coat, sheen: B.sheen, rough: B.rough });
+    if (LEG.tex === 'wood') LEG.coat = .3;
     return { B, TOP, LEG, HANDLE, DARK: { c: mix(body, .45), rough: .7, metal: 0 }, GROOVE: { c: body, tex: 'grooved', rough: B.rough, metal: B.metal },
-      GLASS: { c: '#d6ebf0', alpha: .4, rough: .05, metal: 0 }, MIRROR: { c: '#e9eef0', rough: .02, metal: 1 }, WHITE: { c: '#f6f3ec', tex: 'fabric', rough: .95, metal: 0 },
+      GLASS: { c: '#e4f1f3', alpha: .3, rough: .03, metal: 0 }, GEDGE: { c: '#6fb3a6', alpha: .75, rough: .1, metal: 0 }, MIRROR: { c: '#e9eef0', rough: .02, metal: 1 }, WHITE: { c: '#f6f3ec', tex: 'fabric', rough: .95, metal: 0 },
       TUFT: { c: body, tex: 'tufted', rough: .95, metal: 0 }, GOLD: { c: METAL.gold, rough: .25, metal: 1 } };
   }
 
@@ -182,17 +223,20 @@
           for (let i = 0; i < o.length; i++) { const p = o[i], q = o[(i + 1) % o.length]; while (next <= run + L[i]) { const f = (next - run) / L[i]; b.cyl(cx + p[0] + (q[0] - p[0]) * f, y0, y1, cz + p[1] + (q[1] - p[1]) * f, step * .48, M.LEG, 10); next += step; } run += L[i]; } }
         return;
       }
-      if (st.legs === 'sculpt') { // قاعدة نحتية: ساعة رملية منحنية
-        const n = 18, rx = ow * .2, rz = od * .2;
-        for (let i = 0; i < n; i++) { const t = (i + .5) / n, f = .32 + .68 * Math.abs(2 * t - 1) ** 1.7; b.prism(ellO(rx * 2 * f, rz * 2 * f, 32), y0 + H * i / n, y0 + H * (i + 1) / n + .001, M.LEG, cx, cz); }
+      if (st.legs === 'sculpt') { // قاعدة نحتية: ساعة رملية منحنية ناعمة
+        const n = 26, rx = ow * .2, rz = od * .2, prof = [];
+        for (let i = 0; i <= n; i++) { const t = i / n, f = .3 + .7 * Math.abs(2 * t - 1) ** 1.8; prof.push([y0 + H * t, rx * f, rz * f]); }
+        b.lathe(prof, M.LEG, cx, cz, 44);
         return;
       }
       if (st.legs === 'fins') { // أرجل ألواح منحنية حول المركز
         const n = ['rect', 'capsule'].includes(base) && ow / od > 1.4 ? 4 : 3, R = mn * .26, len = mn * .2, t = Math.max(.03, mn * .05);
         for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2 + Math.PI / 2, c = Math.cos(a), sn = Math.sin(a), sx = n === 4 ? ow / od : 1;
-          const cxx = c * R * sx, czz = sn * R, o = [[-len / 2, -t / 2], [len / 2, -t / 2], [len / 2, t / 2], [-len / 2, t / 2]].map(([u, v]) => [u * c - v * sn, u * sn + v * c]);
-          b.prism(o, y0, y1, M.LEG, cx + cxx, cz + czz);
-          b.prism(o.map(([u, v]) => [u * 1.25, v * 1.25]), y0, y0 + .02, M.LEG, cx + cxx * 1.15, cz + czz * 1.15); }
+          // لوح منحني على شكل C: عريض عند السطح والأرض وينحني للداخل في النص
+          const rings = [], K = 14;
+          for (let j = 0; j <= K; j++) { const tt = j / K, bow = Math.sin(Math.PI * tt), wide = 1 + .55 * Math.abs(2 * tt - 1) ** 2.2, rr = R * (1.12 - .34 * bow), ln = len * wide;
+            rings.push({ y: y0 + H * tt, pts: rectO(ln, t, t * .45).map(([u, v]) => [(u * c - v * sn) + c * rr * sx, (u * sn + v * c) + sn * rr]) }); }
+          b.loft(rings, M.LEG, cx, cz); }
         return;
       }
       if (st.legs === 'panel') { // جوانب شلال
@@ -217,26 +261,38 @@
         for (const [x, z] of pts) { const dx = x > 0 ? .035 : -.035; b.beam(cx + x, y0, cz + z, cx + x - dx, y1, cz + z, .011, M.LEG); b.beam(cx + x, y0, cz + z, cx + x + dx, y1, cz + z, .011, M.LEG); }
         return;
       }
-      if (st.legs === 'pedestal') { b.cyl(cx, y0 + .02, y1, cz, Math.max(.04, Math.min(ow, od) * .09), M.LEG); b.prism(shapeO(shape === 'round' ? 'round' : 'oval', Math.min(ow * .5, .6), Math.min(od * .5, .6)), y0, y0 + .025, M.LEG, cx, cz); return; }
-      const r = st.legs === 'wood' ? .022 : .014;
+      if (st.legs === 'pedestal') { // عمود وسطي بقاعدة منسابة
+        const rc = Math.max(.035, mn * .075), fx = Math.min(ow * .27, .32), fz = shape === 'round' ? fx : Math.min(od * .27, .32), k = fz / fx;
+        const prof = [[y0, fx * .96], [y0 + .006, fx], [y0 + .016, fx * .97], [y0 + .03, fx * .62], [y0 + .06, rc * 1.5], [y0 + .11, rc * 1.05], [y0 + .2, rc], [y1 - .05, rc], [y1 - .012, rc * 1.5], [y1, rc * 1.9]];
+        b.lathe(prof.map(([yy, r]) => [Math.min(yy, y1), r, r * k]), M.LEG, cx, cz, 44); return; }
+      const r = st.legs === 'wood' ? .022 : .014, woodLeg = st.legs === 'wood';
       let pts;
       if (['round', 'oval', 'capsule'].includes(shape)) pts = [45, 135, 225, 315].map(a => [Math.cos(a * Math.PI / 180) * ow * .34, Math.sin(a * Math.PI / 180) * od * .34]);
       else { const ix = Math.min(.06, ow * .12), iz = Math.min(.06, od * .12); pts = [[-ow / 2 + ix, -od / 2 + iz], [ow / 2 - ix, -od / 2 + iz], [ow / 2 - ix, od / 2 - iz], [-ow / 2 + ix, od / 2 - iz]]; }
-      for (const [x, z] of pts) b.cyl(cx + x, y0, y1, cz + z, r, M.LEG, 14);
+      for (const [x, z] of pts) { // الأرجل الخشبية مخروطة ومائلة للخارج، والمعدنية مستقيمة بقدم صغيرة
+        if (woodLeg) { const sp = Math.min(.035, H * .09), l = Math.hypot(x, z) || 1, o = ellO(r * 2, r * 2, 18), o2 = ellO(r * 1.15, r * 1.15, 18); b.loft([{ y: y0, pts: o2.map(([u, v]) => [u + x + x / l * sp, v + z + z / l * sp]) }, { y: y1, pts: o.map(([u, v]) => [u + x, v + z]) }], M.LEG, cx, cz); }
+        else { b.cyl(cx + x, y0 + .004, y1, cz + z, r, M.LEG, 18); b.cyl(cx + x, y0, y0 + .004, cz + z, r * 1.25, M.DARK, 18); } }
       if (st.legs !== 'wood' && !['round', 'oval', 'capsule'].includes(shape) && ow > .5) { // حلقة معدنية سفلية
         b.box(cx, y0 + .01, cz + pts[0][1], ow - .12, .015, .015, M.LEG); b.box(cx, y0 + .01, cz + pts[2][1], ow - .12, .015, .015, M.LEG);
       }
     }
     function tableTop(y, ow, od, shape, cx = 0, cz = 0) {
       if (shape === 'lshape') { b.box(cx, y + slab / 2, cz, ow, slab, od, M.TOP); return; }
-      b.prism(shapeO(shape, ow, od, st.edge), y, y + slab, M.TOP, cx, cz);
-      if (st.edge === 'beveled') b.prism(shapeO(shape, ow * .985, od * .985, st.edge), y + slab, y + slab + .003, M.TOP, cx, cz);
+      const gen = (e) => shapeO(shape, ow - 2 * e, (['round', 'square'].includes(shape) ? ow : od) - 2 * e, st.edge);
+      if (st.edge === 'beveled') { // شطفة واضحة من فوق
+        const c = Math.min(.009, slab * .4), full = gen(0), top = gen(c);
+        if (top.length === full.length) b.loft([{ y, pts: gen(.0012) }, { y: y + .0012, pts: full }, { y: y + slab - c, pts: full }, { y: y + slab, pts: top }], M.TOP, cx, cz); else b.prism(full, y, y + slab, M.TOP, cx, cz);
+      } else b.soft(gen, y, y + slab, st.edge === 'rounded' ? Math.min(.014, slab * .48) : .0022, M.TOP, cx, cz);
+      if (st.top === 'glass') b.loft([{ y: y + slab * .2, pts: gen(-.0006) }, { y: y + slab * .8, pts: gen(-.0006) }], M.GEDGE, cx, cz, false);
     }
     function chair(x, z, rot) {
       const s = .45, sh = .46, c = Math.cos(rot), sn = Math.sin(rot), at = (dx, dz) => [x + dx * c - dz * sn, z + dx * sn + dz * c];
-      const ctr = at(0, 0); b.prism(rectO(s, s, .03).map(([u, v]) => { const [X, Z] = [u * c - v * sn, u * sn + v * c]; return [X, Z]; }), sh - .06, sh, { c: st.color[1], tex: 'fabric', rough: .95, metal: 0 }, ctr[0], ctr[1]);
-      for (const [dx, dz] of [[-.19, -.19], [.19, -.19], [.19, .19], [-.19, .19]]) { const q = at(dx, dz); b.cyl(q[0], 0, sh - .06, q[1], .014, M.LEG, 10); }
-      const bk = at(0, -s / 2 + .02); b.prism(rectO(s, .04, .015).map(([u, v]) => [u * c - v * sn, u * sn + v * c]), sh, sh + .45, { c: st.color[1], tex: 'fabric', rough: .95, metal: 0 }, bk[0], bk[1]);
+      const rot2 = (o) => o.map(([u, v]) => [u * c - v * sn, u * sn + v * c]), CH = { c: st.color[1], tex: 'fabric', rough: .95, metal: 0, sheen: 1 };
+      const ctr = at(0, 0); b.soft((e) => rot2(rectO(s - 2 * e, s - 2 * e, .06)), sh - .075, sh + .01, .028, CH, ctr[0], ctr[1]);
+      for (const [dx, dz] of [[-.19, -.19], [.19, -.19], [.19, .19], [-.19, .19]]) { const q = at(dx, dz); b.lathe([[0, .009], [sh - .075, .015]], M.LEG, q[0], q[1], 14); }
+      const bk = at(0, -s / 2 + .03), bk2 = at(0, -s / 2 - .015); // ظهر مائل شوي للخلف
+      const ring = (e, q) => rot2(rectO(s * .96 - 2 * e, .055 - 2 * e, .025)).map(([u, v]) => [u + q[0], v + q[1]]);
+      b.loft([{ y: sh - .02, pts: ring(.006, bk) }, { y: sh + .02, pts: ring(0, bk) }, { y: sh + .4, pts: ring(0, bk2) }, { y: sh + .432, pts: ring(.008, bk2) }, { y: sh + .445, pts: ring(.02, bk2) }], CH);
     }
     function cabinet(cx, cz, cw, cd, ch, y0 = 0, opts = {}) {
       const plinth = opts.noLegs ? 0 : legsOK && st.legs !== 'hidden' ? Math.min(.12, ch * .12) : .04;
@@ -344,7 +400,7 @@
   function glb(b) {
     const chunks = [], views = [], accessors = [], images = [], textures = [], materialsOut = [], prims = [];
     let off = 0; const push = (arr, target) => { const pad = (4 - (arr.byteLength % 4)) % 4; chunks.push(new Uint8Array(arr.buffer, arr.byteOffset, arr.byteLength)); if (pad) chunks.push(new Uint8Array(pad)); views.push({ buffer: 0, byteOffset: off, byteLength: arr.byteLength, ...(target ? { target } : {}) }); off += arr.byteLength + pad; return views.length - 1; };
-    const texIdx = {};
+    const texIdx = {}, used = new Set();
     b.mats.forEach((m, i) => {
       const G = b.groups[i]; if (!G.I.length) return;
       const P = new Float32Array(G.P), N = new Float32Array(G.N), U = new Float32Array(G.U), I = new Uint32Array(G.I);
@@ -356,11 +412,14 @@
       const a3 = accessors.push({ bufferView: push(I, 34963), componentType: 5125, count: I.length, type: 'SCALAR' }) - 1;
       const col = lin(rgb(m.c)); const pbr = { baseColorFactor: [...(m.tex ? [1, 1, 1] : col), m.alpha ?? 1], metallicFactor: m.metal ?? 0, roughnessFactor: m.rough ?? .6 };
       if (m.tex) { const k = m.tex + m.c; if (texIdx[k] == null) { images.push({ bufferView: push(tex(m.tex, m.c)), mimeType: 'image/jpeg' }); textures.push({ source: images.length - 1, sampler: 0 }); texIdx[k] = textures.length - 1; } pbr.baseColorTexture = { index: texIdx[k] }; }
-      materialsOut.push({ pbrMetallicRoughness: pbr, doubleSided: !!m.alpha, ...(m.alpha ? { alphaMode: 'BLEND' } : {}) });
+      const ext = {};
+      if (m.coat) { ext.KHR_materials_clearcoat = { clearcoatFactor: m.coat, clearcoatRoughnessFactor: .06 }; used.add('KHR_materials_clearcoat'); }
+      if (m.sheen) { ext.KHR_materials_sheen = { sheenColorFactor: lin(rgb(mix(m.c, 1.25))), sheenRoughnessFactor: .45 }; used.add('KHR_materials_sheen'); }
+      materialsOut.push({ pbrMetallicRoughness: pbr, doubleSided: !!m.alpha, ...(m.alpha ? { alphaMode: 'BLEND' } : {}), ...(Object.keys(ext).length ? { extensions: ext } : {}) });
       prims.push({ attributes: { POSITION: a0, NORMAL: a1, TEXCOORD_0: a2 }, indices: a3, material: materialsOut.length - 1 });
     });
     const json = { asset: { version: '2.0', generator: 'dhubaibi-custom' }, scene: 0, scenes: [{ nodes: [0] }], nodes: [{ mesh: 0 }], meshes: [{ primitives: prims }],
-      materials: materialsOut, accessors, bufferViews: views, buffers: [{ byteLength: off }],
+      materials: materialsOut, accessors, bufferViews: views, buffers: [{ byteLength: off }], ...(used.size ? { extensionsUsed: [...used] } : {}),
       ...(images.length ? { images, textures, samplers: [{ magFilter: 9729, minFilter: 9987, wrapS: 10497, wrapT: 10497 }] } : {}) };
     let js = new TextEncoder().encode(JSON.stringify(json)); const jpad = (4 - (js.length % 4)) % 4; if (jpad) { const t = new Uint8Array(js.length + jpad).fill(0x20); t.set(js); js = t; }
     const head = new Uint32Array([0x46546c67, 2, 12 + 8 + js.length + 8 + off]);
@@ -374,7 +433,7 @@
     try { await loadMV(); } catch { host.innerHTML = '<div class="cz3d-load">تعذّر تحميل العارض — تأكد من الإنترنت</div>'; return; }
     mv = document.createElement('model-viewer');
     for (const [k, v] of Object.entries({ 'camera-controls': '', 'touch-action': 'pan-y', 'auto-rotate': '', 'auto-rotate-delay': '1500', 'rotation-per-second': '20deg',
-      'shadow-intensity': '1', 'shadow-softness': '.8', exposure: '1.05', 'environment-image': 'neutral', 'camera-orbit': '30deg 70deg auto',
+      'shadow-intensity': '1.25', 'shadow-softness': '1', exposure: '.86', 'tone-mapping': 'commerce', 'environment-image': 'neutral', 'camera-orbit': '30deg 70deg auto',
       'max-camera-orbit': 'auto 95deg auto', ar: '', 'ar-modes': 'webxr quick-look', 'ar-scale': 'fixed', 'ar-placement': 'floor', 'interaction-prompt': 'none', alt: 'مجسم القطعة', loading: 'eager', reveal: 'auto' })) mv.setAttribute(k, v);
     mv.innerHTML = '<button slot="ar-button" hidden></button>';
     host.innerHTML = ''; host.append(mv);
@@ -394,7 +453,7 @@
   window.cz3dMini = async function (host) {
     try { await loadMV(); } catch { return; }
     mini = document.createElement('model-viewer');
-    for (const [k, v] of Object.entries({ 'camera-controls': '', 'touch-action': 'pan-y', 'shadow-intensity': '1', exposure: '1.05', 'environment-image': 'neutral',
+    for (const [k, v] of Object.entries({ 'camera-controls': '', 'touch-action': 'pan-y', 'shadow-intensity': '1.25', 'shadow-softness': '1', exposure: '.86', 'tone-mapping': 'commerce', 'environment-image': 'neutral',
       'camera-orbit': '30deg 70deg auto', 'max-camera-orbit': 'auto 95deg auto', 'interaction-prompt': 'none', loading: 'eager', alt: 'معاينة' })) mini.setAttribute(k, v);
     host.append(mini); if (url) mini.src = url;
   };
@@ -427,18 +486,23 @@
     const wait = (ms) => new Promise(r => setTimeout(r, ms));
     const rot = mv.hasAttribute('auto-rotate'); mv.removeAttribute('auto-rotate');
     // model-viewer ما يرسم إذا كان برا الشاشة — نثبّته مؤقتاً داخل الشاشة (خلف المحتوى) أثناء التصوير
-    const css = mv.style.cssText; mv.style.cssText = 'position:fixed;left:0;top:0;width:900px;height:640px;z-index:-1;pointer-events:none';
-    await wait(500);
+    const css = mv.style.cssText; mv.style.cssText = `position:fixed;left:0;top:0;width:900px;height:640px;transform-origin:0 0;transform:scale(${Math.min(1, innerWidth / 900, innerHeight / 640)});z-index:-1;pointer-events:none`; // نصغّره بصرياً ليكون كامل داخل الشاشة (وإلا تنقص اللقطة) مع بقاء دقة 900×640
+    mv.setAttribute('minimum-render-scale', '1');   // بدون تصغير الدقة أثناء التصوير (وإلا تطلع اللقطة مقصوصة على الأجهزة البطيئة)
+    await wait(700);
     let orbit = null; try { orbit = mv.getCameraOrbit().toString(); } catch {}
     const out = [];
     for (const [label, o] of [['منظر من الزاوية', '35deg 66deg auto'], ['منظر أمامي', '0deg 82deg auto'], ['منظر جانبي', '90deg 82deg auto']]) {
       try {
-        mv.cameraOrbit = o; mv.jumpCameraToGoal(); await wait(300);
-        const blob = await Promise.race([mv.toBlob({ mimeType: 'image/png', idealAspect: false }), wait(4000).then(() => null)]);
+        mv.cameraOrbit = o; mv.cameraTarget = 'auto auto auto'; try { await mv.updateFraming?.(); } catch {} mv.jumpCameraToGoal(); await wait(600);   // ننتظر الكاميرا تستقر قبل اللقطة
+        // نلتقط لوحة الرسم كاملة بأنفسنا (toBlob أحياناً يقص اللقطة لما تتغير دقة العرض)
+        const grab = async () => { await new Promise(r => requestAnimationFrame(() => r())); const cv = [...(mv.shadowRoot?.querySelectorAll('canvas') || [])].filter(c => c.width > 50 && c.offsetWidth > 0).sort((a, b2) => b2.width - a.width)[0]; if (!cv) return null;
+          const o = document.createElement('canvas'); o.width = 900; o.height = 640; o.getContext('2d').drawImage(cv, 0, 0, cv.width, cv.height, 0, 0, 900, 640); return await new Promise(ok => o.toBlob(ok, 'image/png')); };
+        let blob = await Promise.race([grab().catch(() => null), wait(4000).then(() => null)]);
+        if (!blob || blob.size <= 3000) blob = await Promise.race([mv.toBlob({ mimeType: 'image/png', idealAspect: false }), wait(4000).then(() => null)]);
         if (blob && blob.size > 3000) out.push({ label, blob });
       } catch {}
     }
-    mv.style.cssText = css;
+    mv.style.cssText = css; mv.removeAttribute('minimum-render-scale');
     if (orbit) { mv.cameraOrbit = orbit; mv.jumpCameraToGoal(); }
     if (rot) mv.setAttribute('auto-rotate', '');
     return out;

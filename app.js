@@ -77,7 +77,7 @@ function countUp(el) {
   requestAnimationFrame(step);
 }
 
-const sized = (src, w) => (w && /^uploads\/[^?]+\.(webp|jpe?g|png)$/i.test(src || '')) ? `uploads/t/${src.slice(8).replace(/\.\w+$/, '')}-${[320, 480, 640, 960, 1280].find(x => x >= w) || 1280}.webp` : src;
+const sized = (src, w) => (w && w <= 960 && /^uploads\/[^?]+\.(webp|jpe?g|png)$/i.test(src || '')) ? `uploads/t/${src.slice(8).replace(/\.\w+$/, '')}-${w <= 480 ? 480 : 800}.webp` : src;
 const imgTag = (src, alt = '', cls = '', w = 640) => `<img class="fi ${cls}" src="${esc(sized(src, w))}" alt="${esc(alt)}" loading="lazy" decoding="async">`;
 
 function cardHTML(title, sub, desc, img, count) {

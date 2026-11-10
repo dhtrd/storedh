@@ -7,7 +7,7 @@ window.GH_BLOBS = {};
   const OWNER = CFG.owner, REPO = CFG.repo, BR = CFG.branch || 'main';
   const API = CFG.api || 'https://api.github.com';
   const TK = 'dh_gh_token';
-  const W = [320, 480, 640, 960, 1280];
+  const W = [480, 800];   // مقاسين بس: بطاقات وصور متوسطة — العرض الكبير ياخذ الأصل (الموقع أخف والنشر أسرع)
   const realFetch = window.fetch.bind(window);
   let token = ''; try { token = localStorage.getItem(TK) || ''; } catch {}
   let who = null;

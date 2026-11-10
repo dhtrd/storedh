@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
-const W = [320, 480, 640, 960, 1280];
+const W = [480, 800];   // مقاسين بس: بطاقات وصور متوسطة — العرض الكبير ياخذ الأصل (الموقع أخف والنشر أسرع)
 const UA = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36' };
 
 async function cover(id) {
