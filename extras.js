@@ -61,7 +61,7 @@
     const send = ov.querySelector('#xsSend');
     if (send) {
       const base = location.href.split('#')[0];
-      const msg = `السلام عليكم، أبي أستفسر عن هذي المنتجات من ${D.company?.nameAr || ''}:\n\n` + list.map((x, i) => `${i + 1}. ${x.prod.name} (${x.cat.title})\n${base}#p/${x.cat.id}/${x.prod.id}`).join('\n\n');
+      const msg = `السلام عليكم، أبي أستفسر عن هذي المنتجات من ${D.company?.nameAr || ''}:\n\n` + list.map((x, i) => `${i + 1}. ${x.prod.name} (${x.cat.title})\n${window.DH_STATIC ? base.split('?')[0].replace(/[^/]*$/, '') + 'p/' + x.prod.id + '.html?s=1' : base + '#p/' + x.cat.id + '/' + x.prod.id}`).join('\n\n');
       send.href = `https://wa.me/${waNumber()}?text=${encodeURIComponent(msg)}`;
     }
     ov.addEventListener('click', (e) => { const d = e.target.closest('.xs-del'); if (!d) return; e.preventDefault(); e.stopPropagation(); toggle(d.dataset.c, d.dataset.p); openFavs(); });
@@ -153,5 +153,25 @@
   addEventListener('keydown', (e) => { if (e.key === '/' && !/input|textarea/i.test(document.activeElement?.tagName || '')) { e.preventDefault(); openSearch(); } });
   // نعيد رسم القلوب كل ما تغيّر المحتوى (صفحات المنتجات والأقسام تنبني ديناميكياً)
   let raf = 0; new MutationObserver(() => { cancelAnimationFrame(raf); raf = requestAnimationFrame(paintHearts); }).observe(document.body, { childList: true, subtree: true });
-  const ready = setInterval(() => { if (window.D || typeof D !== 'undefined' && D) { clearInterval(ready); favs = favs.filter(f => findP(f.c, f.p)); save(favs); badge(); paintHearts(); } }, 300);
+  // ---------- شاهدتها مؤخراً ----------
+  const RKEY = 'dh_recent';
+  const recent = () => { try { return JSON.parse(localStorage.getItem(RKEY) || '[]'); } catch { return []; } };
+  function track() {
+    const m = /^#p\/([^/]+)\/([^/?#]+)/.exec(location.hash);
+    if (m && findP(m[1], m[2])) { try { localStorage.setItem(RKEY, JSON.stringify([{ c: m[1], p: m[2] }, ...recent().filter(x => x.p !== m[2])].slice(0, 12))); } catch {} }
+    drawRecent();
+  }
+  function drawRecent() {
+    const list = recent().map(x => findP(x.c, x.p)).filter(Boolean), anchor = $('installments') || $('reels');
+    let sec = $('recentSec');
+    if (list.length < 2 || !anchor || typeof productCard !== 'function') { sec?.remove(); return; }
+    if (!sec) { sec = document.createElement('section'); sec.className = 'sec'; sec.id = 'recentSec'; anchor.before(sec); }
+    sec.innerHTML = `<div class="wrap"><div class="sec-head split"><div><span class="eyebrow">كمّل من وين وقفت</span><h2>شاهدتها مؤخراً</h2></div>
+      <button type="button" class="recent-clear" id="recentClear">مسح</button></div>
+      <div class="scroller" id="recentRow">${list.map(x => productCard(x.cat, x.prod, true)).join('')}</div></div>`;
+    $('recentClear').onclick = () => { try { localStorage.removeItem(RKEY); } catch {} sec.remove(); };
+    window.markImgs?.(sec);
+  }
+  addEventListener('hashchange', track);
+  const ready = setInterval(() => { if (window.D || typeof D !== 'undefined' && D) { clearInterval(ready); favs = favs.filter(f => findP(f.c, f.p)); save(favs); badge(); paintHearts(); track(); } }, 300);
 })();

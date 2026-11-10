@@ -1,4 +1,4 @@
-// نسخة العرض الثابتة (GitHub Pages)
+window.DH_STATIC = true; // نسخة العرض الثابتة (GitHub Pages)
 window.STATIC_SITE = true;
 (function () {
   const realFetch = window.fetch.bind(window);

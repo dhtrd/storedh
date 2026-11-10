@@ -583,7 +583,8 @@ function wireProduct(c, p) {
     document.querySelectorAll('.sizes button').forEach(x => x.classList.toggle('on', x === b));
     size = b.textContent; $('pdSize').textContent = size; order();
   });
-  const link = () => location.href.split('#')[0] + '#p/' + c.id + '/' + p.id;
+  // في النسخة المنشورة نشارك صفحة المنتج الثابتة: تطلع في واتساب بصورة المنتج واسمه، وتفتح على المنتج نفسه
+  const link = () => { const base = location.href.split('#')[0].split('?')[0]; return window.DH_STATIC ? base.replace(/[^/]*$/, '') + 'p/' + p.id + '.html?s=1' : base + '#p/' + c.id + '/' + p.id; };
   // الفروع المناسبة لهذا المنتج، مرتبة حسب قربها من العميل إن سمح بالموقع
   let me = savedLoc();
   const branches = () => {

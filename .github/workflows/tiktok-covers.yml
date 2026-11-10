@@ -19,11 +19,12 @@ jobs:
           node-version: 22
       - run: npm install --no-save --no-package-lock sharp@0.35.5
       - run: node .github/tiktok-covers.js
+      - run: node .github/product-pages.js
       - name: حفظ الأغلفة
         run: |
           git config user.name "dhubaibi-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add uploads content.json
+          git add uploads content.json p sitemap.xml
           if git diff --cached --quiet; then echo "no new covers"; exit 0; fi
           git commit -m "أغلفة تيك توك تلقائية"
           for i in 1 2 3; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 5; done
