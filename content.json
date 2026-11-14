@@ -63,6 +63,113 @@
       ],
       "products": [
         {
+          "id": "776ffe22",
+          "name": "سجادة التوليب — مودرن بألوان متداخلة",
+          "images": [
+            {
+              "src": "uploads/n3-rug-0.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n3-rug-1.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n3-rug-2.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n3-rug-3.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n3-rug-4.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "سجادة مودرن بتصميم يجمع الطابع الكلاسيكي والعصري: ميدالية وسطية بزهور التوليب تحيط بها مساحات لونية متداخلة وإطار من الأغصان المنسابة على أرضية كريمية. وبرها ناعم ونقشتها بارزة تعطي الصالات والمجالس وغرف النوم حضوراً أنيقاً. متوفرة بخمسة ألوان.\n\nتواصل معنا لمعرفة المقاسات المتوفرة والسعر.",
+          "colors": [
+            {
+              "id": "e843851b",
+              "name": "خردلي ورمادي",
+              "hex": "#b08a3e",
+              "image": "uploads/n3-rug-0.webp"
+            },
+            {
+              "id": "6ee9b43c",
+              "name": "بني وأزرق رمادي",
+              "hex": "#6f7f86",
+              "image": "uploads/n3-rug-1.webp"
+            },
+            {
+              "id": "9815a131",
+              "name": "بيج وبني",
+              "hex": "#b39a78",
+              "image": "uploads/n3-rug-2.webp"
+            },
+            {
+              "id": "dece32d4",
+              "name": "طوبي وكحلي",
+              "hex": "#b0553a",
+              "image": "uploads/n3-rug-3.webp"
+            },
+            {
+              "id": "43115459",
+              "name": "أزرق وخردلي",
+              "hex": "#3f5f96",
+              "image": "uploads/n3-rug-4.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "82113476",
+              "label": "التصميم",
+              "value": "مودرن — ميدالية توليب"
+            },
+            {
+              "id": "89f65cdc",
+              "label": "الألوان",
+              "value": "5 ألوان"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-14",
+          "arItems": [
+            {
+              "src": "uploads/ar-n3-rug-0.jpg",
+              "from": "uploads/n3-rug-0.webp",
+              "name": "خردلي ورمادي"
+            },
+            {
+              "src": "uploads/ar-n3-rug-1.jpg",
+              "from": "uploads/n3-rug-1.webp",
+              "name": "بني وأزرق رمادي"
+            },
+            {
+              "src": "uploads/ar-n3-rug-2.jpg",
+              "from": "uploads/n3-rug-2.webp",
+              "name": "بيج وبني"
+            },
+            {
+              "src": "uploads/ar-n3-rug-3.jpg",
+              "from": "uploads/n3-rug-3.webp",
+              "name": "طوبي وكحلي"
+            },
+            {
+              "src": "uploads/ar-n3-rug-4.jpg",
+              "from": "uploads/n3-rug-4.webp",
+              "name": "أزرق وخردلي"
+            }
+          ],
+          "arRound": false,
+          "arSizes": ""
+        },
+        {
           "id": "66a85797",
           "name": "سجادة الأغصان",
           "images": [
