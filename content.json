@@ -1003,6 +1003,412 @@
       "images": [],
       "products": [
         {
+          "id": "bba3cea1",
+          "name": "طقم طاولة طعام دائرية مع 4 كراسي بمساند",
+          "images": [
+            {
+              "src": "uploads/n2-round-arm-0.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n2-round-arm-1.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n2-round-arm-2.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طقم طعام أنيق بطاولة دائرية بسطح رخامي بعروق ناعمة، مع 4 كراسي بمساند منحنية تحضن الجالس وتنجيد بوكليه ناعم. تصميم مودرن دافئ يناسب غرف الطعام وركن الإفطار، ومتوفر بثلاثة ألوان للهيكل.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "1ddccfaa",
+              "name": "بيج",
+              "hex": "#d8c5a1",
+              "image": "uploads/n2-round-arm-0.webp"
+            },
+            {
+              "id": "585fecd6",
+              "name": "جوزي",
+              "hex": "#6b4a33",
+              "image": "uploads/n2-round-arm-1.webp"
+            },
+            {
+              "id": "06754f8c",
+              "name": "أسود ورمادي",
+              "hex": "#3a3a3c",
+              "image": "uploads/n2-round-arm-2.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "87c8760d",
+              "label": "الكراسي",
+              "value": "4 كراسي بمساند"
+            },
+            {
+              "id": "34c1a0e1",
+              "label": "السطح",
+              "value": "رخامي بعروق"
+            },
+            {
+              "id": "826a5c66",
+              "label": "التنجيد",
+              "value": "بوكليه ناعم"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-14"
+        },
+        {
+          "id": "e1df14e0",
+          "name": "طاولة طعام مستطيلة مع 6 كراسي",
+          "images": [
+            {
+              "src": "uploads/n2-dining6-3.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n2-dining6-4.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n2-dining6-5.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n2-dining6-7.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طاولة طعام مستطيلة بسطح رخامي فاخر وأرجل منحوتة بانسيابية، مع 6 كراسي بظهر بيضاوي مريح ومقاعد مبطّنة. مقاس عملي للعائلة والعزايم، وبأربع تشكيلات ألوان تناسب الديكور العصري والكلاسيكي.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "918a2760",
+              "name": "رمادي ورخام أبيض",
+              "hex": "#8d8a86",
+              "image": "uploads/n2-dining6-3.webp"
+            },
+            {
+              "id": "3790b3bd",
+              "name": "كريمي ورخام بيج",
+              "hex": "#e6d9c0",
+              "image": "uploads/n2-dining6-4.webp"
+            },
+            {
+              "id": "113f072c",
+              "name": "بيج وموكا",
+              "hex": "#b59a7c",
+              "image": "uploads/n2-dining6-5.webp"
+            },
+            {
+              "id": "ec1382e2",
+              "name": "فحمي",
+              "hex": "#3d3d40",
+              "image": "uploads/n2-dining6-7.webp"
+            }
+          ],
+          "sizes": "150 × 90 × 75 سم",
+          "specs": [
+            {
+              "id": "31439ac8",
+              "label": "الكراسي",
+              "value": "6 كراسي"
+            },
+            {
+              "id": "3af3f4c2",
+              "label": "السطح",
+              "value": "رخامي"
+            },
+            {
+              "id": "bd69256c",
+              "label": "الهيكل",
+              "value": "معدن مطلي"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-14"
+        },
+        {
+          "id": "83d16c3e",
+          "name": "طاولة طعام دائرية مع 4 كراسي",
+          "images": [
+            {
+              "src": "uploads/n2-round4-6.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n2-round4-8.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n2-round4-9.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n2-round4-10.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n2-round4-13.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طاولة طعام دائرية قطر 90 سم مع 4 كراسي بظهر بيضاوي ومقاعد مبطّنة. حجمها مثالي للمساحات الصغيرة وركن المطبخ، والشكل الدائري يقرّب الجلسة ويسهّل الحركة حولها. متوفرة بخمس تشكيلات ألوان.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "c2e012b5",
+              "name": "كريمي وجوزي",
+              "hex": "#e3d5bd",
+              "image": "uploads/n2-round4-6.webp"
+            },
+            {
+              "id": "d39df599",
+              "name": "بيج وخشبي",
+              "hex": "#cdb48f",
+              "image": "uploads/n2-round4-8.webp"
+            },
+            {
+              "id": "28636d54",
+              "name": "كريمي وخشب فاتح",
+              "hex": "#eadfc8",
+              "image": "uploads/n2-round4-9.webp"
+            },
+            {
+              "id": "a3a38869",
+              "name": "رمادي",
+              "hex": "#8d8d8d",
+              "image": "uploads/n2-round4-10.webp"
+            },
+            {
+              "id": "1038be85",
+              "name": "فحمي",
+              "hex": "#3d3d40",
+              "image": "uploads/n2-round4-13.webp"
+            }
+          ],
+          "sizes": "90 × 75 سم",
+          "specs": [
+            {
+              "id": "8f6a7178",
+              "label": "الكراسي",
+              "value": "4 كراسي"
+            },
+            {
+              "id": "924b5e60",
+              "label": "القطر",
+              "value": "90 سم"
+            },
+            {
+              "id": "275d55cd",
+              "label": "الهيكل",
+              "value": "معدن مطلي"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-14"
+        },
+        {
+          "id": "d880be45",
+          "name": "طاولة طعام مربعة بسطح رخامي",
+          "images": [
+            {
+              "src": "uploads/n2-square100-19.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n2-square100-18.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n2-square80-17.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n2-square80-20.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طاولة طعام مربعة بسطح رخامي وحافة سوداء أنيقة وأرجل معدنية مخروطة، مع كراسي جلد بظهر عالٍ مريح وسهل التنظيف. متوفرة بمقاسين: 100 × 100 سم مع 4 كراسي، و80 × 80 سم مع كرسيين — وبلونين: رمادي وكريمي.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "c4f38b1f",
+              "name": "رمادي — 100 سم",
+              "hex": "#8d8d8d",
+              "image": "uploads/n2-square100-19.webp"
+            },
+            {
+              "id": "1a11ad81",
+              "name": "كريمي ورخام أبيض — 100 سم",
+              "hex": "#efe6d2",
+              "image": "uploads/n2-square100-18.webp"
+            },
+            {
+              "id": "de7f58b0",
+              "name": "رمادي — 80 سم",
+              "hex": "#8d8d8d",
+              "image": "uploads/n2-square80-17.webp"
+            },
+            {
+              "id": "3a6afdaa",
+              "name": "كريمي ورخام أبيض — 80 سم",
+              "hex": "#efe6d2",
+              "image": "uploads/n2-square80-20.webp"
+            }
+          ],
+          "sizes": "100 × 100 × 75 سم • 80 × 80 × 75 سم",
+          "specs": [
+            {
+              "id": "af512da8",
+              "label": "المقاس الكبير",
+              "value": "100 × 100 × 75 سم — 4 كراسي"
+            },
+            {
+              "id": "860b4780",
+              "label": "المقاس الصغير",
+              "value": "80 × 80 × 75 سم — كرسيين"
+            },
+            {
+              "id": "57cf3d0d",
+              "label": "الكراسي",
+              "value": "جلد سهل التنظيف"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-14"
+        },
+        {
+          "id": "feef8add",
+          "name": "كرسي طعام بمسند منحني",
+          "images": [
+            {
+              "src": "uploads/n2-chair-curve-11.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n2-chair-curve-12.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n2-chair-curve-14.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n2-chair-curve-16.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "كرسي طعام بمسند ظهر منحني يلف حول الجالس ويتصل بمساند الذراعين، بتنجيد بوكليه ناعم وهيكل معدني بلون الخشب. مريح للجلسات الطويلة ويتنسق مع أي طاولة طعام أو مكتب.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "ab7641cf",
+              "name": "بيج بأرجل خشبية",
+              "hex": "#cbbba3",
+              "image": "uploads/n2-chair-curve-11.webp"
+            },
+            {
+              "id": "0f31334f",
+              "name": "بني بأرجل داكنة",
+              "hex": "#6f5a4a",
+              "image": "uploads/n2-chair-curve-12.webp"
+            },
+            {
+              "id": "6117e6fd",
+              "name": "كريمي بأرجل خشبية",
+              "hex": "#e4dccb",
+              "image": "uploads/n2-chair-curve-14.webp"
+            },
+            {
+              "id": "782d4fee",
+              "name": "بيج بأرجل جوزي",
+              "hex": "#c9b89e",
+              "image": "uploads/n2-chair-curve-16.webp"
+            }
+          ],
+          "sizes": "55 × 45 × 77 سم",
+          "specs": [
+            {
+              "id": "bf53a1b4",
+              "label": "العرض",
+              "value": "55 سم"
+            },
+            {
+              "id": "a2b61b31",
+              "label": "العمق",
+              "value": "45 سم"
+            },
+            {
+              "id": "62c40e17",
+              "label": "الارتفاع",
+              "value": "77 سم"
+            },
+            {
+              "id": "6c07f32e",
+              "label": "التنجيد",
+              "value": "بوكليه"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-14"
+        },
+        {
+          "id": "2d324647",
+          "name": "كرسي طعام مودرن",
+          "images": [
+            {
+              "src": "uploads/n2-chair-modern-15.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "كرسي طعام بتصميم بسيط وعصري: ظهر بيضاوي ومقعد مبطّن بقماش ناعم وهيكل معدني رفيع. خفيف وعملي ويناسب طاولات الطعام والكافيهات المنزلية.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [],
+          "sizes": "47 × 45 × 85 سم",
+          "specs": [
+            {
+              "id": "f8290d6a",
+              "label": "العرض",
+              "value": "47 سم"
+            },
+            {
+              "id": "af6efebf",
+              "label": "العمق",
+              "value": "45 سم"
+            },
+            {
+              "id": "2da499cf",
+              "label": "الارتفاع",
+              "value": "85 سم"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-14"
+        },
+        {
           "id": "aeb3b2b4",
           "name": "طقم كنب ريكلاينر قطيفة مضلّعة",
           "images": [

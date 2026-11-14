@@ -1019,3 +1019,10 @@ h2{font-size:clamp(30px,4vw,46px);color:var(--ink);letter-spacing:-.3px}
 #recentSec{padding-block:clamp(36px,5vw,60px)}
 #recentRow .pcard{width:clamp(200px,22vw,260px);flex:none}
 .recent-clear{width:fit-content;align-self:flex-start;border:1px solid var(--line);background:#fff;border-radius:99px;padding:6px 16px;font:inherit;font-size:13.5px;color:var(--muted);cursor:pointer}
+
+/* منتجات جديدة */
+.badge.new{background:linear-gradient(120deg,#f1d77a,#c9a54a 60%,#b8902f);color:#111;box-shadow:0 4px 12px -4px rgba(184,144,47,.7)}
+.new-sec{padding-block:clamp(40px,6vw,72px);background:linear-gradient(180deg,#fffaf0,transparent)}
+#newRow .pcard{width:clamp(230px,24vw,290px);flex:none}
+.cat-filter .newchip{border-color:#c9a54a;color:#8a6a14;font-weight:800}
+.pd-new{display:inline-block;margin-inline-start:8px;vertical-align:middle;font-size:13px}

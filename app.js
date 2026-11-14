@@ -201,6 +201,15 @@ function render(d) {
   const seen = new Set();
   $('featRow').innerHTML = feat.filter(x => !seen.has(x.p) && seen.add(x.p)).map(x => productCard(x.cat, x.p, true)).join('');
   $('featured').hidden = !feat.length;
+  // ---- وصل حديثاً: المنتجات المعلّمة «جديد» ----
+  const fresh = allProducts.filter(x => x.p.isNew).slice(0, 16);
+  let ns = $('newSec');
+  if (fresh.length) {
+    if (!ns) { ns = document.createElement('section'); ns.className = 'sec new-sec'; ns.id = 'newSec'; $('featured').before(ns); }
+    ns.innerHTML = `<div class="wrap"><div class="sec-head split"><div><span class="eyebrow">وصل حديثاً</span><h2>منتجات <span class="gold-text">جديدة</span></h2></div>
+      <div class="scroller-nav"><button type="button" data-dir="1" aria-label="السابق">→</button><button type="button" data-dir="-1" aria-label="التالي">←</button></div></div>
+      <div class="scroller" id="newRow">${fresh.map(x => productCard(x.cat, x.p, true)).join('')}</div></div>`;
+  } else ns?.remove();
 
   // ---- التقسيط ----
   const inst = d.installments || {}, payList = Object.keys(PAY).filter(k => inst[k] !== false);
@@ -454,7 +463,7 @@ function productCard(c, p, showCat = false) {
   const colors = (p.colors || []).filter(x => x.hex);
   return `<a class="pcard" href="#p/${esc(c.id)}/${esc(p.id)}">
     <div class="pimg">
-      <div class="badges">${p.featured ? '<span class="badge">مميز</span>' : ''}${p.oldPrice ? '<span class="badge sale">خصم</span>' : ''}${p.available === false ? '<span class="badge out">غير متوفر</span>' : ''}</div>
+      <div class="badges">${p.isNew ? '<span class="badge new">جديد</span>' : ''}${p.featured ? '<span class="badge">مميز</span>' : ''}${p.oldPrice ? '<span class="badge sale">خصم</span>' : ''}${p.available === false ? '<span class="badge out">غير متوفر</span>' : ''}</div>
       ${imgs[0] ? imgTag(imgs[0], p.name) : `<div class="ph" style="position:absolute;inset:0"><span>${esc(p.name)}</span></div>`}
       ${imgs[1] ? imgTag(imgs[1], '', 'alt') : ''}
       <span class="view">عرض التفاصيل ←</span>
@@ -470,7 +479,7 @@ function crumbs(items) {
 }
 
 // تصنيف فرعي تلقائي من اسم المنتج — يسهّل التصفح في الأقسام الكبيرة
-const PGROUPS = [['كراسي بار', /كرسي بار/], ['كنب', /كنب/], ['طاولات طعام', /طعام/], ['طاولات بلازما', /بلازما|تلفزيون/], ['طاولات وسط وخدمة', /طاول/],
+const PGROUPS = [['كراسي بار', /كرسي بار/], ['كراسي طعام', /^كرسي طعام/], ['كنب', /كنب/], ['طاولات طعام', /طعام/], ['طاولات بلازما', /بلازما|تلفزيون/], ['طاولات وسط وخدمة', /طاول/],
   ['كراسي', /كرسي/], ['عربات تقديم', /عربة/], ['جزامات', /جزامة|أحذية/], ['معلقات', /معلقة/], ['ثريات', /ثريا/], ['أباجورات', /أباجورة/],
   ['مفارش أطفال', /أطفال/], ['مفارش', /مفرش/], ['مراتب', /مرتب|مراتب/], ['لوحات', /لوحة|لوحات/], ['قطع ديكور', /فوانيس|نباتات|مزهري/], ['دواسات وممرات', /دواسات|ممرات/]];
 function prodGroup(p) { const n = p.name || ''; return (PGROUPS.find(([, r]) => r.test(n)) || ['أخرى'])[0]; }
@@ -479,13 +488,13 @@ function catFilter(ps) {
   const cnt = {}; ps.forEach(p => { const g = prodGroup(p); cnt[g] = (cnt[g] || 0) + 1; });
   const gs = PGROUPS.map(x => x[0]).concat('أخرى').filter(g => cnt[g]);
   if (gs.length < 2) return '';
-  return `<div class="cat-filter" id="catFilter" role="toolbar" aria-label="تصفية المنتجات"><button type="button" class="on" data-g="">الكل <small>${ps.length}</small></button>${gs.map(g => `<button type="button" data-g="${esc(g)}">${esc(g)} <small>${cnt[g]}</small></button>`).join('')}</div>`;
+  return `<div class="cat-filter" id="catFilter" role="toolbar" aria-label="تصفية المنتجات"><button type="button" class="on" data-g="">الكل <small>${ps.length}</small></button>${ps.some(p => p.isNew) ? `<button type="button" class="newchip" data-g="__new">جديد <small>${ps.filter(p => p.isNew).length}</small></button>` : ''}${gs.map(g => `<button type="button" data-g="${esc(g)}">${esc(g)} <small>${cnt[g]}</small></button>`).join('')}</div>`;
 }
 function wireCatFilter() {
   $('catFilter')?.addEventListener('click', e => {
     const b = e.target.closest('button[data-g]'); if (!b) return;
     $('catFilter').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
-    const g = b.dataset.g; $('catGrid').querySelectorAll('.pcell').forEach(el => { el.hidden = !!g && el.dataset.g !== g; });
+    const g = b.dataset.g; $('catGrid').querySelectorAll('.pcell').forEach(el => { el.hidden = !!g && (g === '__new' ? !el.querySelector('.badge.new') : el.dataset.g !== g); });
   });
 }
 
@@ -515,7 +524,7 @@ function renderProduct(c, p) {
         ${window.hasRugAR?.(p) || window.hasModel3D?.(p) ? `<button class="ar-btn" id="pdAR" type="button"><span class="ar-ic">🏠</span><span><b>شوفها في بيتك</b><small>مجسم 3D تدوّره 360° • وبالكاميرا على أرضيتك بمقاسها الحقيقي</small></span></button>` : ''}
       </div>
       <div class="pd-info">
-        <h1>${esc(p.name)}</h1>
+        <h1>${esc(p.name)}${p.isNew ? ' <span class="badge new pd-new">جديد</span>' : ''}</h1>
         ${priceHTML(p)}
         ${payBadge()}
         <div class="stock ${p.available === false ? 'out' : ''}">${p.available === false ? 'غير متوفر حالياً' : 'متوفر'}</div>

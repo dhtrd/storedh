@@ -80,6 +80,7 @@ const TABS = [
             { k: 'label', label: 'البند', hint: 'مثال: الخامة، بلد الصنع، السماكة' }, { k: 'value', label: 'القيمة' },
           ]},
           { k: 'available', label: 'متوفر حالياً', t: 'toggle', def: true },
+          { k: 'isNew', label: 'منتج جديد', t: 'toggle', def: false, hint: 'يظهر بشارة «جديد» وفي قسم «وصل حديثاً» بالرئيسية — طفّه لما يصير المنتج قديم' },
           { k: 'featured', label: 'منتج مميز', t: 'toggle', def: false, hint: 'يظهر بعلامة «مميز»' },
         ]},
         { k: 'images', label: 'صور إضافية للقسم', t: 'gallery', hint: 'اختياري — معرض عام للقسم' },
