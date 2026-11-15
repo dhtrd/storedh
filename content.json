@@ -1110,6 +1110,449 @@
       "images": [],
       "products": [
         {
+          "id": "bd59f550",
+          "name": "طاولة طعام رخام بأرجل جانبية منحنية",
+          "images": [
+            {
+              "src": "uploads/n4-marble-side-0.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-marble-side-1.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-marble-side-2.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-marble-side-3.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-marble-side-4.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-marble-side-5.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-marble-side-6.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-marble-side-7.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طاولة طعام بسطح رخام فاخر وأرجل جانبية عريضة منحنية تعطيها حضوراً مميزاً، مع كراسي مبطّنة بظهر مريح وهيكل معدني. متوفرة بأربعة مقاسات من 4 إلى 10 كراسي، وبلونين: بني جوزي، ورمادي بأرجل سوداء.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "61709f71",
+              "name": "بني جوزي",
+              "hex": "#6b4a33",
+              "image": "uploads/n4-marble-side-0.webp"
+            },
+            {
+              "id": "0c54267e",
+              "name": "رمادي وأسود",
+              "hex": "#55565a",
+              "image": "uploads/n4-marble-side-4.webp"
+            }
+          ],
+          "sizes": "130 × 80 × 75 سم • 150 × 90 × 75 سم • 180 × 100 × 75 سم • 220 × 100 × 75 سم",
+          "specs": [
+            {
+              "id": "eb60c963",
+              "label": "مقاس 4 كراسي",
+              "value": "130 × 80 × 75 سم"
+            },
+            {
+              "id": "9fcbde27",
+              "label": "مقاس 6 كراسي",
+              "value": "150 × 90 × 75 سم"
+            },
+            {
+              "id": "be73f4b9",
+              "label": "مقاس 8 كراسي",
+              "value": "180 × 100 × 75 سم"
+            },
+            {
+              "id": "fb4f6f07",
+              "label": "مقاس 10 كراسي",
+              "value": "220 × 100 × 75 سم"
+            },
+            {
+              "id": "840c4e36",
+              "label": "السطح",
+              "value": "رخام"
+            },
+            {
+              "id": "b63621a9",
+              "label": "الكراسي",
+              "value": "مبطّنة بهيكل معدني"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-15"
+        },
+        {
+          "id": "1a0b354f",
+          "name": "طاولة طعام سيراميك بقاعدة مخروطية",
+          "images": [
+            {
+              "src": "uploads/n4-ceramic-cone-0.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-ceramic-cone-1.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-ceramic-cone-2.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-ceramic-cone-3.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-ceramic-cone-4.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-ceramic-cone-5.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-ceramic-cone-6.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-ceramic-cone-7.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طاولة طعام بسطح سيراميك مقاوم للخدوش والحرارة وقاعدة وسطية مخروطية نحتية تترك مساحة مريحة للأرجل، مع كراسي بمسند ظهر منحني وتنجيد ناعم. متوفرة بأربعة مقاسات من 4 إلى 10 كراسي، وبلونين: بني جوزي وبيج.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "f5a03b7a",
+              "name": "بني جوزي",
+              "hex": "#6b4a33",
+              "image": "uploads/n4-ceramic-cone-0.webp"
+            },
+            {
+              "id": "b9f6fa55",
+              "name": "بيج",
+              "hex": "#d8c5a1",
+              "image": "uploads/n4-ceramic-cone-4.webp"
+            }
+          ],
+          "sizes": "130 × 80 × 75 سم • 150 × 90 × 75 سم • 180 × 90 × 75 سم • 220 × 100 × 75 سم",
+          "specs": [
+            {
+              "id": "90bc4878",
+              "label": "مقاس 4 كراسي",
+              "value": "130 × 80 × 75 سم"
+            },
+            {
+              "id": "3cfa019b",
+              "label": "مقاس 6 كراسي",
+              "value": "150 × 90 × 75 سم"
+            },
+            {
+              "id": "aabc0c11",
+              "label": "مقاس 8 كراسي",
+              "value": "180 × 90 × 75 سم"
+            },
+            {
+              "id": "60b50e9f",
+              "label": "مقاس 10 كراسي",
+              "value": "220 × 100 × 75 سم"
+            },
+            {
+              "id": "e9b32ab8",
+              "label": "السطح",
+              "value": "سيراميك"
+            },
+            {
+              "id": "65db39d3",
+              "label": "القاعدة",
+              "value": "وسطية مخروطية"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-15"
+        },
+        {
+          "id": "68d83ff1",
+          "name": "طاولة طعام سيراميك بيضاوية",
+          "images": [
+            {
+              "src": "uploads/n4-ceramic-oval-0.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-ceramic-oval-1.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-ceramic-oval-2.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-ceramic-oval-3.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-ceramic-oval-4.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طاولة طعام بيضاوية بسطح سيراميك وقاعدة من لوحين منحنيين بتصميم عصري، مع كراسي بظهر مدوّر مبطّن. الشكل البيضاوي يريّح الجلسة ويسهّل الحركة حول الطاولة. متوفرة بثلاثة مقاسات من 4 إلى 8 كراسي، وبلونين: بني جوزي وأبيض.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "353b8097",
+              "name": "بني جوزي",
+              "hex": "#6b4a33",
+              "image": "uploads/n4-ceramic-oval-0.webp"
+            },
+            {
+              "id": "1d28990e",
+              "name": "أبيض",
+              "hex": "#f2f0ea",
+              "image": "uploads/n4-ceramic-oval-3.webp"
+            }
+          ],
+          "sizes": "150 × 90 × 75 سم • 180 × 90 × 75 سم • 220 × 100 × 75 سم",
+          "specs": [
+            {
+              "id": "2a78bf0a",
+              "label": "مقاس 4 كراسي",
+              "value": "150 × 90 × 75 سم"
+            },
+            {
+              "id": "adde9a48",
+              "label": "مقاس 6 كراسي",
+              "value": "180 × 90 × 75 سم"
+            },
+            {
+              "id": "aa4a808b",
+              "label": "مقاس 8 كراسي",
+              "value": "220 × 100 × 75 سم"
+            },
+            {
+              "id": "c088f91e",
+              "label": "السطح",
+              "value": "سيراميك"
+            },
+            {
+              "id": "9f0c976e",
+              "label": "الشكل",
+              "value": "بيضاوي"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-15"
+        },
+        {
+          "id": "2723ba94",
+          "name": "طاولة طعام مع 8 كراسي مخمل بأرجل متقاطعة",
+          "images": [
+            {
+              "src": "uploads/n4-xlegs8-0.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-xlegs8-1.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طاولة طعام كبيرة بسطح خشبي وأرجل معدنية سوداء متقاطعة بتصميم عصري، مع 8 كراسي مخمل بخياطة طولية ومقعد عميق مريح. مناسبة للعائلة الكبيرة والعزايم، ومتوفرة بلونين.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "18eb4c3a",
+              "name": "خشبي وبيج",
+              "hex": "#c9a57a",
+              "image": "uploads/n4-xlegs8-0.webp"
+            },
+            {
+              "id": "b3855a90",
+              "name": "رمادي",
+              "hex": "#8d8d8d",
+              "image": "uploads/n4-xlegs8-1.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "07838878",
+              "label": "الكراسي",
+              "value": "8 كراسي مخمل"
+            },
+            {
+              "id": "d5f821d5",
+              "label": "الأرجل",
+              "value": "معدن أسود متقاطع"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-15"
+        },
+        {
+          "id": "6205f796",
+          "name": "طاولة طعام رخامية بأرجل ذهبية مع 6 كراسي",
+          "images": [
+            {
+              "src": "uploads/n4-marble-gold6-0.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طاولة طعام بسطح بنقشة رخامية لامعة وأرجل معدنية ذهبية، مع 6 كراسي مخمل بيج بأرجل ذهبية. لمسة فخامة واضحة لغرفة الطعام.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "5f1dd00a",
+              "label": "الكراسي",
+              "value": "6 كراسي مخمل"
+            },
+            {
+              "id": "d05b4c49",
+              "label": "الأرجل",
+              "value": "معدن ذهبي"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-15"
+        },
+        {
+          "id": "86e215ba",
+          "name": "طاولة طعام خشبية مع 6 كراسي",
+          "images": [
+            {
+              "src": "uploads/n4-wood6-0.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طاولة طعام بسطح خشبي فاتح وأرجل بلون الخشب، مع 6 كراسي بتنجيد بيج ناعم. تصميم بسيط ودافئ يناسب الاستخدام اليومي ويتنسق مع أغلب الديكورات.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "13baa100",
+              "label": "الكراسي",
+              "value": "6 كراسي"
+            },
+            {
+              "id": "ac31216d",
+              "label": "السطح",
+              "value": "خشبي"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-15"
+        },
+        {
+          "id": "2453933e",
+          "name": "طاولة طعام بحواف دائرية مع 6 كراسي",
+          "images": [
+            {
+              "src": "uploads/n4-dark6-0.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طاولة طعام بسطح خشبي داكن وحواف دائرية ناعمة وأرجل معدنية سوداء، مع 6 كراسي بتنجيد داكن وظهر منحني. طابع عصري أنيق وعملي في التنظيف.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "1736d569",
+              "label": "الكراسي",
+              "value": "6 كراسي"
+            },
+            {
+              "id": "2c516644",
+              "label": "الأرجل",
+              "value": "معدن أسود"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-15"
+        },
+        {
+          "id": "1603db00",
+          "name": "طاولة طعام مع 4 كراسي مخمل",
+          "images": [
+            {
+              "src": "uploads/n4-compact4-0.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n4-compact4-1.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طاولة طعام بمقاس عملي 120 × 70 سم بسطح خشبي وأرجل مخروطة، مع 4 كراسي مخمل بظهر عالٍ. مثالية للشقق والمساحات الصغيرة وركن المطبخ، ومتوفرة بلونين.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "49c5fa91",
+              "name": "خشبي فاتح وكريمي",
+              "hex": "#d9c3a0",
+              "image": "uploads/n4-compact4-0.webp"
+            },
+            {
+              "id": "72e34acb",
+              "name": "جوزي داكن",
+              "hex": "#5a4636",
+              "image": "uploads/n4-compact4-1.webp"
+            }
+          ],
+          "sizes": "120 × 70 × 75 سم",
+          "specs": [
+            {
+              "id": "d6459385",
+              "label": "الكراسي",
+              "value": "4 كراسي مخمل"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-15"
+        },
+        {
           "id": "bba3cea1",
           "name": "طقم طاولة طعام دائرية مع 4 كراسي بمساند",
           "images": [
