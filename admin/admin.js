@@ -24,9 +24,31 @@ const TABS = [
       { p: 'company.heroSubtitle', label: 'النص التعريفي', t: 'textarea' },
       { p: 'company.heroButton', label: 'نص زر التواصل' },
       { p: 'company.heroImage', label: 'صورة خلفية الواجهة', t: 'image', aspect: 16 / 9, hint: 'اختياري — بدونها تظهر خلفية الرخام الأسود' },
+      { p: 'company.heroSlides', label: 'بوسترات الواجهة', t: 'list', itemName: 'بوستر', titleKey: 'title', thumb: (it) => it.image, hint: 'صور مصممة تطلع داخل الإطار الذهبي في الواجهة — مقاس عمودي 4:4.6', fields: [
+        { k: 'image', label: 'صورة البوستر', t: 'image', aspect: 4 / 4.6 },
+        { k: 'title', label: 'اسم البوستر', hint: 'للتمييز فقط' },
+        { k: 'link', label: 'رابط عند الضغط', t: 'ltr', hint: 'مثل: #c/c3 أو #p/c1/abcd' },
+        { k: 'active', label: 'إظهار', t: 'toggle', def: true },
+      ]},
     ]},
     { title: 'الألوان', fields: [
       { p: 'theme.gold', label: 'اللون الذهبي الرئيسي', t: 'color' },
+    ]},
+  ]},
+  { key: 'promo', icon: '📣', title: 'البنر الترويجي', hint: 'أول ما يراه الزائر عند فتح الموقع: بوستر ترويجي للمنتجات الجديدة والعروض', panels: [
+    { title: 'بنر المنتجات الجديدة (تلقائي)', hint: 'يطلع بوستر لكل نوع من المنتجات اللي عليها علامة «منتج جديد» — بدون ما تسوي شي', fields: [
+      { p: 'promo.auto', label: 'إظهار بنر المنتجات الجديدة تلقائياً', t: 'toggle', def: true },
+    ]},
+    { title: 'بنرات خاصة (عروض ومناسبات)', hint: 'بنر بعنوانك وصورتك — يطلع قبل البنرات التلقائية. مثال: «عروض اليوم الوطني» أو «خصومات نهاية الموسم»', fields: [
+      { p: 'promo.banners', t: 'list', itemName: 'بنر', titleKey: 'title', thumb: (it) => it.image, count: (it) => it.active === false ? 'مخفي' : 'ظاهر', fields: [
+        { k: 'title', label: 'العنوان الكبير', hint: 'قصير وقوي — مثال: عروض نهاية الموسم' },
+        { k: 'subtitle', label: 'السطر التوضيحي', t: 'textarea', rows: 2, hint: 'مثال: خصومات حتى 30% على السجاد والأثاث لفترة محدودة' },
+        { k: 'badge', label: 'الشارة الذهبية', hint: 'كلمة أو كلمتين فوق العنوان — مثال: عرض خاص / لفترة محدودة' },
+        { k: 'image', label: 'صورة البنر', t: 'image', aspect: 1 },
+        { k: 'button', label: 'نص الزر', hint: 'مثال: تسوّق العرض' },
+        { k: 'link', label: 'رابط الزر', t: 'ltr', hint: 'انسخ رابط القسم أو المنتج من الموقع — مثل: #c/c1 أو #p/c3/abcd' },
+        { k: 'active', label: 'إظهار البنر', t: 'toggle', def: true },
+      ]},
     ]},
   ]},
   { key: 'about', icon: '📖', title: 'من نحن', hint: 'نبذة الشركة والرؤية والرسالة والقيم والأرقام', panels: [

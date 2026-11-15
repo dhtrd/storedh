@@ -175,3 +175,55 @@
   addEventListener('hashchange', track);
   const ready = setInterval(() => { if (window.D || typeof D !== 'undefined' && D) { clearInterval(ready); favs = favs.filter(f => findP(f.c, f.p)); save(favs); badge(); paintHearts(); track(); } }, 300);
 })();
+
+// ===================== البنر الترويجي (أول ما يراه الزائر) =====================
+// شرائح تلقائية لكل نوع من المنتجات المعلّمة «جديد» + بنرات خاصة من لوحة التحكم (promo.banners)
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const MASC = /^(سجاد|موكيت|أثاث|ديكور|كنب)/;
+  const first = (s, n) => { s = String(s || '').split(/[\n.،]/)[0].trim(); return s.length > n ? s.slice(0, n - 1) + '…' : s; };
+  function slides() {
+    const out = [], P = D.promo || {};
+    for (const b of P.banners || []) if (b && b.active !== false && (b.title || b.image))
+      out.push({ badge: b.badge || 'عرض خاص', title: esc(b.title || ''), sub: b.subtitle || '', imgs: b.image ? [b.image] : [], btn: b.button || 'اكتشف الآن', href: /^(#|https?:)/.test(b.link || '') ? b.link : '#categories', poster: true });
+    if (P.auto === false) return out;
+    const groups = new Map();
+    for (const cat of D.categories || []) for (const p of cat.products || []) {
+      if (!p.isNew || !p.images?.[0]?.src) continue;
+      const g = typeof prodGroup === 'function' ? prodGroup(p) : 'أخرى', label = g !== 'أخرى' ? g : String(cat.title || '').replace(/^ال/, ''), key = cat.id + '|' + label;
+      if (!groups.has(key)) groups.set(key, { cat, label, items: [] });
+      groups.get(key).items.push(p);
+    }
+    for (const g of [...groups.values()].sort((a, b) => b.items.length - a.items.length).slice(0, 5)) {
+      const n = g.items.length, one = n === 1 ? g.items[0] : null, adj = MASC.test(g.label) ? 'جديد' : 'جديدة';
+      out.push({ badge: 'وصل حديثاً', title: `${esc(g.label)} <b>${adj}</b>`,
+        sub: one ? first(one.description, 120) || one.name : `${n} ${n > 10 ? 'موديلاً وصل' : 'موديلات وصلت'} حديثاً لمعارضنا — اختر اللي يناسب بيتك`,
+        imgs: one ? (one.images || []).slice(0, 3).map(x => x.src) : g.items.slice(0, 3).map(p => p.images[0].src),
+        btn: one ? 'شوف التفاصيل' : 'تسوّق الجديد', href: one ? `#p/${g.cat.id}/${one.id}` : `#c/${g.cat.id}/new` });
+    }
+    return out;
+  }
+  function draw() {
+    const list = slides(), home = $('home'); let sec = $('promo');
+    if (!list.length || !home) { sec?.remove(); document.body.classList.remove('has-promo'); return; }
+    if (!sec) { sec = document.createElement('section'); sec.id = 'promo'; sec.className = 'promo'; home.prepend(sec); }
+    document.body.classList.add('has-promo');
+    sec.innerHTML = `<i class="promo-glow"></i><span class="promo-word" aria-hidden="true">NEW</span>
+      <div class="promo-track">${list.map((s, i) => `<article class="promo-slide ${i ? '' : 'on'}" data-i="${i}">
+        <div class="promo-copy"><span class="promo-badge"><i>✦</i>${esc(s.badge)}</span><h2>${s.title}</h2>${s.sub ? `<p>${esc(s.sub)}</p>` : ''}
+          <a class="btn gold promo-btn" href="${esc(s.href)}"><span>${esc(s.btn)}</span><b class="arr">←</b></a></div>
+        <a class="promo-art ${s.poster || s.imgs.length === 1 ? 'single' : 'n' + s.imgs.length}" href="${esc(s.href)}" aria-label="${esc(s.btn)}">${s.imgs.map((src, k) => `<span class="pa pa${k}"><img src="${esc(sized(src, 800))}" alt="" ${i ? 'loading="lazy"' : ''} decoding="async"></span>`).join('')}</a>
+      </article>`).join('')}</div>
+      ${list.length > 1 ? `<div class="promo-dots" role="tablist">${list.map((_, i) => `<button type="button" class="${i ? '' : 'on'}" data-i="${i}" aria-label="بنر ${i + 1}"></button>`).join('')}</div>` : ''}
+      <a class="promo-skip" href="#top" aria-label="تخطي للموقع">تصفّح الموقع <b>↓</b></a>`;
+    let cur = 0, timer = 0; const N = list.length;
+    const go = (i) => { cur = (i + N) % N; sec.querySelectorAll('.promo-slide').forEach((el, k) => el.classList.toggle('on', k === cur)); sec.querySelectorAll('.promo-dots button').forEach((el, k) => el.classList.toggle('on', k === cur)); };
+    const play = () => { clearInterval(timer); if (N > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) timer = setInterval(() => { if (!document.hidden && !home.hidden && sec.getBoundingClientRect().bottom > 80) go(cur + 1); }, 5500); };
+    sec.querySelector('.promo-dots')?.addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) { go(+b.dataset.i); play(); } });
+    let x0 = null; // سحب بالإصبع
+    sec.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    sec.addEventListener('touchend', (e) => { if (x0 == null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 45) { go(cur + (dx > 0 ? 1 : -1)); play(); } }, { passive: true });
+    play();
+  }
+  const wait = setInterval(() => { if (typeof D !== 'undefined' && D) { clearInterval(wait); draw(); } }, 250);
+})();

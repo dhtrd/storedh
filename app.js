@@ -152,9 +152,13 @@ function render(d) {
   // ---- معرض الواجهة: المنتجات المميزة ----
   const showcase = (allProducts.filter(x => x.p.featured).length >= 3 ? allProducts.filter(x => x.p.featured) : allProducts)
     .filter(x => x.p.images?.[0]?.src).slice(0, 6);
+  // بوسترات الواجهة المصممة (company.heroSlides) تطلع أول شي داخل الإطار
+  const posters = (d.company.heroSlides || []).filter(x => x && x.image && x.active !== false)
+    .map(x => ({ poster: true, href: /^(#|https?:)/.test(x.link || '') ? x.link : '#categories', p: { name: x.title || d.company.nameAr, images: [{ src: x.image }] }, cat: null }));
+  if (posters.length) showcase.splice(0, showcase.length, ...posters);   // لو فيه بوسترات مصممة نعرضها هي فقط (مقاس ثابت بدون قفزات)
   if (d.company.heroImage && !showcase.length) showcase.push({ p: { name: d.company.nameAr, images: [{ src: d.company.heroImage }] }, cat: null });
   $('hsSlides').innerHTML = showcase.map((x, i) =>
-    `<div class="hs-slide ${i === 0 ? 'on' : ''}"><img class="bgfill" src="${esc(sized(x.p.images[0].src, 320))}" alt="" aria-hidden="true" decoding="async"><img class="fit" src="${esc(sized(x.p.images[0].src, 1280))}" alt="${esc(x.p.name)}" ${i ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async"></div>`).join('');
+    `<${x.poster ? `a href="${esc(x.href)}"` : 'div'} class="hs-slide ${x.poster ? 'poster' : ''} ${i === 0 ? 'on' : ''}"><img class="bgfill" src="${esc(sized(x.p.images[0].src, 320))}" alt="" aria-hidden="true" decoding="async"><img class="fit" src="${esc(sized(x.p.images[0].src, 1280))}" alt="${esc(x.p.name)}" ${i ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async"></${x.poster ? 'a' : 'div'}>`).join('');
   $('hsDots').innerHTML = showcase.length > 1 ? showcase.map((_, i) => `<button class="${i === 0 ? 'on' : ''}" aria-label="شريحة ${i + 1}"></button>`).join('') : '';
   $('heroShow').hidden = !showcase.length;
   let hs = 0;
@@ -163,7 +167,8 @@ function render(d) {
     [...$('hsSlides').children].forEach((s, i) => s.classList.toggle('on', i === hs));
     [...$('hsDots').children].forEach((b, i) => { b.classList.remove('on'); if (i === hs) { void b.offsetWidth; b.classList.add('on'); } });
     const x = showcase[hs], card = $('hsCard');
-    card.href = x.cat ? `#p/${x.cat.id}/${x.p.id}` : '#categories';
+    $('heroShow').classList.toggle('poster', !!x.poster);
+    card.href = x.href || (x.cat ? `#p/${x.cat.id}/${x.p.id}` : '#categories');
     card.innerHTML = `<img src="${esc(sized(x.p.images[0].src, 320))}" alt=""><span><small>${esc(x.cat?.title || '')}</small><b>${esc(x.p.name)}</b></span><span class="go">←</span>`;
     card.classList.remove('swap'); void card.offsetWidth; card.classList.add('swap');
   };
@@ -491,6 +496,8 @@ function catFilter(ps) {
   return `<div class="cat-filter" id="catFilter" role="toolbar" aria-label="تصفية المنتجات"><button type="button" class="on" data-g="">الكل <small>${ps.length}</small></button>${ps.some(p => p.isNew) ? `<button type="button" class="newchip" data-g="__new">جديد <small>${ps.filter(p => p.isNew).length}</small></button>` : ''}${gs.map(g => `<button type="button" data-g="${esc(g)}">${esc(g)} <small>${cnt[g]}</small></button>`).join('')}</div>`;
 }
 function wireCatFilter() {
+  // رابط البنر الترويجي «#c/القسم/new» يفتح القسم على المنتجات الجديدة مباشرة
+  if (/^#c\/[^/]+\/new$/.test(location.hash)) setTimeout(() => $('catFilter')?.querySelector('.newchip')?.click(), 0);
   $('catFilter')?.addEventListener('click', e => {
     const b = e.target.closest('button[data-g]'); if (!b) return;
     $('catFilter').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));

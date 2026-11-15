@@ -8,7 +8,30 @@
     "heroTitle": "نصنع الفخامة في كل زاوية من مساحتك",
     "heroSubtitle": "حلول متكاملة في السجاد والموكيت والأثاث والإنارة والمفروشات، للمنازل والقصور والمشاريع التجارية.",
     "heroImage": "uploads/mw7rbpa0-f5d921b2.webp",
-    "heroButton": "تواصل معنا"
+    "heroButton": "تواصل معنا",
+    "heroSlides": [
+      {
+        "id": "hp2",
+        "image": "uploads/hero-poster-2.webp",
+        "title": "لمسة من الفخامة لبيتك",
+        "link": "#categories",
+        "active": true
+      },
+      {
+        "id": "hp1",
+        "image": "uploads/hero-poster-1.webp",
+        "title": "سفرة تجمع العائلة بفخامة",
+        "link": "#c/c3/new",
+        "active": true
+      },
+      {
+        "id": "hp3",
+        "image": "uploads/hero-poster-3.webp",
+        "title": "سجادة تكمّل جمال المكان",
+        "link": "#p/c1/776ffe22",
+        "active": true
+      }
+    ]
   },
   "about": {
     "title": "من نحن",
@@ -9193,5 +9216,9 @@
     "phone": "0555091942",
     "title": "عندك مشروع؟ قسم المشاريع جاهز يخدمك",
     "text": "تأثيث وتوريد وتنفيذ للفنادق والفلل والمكاتب والقصور — كلمنا ونرتب لك زيارة وعرض سعر."
+  },
+  "promo": {
+    "auto": true,
+    "banners": []
   }
 }
