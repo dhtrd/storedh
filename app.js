@@ -194,6 +194,9 @@ function render(d) {
     return `<a class="tile" href="#c/${esc(cat.id)}" data-id="${esc(cat.id)}">${img ? `<img class="bgfill" src="${esc(sized(img, 320))}" alt="" aria-hidden="true" loading="lazy" decoding="async">` + imgTag(img, cat.title, 'fit', cats.indexOf(cat) === 0 ? 1280 : 640) : `<div class="ph"><span>${esc(cat.title)}</span></div>`}
       <div class="tile-body"><div>${n ? `<small>${n} منتج</small>` : ''}<h3>${esc(cat.title)}</h3>${cat.description ? `<p>${esc(cat.description)}</p>` : ''}</div><span class="go">←</span></div></a>`;
   }).join('') || '<p class="empty-note">لا توجد أقسام بعد</p>';
+  { const n = allProducts.length; let b = $('allProdsBtn');
+    if (!b) { b = document.createElement('div'); b.id = 'allProdsBtn'; b.className = 'all-prods'; $('catGrid').after(b); }
+    b.innerHTML = `<a class="btn gold" href="#c/all"><span>عرض كل المنتجات</span><small>${n} منتج</small><b class="arr">←</b></a>`; }
   $('catGrid').onclick = (e) => {
     const t = e.target.closest('.tile'); if (!t) return;
     const cat = cats.find(x => x.id === t.dataset.id);
@@ -430,7 +433,13 @@ addEventListener('keydown', (e) => { if (e.key === 'Escape' && !$('rp').hidden) 
 
 // ===================== صفحات القسم والمنتج =====================
 let D = null;
-const findCat = (id) => (D.categories || []).find(c => c.id === id);
+const findCat = (id) => id === 'all' ? allCat() : (D.categories || []).find(c => c.id === id);
+// قسم افتراضي يجمع كل المنتجات من كل الأقسام (الجديد أولاً) — يُفتح من «#c/all»
+function allCat() {
+  const items = (D.categories || []).flatMap(cat => (cat.products || []).map(p => ({ cat, p })));
+  items.sort((a, b) => (b.p.isNew ? 1 : 0) - (a.p.isNew ? 1 : 0));
+  return { id: 'all', virtual: true, title: 'كل المنتجات', description: 'كل منتجاتنا في مكان واحد — السجاد والموكيت والأثاث والإنارة والمفروشات والديكور. اختر القسم من الأزرار تحت أو تصفّح الكل.', items, products: items.map(x => x.p) };
+}
 const priceHTML = (p) => p.price ? `<div class="price"><b>${esc(p.price)}</b>${p.oldPrice ? `<s>${esc(p.oldPrice)}</s>` : ''}</div>` : '';
 const sizesOf = (p) => String(p.sizes || '').split(/[,،\n]+/).map(s => s.trim()).filter(Boolean);
 const productImages = (p) => (p.images || []).map(m => m.src).filter(Boolean);
@@ -488,10 +497,10 @@ const PGROUPS = [['كراسي بار', /كرسي بار/], ['كراسي طعام
   ['كراسي', /كرسي/], ['عربات تقديم', /عربة/], ['جزامات', /جزامة|أحذية/], ['معلقات', /معلقة/], ['ثريات', /ثريا/], ['أباجورات', /أباجورة/],
   ['مفارش أطفال', /أطفال/], ['مفارش', /مفرش/], ['مراتب', /مرتب|مراتب/], ['لوحات', /لوحة|لوحات/], ['قطع ديكور', /فوانيس|نباتات|مزهري/], ['دواسات وممرات', /دواسات|ممرات/]];
 function prodGroup(p) { const n = p.name || ''; return (PGROUPS.find(([, r]) => r.test(n)) || ['أخرى'])[0]; }
-function catFilter(ps) {
+function catFilter(ps, groupOf = prodGroup, order = PGROUPS.map(x => x[0]).concat('أخرى')) {
   if (ps.length < 6) return '';
-  const cnt = {}; ps.forEach(p => { const g = prodGroup(p); cnt[g] = (cnt[g] || 0) + 1; });
-  const gs = PGROUPS.map(x => x[0]).concat('أخرى').filter(g => cnt[g]);
+  const cnt = {}; ps.forEach(p => { const g = groupOf(p); cnt[g] = (cnt[g] || 0) + 1; });
+  const gs = order.filter(g => cnt[g]);
   if (gs.length < 2) return '';
   return `<div class="cat-filter" id="catFilter" role="toolbar" aria-label="تصفية المنتجات"><button type="button" class="on" data-g="">الكل <small>${ps.length}</small></button>${ps.some(p => p.isNew) ? `<button type="button" class="newchip" data-g="__new">جديد <small>${ps.filter(p => p.isNew).length}</small></button>` : ''}${gs.map(g => `<button type="button" data-g="${esc(g)}">${esc(g)} <small>${cnt[g]}</small></button>`).join('')}</div>`;
 }
@@ -509,11 +518,13 @@ function renderCategory(c) {
   const ps = c.products || [];
   return `<div class="wrap">
     ${crumbs([['منتجاتنا', '#categories'], [c.title]])}
-    <div class="cat-tabs">${(D.categories || []).map(x => `<a href="#c/${esc(x.id)}" class="${x.id === c.id ? 'on' : ''}">${esc(x.title)}</a>`).join('')}</div>
+    <div class="cat-tabs"><a href="#c/all" class="all ${c.id === 'all' ? 'on' : ''}">كل المنتجات</a>${(D.categories || []).map(x => `<a href="#c/${esc(x.id)}" class="${x.id === c.id ? 'on' : ''}">${esc(x.title)}</a>`).join('')}</div>
     <div class="cat-hero" style="--bgimg:url('${esc(c.cover || ps.flatMap(x => x.images || []).find(m => !/uploads\/np-/.test(m.src))?.src || ps[0]?.images?.[0]?.src || 'assets/marble.jpg')}')">
-      <span class="eyebrow">قسم</span><h2>${esc(c.title)}</h2>${c.description ? `<p>${esc(c.description)}</p>` : ''}
+      <span class="eyebrow">${c.virtual ? 'تصفّح' : 'قسم'}</span><h2>${esc(c.title)}</h2>${c.description ? `<p>${esc(c.description)}</p>` : ''}
       ${ps.length ? `<span class="count">${ps.length} منتج</span>` : ''}</div>
-    ${ps.length ? catFilter(ps) + `<div class="pgrid" id="catGrid">${ps.map(p => `<div class="pcell" data-g="${esc(prodGroup(p))}">${productCard(c, p)}</div>`).join('')}</div>`
+    ${ps.length ? (c.virtual
+        ? catFilter(ps, (p) => c.items.find(x => x.p === p).cat.title, (D.categories || []).map(x => x.title)) + `<div class="pgrid" id="catGrid">${c.items.map(x => `<div class="pcell" data-g="${esc(x.cat.title)}">${productCard(x.cat, x.p, true)}</div>`).join('')}</div>`
+        : catFilter(ps) + `<div class="pgrid" id="catGrid">${ps.map(p => `<div class="pcell" data-g="${esc(prodGroup(p))}">${productCard(c, p)}</div>`).join('')}</div>`)
       : `<p class="empty-note">سيتم إضافة منتجات هذا القسم قريباً — تواصل معنا للاستفسار</p>`}
     ${c.images?.length ? `<div class="related"><h2>معرض ${esc(c.title)}</h2><div class="pgrid" id="catGal">${c.images.map((m, i) =>
       `<div class="pcard" style="cursor:zoom-in" data-i="${i}"><div class="pimg">${imgTag(m.src)}</div></div>`).join('')}</div></div>` : ''}

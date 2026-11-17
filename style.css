@@ -1083,3 +1083,10 @@ a.hs-slide{display:block}
 .hs-slide:not(.on){pointer-events:none}
 
 .hero .hero-show.poster{aspect-ratio:1200/1380!important;max-height:none!important;width:min(100%,520px)}
+
+/* كل المنتجات */
+.cat-tabs a.all{border-color:var(--gold);color:#8a6a14}
+.cat-tabs a.all.on{color:var(--gold-2)}
+.all-prods{display:flex;justify-content:center;margin-top:clamp(22px,3vw,36px)}
+.all-prods .btn{padding:15px 32px;gap:12px}
+.all-prods .btn small{font-weight:700;font-size:13px;background:rgba(0,0,0,.14);padding:3px 10px;border-radius:99px}
