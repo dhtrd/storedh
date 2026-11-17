@@ -86,6 +86,778 @@
       ],
       "products": [
         {
+          "id": "567124b6",
+          "name": "سجاد كلاسيك بزخارف الأغصان",
+          "images": [
+            {
+              "src": "uploads/n5-rug-vines-0.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-vines-1.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-vines-6.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-vines-16.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-vines-22.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "سجاد كلاسيك فاخر بنقش أغصان ملتفّة وزخارف نباتية بارزة على أرضية هادئة، يحيط به إطار مزخرف. وبر ناعم كثيف يعطي المجالس والصالات فخامة واضحة. متوفر بعدة ألوان.\n\nتواصل معنا لمعرفة المقاسات المتوفرة والسعر.",
+          "colors": [
+            {
+              "id": "bd58b039",
+              "name": "بيج وأزرق رمادي",
+              "hex": "#b9ad98",
+              "image": "uploads/n5-rug-vines-0.webp"
+            },
+            {
+              "id": "222ddf4b",
+              "name": "بيج وبني",
+              "hex": "#c8b79a",
+              "image": "uploads/n5-rug-vines-1.webp"
+            },
+            {
+              "id": "5807b7b4",
+              "name": "رمادي وذهبي",
+              "hex": "#8d8474",
+              "image": "uploads/n5-rug-vines-6.webp"
+            },
+            {
+              "id": "4cbee24c",
+              "name": "بيج وزيتي",
+              "hex": "#bfb190",
+              "image": "uploads/n5-rug-vines-16.webp"
+            },
+            {
+              "id": "0b74ac7b",
+              "name": "زيتي",
+              "hex": "#8a8260",
+              "image": "uploads/n5-rug-vines-22.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "9d5dcbe2",
+              "label": "التصميم",
+              "value": "كلاسيك — أغصان"
+            },
+            {
+              "id": "54d2a7c6",
+              "label": "الخيارات",
+              "value": "5 ألوان وتصاميم"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-17",
+          "arItems": [
+            {
+              "src": "uploads/ar-n5-rug-vines-0.jpg",
+              "from": "uploads/n5-rug-vines-0.webp",
+              "name": "بيج وأزرق رمادي"
+            },
+            {
+              "src": "uploads/ar-n5-rug-vines-1.jpg",
+              "from": "uploads/n5-rug-vines-1.webp",
+              "name": "بيج وبني"
+            },
+            {
+              "src": "uploads/ar-n5-rug-vines-6.jpg",
+              "from": "uploads/n5-rug-vines-6.webp",
+              "name": "رمادي وذهبي"
+            },
+            {
+              "src": "uploads/ar-n5-rug-vines-16.jpg",
+              "from": "uploads/n5-rug-vines-16.webp",
+              "name": "بيج وزيتي"
+            },
+            {
+              "src": "uploads/ar-n5-rug-vines-22.jpg",
+              "from": "uploads/n5-rug-vines-22.webp",
+              "name": "زيتي"
+            }
+          ],
+          "arRound": false,
+          "arSizes": ""
+        },
+        {
+          "id": "721a4b2f",
+          "name": "سجاد كلاسيك بنقش الأكانثوس",
+          "images": [
+            {
+              "src": "uploads/n5-rug-acanthus-2.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-acanthus-3.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-acanthus-5.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-acanthus-8.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-acanthus-15.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-acanthus-18.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-acanthus-20.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-acanthus-21.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "سجاد كلاسيك بنقش أوراق الأكانثوس الكبيرة المتناظرة بأسلوب القصور، بألوان قوية وهادئة: كحلي، عنابي، بني ورمادي. نقشة بارزة ووبر ناعم يناسب المجالس الرسمية والصالات الواسعة.\n\nتواصل معنا لمعرفة المقاسات المتوفرة والسعر.",
+          "colors": [
+            {
+              "id": "89e48359",
+              "name": "كحلي",
+              "hex": "#1f2a44",
+              "image": "uploads/n5-rug-acanthus-2.webp"
+            },
+            {
+              "id": "ec81c6f7",
+              "name": "رمادي وذهبي",
+              "hex": "#8e8a7c",
+              "image": "uploads/n5-rug-acanthus-3.webp"
+            },
+            {
+              "id": "4f7e8c6b",
+              "name": "عنابي",
+              "hex": "#7c1f24",
+              "image": "uploads/n5-rug-acanthus-5.webp"
+            },
+            {
+              "id": "a8823555",
+              "name": "رمادي وأزرق",
+              "hex": "#8c98a4",
+              "image": "uploads/n5-rug-acanthus-8.webp"
+            },
+            {
+              "id": "bc2deaf2",
+              "name": "رمادي",
+              "hex": "#9a9a98",
+              "image": "uploads/n5-rug-acanthus-15.webp"
+            },
+            {
+              "id": "63ed8a90",
+              "name": "كحلي وأزرق",
+              "hex": "#2f456b",
+              "image": "uploads/n5-rug-acanthus-18.webp"
+            },
+            {
+              "id": "8fb7ec5e",
+              "name": "بني",
+              "hex": "#6a5445",
+              "image": "uploads/n5-rug-acanthus-20.webp"
+            },
+            {
+              "id": "66c631b3",
+              "name": "أزرق رمادي",
+              "hex": "#7f93a6",
+              "image": "uploads/n5-rug-acanthus-21.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "af2b0eae",
+              "label": "التصميم",
+              "value": "كلاسيك — أوراق الأكانثوس"
+            },
+            {
+              "id": "2736240b",
+              "label": "الخيارات",
+              "value": "8 ألوان وتصاميم"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-17",
+          "arItems": [
+            {
+              "src": "uploads/ar-n5-rug-acanthus-2.jpg",
+              "from": "uploads/n5-rug-acanthus-2.webp",
+              "name": "كحلي"
+            },
+            {
+              "src": "uploads/ar-n5-rug-acanthus-3.jpg",
+              "from": "uploads/n5-rug-acanthus-3.webp",
+              "name": "رمادي وذهبي"
+            },
+            {
+              "src": "uploads/ar-n5-rug-acanthus-5.jpg",
+              "from": "uploads/n5-rug-acanthus-5.webp",
+              "name": "عنابي"
+            },
+            {
+              "src": "uploads/ar-n5-rug-acanthus-8.jpg",
+              "from": "uploads/n5-rug-acanthus-8.webp",
+              "name": "رمادي وأزرق"
+            },
+            {
+              "src": "uploads/ar-n5-rug-acanthus-15.jpg",
+              "from": "uploads/n5-rug-acanthus-15.webp",
+              "name": "رمادي"
+            },
+            {
+              "src": "uploads/ar-n5-rug-acanthus-18.jpg",
+              "from": "uploads/n5-rug-acanthus-18.webp",
+              "name": "كحلي وأزرق"
+            },
+            {
+              "src": "uploads/ar-n5-rug-acanthus-20.jpg",
+              "from": "uploads/n5-rug-acanthus-20.webp",
+              "name": "بني"
+            },
+            {
+              "src": "uploads/ar-n5-rug-acanthus-21.jpg",
+              "from": "uploads/n5-rug-acanthus-21.webp",
+              "name": "أزرق رمادي"
+            }
+          ],
+          "arRound": false,
+          "arSizes": ""
+        },
+        {
+          "id": "d4c0438f",
+          "name": "سجاد كلاسيك بميدالية دائرية",
+          "images": [
+            {
+              "src": "uploads/n5-rug-medallion-4.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-medallion-9.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-medallion-10.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-medallion-11.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-medallion-12.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-medallion-13.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-medallion-17.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-medallion-19.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-medallion-25.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "سجاد كلاسيك بميدالية دائرية في الوسط تحيط بها زخارف منسابة وإطار ناعم، بألوان فاتحة هادئة (كريمي، بيج، رمادي). يفتح المكان ويتنسق مع الأثاث الفاتح والداكن.\n\nتواصل معنا لمعرفة المقاسات المتوفرة والسعر.",
+          "colors": [
+            {
+              "id": "df27c2c9",
+              "name": "رمادي بيج",
+              "hex": "#a39c8c",
+              "image": "uploads/n5-rug-medallion-4.webp"
+            },
+            {
+              "id": "52af3acb",
+              "name": "كريمي",
+              "hex": "#e3dccb",
+              "image": "uploads/n5-rug-medallion-9.webp"
+            },
+            {
+              "id": "358ebe5a",
+              "name": "كريمي ورمادي",
+              "hex": "#cfc9bb",
+              "image": "uploads/n5-rug-medallion-10.webp"
+            },
+            {
+              "id": "fd14c7b1",
+              "name": "رمادي فاتح",
+              "hex": "#c4c1b8",
+              "image": "uploads/n5-rug-medallion-11.webp"
+            },
+            {
+              "id": "da43c15f",
+              "name": "كريمي وذهبي",
+              "hex": "#e0d3b4",
+              "image": "uploads/n5-rug-medallion-12.webp"
+            },
+            {
+              "id": "ab286cf5",
+              "name": "أوف وايت",
+              "hex": "#e9e5da",
+              "image": "uploads/n5-rug-medallion-13.webp"
+            },
+            {
+              "id": "d74d7a6c",
+              "name": "أزرق رمادي",
+              "hex": "#8799a8",
+              "image": "uploads/n5-rug-medallion-17.webp"
+            },
+            {
+              "id": "0a966543",
+              "name": "بيج فاتح",
+              "hex": "#d9d2bf",
+              "image": "uploads/n5-rug-medallion-19.webp"
+            },
+            {
+              "id": "8d203c6e",
+              "name": "رمادي",
+              "hex": "#a8a59e",
+              "image": "uploads/n5-rug-medallion-25.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "351315df",
+              "label": "التصميم",
+              "value": "كلاسيك — ميدالية"
+            },
+            {
+              "id": "5d00c12e",
+              "label": "الخيارات",
+              "value": "9 ألوان وتصاميم"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-17",
+          "arItems": [
+            {
+              "src": "uploads/ar-n5-rug-medallion-4.jpg",
+              "from": "uploads/n5-rug-medallion-4.webp",
+              "name": "رمادي بيج"
+            },
+            {
+              "src": "uploads/ar-n5-rug-medallion-9.jpg",
+              "from": "uploads/n5-rug-medallion-9.webp",
+              "name": "كريمي"
+            },
+            {
+              "src": "uploads/ar-n5-rug-medallion-10.jpg",
+              "from": "uploads/n5-rug-medallion-10.webp",
+              "name": "كريمي ورمادي"
+            },
+            {
+              "src": "uploads/ar-n5-rug-medallion-11.jpg",
+              "from": "uploads/n5-rug-medallion-11.webp",
+              "name": "رمادي فاتح"
+            },
+            {
+              "src": "uploads/ar-n5-rug-medallion-12.jpg",
+              "from": "uploads/n5-rug-medallion-12.webp",
+              "name": "كريمي وذهبي"
+            },
+            {
+              "src": "uploads/ar-n5-rug-medallion-13.jpg",
+              "from": "uploads/n5-rug-medallion-13.webp",
+              "name": "أوف وايت"
+            },
+            {
+              "src": "uploads/ar-n5-rug-medallion-17.jpg",
+              "from": "uploads/n5-rug-medallion-17.webp",
+              "name": "أزرق رمادي"
+            },
+            {
+              "src": "uploads/ar-n5-rug-medallion-19.jpg",
+              "from": "uploads/n5-rug-medallion-19.webp",
+              "name": "بيج فاتح"
+            },
+            {
+              "src": "uploads/ar-n5-rug-medallion-25.jpg",
+              "from": "uploads/n5-rug-medallion-25.webp",
+              "name": "رمادي"
+            }
+          ],
+          "arRound": false,
+          "arSizes": ""
+        },
+        {
+          "id": "6b795998",
+          "name": "سجاد مودرن بنقش سداسي",
+          "images": [
+            {
+              "src": "uploads/n5-rug-hex-14.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "سجاد مودرن بأشكال سداسية هندسية وزخارف منوّعة على أرضية بنقشة الحجر، بدرجات البيج والرمادي والأسود. تصميم جريء يناسب الصالات العصرية وغرف الشباب.\n\nتواصل معنا لمعرفة المقاسات المتوفرة والسعر.",
+          "colors": [],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "4d6780cb",
+              "label": "التصميم",
+              "value": "مودرن — هندسي"
+            },
+            {
+              "id": "f212a132",
+              "label": "الخيارات",
+              "value": "1 تصميم"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-17",
+          "arItems": [
+            {
+              "src": "uploads/ar-n5-rug-hex-14.jpg",
+              "from": "uploads/n5-rug-hex-14.webp",
+              "name": "بيج ورمادي"
+            }
+          ],
+          "arRound": false,
+          "arSizes": ""
+        },
+        {
+          "id": "2986f7b0",
+          "name": "سجاد كلاسيك بميدالية — تشكيلة الصالون",
+          "images": [
+            {
+              "src": "uploads/n5-rug-salon-23.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-24.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-26.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-27.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-28.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-30.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-31.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-33.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-37.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-39.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-40.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-42.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-43.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-45.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-47.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-48.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-51.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-salon-52.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "تشكيلة سجاد بتصاميم كلاسيكية: ميدالية وسطية وإطارات مزخرفة بشراشيب ناعمة على الأطراف، بألوان متنوعة من الفيروزي والعنابي إلى البيج والرمادي والأسود الذهبي. خيارات كثيرة تناسب كل ديكور.\n\nتواصل معنا لمعرفة المقاسات المتوفرة والسعر.",
+          "colors": [
+            {
+              "id": "587c7c98",
+              "name": "رمادي وأزرق",
+              "hex": "#6f7684",
+              "image": "uploads/n5-rug-salon-23.webp"
+            },
+            {
+              "id": "ed746d59",
+              "name": "رمادي وكريمي",
+              "hex": "#b5b0a6",
+              "image": "uploads/n5-rug-salon-24.webp"
+            },
+            {
+              "id": "ebc496e2",
+              "name": "فيروزي وكريمي",
+              "hex": "#7fb0bd",
+              "image": "uploads/n5-rug-salon-26.webp"
+            },
+            {
+              "id": "90e5cc96",
+              "name": "رمادي",
+              "hex": "#8f8d92",
+              "image": "uploads/n5-rug-salon-27.webp"
+            },
+            {
+              "id": "74def7fe",
+              "name": "بيج وأزرق",
+              "hex": "#cdbb98",
+              "image": "uploads/n5-rug-salon-28.webp"
+            },
+            {
+              "id": "757625e8",
+              "name": "أسود وذهبي",
+              "hex": "#2a2622",
+              "image": "uploads/n5-rug-salon-30.webp"
+            },
+            {
+              "id": "9a625c8c",
+              "name": "بيج وكحلي",
+              "hex": "#c2ad8a",
+              "image": "uploads/n5-rug-salon-31.webp"
+            },
+            {
+              "id": "79044b7e",
+              "name": "بيج فاتح",
+              "hex": "#d5cab4",
+              "image": "uploads/n5-rug-salon-33.webp"
+            },
+            {
+              "id": "726377c5",
+              "name": "فيروزي",
+              "hex": "#5fa3a8",
+              "image": "uploads/n5-rug-salon-37.webp"
+            },
+            {
+              "id": "b06b7ad8",
+              "name": "عنابي",
+              "hex": "#8a1f2a",
+              "image": "uploads/n5-rug-salon-39.webp"
+            },
+            {
+              "id": "ec6f195a",
+              "name": "رمادي فاتح",
+              "hex": "#c9c7c2",
+              "image": "uploads/n5-rug-salon-40.webp"
+            },
+            {
+              "id": "d7e54f3b",
+              "name": "أسود ورمادي",
+              "hex": "#3a3a3c",
+              "image": "uploads/n5-rug-salon-42.webp"
+            },
+            {
+              "id": "b1c58507",
+              "name": "رمادي بنفسجي",
+              "hex": "#a7a3ad",
+              "image": "uploads/n5-rug-salon-43.webp"
+            },
+            {
+              "id": "a4aeb705",
+              "name": "رملي وأزرق",
+              "hex": "#c9b48e",
+              "image": "uploads/n5-rug-salon-45.webp"
+            },
+            {
+              "id": "4dc48d92",
+              "name": "رمادي وأبيض",
+              "hex": "#8a8884",
+              "image": "uploads/n5-rug-salon-47.webp"
+            },
+            {
+              "id": "311afe60",
+              "name": "بيج وأسود",
+              "hex": "#b9a888",
+              "image": "uploads/n5-rug-salon-48.webp"
+            },
+            {
+              "id": "90160f99",
+              "name": "كريمي",
+              "hex": "#e2dbcb",
+              "image": "uploads/n5-rug-salon-51.webp"
+            },
+            {
+              "id": "424e0112",
+              "name": "رمادي داكن",
+              "hex": "#55565a",
+              "image": "uploads/n5-rug-salon-52.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "4fe948bf",
+              "label": "التصميم",
+              "value": "كلاسيك — ميدالية بإطار"
+            },
+            {
+              "id": "94a3dd77",
+              "label": "الخيارات",
+              "value": "18 ألوان وتصاميم"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-17"
+        },
+        {
+          "id": "b9f60917",
+          "name": "سجاد مودرن تجريدي",
+          "images": [
+            {
+              "src": "uploads/n5-rug-modern-32.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-modern-34.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-modern-36.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-modern-38.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-modern-44.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-modern-49.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-rug-modern-50.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "تشكيلة سجاد مودرن بتصاميم تجريدية وهندسية: خطوط متقاطعة، ريش، رخامي، إطارات بالأبيض والأسود ولمسات فرشاة. ألوان محايدة هادئة تناسب الديكورات العصرية والمينيمال.\n\nتواصل معنا لمعرفة المقاسات المتوفرة والسعر.",
+          "colors": [
+            {
+              "id": "737835dc",
+              "name": "رمادي — نقشة الريش",
+              "hex": "#b9b9b7",
+              "image": "uploads/n5-rug-modern-32.webp"
+            },
+            {
+              "id": "e1714700",
+              "name": "كريمي — خطوط تجريدية",
+              "hex": "#ded8c8",
+              "image": "uploads/n5-rug-modern-34.webp"
+            },
+            {
+              "id": "8f212a30",
+              "name": "أبيض — خطوط هندسية",
+              "hex": "#e9e9e7",
+              "image": "uploads/n5-rug-modern-36.webp"
+            },
+            {
+              "id": "20c0e2f3",
+              "name": "رمادي — رخامي",
+              "hex": "#9c9c9e",
+              "image": "uploads/n5-rug-modern-38.webp"
+            },
+            {
+              "id": "5453fa3d",
+              "name": "أسود وأبيض — إطارات",
+              "hex": "#55555a",
+              "image": "uploads/n5-rug-modern-44.webp"
+            },
+            {
+              "id": "46559ccc",
+              "name": "بيج — دوائر",
+              "hex": "#d6cab6",
+              "image": "uploads/n5-rug-modern-49.webp"
+            },
+            {
+              "id": "17c1265d",
+              "name": "رمادي وأبيض — فرشاة",
+              "hex": "#cfcfcc",
+              "image": "uploads/n5-rug-modern-50.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "5099843e",
+              "label": "التصميم",
+              "value": "مودرن — تجريدي"
+            },
+            {
+              "id": "bfc4c70d",
+              "label": "الخيارات",
+              "value": "7 ألوان وتصاميم"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-17"
+        },
+        {
           "id": "776ffe22",
           "name": "سجادة التوليب — مودرن بألوان متداخلة",
           "images": [
@@ -1132,6 +1904,450 @@
       "cover": "",
       "images": [],
       "products": [
+        {
+          "id": "7643932b",
+          "name": "عربة تقديم بتصميم الحلقة",
+          "images": [
+            {
+              "src": "uploads/n5-cart-ring-0.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-ring-3.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-ring-6.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-ring-8.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-ring-13.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-ring-7.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-ring-10.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-ring-9.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "عربة تقديم معدنية بأرفف زجاج شفاف وإطار جانبي يجمع خطاً مائلاً مع حلقة دائرية — قطعة ضيافة ملفتة للصالات والمجالس. بعجلات لسهولة الحركة ومقبض علوي، ومتوفرة بطابقين أو ثلاثة وبأربعة ألوان.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "f6c782f3",
+              "name": "أسود",
+              "hex": "#1d1d1d",
+              "image": "uploads/n5-cart-ring-0.webp"
+            },
+            {
+              "id": "160733f4",
+              "name": "رمادي",
+              "hex": "#8d8d8d",
+              "image": "uploads/n5-cart-ring-3.webp"
+            },
+            {
+              "id": "11340147",
+              "name": "ذهبي",
+              "hex": "#c9a54a",
+              "image": "uploads/n5-cart-ring-6.webp"
+            },
+            {
+              "id": "25fedda9",
+              "name": "بيج",
+              "hex": "#d8c5a1",
+              "image": "uploads/n5-cart-ring-8.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "7f934cc0",
+              "label": "الطوابق",
+              "value": "3 طوابق أو طابقين"
+            },
+            {
+              "id": "d0bb0b38",
+              "label": "الخامة",
+              "value": "هيكل معدني + أرفف زجاج"
+            },
+            {
+              "id": "9a50877d",
+              "label": "العجلات",
+              "value": "نعم"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-17"
+        },
+        {
+          "id": "1e9a3b1c",
+          "name": "عربة تقديم بقوس منحني",
+          "images": [
+            {
+              "src": "uploads/n5-cart-arc-1.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-arc-2.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-arc-4.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-arc-5.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "عربة تقديم بطابقين من الزجاج وهيكل معدني بقوسين منحنيين يعطونها شكلاً انسيابياً أنيقاً. حواف الأرفف مرتفعة تحمي الأكواب والصحون، وعجلاتها تسهّل تقديم الضيافة. متوفرة بالأسود والذهبي وبلونين مدموجين.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "877dc83c",
+              "name": "أسود",
+              "hex": "#1d1d1d",
+              "image": "uploads/n5-cart-arc-1.webp"
+            },
+            {
+              "id": "b10abc87",
+              "name": "ذهبي",
+              "hex": "#c9a54a",
+              "image": "uploads/n5-cart-arc-2.webp"
+            },
+            {
+              "id": "7f8d0f7d",
+              "name": "ذهبي وفضي",
+              "hex": "#cdb46a",
+              "image": "uploads/n5-cart-arc-4.webp"
+            },
+            {
+              "id": "68bfbe54",
+              "name": "فضي وأسود",
+              "hex": "#7a7c80",
+              "image": "uploads/n5-cart-arc-5.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "d3724a1c",
+              "label": "الطوابق",
+              "value": "طابقين"
+            },
+            {
+              "id": "7658caab",
+              "label": "الخامة",
+              "value": "هيكل معدني + أرفف زجاج"
+            },
+            {
+              "id": "b6fc3725",
+              "label": "العجلات",
+              "value": "نعم"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-17"
+        },
+        {
+          "id": "657b5701",
+          "name": "عربة تقديم بإطار هرمي",
+          "images": [
+            {
+              "src": "uploads/n5-cart-frame-16.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-frame-17.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-frame-18.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-frame-15.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-frame-11.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-frame-12.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-frame-19.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-frame-14.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "عربة تقديم بأرفف زجاج مستطيلة محاطة بسياج معدني من ثلاثة خطوط، وإطار جانبي بشكل هرمي ثابت. عملية للقهوة والشاي والحلا، ومتوفرة بطابقين أو ثلاثة وبأربعة ألوان.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "c2754d38",
+              "name": "أسود",
+              "hex": "#1d1d1d",
+              "image": "uploads/n5-cart-frame-16.webp"
+            },
+            {
+              "id": "e848b58f",
+              "name": "رمادي",
+              "hex": "#8d8d8d",
+              "image": "uploads/n5-cart-frame-17.webp"
+            },
+            {
+              "id": "416fb0c4",
+              "name": "ذهبي",
+              "hex": "#c9a54a",
+              "image": "uploads/n5-cart-frame-18.webp"
+            },
+            {
+              "id": "e9d136fc",
+              "name": "بيج",
+              "hex": "#d8c5a1",
+              "image": "uploads/n5-cart-frame-15.webp"
+            },
+            {
+              "id": "2362a8df",
+              "name": "فضي",
+              "hex": "#c0c2c6",
+              "image": "uploads/n5-cart-frame-12.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "e5dfb93f",
+              "label": "الطوابق",
+              "value": "3 طوابق أو طابقين"
+            },
+            {
+              "id": "8c5e8070",
+              "label": "الخامة",
+              "value": "هيكل معدني + أرفف زجاج"
+            },
+            {
+              "id": "ab454fb8",
+              "label": "العجلات",
+              "value": "نعم"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-17"
+        },
+        {
+          "id": "ede260ce",
+          "name": "عربة تقديم بتصميم الدوائر",
+          "images": [
+            {
+              "src": "uploads/n5-cart-circles-20.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-circles-24.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-circles-21.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-circles-22.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "عربة تقديم بتصميم فني من دوائر معدنية متداخلة تحمل أرفف الزجاج — تصلح كقطعة ديكور وضيافة في نفس الوقت. بعجلات ومقبض، ومتوفرة بطابقين أو ثلاثة بالأسود والذهبي.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "b823c3e8",
+              "name": "أسود",
+              "hex": "#1d1d1d",
+              "image": "uploads/n5-cart-circles-20.webp"
+            },
+            {
+              "id": "4b470a4b",
+              "name": "ذهبي",
+              "hex": "#c9a54a",
+              "image": "uploads/n5-cart-circles-24.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "5fef249c",
+              "label": "الطوابق",
+              "value": "3 طوابق أو طابقين"
+            },
+            {
+              "id": "a5bcbbd6",
+              "label": "الخامة",
+              "value": "هيكل معدني + أرفف زجاج"
+            },
+            {
+              "id": "b6330b7a",
+              "label": "العجلات",
+              "value": "نعم"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-17"
+        },
+        {
+          "id": "3e6bcfdc",
+          "name": "عربة تقديم متدرجة 3 طوابق",
+          "images": [
+            {
+              "src": "uploads/n5-cart-steps-25.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-steps-23.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-steps-26.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-steps-29.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "عربة تقديم بثلاثة أرفف زجاج متدرجة الارتفاع بتصميم عصري غير تقليدي، تعطيك مساحات بمستويات مختلفة لترتيب الضيافة. هيكل معدني متين بعجلات، ومتوفرة بأربعة ألوان.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "4aa7e270",
+              "name": "أسود",
+              "hex": "#1d1d1d",
+              "image": "uploads/n5-cart-steps-25.webp"
+            },
+            {
+              "id": "1fad5227",
+              "name": "رمادي",
+              "hex": "#8d8d8d",
+              "image": "uploads/n5-cart-steps-23.webp"
+            },
+            {
+              "id": "4cc1d68f",
+              "name": "ذهبي",
+              "hex": "#c9a54a",
+              "image": "uploads/n5-cart-steps-26.webp"
+            },
+            {
+              "id": "9c72c99e",
+              "name": "بيج",
+              "hex": "#d8c5a1",
+              "image": "uploads/n5-cart-steps-29.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "e0577fae",
+              "label": "الطوابق",
+              "value": "3 طوابق"
+            },
+            {
+              "id": "c8d8183b",
+              "label": "الخامة",
+              "value": "هيكل معدني + أرفف زجاج"
+            },
+            {
+              "id": "81209b27",
+              "label": "العجلات",
+              "value": "نعم"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-17"
+        },
+        {
+          "id": "c23127e5",
+          "name": "عربة تقديم بخطوط منحنية 3 طوابق",
+          "images": [
+            {
+              "src": "uploads/n5-cart-wave-28.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n5-cart-wave-27.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "عربة تقديم بثلاثة طوابق من الزجاج وهيكل معدني بخطوط منحنية ناعمة وزوايا دائرية. شكل مودرن يناسب المجالس وغرف الطعام، بعجلات لتحريكها بسهولة. متوفرة بالأسود والذهبي.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "50a4c304",
+              "name": "أسود",
+              "hex": "#1d1d1d",
+              "image": "uploads/n5-cart-wave-28.webp"
+            },
+            {
+              "id": "05566542",
+              "name": "ذهبي",
+              "hex": "#c9a54a",
+              "image": "uploads/n5-cart-wave-27.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "65e52be8",
+              "label": "الطوابق",
+              "value": "3 طوابق"
+            },
+            {
+              "id": "788f1252",
+              "label": "الخامة",
+              "value": "هيكل معدني + أرفف زجاج"
+            },
+            {
+              "id": "d1d5b11c",
+              "label": "العجلات",
+              "value": "نعم"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-17"
+        },
         {
           "id": "44aa5086",
           "name": "طاولة طعام دائرية بإطار ذهبي مع 4 كراسي",
