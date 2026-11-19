@@ -3,6 +3,7 @@ const ICONS = {
   phone: '<path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/>',
   whatsapp: '<path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.6 14.2c-.2.6-1.4 1.2-1.9 1.3-.5 0-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6 0l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z" fill="currentColor"/>',
   mail: '<path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3 6 9 7 9-7" fill="none" stroke="currentColor" stroke-width="2"/>',
+  check: '<path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" fill="currentColor"/>',
   pin: '<path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/>',
   clock: '<circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2"/>',
   instagram: '<rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>',
@@ -158,7 +159,7 @@ function render(d) {
   if (posters.length) showcase.splice(0, showcase.length, ...posters);   // لو فيه بوسترات مصممة نعرضها هي فقط (مقاس ثابت بدون قفزات)
   if (d.company.heroImage && !showcase.length) showcase.push({ p: { name: d.company.nameAr, images: [{ src: d.company.heroImage }] }, cat: null });
   $('hsSlides').innerHTML = showcase.map((x, i) =>
-    `<${x.poster ? `a href="${esc(x.href)}"` : 'div'} class="hs-slide ${x.poster ? 'poster' : ''} ${i === 0 ? 'on' : ''}"><img class="bgfill" src="${esc(sized(x.p.images[0].src, 320))}" alt="" aria-hidden="true" decoding="async"><img class="fit" src="${esc(sized(x.p.images[0].src, 1280))}" alt="${esc(x.p.name)}" ${i ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async"></${x.poster ? 'a' : 'div'}>`).join('');
+    `<${x.poster ? `a href="${esc(x.href)}"${/^https?:/.test(x.href) ? ' target="_blank" rel="noopener"' : ''}` : 'div'} class="hs-slide ${x.poster ? 'poster' : ''} ${i === 0 ? 'on' : ''}"><img class="bgfill" src="${esc(sized(x.p.images[0].src, 320))}" alt="" aria-hidden="true" decoding="async"><img class="fit" src="${esc(sized(x.p.images[0].src, 1280))}" alt="${esc(x.p.name)}" ${i ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async"></${x.poster ? 'a' : 'div'}>`).join('');
   $('hsDots').innerHTML = showcase.length > 1 ? showcase.map((_, i) => `<button class="${i === 0 ? 'on' : ''}" aria-label="شريحة ${i + 1}"></button>`).join('') : '';
   $('heroShow').hidden = !showcase.length;
   let hs = 0;
@@ -441,7 +442,8 @@ function allCat() {
   return { id: 'all', virtual: true, title: 'كل المنتجات', description: 'كل منتجاتنا في مكان واحد — السجاد والموكيت والأثاث والإنارة والمفروشات والديكور. اختر القسم من الأزرار تحت أو تصفّح الكل.', items, products: items.map(x => x.p) };
 }
 const priceHTML = (p) => p.price ? `<div class="price"><b>${esc(p.price)}</b>${p.oldPrice ? `<s>${esc(p.oldPrice)}</s>` : ''}</div>` : '';
-const sizesOf = (p) => String(p.sizes || '').split(/[,،\n]+/).map(s => s.trim()).filter(Boolean);
+const badgesOf = (p) => (Array.isArray(p.badges) ? p.badges : String(p.badges || '').split(/[,،\n•]+/)).map(x => String(x).trim()).filter(Boolean).slice(0, 6);
+const sizesOf = (p) => String(p.sizes || '').split(/[,،\n•]+/).map(s => s.trim()).filter(Boolean);
 const productImages = (p) => (p.images || []).map(m => m.src).filter(Boolean);
 const waNumber = () => intl(D.contact?.whatsapp || D.contact?.phone || '');
 
@@ -493,7 +495,7 @@ function crumbs(items) {
 }
 
 // تصنيف فرعي تلقائي من اسم المنتج — يسهّل التصفح في الأقسام الكبيرة
-const PGROUPS = [['كراسي بار', /كرسي بار/], ['كراسي طعام', /^كرسي طعام/], ['كنب', /كنب/], ['طاولات طعام', /طعام/], ['طاولات بلازما', /بلازما|تلفزيون/], ['طاولات وسط وخدمة', /طاول/],
+const PGROUPS = [['كراسي بار', /كرسي بار/], ['كراسي طعام', /^كرسي طعام/], ['جلسات خارجية', /خارجي/], ['دفايات', /دفاية|فوّاح|فواح/], ['خزائن تخزين', /^خزانة تخزين/], ['كنب', /كنب/], ['طاولات طعام', /طعام/], ['طاولات بلازما', /بلازما|تلفزيون/], ['طاولات وسط وخدمة', /طاول/],
   ['كراسي', /كرسي/], ['عربات تقديم', /عربة/], ['جزامات', /جزامة|أحذية/], ['معلقات', /معلقة/], ['ثريات', /ثريا/], ['أباجورات', /أباجورة/],
   ['مفارش أطفال', /أطفال/], ['مفارش', /مفرش/], ['مراتب', /مرتب|مراتب/], ['لوحات', /لوحة|لوحات/], ['قطع ديكور', /فوانيس|نباتات|مزهري/], ['دواسات وممرات', /دواسات|ممرات/]];
 function prodGroup(p) { const n = p.name || ''; return (PGROUPS.find(([, r]) => r.test(n)) || ['أخرى'])[0]; }
@@ -543,11 +545,14 @@ function renderProduct(c, p) {
       </div>
       <div class="pd-info">
         <h1>${esc(p.name)}${p.isNew ? ' <span class="badge new pd-new">جديد</span>' : ''}</h1>
+        ${badgesOf(p).length ? `<div class="pd-badges">${badgesOf(p).map(b => `<span>${svg('check')}${esc(b)}</span>`).join('')}</div>` : ''}
         ${priceHTML(p)}
         ${payBadge()}
         <div class="stock ${p.available === false ? 'out' : ''}">${p.available === false ? 'غير متوفر حالياً' : 'متوفر'}</div>
-        ${colors.length ? `<div class="opt"><h4>اللون: <span id="pdColor">اختر اللون</span></h4><div class="swatches">${colors.map((x, i) =>
-          `<button class="sw" data-i="${i}" title="${esc(x.name)}" style="background:${esc(x.hex || '#ccc')}" aria-label="${esc(x.name)}"></button>`).join('')}</div></div>` : ''}
+        ${colors.length ? (() => { const pics = colors.filter(x => x.image).length >= colors.length * .8;
+          return `<div class="opt"><h4>${pics ? 'التصميم / اللون' : 'اللون'}: <span id="pdColor">اختر ${pics ? 'من الصور' : 'اللون'}</span> <small class="opt-n">${colors.length} خيار</small></h4><div class="swatches ${pics ? 'pics' : ''}">${colors.map((x, i) =>
+          pics ? `<button class="sw pic" data-i="${i}" title="${esc(x.name)}" aria-label="${esc(x.name)}"><img src="${esc(sized(x.image, 480))}" alt="" loading="lazy"><i style="background:${esc(x.hex || '#ccc')}"></i></button>`
+               : `<button class="sw" data-i="${i}" title="${esc(x.name)}" style="background:${esc(x.hex || '#ccc')}" aria-label="${esc(x.name)}"></button>`).join('')}</div></div>`; })() : ''}
         ${sizes.length ? `<div class="opt"><h4>المقاس: <span id="pdSize">اختر المقاس</span></h4><div class="sizes">${sizes.map(s =>
           `<button type="button">${esc(s)}</button>`).join('')}</div></div>` : ''}
         ${p.description ? `<div class="pd-desc">${esc(p.description)}</div>` : ''}
@@ -558,6 +563,7 @@ function renderProduct(c, p) {
           <a class="btn line" id="pdCall" href="tel:${digits(D.contact?.phone || '')}">${svg('phone')} اتصل</a>
           <button class="btn line" id="pdShare" type="button">مشاركة</button>
         </div>
+        <ul class="pd-trust">${[(D.branches || []).length && [svg('pin'), `متوفر في ${(D.branches || []).length} فرعاً بمكة وجدة`], payOn().length && D.installments?.enabled !== false && ['💳', `تقسيط ${payOn().map(x => x === 'tabby' ? 'تابي' : 'تمارا').join(' و')}`], [svg('whatsapp'), 'رد سريع على الواتساب'], ['✓', 'شوف المنتج على الطبيعة في المعرض قبل الشراء']].filter(Boolean).map(([ic, t]) => `<li><span>${ic}</span>${esc(t)}</li>`).join('')}</ul>
         ${branchesFor(c).length ? `<div class="near" id="near">
           <div class="near-head"><b>${svg('pin')} الفروع اللي فيها هذا المنتج</b>
             <button class="near-loc" id="nearLoc" type="button">📍 رتّب حسب الأقرب لي</button></div>
@@ -578,6 +584,8 @@ function wireProduct(c, p) {
   const draw = () => {
     if (!imgs.length) { main.innerHTML = `<div class="ph" style="position:absolute;inset:0;display:grid;place-items:center;background:#151515"><span style="font-family:'El Messiri';color:var(--gold);font-size:30px">${esc(p.name)}</span></div>`; thumbs.innerHTML = ''; return; }
     main.innerHTML = `<img src="${esc(sized(imgs[idx], 1280))}" alt="${esc(p.name)}">${imgs.length > 1 ? '<button class="pd-arrow prev" aria-label="السابق">›</button><button class="pd-arrow next" aria-label="التالي">‹</button>' : ''}`;
+    const ci = colors.findIndex(x => x.image === imgs[idx]);
+    if (ci >= 0) { document.querySelectorAll('.sw').forEach((x, k) => x.classList.toggle('on', k === ci)); if ($('pdColor')) $('pdColor').textContent = colors[ci].name || ''; color = colors[ci]; }
     thumbs.innerHTML = imgs.length > 1 ? imgs.map((s, i) => `<button class="${i === idx ? 'on' : ''}" data-i="${i}"><img src="${esc(sized(s, 320))}" alt="" loading="lazy"></button>`).join('') : '';
   };
   main.onclick = (e) => {

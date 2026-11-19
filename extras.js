@@ -185,7 +185,7 @@
   function slides() {
     const out = [], P = D.promo || {};
     for (const b of P.banners || []) if (b && b.active !== false && (b.title || b.image))
-      out.push({ badge: b.badge || 'عرض خاص', title: esc(b.title || ''), sub: b.subtitle || '', imgs: b.image ? [b.image] : [], btn: b.button || 'اكتشف الآن', href: /^(#|https?:)/.test(b.link || '') ? b.link : '#categories', poster: true });
+      out.push({ badge: b.badge || 'عرض خاص', title: (() => { const t = String(b.title || '').trim(), i = t.indexOf(' '); return i > 0 ? `${esc(t.slice(0, i))} <b>${esc(t.slice(i + 1))}</b>` : esc(t); })(), sub: b.subtitle || '', imgs: b.image ? [b.image] : [], btn: b.button || 'اكتشف الآن', href: /^(#|https?:)/.test(b.link || '') ? b.link : '#categories', poster: true });
     if (P.auto === false) return out;
     const groups = new Map();
     for (const cat of D.categories || []) for (const p of cat.products || []) {
@@ -211,8 +211,8 @@
     sec.innerHTML = `<i class="promo-glow"></i><span class="promo-word" aria-hidden="true">NEW</span>
       <div class="promo-track">${list.map((s, i) => `<article class="promo-slide ${i ? '' : 'on'}" data-i="${i}">
         <div class="promo-copy"><span class="promo-badge"><i>✦</i>${esc(s.badge)}</span><h2>${s.title}</h2>${s.sub ? `<p>${esc(s.sub)}</p>` : ''}
-          <a class="btn gold promo-btn" href="${esc(s.href)}"><span>${esc(s.btn)}</span><b class="arr">←</b></a></div>
-        <a class="promo-art ${s.poster || s.imgs.length === 1 ? 'single' : 'n' + s.imgs.length}" href="${esc(s.href)}" aria-label="${esc(s.btn)}">${s.imgs.map((src, k) => `<span class="pa pa${k}"><img src="${esc(sized(src, 800))}" alt="" ${i ? 'loading="lazy"' : ''} decoding="async"></span>`).join('')}</a>
+          <a class="btn gold promo-btn" href="${esc(s.href)}" ${/^https?:/.test(s.href) ? 'target="_blank" rel="noopener"' : ''}><span>${esc(s.btn)}</span><b class="arr">←</b></a></div>
+        <a class="promo-art ${s.poster || s.imgs.length === 1 ? 'single' : 'n' + s.imgs.length}" href="${esc(s.href)}" ${/^https?:/.test(s.href) ? 'target="_blank" rel="noopener"' : ''} aria-label="${esc(s.btn)}">${s.imgs.map((src, k) => `<span class="pa pa${k}"><img src="${esc(sized(src, 800))}" alt="" ${i ? 'loading="lazy"' : ''} decoding="async"></span>`).join('')}</a>
       </article>`).join('')}</div>
       ${list.length > 1 ? `<div class="promo-dots" role="tablist">${list.map((_, i) => `<button type="button" class="${i ? '' : 'on'}" data-i="${i}" aria-label="بنر ${i + 1}"></button>`).join('')}</div>` : ''}
       <a class="promo-skip" href="#top" aria-label="تخطي للموقع">تصفّح الموقع <b>↓</b></a>`;

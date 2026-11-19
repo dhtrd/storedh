@@ -1090,3 +1090,20 @@ a.hs-slide{display:block}
 .all-prods{display:flex;justify-content:center;margin-top:clamp(22px,3vw,36px)}
 .all-prods .btn{padding:15px 32px;gap:12px}
 .all-prods .btn small{font-weight:700;font-size:13px;background:rgba(0,0,0,.14);padding:3px 10px;border-radius:99px}
+
+/* صفحة المنتج: مميزات + ألوان بالصور + شريط الثقة */
+.pd-badges{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 14px}
+.pd-badges span{display:inline-flex;align-items:center;gap:6px;padding:6px 14px 6px 12px;border-radius:99px;background:#fff8e6;border:1px solid #ecd9a2;color:#6b5418;font-weight:800;font-size:14px}
+.pd-badges svg{width:15px;height:15px;color:#b8902f}
+.opt h4 .opt-n{font-weight:600;color:var(--muted);font-size:12.5px;margin-inline-start:6px}
+.swatches.pics{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px;max-height:236px;overflow:auto;padding:3px;scrollbar-width:thin}
+.sw.pic{width:auto;height:auto;aspect-ratio:1;border-radius:12px;border:2px solid transparent;box-shadow:0 0 0 1px var(--line);overflow:hidden;position:relative;padding:0;background:#fff}
+.sw.pic img{width:100%;height:100%;object-fit:cover;display:block}
+.sw.pic i{position:absolute;inset:auto 5px 5px auto;width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.35)}
+.sw.pic:hover{transform:translateY(-2px)}
+.sw.pic.on{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold);transform:none}
+.pd-trust{list-style:none;margin:16px 0 0;padding:14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;background:#faf7ef;border:1px solid #ece4d2;border-radius:16px}
+.pd-trust li{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:#4d4535;line-height:1.5}
+.pd-trust li span{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid #ecd9a2;color:#b8902f;font-size:13px}
+.pd-trust li svg{width:15px;height:15px}
+@media (max-width:640px){.pd-trust{grid-template-columns:1fr}.swatches.pics{grid-template-columns:repeat(auto-fill,minmax(58px,1fr))}}

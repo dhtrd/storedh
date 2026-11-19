@@ -11,6 +11,13 @@
     "heroButton": "تواصل معنا",
     "heroSlides": [
       {
+        "id": "hpclr",
+        "image": "uploads/clearance-hero.webp",
+        "title": "قريباً — تصفية نهاية العام",
+        "link": "https://wa.me/966555944581?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D9%8A%20%D9%8A%D9%88%D8%B5%D9%84%D9%86%D9%8A%20%D8%AA%D9%86%D8%A8%D9%8A%D9%87%20%D8%A3%D9%88%D9%84%20%D9%85%D8%A7%20%D8%AA%D8%A8%D8%AF%D8%A3%20%D8%AA%D8%B5%D9%81%D9%8A%D8%A9%20%D9%86%D9%87%D8%A7%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%20%D9%81%D9%8A%20%D8%B4%D8%B1%D9%83%D8%A9%20%D8%A7%D9%84%D8%B6%D8%A8%D9%8A%D8%A8%D9%8A%20%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9",
+        "active": true
+      },
+      {
         "id": "hp2",
         "image": "uploads/hero-poster-2.webp",
         "title": "لمسة من الفخامة لبيتك",
@@ -85,6 +92,98 @@
         }
       ],
       "products": [
+        {
+          "id": "35d4d848",
+          "name": "سجاد مودرن بنقشة عتيقة",
+          "images": [
+            {
+              "src": "uploads/n7-rug-vintage-0.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-rug-vintage-1.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-rug-vintage-2.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-rug-vintage-3.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "سجاد مودرن بنقشة عتيقة (Distressed) بدرجات متداخلة من الرمادي والبيج مع لمسات زرقاء وطوبية، بملمس ناعم ولمعة خفيفة. يناسب الديكورات العصرية والصناعية ويعطي المكان عمق وهدوء. متوفر بأربعة ألوان.\n\nتواصل معنا لمعرفة المقاسات المتوفرة والسعر.",
+          "colors": [
+            {
+              "id": "9a699f26",
+              "name": "أزرق ورمادي",
+              "hex": "#6d7f92",
+              "image": "uploads/n7-rug-vintage-0.webp"
+            },
+            {
+              "id": "bae914f0",
+              "name": "رمادي",
+              "hex": "#86847f",
+              "image": "uploads/n7-rug-vintage-1.webp"
+            },
+            {
+              "id": "b91ac2c2",
+              "name": "رمادي وطوبي",
+              "hex": "#8f8378",
+              "image": "uploads/n7-rug-vintage-2.webp"
+            },
+            {
+              "id": "dabeba95",
+              "name": "رمادي وبيج",
+              "hex": "#9c968a",
+              "image": "uploads/n7-rug-vintage-3.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "db707104",
+              "label": "التصميم",
+              "value": "مودرن — نقشة عتيقة"
+            },
+            {
+              "id": "2fdfe0e9",
+              "label": "الألوان",
+              "value": "4 ألوان"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-19",
+          "arItems": [
+            {
+              "src": "uploads/ar-n7-rug-vintage-0.jpg",
+              "from": "uploads/n7-rug-vintage-0.webp",
+              "name": "أزرق ورمادي"
+            },
+            {
+              "src": "uploads/ar-n7-rug-vintage-1.jpg",
+              "from": "uploads/n7-rug-vintage-1.webp",
+              "name": "رمادي"
+            },
+            {
+              "src": "uploads/ar-n7-rug-vintage-2.jpg",
+              "from": "uploads/n7-rug-vintage-2.webp",
+              "name": "رمادي وطوبي"
+            },
+            {
+              "src": "uploads/ar-n7-rug-vintage-3.jpg",
+              "from": "uploads/n7-rug-vintage-3.webp",
+              "name": "رمادي وبيج"
+            }
+          ],
+          "arRound": false,
+          "arSizes": ""
+        },
         {
           "id": "567124b6",
           "name": "سجاد كلاسيك بزخارف الأغصان",
@@ -553,7 +652,7 @@
         },
         {
           "id": "2986f7b0",
-          "name": "سجاد كلاسيك بميدالية — تشكيلة الصالون",
+          "name": "سجاد نانو ضد الماء — تشكيلة الصالون",
           "images": [
             {
               "src": "uploads/n5-rug-salon-23.webp",
@@ -630,7 +729,7 @@
           ],
           "price": "",
           "oldPrice": "",
-          "description": "تشكيلة سجاد بتصاميم كلاسيكية: ميدالية وسطية وإطارات مزخرفة بشراشيب ناعمة على الأطراف، بألوان متنوعة من الفيروزي والعنابي إلى البيج والرمادي والأسود الذهبي. خيارات كثيرة تناسب كل ديكور.\n\nتواصل معنا لمعرفة المقاسات المتوفرة والسعر.",
+          "description": "سجاد بتقنية النانو المقاومة للماء والبقع: السوائل ما تتشربها السجادة وتنمسح بسهولة، فيبقى السجاد نظيف وألوانه ثابتة مع الاستخدام اليومي — مثالي للصالات والمجالس وغرف الأطفال. تصاميم كلاسيكية بميدالية وسطية وإطارات مزخرفة وشراشيب ناعمة، بألوان كثيرة من الفيروزي والعنابي إلى البيج والرمادي والأسود الذهبي.\n\nالمقاس: 200 × 300 سم.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
           "colors": [
             {
               "id": "587c7c98",
@@ -741,15 +840,25 @@
               "image": "uploads/n5-rug-salon-52.webp"
             }
           ],
-          "sizes": "",
+          "sizes": "200 × 300 سم",
           "specs": [
             {
-              "id": "4fe948bf",
+              "id": "ce2267a6",
+              "label": "التقنية",
+              "value": "نانو — مقاوم للماء والبقع"
+            },
+            {
+              "id": "5e14ad03",
+              "label": "المقاس",
+              "value": "200 × 300 سم"
+            },
+            {
+              "id": "2492bcb4",
               "label": "التصميم",
               "value": "كلاسيك — ميدالية بإطار"
             },
             {
-              "id": "94a3dd77",
+              "id": "4052407c",
               "label": "الخيارات",
               "value": "18 ألوان وتصاميم"
             }
@@ -757,7 +866,13 @@
           "available": true,
           "featured": false,
           "isNew": true,
-          "newAt": "2026-11-17"
+          "newAt": "2026-11-17",
+          "badges": [
+            "ضد الماء",
+            "سهل التنظيف",
+            "200 × 300 سم"
+          ],
+          "arSizes": "200×300"
         },
         {
           "id": "b9f60917",
@@ -1904,6 +2019,566 @@
       "cover": "",
       "images": [],
       "products": [
+        {
+          "id": "6969f73a",
+          "name": "طقم جلسة خارجية 7 أشخاص",
+          "images": [
+            {
+              "src": "uploads/n7-outdoor7-slat-4.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-outdoor7-slat-5.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-outdoor7-slat-6.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طقم جلسات خارجية لـ 7 أشخاص: كنبة 3 مقاعد وكنبتين لشخصين مع طاولة وسط، بهيكل ألمنيوم مقاوم للعوامل الجوية ومساند مبطّنة مريحة. مثالي للحدائق والأسطح والملاحق. متوفر بالبيج والرمادي والكريمي.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "dba0176c",
+              "name": "بيج",
+              "hex": "#d8c5a1",
+              "image": "uploads/n7-outdoor7-slat-4.webp"
+            },
+            {
+              "id": "f85721d3",
+              "name": "رمادي",
+              "hex": "#8d8d8d",
+              "image": "uploads/n7-outdoor7-slat-5.webp"
+            },
+            {
+              "id": "a35c40a8",
+              "name": "كريمي",
+              "hex": "#ece4d2",
+              "image": "uploads/n7-outdoor7-slat-6.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "1df4c635",
+              "label": "السعة",
+              "value": "7 أشخاص"
+            },
+            {
+              "id": "65856ce2",
+              "label": "القطع",
+              "value": "كنبة 3 + كنبتين 2 + طاولة"
+            },
+            {
+              "id": "0a2e2e20",
+              "label": "الاستخدام",
+              "value": "خارجي — حدائق وأسطح"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-19"
+        },
+        {
+          "id": "896885ad",
+          "name": "طقم جلسة خارجية 7 أشخاص بمساند",
+          "images": [
+            {
+              "src": "uploads/n7-outdoor7-cushion-10.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-outdoor7-cushion-11.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طقم جلسات خارجية فخم لـ 7 أشخاص بمقاعد عميقة ووسائد ظهر ومخدات ديكور، مع طاولة وسط. هيكل معدني متين وقماش مناسب للاستخدام الخارجي. متوفر بالرمادي الداكن والبيج.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "0cfea7c5",
+              "name": "رمادي داكن",
+              "hex": "#4f4f52",
+              "image": "uploads/n7-outdoor7-cushion-10.webp"
+            },
+            {
+              "id": "d9f922a3",
+              "name": "بيج",
+              "hex": "#d8c5a1",
+              "image": "uploads/n7-outdoor7-cushion-11.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "39a834d9",
+              "label": "السعة",
+              "value": "7 أشخاص"
+            },
+            {
+              "id": "063ad4fe",
+              "label": "القطع",
+              "value": "كنبة 3 + كنبتين 2 + طاولة"
+            },
+            {
+              "id": "d1cf5fc0",
+              "label": "الاستخدام",
+              "value": "خارجي — حدائق وأسطح"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-19"
+        },
+        {
+          "id": "83e99913",
+          "name": "طقم جلسة خارجية 4 أشخاص بالحبال",
+          "images": [
+            {
+              "src": "uploads/n7-outdoor4-rope-7.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-outdoor4-rope-9.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-outdoor4-rope-8.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طقم جلسة خارجية لـ 4 أشخاص بظهر من الحبال المجدولة ومقاعد مبطّنة، مع طاولة وسط بسطح زجاج. خفيف وعملي للبلكونات والحدائق الصغيرة. متوفر بالرمادي والأسود والطبيعي.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "92c45800",
+              "name": "رمادي",
+              "hex": "#8d8d8d",
+              "image": "uploads/n7-outdoor4-rope-7.webp"
+            },
+            {
+              "id": "304104f6",
+              "name": "أسود",
+              "hex": "#1d1d1d",
+              "image": "uploads/n7-outdoor4-rope-9.webp"
+            },
+            {
+              "id": "909efa3d",
+              "name": "طبيعي",
+              "hex": "#c9ad85",
+              "image": "uploads/n7-outdoor4-rope-8.webp"
+            }
+          ],
+          "sizes": "",
+          "specs": [
+            {
+              "id": "7d230c40",
+              "label": "السعة",
+              "value": "4 أشخاص"
+            },
+            {
+              "id": "26ab680d",
+              "label": "القطع",
+              "value": "كنبة 2 + كرسيين + طاولة"
+            },
+            {
+              "id": "689024cf",
+              "label": "الاستخدام",
+              "value": "خارجي — بلكونات وحدائق"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-19"
+        },
+        {
+          "id": "abb86447",
+          "name": "طاولة تلفزيون بأبواب بفتحات",
+          "images": [
+            {
+              "src": "uploads/n7-tv-slots-12.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-tv-slots-13.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-tv-slots-24.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-tv-slots-14.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طاولة تلفزيون بتصميم عصري: بابين بفتحات طولية أنيقة ورف مفتوح في الوسط للأجهزة، على أرجل مائلة. متوفرة بمقاس 160 سم بثلاثة ألوان و180 سم بلون بني داكن مع حجري بيج.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "dc1bbb91",
+              "name": "بني وحجري بيج — 160 سم",
+              "hex": "#9a7754",
+              "image": "uploads/n7-tv-slots-12.webp"
+            },
+            {
+              "id": "afcbdb92",
+              "name": "بني فاتح — 160 سم",
+              "hex": "#b88a55",
+              "image": "uploads/n7-tv-slots-13.webp"
+            },
+            {
+              "id": "24884a97",
+              "name": "بني داكن — 160 سم",
+              "hex": "#5e4330",
+              "image": "uploads/n7-tv-slots-24.webp"
+            },
+            {
+              "id": "a41acc96",
+              "name": "بني داكن وحجري بيج — 180 سم",
+              "hex": "#6e5845",
+              "image": "uploads/n7-tv-slots-14.webp"
+            }
+          ],
+          "sizes": "160 × 40 × 43.5 سم • 180 × 40 × 43 سم",
+          "specs": [
+            {
+              "id": "caca8f56",
+              "label": "مقاس 160",
+              "value": "160 × 40 × 43.5 سم"
+            },
+            {
+              "id": "01fd2c55",
+              "label": "مقاس 180",
+              "value": "180 × 40 × 43 سم"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-19"
+        },
+        {
+          "id": "7c627702",
+          "name": "طاولة تلفزيون بأبواب مقوّسة",
+          "images": [
+            {
+              "src": "uploads/n7-tv-arch-22.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-tv-arch-23.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "طاولة تلفزيون بعرض 160 سم بأبواب محفور عليها قوس ناعم ورف مفتوح للأجهزة، على أرجل سوداء مائلة. لمسة دافئة وعصرية لصالة التلفزيون. متوفرة بالبني الداكن والبني الفاتح.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "d3b1296e",
+              "name": "بني داكن",
+              "hex": "#5e4330",
+              "image": "uploads/n7-tv-arch-22.webp"
+            },
+            {
+              "id": "f3ffe327",
+              "name": "بني فاتح",
+              "hex": "#b88a55",
+              "image": "uploads/n7-tv-arch-23.webp"
+            }
+          ],
+          "sizes": "160 × 40 × 44 سم",
+          "specs": [
+            {
+              "id": "96f7261f",
+              "label": "المقاس",
+              "value": "160 × 40 × 44 سم"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-19"
+        },
+        {
+          "id": "1bf2599b",
+          "name": "خزانة تخزين بمقابض طولية",
+          "images": [
+            {
+              "src": "uploads/n7-cab-slots-16.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-cab-slots-19.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-cab-slots-25.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-cab-slots-18.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "خزانة تخزين متعددة الاستخدام (أحذية، مداخل، صالات) بأبواب بمقابض طولية محفورة وأرفف داخلية واسعة. متوفرة بمقاسين: 120 سم (4 أبواب) و80 سم (بابين)، وبلونين.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "950954a5",
+              "name": "بني داكن — 120 سم",
+              "hex": "#5e4330",
+              "image": "uploads/n7-cab-slots-16.webp"
+            },
+            {
+              "id": "04b5caba",
+              "name": "بني فاتح — 120 سم",
+              "hex": "#b88a55",
+              "image": "uploads/n7-cab-slots-19.webp"
+            },
+            {
+              "id": "77199b28",
+              "name": "بني داكن — 80 سم",
+              "hex": "#5e4330",
+              "image": "uploads/n7-cab-slots-25.webp"
+            },
+            {
+              "id": "a2dc0739",
+              "name": "بني فاتح — 80 سم",
+              "hex": "#b88a55",
+              "image": "uploads/n7-cab-slots-18.webp"
+            }
+          ],
+          "sizes": "120 × 32.5 × 93 سم • 80 × 32.5 × 93 سم",
+          "specs": [
+            {
+              "id": "b3012a02",
+              "label": "مقاس 120",
+              "value": "120 × 32.5 × 93 سم"
+            },
+            {
+              "id": "0dae3add",
+              "label": "مقاس 80",
+              "value": "80 × 32.5 × 93 سم"
+            },
+            {
+              "id": "b49e602a",
+              "label": "الأرفف",
+              "value": "أرفف داخلية"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-19"
+        },
+        {
+          "id": "34b1f976",
+          "name": "خزانة تخزين بأبواب مقوّسة",
+          "images": [
+            {
+              "src": "uploads/n7-cab-arch-15.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-cab-arch-17.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-cab-arch-20.webp",
+              "caption": ""
+            },
+            {
+              "src": "uploads/n7-cab-arch-21.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "خزانة تخزين أنيقة بأبواب محفور عليها قوس وأرفف داخلية واسعة، تصلح جزامة أو خزانة للمداخل والصالات. متوفرة بمقاسين: 120 سم و80 سم، وبلونين.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [
+            {
+              "id": "b42796a1",
+              "name": "بني داكن — 120 سم",
+              "hex": "#5e4330",
+              "image": "uploads/n7-cab-arch-15.webp"
+            },
+            {
+              "id": "3fee3807",
+              "name": "بني فاتح — 120 سم",
+              "hex": "#b88a55",
+              "image": "uploads/n7-cab-arch-17.webp"
+            },
+            {
+              "id": "fbf861cd",
+              "name": "بني داكن — 80 سم",
+              "hex": "#5e4330",
+              "image": "uploads/n7-cab-arch-20.webp"
+            },
+            {
+              "id": "2f9bd46d",
+              "name": "بني فاتح — 80 سم",
+              "hex": "#b88a55",
+              "image": "uploads/n7-cab-arch-21.webp"
+            }
+          ],
+          "sizes": "120 × 32.5 × 93 سم • 80 × 32.5 × 93 سم",
+          "specs": [
+            {
+              "id": "61103503",
+              "label": "مقاس 120",
+              "value": "120 × 32.5 × 93 سم"
+            },
+            {
+              "id": "f5004bae",
+              "label": "مقاس 80",
+              "value": "80 × 32.5 × 93 سم"
+            },
+            {
+              "id": "34291bb1",
+              "label": "الأرفف",
+              "value": "أرفف داخلية"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-19"
+        },
+        {
+          "id": "257f1936",
+          "name": "دفاية كهربائية ديكور 150 سم",
+          "images": [
+            {
+              "src": "uploads/n7-fp-wall-26.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "دفاية كهربائية ديكور بعرض 150 سم بلهب واقعي فوق جذوع خشب، مع 17 لون للهب تختار بينها. تتركّب في الجدار أو داخل وحدة التلفزيون، وتعطي المكان دفء وجو فخم.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [],
+          "sizes": "150 سم",
+          "specs": [
+            {
+              "id": "a850af17",
+              "label": "العرض",
+              "value": "150 سم"
+            },
+            {
+              "id": "ab4f1273",
+              "label": "ألوان اللهب",
+              "value": "17 لون"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-19"
+        },
+        {
+          "id": "49968386",
+          "name": "دفاية كهربائية بثلاث واجهات زجاج",
+          "images": [
+            {
+              "src": "uploads/n7-fp-3side-27.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "دفاية كهربائية ديكور بثلاث واجهات زجاج تبين اللهب من الأمام والجانبين، بلهب واقعي وجذوع خشب. قطعة مميزة للمجالس والصالات.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [],
+          "sizes": "125 × 45 × 25 سم",
+          "specs": [
+            {
+              "id": "c8df290c",
+              "label": "المقاس",
+              "value": "125 × 45 × 25 سم"
+            },
+            {
+              "id": "fdd87135",
+              "label": "الواجهات",
+              "value": "3 واجهات زجاج"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-19"
+        },
+        {
+          "id": "66e09d5d",
+          "name": "فوّاح بخار ديكور بشكل لهب",
+          "images": [
+            {
+              "src": "uploads/n7-fp-vapor-28.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "فوّاح بخار ديكور بطول 125 سم يطلع بخار ماء مضاء يشبه اللهب الحقيقي بعدة ألوان — بدون حرارة ولا دخان. آمن وجميل كقطعة ديكور في الصالات والمجالس.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [],
+          "sizes": "125 سم",
+          "specs": [
+            {
+              "id": "e4f7ed9f",
+              "label": "الطول",
+              "value": "125 سم"
+            },
+            {
+              "id": "c13aad0a",
+              "label": "النوع",
+              "value": "بخار ماء مضاء — بدون حرارة"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-19"
+        },
+        {
+          "id": "56d0ccf6",
+          "name": "دفاية ديكور مع طاولة بلازما منحنية",
+          "images": [
+            {
+              "src": "uploads/n7-fp-bench-29.webp",
+              "caption": ""
+            }
+          ],
+          "price": "",
+          "oldPrice": "",
+          "description": "دفاية ديكور كهربائية مقاس 127 × 18 × 46 سم بـ 17 لون للهب، تتركّب فوق طاولة بلازما خشبية بتصميم منحني أنيق بطول 200 سم. الطاولة متوفرة مع الدفاية أو لوحدها.\n\nتواصل معنا لمعرفة السعر والتوفر في الفرع الأقرب لك.",
+          "colors": [],
+          "sizes": "الدفاية 127 × 18 × 46 سم • الطاولة 200 سم",
+          "specs": [
+            {
+              "id": "a644ae26",
+              "label": "الدفاية",
+              "value": "127 × 18 × 46 سم — 17 لون لهب"
+            },
+            {
+              "id": "5f555bc8",
+              "label": "طاولة البلازما",
+              "value": "200 سم — منحنية"
+            }
+          ],
+          "available": true,
+          "featured": false,
+          "isNew": true,
+          "newAt": "2026-11-19"
+        },
         {
           "id": "7643932b",
           "name": "عربة تقديم بتصميم الحلقة",
@@ -10435,6 +11110,17 @@
   },
   "promo": {
     "auto": true,
-    "banners": []
+    "banners": [
+      {
+        "id": "clr2026",
+        "badge": "قريباً",
+        "title": "تصفية نهاية العام",
+        "subtitle": "أقوى عروض السنة على السجاد والأثاث والإنارة — ترقّبوا الموعد في جميع فروعنا بمكة وجدة",
+        "image": "uploads/clearance-promo.webp",
+        "button": "نبّهني أول ما تبدأ",
+        "link": "https://wa.me/966555944581?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D9%8A%20%D9%8A%D9%88%D8%B5%D9%84%D9%86%D9%8A%20%D8%AA%D9%86%D8%A8%D9%8A%D9%87%20%D8%A3%D9%88%D9%84%20%D9%85%D8%A7%20%D8%AA%D8%A8%D8%AF%D8%A3%20%D8%AA%D8%B5%D9%81%D9%8A%D8%A9%20%D9%86%D9%87%D8%A7%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%20%D9%81%D9%8A%20%D8%B4%D8%B1%D9%83%D8%A9%20%D8%A7%D9%84%D8%B6%D8%A8%D9%8A%D8%A8%D9%8A%20%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9",
+        "active": true
+      }
+    ]
   }
 }
